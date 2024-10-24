@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Menu>
+  <Group>
+    <Item Text="File" Key="F" >
+      <Group>
+        <Item Text="Return to GI System" NavigateUrl="~/Products/Default.aspx" />
+        <Item IsSeparator="True" />
+        <Item Text="Log-off" NavigateUrl="Security/SELogin.aspx" />
+      </Group>
+    </Item>
+    <Item Text="Administration" AccessKey="A" >
+      <Group>
+        <Item Text="Report Maintenance" NavigateUrl="~/Products/GIAK/Admin/ReportMaintenance.aspx" />
+        <Item IsSeparator="False" />
+        <Item Text="User Maintenance" Visible="False" />
+      </Group>
+    </Item>
+    <Item Text="Help" AccessKey="H" >
+      <Group>
+        <Item Text="About HD Clinical Auditors Kit" />
+      </Group>
+    </Item>
+  </Group>
+</Menu>

@@ -1,0 +1,569 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Version 1.14 -->
+<xs:schema xmlns="http://weblogik.co.uk/jets/Hospital.SendBatchMessage.xsd" xmlns:mstns="http://weblogik.co.uk/jets/Hospital.SendBatchMessage.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://weblogik.co.uk/jets/Hospital.SendBatchMessage.xsd" elementFormDefault="qualified" id="SendBatchMessageFile">
+	<!-- Root Element -->
+	<xs:element name="hospital.SendBatchMessage">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="session" type="SessionType" minOccurs="1" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<!-- Session Element-->
+	<xs:complexType name="SessionType">
+		<xs:sequence>
+			<xs:element name="procedures" type="ProceduresType" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attribute name="uniqueId" type="xs:string" use="required"/>
+		<xs:attribute name="description" type="xs:string" use="required"/>
+		<xs:attribute name="date" type="UKDateType" use="required"/>
+		<xs:attribute name="time" type="TimeEnum" use="required"/>
+		<xs:attribute name="type" type="SessionTypeEnum" use="required"/>
+		<xs:attribute name="site" type="xs:string" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="ProceduresType">
+		<xs:choice minOccurs="1" maxOccurs="unbounded">
+			<xs:element name="procedure" type="ProcedureType"/>
+		</xs:choice>
+	</xs:complexType>
+	<!-- Procedure Types -->
+	<xs:complexType name="ProcedureType">
+		<xs:sequence>
+			<xs:element name="patient" type="PatientType" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="drugs" type="DrugType" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="staff.members" type="StaffMembersType" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="indications" type="IndicationsType" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="limitations" type="LimitationsType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="biopsies" type="BiopsiesType" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="diagnoses" type="DiagnosesType" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="adverse.events" type="AdverseEventsType" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attribute name="localProcedureId" type="xs:string" use="required"/>
+		<xs:attribute name="previousLocalProcedureId" type="xs:string" use="optional"/>
+		<xs:attribute name="procedureName" type="ProcedureNameEnum" use="required"/>
+		<xs:attribute name="endoscopistDiscomfort" type="DiscomfortEnum" use="required"/>
+		<xs:attribute name="nurseDiscomfort" type="DiscomfortEnum" use="optional"/>
+		<xs:attribute name="bowelPrep" type="BowelPrepEnum" use="optional"/>
+		<xs:attribute name="extent" type="ExtentTypeEnum" use="required"/>
+		<xs:attribute name="entonox" type="YesNoEnum" use="optional"/>
+		<xs:attribute name="antibioticGiven" type="YesNoEnum" use="optional"/>
+		<xs:attribute name="generalAnaes" type="YesNoEnum" use="optional"/>
+		<xs:attribute name="pharyngealAnaes" type="YesNoEnum" use="optional"/>
+		<xs:attribute name="polypsDetected" type="xs:int" use="required"/>
+		<xs:attribute name="digitalRectalExamination" type="YesNoEnum" use="optional"/>
+		<xs:attribute name="magneticEndoscopeImagerUsed" type="YesNoEnum" use="optional"/>
+		<xs:attribute name="scopeWithdrawalTime" type="xs:int" use="optional"/>
+	</xs:complexType>
+	<!-- Staff Types -->
+	<xs:complexType name="StaffMembersType">
+		<xs:sequence>
+			<xs:element name="Staff" type="StaffType" minOccurs="0" maxOccurs="3"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="StaffType">
+		<xs:sequence>
+			<xs:element name="therapeutics" type="TherapeuticsType" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attribute name="professionalBodyCode" type="xs:string" use="required"/>
+		<xs:attribute name="endoscopistRole" type="EndoscopistRoleTypeEnum" use="required"/>
+		<xs:attribute name="procedureRole" type="ProcedureRoleTypeEnum" use="required"/>
+		<xs:attribute name="extent" type="ExtentTypeEnum" use="optional"/>
+		<xs:attribute name="jManoeuvre" type="YesNoEnum" use="optional"/>
+	</xs:complexType>
+	<!-- Limitation Element -->
+	<xs:complexType name="LimitationsType">
+		<xs:sequence>
+			<xs:element name="limitation" type="LimitationType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="LimitationType">
+		<xs:attribute name="limitation" type="LimitationsEnum" use="required"/>
+		<xs:attribute name="comment" type="xs:string" use="optional"/>
+	</xs:complexType>
+	<!-- Indications Element -->
+	<xs:complexType name="IndicationsType">
+		<xs:sequence>
+			<xs:element name="indication" type="IndicationType" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="IndicationType">
+		<xs:attribute name="indication" type="IndicationsEnum" use="required"/>
+		<xs:attribute name="comment" type="xs:string" use="optional"/>
+	</xs:complexType>
+	<!-- Diagnoses Element-->
+	<xs:complexType name="DiagnosesType">
+		<xs:sequence>
+			<xs:element name="Diagnose" type="DiagnoseType" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DiagnoseType">
+		<xs:attribute name="diagnosis" type="DiagnosisLookupEnum" use="required"/>
+		<xs:attribute name="tattooed" type="TattooEnum" use="optional"/>
+		<xs:attribute name="site" type="BiopsyEnum" use="optional"/>
+		<xs:attribute name="comment" type="xs:string" use="optional"/>
+	</xs:complexType>
+	<!-- Biopsies Element -->
+	<xs:complexType name="BiopsiesType">
+		<xs:sequence>
+			<xs:element name="Biopsy" type="BiopsyType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BiopsyType">
+		<xs:attribute name="biopsySite" type="BiopsyEnum" use="required"/>
+		<xs:attribute name="numberPerformed" type="xs:int" use="required"/>
+	</xs:complexType>
+	<!-- Therapeutics Element -->
+	<xs:complexType name="TherapeuticsType">
+		<xs:sequence>
+			<xs:element name="therapeutic" type="TherapeuticType" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TherapeuticType">
+		<xs:attribute name="type" type="TherapeuticLookupEnum" use="required"/>
+		<xs:attribute name="site" type="BiopsyEnum" use="optional"/>
+		<xs:attribute name="role" type="ProcedureRoleTypeEnum" use="optional"/>
+		<xs:attribute name="polypSize" type="PolypSizeEnum" use="optional"/>
+		<xs:attribute name="tattooed" type="TattooEnum" use="optional"/>
+		<xs:attribute name="performed" type="xs:int" use="required"/>
+		<xs:attribute name="successful" type="xs:int" use="required"/>
+		<xs:attribute name="retrieved" type="xs:int" use="optional"/>
+		<xs:attribute name="comment" type="xs:string" use="optional"/>
+	</xs:complexType>
+	<!-- Adverse Events Element -->
+	<xs:complexType name="AdverseEventsType">
+		<xs:sequence>
+			<xs:element name="adverse.event" type="AdverseEventType" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AdverseEventType">
+		<xs:attribute name="adverseEvent" type="AdverseEventEnum" use="required"/>
+		<xs:attribute name="comment" type="xs:string" use="optional"/>
+	</xs:complexType>
+	<!-- Patient Element-->
+	<xs:complexType name="PatientType">
+		<xs:attribute name="gender" type="GenderType" use="required"/>
+		<xs:attribute name="age" type="xs:int" use="required"/>
+		<xs:attribute name="admissionType" type="AdmissionTypeEnum" use="optional"/>
+		<xs:attribute name="urgencyType" type="UrgencyEnum" use="optional"/>
+	</xs:complexType>
+	<!-- Lookup Types -->
+	<!-- Dose Element-->
+	<xs:complexType name="DrugType">
+		<xs:attribute name="pethidine" type="xs:float" use="required"/>
+		<xs:attribute name="midazolam" type="xs:float" use="required"/>
+		<xs:attribute name="fentanyl" type="xs:float" use="required"/>
+		<xs:attribute name="buscopan" type="xs:float" use="optional"/>
+		<xs:attribute name="propofol" type="xs:float" use="optional"/>
+		<xs:attribute name="noDrugsAdministered" type="YesNoEnum" use="optional"/>
+	</xs:complexType>
+	<xs:simpleType name="SessionTypeEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Dedicated Training List"/>
+			<xs:enumeration value="Adhoc Training List"/>
+			<xs:enumeration value="Service List"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ExtentTypeEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Stomach"/>
+			<xs:enumeration value="Oesophagus"/>
+			<xs:enumeration value="Intubation failed"/>
+			<xs:enumeration value="D2 - 2nd part of duodenum"/>
+			<xs:enumeration value="Duodenal bulb"/>
+			<xs:enumeration value="Anastomosis"/>
+			<xs:enumeration value="Transverse Colon"/>
+			<xs:enumeration value="Terminal ileum"/>
+			<xs:enumeration value="Splenic flexure"/>
+			<xs:enumeration value="Sigmoid colon"/>
+			<xs:enumeration value="Rectum"/>
+			<xs:enumeration value="Pouch"/>
+			<xs:enumeration value="Neo-terminal ileum"/>
+			<xs:enumeration value="Ileo-colon anastomosis"/>
+			<xs:enumeration value="Hepatic flexure"/>
+			<xs:enumeration value="Descending Colon"/>
+			<xs:enumeration value="Caecum"/>
+			<xs:enumeration value="Ascending Colon"/>
+			<xs:enumeration value="Anus"/>
+			<xs:enumeration value="Papilla"/>
+			<xs:enumeration value="Pancreatic duct"/>
+			<xs:enumeration value="Common bile duct"/>
+			<xs:enumeration value="CBD and PD"/>
+			<xs:enumeration value="Abandoned"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="LimitationsEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Other"/>
+			<xs:enumeration value="Not Limited"/>
+			<xs:enumeration value="benign stricture"/>
+			<xs:enumeration value="inadequate bowel prep"/>
+			<xs:enumeration value="malignant stricture"/>
+			<xs:enumeration value="patient discomfort"/>
+			<xs:enumeration value="severe colitis"/>
+			<xs:enumeration value="unresolved loop"/>
+			<xs:enumeration value="clinical intention achieved"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="AdmissionTypeEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Not Specified"/>
+			<xs:enumeration value="Inpatient"/>
+			<xs:enumeration value="Outpatient"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="UrgencyEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Not Specified"/>
+			<xs:enumeration value="Routine"/>
+			<xs:enumeration value="Urgent"/>
+			<xs:enumeration value="Emergency"/>
+			<xs:enumeration value="Surveillance"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ProcedureRoleTypeEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Independent (no trainer)"/>
+			<xs:enumeration value="Was observed"/>
+			<xs:enumeration value="Was assisted physically"/>
+			<xs:enumeration value="I observed"/>
+			<xs:enumeration value="I assisted physically"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="EndoscopistRoleTypeEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Trainer"/>
+			<xs:enumeration value="Trainee"/>
+			<xs:enumeration value="Independent"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DiscomfortEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Not Specified"/>
+			<xs:enumeration value="Comfortable"/>
+			<xs:enumeration value="Minimal"/>
+			<xs:enumeration value="Mild"/>
+			<xs:enumeration value="Moderate"/>
+			<xs:enumeration value="Severe"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="IndicationsEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Other"/>
+			<xs:enumeration value="Abdominal pain"/>
+			<xs:enumeration value="Abnormality on CT / barium"/>
+			<xs:enumeration value="Anaemia"/>
+			<xs:enumeration value="Barretts oesophagus"/>
+			<xs:enumeration value="Diarrhoea"/>
+			<xs:enumeration value="Dyspepsia"/>
+			<xs:enumeration value="Dysphagia"/>
+			<xs:enumeration value="Haematemesis"/>
+			<xs:enumeration value="Heartburn / reflux"/>
+			<xs:enumeration value="Melaena"/>
+			<xs:enumeration value="Nausea / vomiting"/>
+			<xs:enumeration value="Odynophagia"/>
+			<xs:enumeration value="PEG change"/>
+			<xs:enumeration value="PEG placement"/>
+			<xs:enumeration value="PEG removal"/>
+			<xs:enumeration value="Positive TTG / EMA"/>
+			<xs:enumeration value="Stent change"/>
+			<xs:enumeration value="Stent placement"/>
+			<xs:enumeration value="Stent removal"/>
+			<xs:enumeration value="Follow up of gastric ulcer"/>
+			<xs:enumeration value="Varices surveillance / screening"/>
+			<xs:enumeration value="Weight loss"/>
+			<xs:enumeration value="BCSP"/>
+			<xs:enumeration value="Abdominal mass"/>
+			<xs:enumeration value="Abnormal sigmoidoscopy"/>
+			<xs:enumeration value="Chronic alternating diarrhoea / constipation"/>
+			<xs:enumeration value="Colorectal cancer - follow up"/>
+			<xs:enumeration value="Constipation - acute"/>
+			<xs:enumeration value="Constipation - chronic"/>
+			<xs:enumeration value="Defaecation disorder"/>
+			<xs:enumeration value="Diarrhoea - acute"/>
+			<xs:enumeration value="Diarrhoea - chronic"/>
+			<xs:enumeration value="Diarrhoea - chronic with blood"/>
+			<xs:enumeration value="FHx of colorectal cancer"/>
+			<xs:enumeration value="FOB +'ve"/>
+			<xs:enumeration value="IBD assessment / surveillance"/>
+			<xs:enumeration value="Polyposis syndrome"/>
+			<xs:enumeration value="PR bleeding - altered blood"/>
+			<xs:enumeration value="PR bleeding - anorectal"/>
+			<xs:enumeration value="Previous / known polyps"/>
+			<xs:enumeration value="Tumour assessment"/>
+			<xs:enumeration value="Abnormal liver enzymes"/>
+			<xs:enumeration value="Acute pancreatitis"/>
+			<xs:enumeration value="Ampullary mass"/>
+			<xs:enumeration value="Bile duct injury"/>
+			<xs:enumeration value="Bile duct leak"/>
+			<xs:enumeration value="Cholangitis"/>
+			<xs:enumeration value="Chronic pancreatitis"/>
+			<xs:enumeration value="Gallbladder mass"/>
+			<xs:enumeration value="Gallbladder polyp"/>
+			<xs:enumeration value="Hepatobiliary mass"/>
+			<xs:enumeration value="Jaundice"/>
+			<xs:enumeration value="Pancreatic mass"/>
+			<xs:enumeration value="Pancreatic pseudocyst"/>
+			<xs:enumeration value="Pancreatobiliary pain"/>
+			<xs:enumeration value="Papillary dysfunction"/>
+			<xs:enumeration value="Pre lap choledocholithiasis"/>
+			<xs:enumeration value="Primary sclerosing cholangitis"/>
+			<xs:enumeration value="Purulent cholangitis"/>
+			<xs:enumeration value="Stent dysfunction"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DiagnosisLookupEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Normal"/>
+			<xs:enumeration value="Other"/>
+			<xs:enumeration value="Anal fissure"/>
+			<xs:enumeration value="Angiodysplasia"/>
+			<xs:enumeration value="Colitis - ischemic"/>
+			<xs:enumeration value="Colitis - pseudomembranous"/>
+			<xs:enumeration value="Colitis - unspecified"/>
+			<xs:enumeration value="Colorectal cancer"/>
+			<xs:enumeration value="Crohn's - terminal ileum"/>
+			<xs:enumeration value="Crohn's colitis"/>
+			<xs:enumeration value="Diverticulosis"/>
+			<xs:enumeration value="Fistula"/>
+			<xs:enumeration value="Foreign body"/>
+			<xs:enumeration value="Haemorrhoids"/>
+			<xs:enumeration value="Lipoma"/>
+			<xs:enumeration value="Melanosis"/>
+			<xs:enumeration value="Parasites"/>
+			<xs:enumeration value="Pneumatosis coli"/>
+			<xs:enumeration value="Polyp/s"/>
+			<xs:enumeration value="Polyposis syndrome"/>
+			<xs:enumeration value="Postoperative appearance"/>
+			<xs:enumeration value="Proctitis"/>
+			<xs:enumeration value="Rectal ulcer"/>
+			<xs:enumeration value="Stricture - inflammatory"/>
+			<xs:enumeration value="Stricture - malignant"/>
+			<xs:enumeration value="Stricture - postoperative"/>
+			<xs:enumeration value="Ulcerative colitis"/>
+			<xs:enumeration value="Anastomotic stricture"/>
+			<xs:enumeration value="Biliary fistula/leak"/>
+			<xs:enumeration value="Biliary occlusion"/>
+			<xs:enumeration value="Biliary stent occlusion"/>
+			<xs:enumeration value="Biliary stone(s)"/>
+			<xs:enumeration value="Biliary stricture"/>
+			<xs:enumeration value="Carolis disease"/>
+			<xs:enumeration value="Cholangiocarcinoma"/>
+			<xs:enumeration value="Choledochal cyst"/>
+			<xs:enumeration value="Cystic duct stones"/>
+			<xs:enumeration value="Duodenal diverticulum"/>
+			<xs:enumeration value="Gallbladder stone(s)"/>
+			<xs:enumeration value="Gallbladder tumor"/>
+			<xs:enumeration value="Hemobilia"/>
+			<xs:enumeration value="IPMT"/>
+			<xs:enumeration value="Mirizzi syndrome"/>
+			<xs:enumeration value="Pancreas annulare"/>
+			<xs:enumeration value="Pancreas divisum"/>
+			<xs:enumeration value="Pancreatic cyst"/>
+			<xs:enumeration value="Pancreatic duct fistula/leak"/>
+			<xs:enumeration value="Pancreatic duct injury"/>
+			<xs:enumeration value="Pancreatic duct stricture"/>
+			<xs:enumeration value="Pancreatic stent occlusion"/>
+			<xs:enumeration value="Pancreatic stone"/>
+			<xs:enumeration value="Pancreatic tumor"/>
+			<xs:enumeration value="Pancreatitis - acute"/>
+			<xs:enumeration value="Pancreatitis - chronic"/>
+			<xs:enumeration value="Papillary stenosis"/>
+			<xs:enumeration value="Papillary tumor"/>
+			<xs:enumeration value="Primary sclerosing cholangitis"/>
+			<xs:enumeration value="Suppurative cholangitis"/>
+			<xs:enumeration value="Achalasia"/>
+			<xs:enumeration value="Barrett's oesophagus"/>
+			<xs:enumeration value="Dieulafoy lesion"/>
+			<xs:enumeration value="Duodenal polyp"/>
+			<xs:enumeration value="Duodenal tumour - benign"/>
+			<xs:enumeration value="Duodenal tumour - malignant"/>
+			<xs:enumeration value="Duodenal ulcer"/>
+			<xs:enumeration value="Duodenitis - erosive"/>
+			<xs:enumeration value="Duodenitis - non-erosive"/>
+			<xs:enumeration value="Extrinsic compression"/>
+			<xs:enumeration value="Gastric diverticulum"/>
+			<xs:enumeration value="Gastric fistula"/>
+			<xs:enumeration value="Gastric foreign body"/>
+			<xs:enumeration value="Gastric polyp(s)"/>
+			<xs:enumeration value="Gastric postoperative appearance"/>
+			<xs:enumeration value="Gastric tumour - benign"/>
+			<xs:enumeration value="Gastric tumour - malignant"/>
+			<xs:enumeration value="Gastric tumour - submucosal"/>
+			<xs:enumeration value="Gastric ulcer"/>
+			<xs:enumeration value="Gastric varices"/>
+			<xs:enumeration value="Gastritis - erosive"/>
+			<xs:enumeration value="Gastritis - non-erosive"/>
+			<xs:enumeration value="Gastropathy-portal hypertensive"/>
+			<xs:enumeration value="GAVE"/>
+			<xs:enumeration value="Hiatus hernia"/>
+			<xs:enumeration value="Mallory-Weiss tear"/>
+			<xs:enumeration value="Oesophageal candidiasis"/>
+			<xs:enumeration value="Oesophageal diverticulum"/>
+			<xs:enumeration value="Oesophageal fistula"/>
+			<xs:enumeration value="Oesophageal foreign body"/>
+			<xs:enumeration value="Oesophageal polyp"/>
+			<xs:enumeration value="Oesophageal stricture - benign"/>
+			<xs:enumeration value="Oesophageal stricture - malignant"/>
+			<xs:enumeration value="Oesophageal tumour - benign"/>
+			<xs:enumeration value="Oesophageal tumour - malignant"/>
+			<xs:enumeration value="Oesophageal ulcer"/>
+			<xs:enumeration value="Oesophageal varices"/>
+			<xs:enumeration value="Oesophagitis - eosinophilic"/>
+			<xs:enumeration value="Oesophagitis - reflux"/>
+			<xs:enumeration value="Pharyngeal pouch"/>
+			<xs:enumeration value="Pyloric stenosis"/>
+			<xs:enumeration value="Scar"/>
+			<xs:enumeration value="Schatzki ring"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TherapeuticLookupEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="None"/>
+			<xs:enumeration value="Other"/>
+			<xs:enumeration value="Argon beam photocoagulation"/>
+			<xs:enumeration value="Balloon dilation"/>
+			<xs:enumeration value="Banding of haemorrhoid"/>
+			<xs:enumeration value="Clip placement"/>
+			<xs:enumeration value="Endoloop placement"/>
+			<xs:enumeration value="Foreign body removal"/>
+			<xs:enumeration value="Injection therapy"/>
+			<xs:enumeration value="Marking / tattooing"/>
+			<xs:enumeration value="Polyp - cold biopsy"/>
+			<xs:enumeration value="Polyp - EMR"/>
+			<xs:enumeration value="Polyp - ESD"/>
+			<xs:enumeration value="Polyp - hot biopsy"/>
+			<xs:enumeration value="Polyp - snare cold"/>
+			<xs:enumeration value="Polyp - snare hot"/>
+			<xs:enumeration value="Stent change"/>
+			<xs:enumeration value="Stent placement"/>
+			<xs:enumeration value="Stent removal"/>
+			<xs:enumeration value="YAG laser"/>
+			<xs:enumeration value="Balloon trawl"/>
+			<xs:enumeration value="Bougie dilation"/>
+			<xs:enumeration value="Brush cytology"/>
+			<xs:enumeration value="Cannulation"/>
+			<xs:enumeration value="Combined (rendezvous) proc"/>
+			<xs:enumeration value="Diagnostic cholangiogram"/>
+			<xs:enumeration value="Diagnostic pancreatogram"/>
+			<xs:enumeration value="Endoscopic cyst puncture"/>
+			<xs:enumeration value="Haemostasis"/>
+			<xs:enumeration value="Manometry"/>
+			<xs:enumeration value="Nasopancreatic / bilary drain"/>
+			<xs:enumeration value="Sphincterotomy"/>
+			<xs:enumeration value="Stent placement - CBD"/>
+			<xs:enumeration value="Stent placement - pancreas"/>
+			<xs:enumeration value="Stone extraction less than 10mm"/>
+			<xs:enumeration value="Stone extraction greater than or equal too 10mm"/>
+			<xs:enumeration value="Band ligation"/>
+			<xs:enumeration value="Botox injection"/>
+			<xs:enumeration value="EMR"/>
+			<xs:enumeration value="ESD"/>
+			<xs:enumeration value="Heater probe"/>
+			<xs:enumeration value="Hot biopsy"/>
+			<xs:enumeration value="PEG change"/>
+			<xs:enumeration value="PEG placement"/>
+			<xs:enumeration value="PEG removal"/>
+			<xs:enumeration value="Polypectomy"/>
+			<xs:enumeration value="Radio frequency ablation"/>
+			<xs:enumeration value="Variceal sclerotherapy"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="BiopsyEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="None"/>
+			<xs:enumeration value="Oesophagus"/>
+			<xs:enumeration value="Stomach"/>
+			<xs:enumeration value="Duodenal bulb"/>
+			<xs:enumeration value="D2 - 2nd part of duodenum"/>
+			<xs:enumeration value="Terminal ileum"/>
+			<xs:enumeration value="Neo-terminal ileum"/>
+			<xs:enumeration value="Ileo-colon anastomosis"/>
+			<xs:enumeration value="Ascending Colon"/>
+			<xs:enumeration value="Hepatic flexure"/>
+			<xs:enumeration value="Transverse Colon"/>
+			<xs:enumeration value="Splenic flexure"/>
+			<xs:enumeration value="Descending Colon"/>
+			<xs:enumeration value="Sigmoid Colon"/>
+			<xs:enumeration value="Rectum"/>
+			<xs:enumeration value="Anus"/>
+			<xs:enumeration value="Pouch"/>
+			<xs:enumeration value="Caecum"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="AdverseEventEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="None"/>
+			<xs:enumeration value="Other"/>
+			<xs:enumeration value="Ventilation"/>
+			<xs:enumeration value="Perforation of lumen"/>
+			<xs:enumeration value="Bleeding"/>
+			<xs:enumeration value="O2 desaturation"/>
+			<xs:enumeration value="Flumazenil"/>
+			<xs:enumeration value="Naloxone"/>
+			<xs:enumeration value="Consent signed in room"/>
+			<xs:enumeration value="Withdrawal of consent"/>
+			<xs:enumeration value="Unplanned admission"/>
+			<xs:enumeration value="Unsupervised trainee"/>
+			<xs:enumeration value="Death"/>
+			<xs:enumeration value="Pancreatitis"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- Standard Types -->
+	<xs:simpleType name="BowelPrepEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Not Specified"/>
+			<xs:enumeration value="excellent"/>
+			<xs:enumeration value="good"/>
+			<xs:enumeration value="fair"/>
+			<xs:enumeration value="inadequate"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ProcedureNameEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="OGD"/>
+			<xs:enumeration value="FLEXI"/>
+			<xs:enumeration value="ERCP"/>
+			<xs:enumeration value="COLON"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="GenderType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Male"/>
+			<xs:enumeration value="Female"/>
+			<xs:enumeration value="Unknown"/>
+			<xs:enumeration value="Indeterminate"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="YesNoEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Not Specified"/>
+			<xs:enumeration value="No"/>
+			<xs:enumeration value="Yes"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PolypSizeEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ItemLessThan10mm"/>
+			<xs:enumeration value="Item10to19mm"/>
+			<xs:enumeration value="Item20OrLargermm"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TattooEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="No"/>
+			<xs:enumeration value="Yes"/>
+			<xs:enumeration value="Previously Tattooed"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TimeEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="AM"/>
+			<xs:enumeration value="PM"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="UKDateType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="([012]?\d|3[01])/([Jj][Aa][Nn]|[Ff][Ee][bB]|[Mm][Aa][Rr]|[Aa][Pp][Rr]|[Mm][Aa][Yy]|[Jj][Uu][Nn]|[Jj][uU][lL]|[aA][Uu][gG]|[Ss][eE][pP]|[oO][cC][tT]|[Nn][oO][Vv]|[Dd][Ee][Cc])/(19|20)\d\d"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

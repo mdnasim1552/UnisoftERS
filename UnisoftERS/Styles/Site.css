@@ -1,0 +1,2029 @@
+﻿/* COLOUR SCHEMES
+#d81e05 (Red)
+#931638 (Dark Red)
+#a00054 (Dark Pink)
+#56008c (Purple)
+#003893 (Dark Blue)
+#0091c9 (Light Blue)
+#00adc6 (Aqua Blue)
+#00aa9e (Aqua Green)
+#5bbf21 (Light Green)
+#009e49 (Green)
+#006b54 (Dark Green)
+#e28c05 (Orange)
+#f7e214 (Yellow)
+#0072c6 (NHS Blue)
+#dfe9f5 (Windows7)
+#bfdbff (Office 2007)
+#25a0da (Telerik blue)
+#073688 (Unisoft blue)
+#c20e24 (Unisoft red)
+#666666 (Unisoft gray)
+#376aac (Royalish Blue)
+.divWelcomeMessage1{font-family:"Segoe UI Light","Segoe WP Light","Segoe WP","Segoe UI",Arial,Sans-Serif;font-size:4.2rem;line-height:1.19}
+*/
+
+/* DEFAULTS
+----------------------------------------------------------*/
+.jag-audit-control, .jag-audit-control label {
+    color: #C000C0 !important;
+}
+
+body {
+    /* height: 100vh;
+    min-height: 100vh;*/
+    background: #ffffff;
+    margin: 0px;
+    padding: 0px;
+}
+
+a:link, a:visited
+{
+    color: #034af3;
+}
+
+a:hover
+{
+    color: #1d60ff;
+    text-decoration: none;
+}
+
+a:active
+{
+    color: #034af3;
+}
+
+p
+{
+    margin-bottom: 10px;
+    line-height: 1.6em;
+}
+
+legend {
+    margin-left: 5px !important;
+    padding-right: 4px !important;
+    padding-left: 4px !important;
+}
+
+/* SITE COLOURS
+----------------------------------------------------------*/
+
+.site-Active {
+    fill: blue;
+}
+
+.site-Protocol {
+    fill: yellow;
+}
+.site-Anterior {
+    fill: pink;
+}
+
+.site-Posterior {
+    fill: black;
+}
+
+.site-BothOrEither {
+    fill: red;
+}
+
+.site-Dragging {
+    fill: green;
+}
+
+.area-marked {
+    stroke: red;
+    fill: #FF8B8B;
+}
+
+.site-Anterior-Rpt {
+    stroke: pink;
+}
+
+.site-Posterior-Rpt {
+    stroke: black;
+}
+
+.site-BothOrEither-Rpt {
+    stroke: red;
+}
+
+/* LIVE TILES*/
+
+.liveTile
+{
+    height: 50px;
+    width: 50px;
+    padding: 10px;
+    position: absolute;
+}
+
+.tileText
+{
+    font-size: 0.9em;
+    font-family: Arial;
+}
+
+.divRadTileBackground
+{
+    background-image: url('../Images/dashboard-icons/blue-man.png');
+    background-repeat: no-repeat;
+    background-position: left 120px;
+    background-size: auto auto;
+}
+
+.divWelcomeMessage
+{
+    font: 1.5em 'Segoe UI', Arial, sans-serif;
+    color: #4888a2;
+    padding-top: 15px;
+    padding-bottom: 5px;
+    margin-bottom:15px; 
+    display: block;
+    border:dashed;
+    border-color:#e1e1e1; 
+    border-width: 0px 0px 1px 0px;
+    
+
+
+    /*font-size: 2.1em;
+    font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+    font-weight: bold;
+    color: #666666;
+
+    background: -webkit-linear-gradient(top, #C0C0C0, #484848);
+	background: linear-gradient(top, #C0C0C0, #484848);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;*/
+}
+
+.divTileHeading
+{
+    /*font-size: 1.4em;
+    font-family: Arial;*/
+    /*font-weight: bold;
+    color: #666666;*/
+    font: 1.1em 'Segoe UI' , Arial, sans-serif;
+    color: #4888a2;
+}
+
+.radTileBgLightBlue {
+    background-color: #25a0da;
+    background: -webkit-linear-gradient(#54b4e2,#25a0da); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#54b4e2,#25a0da); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#54b4e2,#25a0da); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#54b4e2,#25a0da); /* Standard syntax */
+}
+
+.radTileBgDarkBlue {
+    background-color: #0058bc;
+    background: -webkit-linear-gradient(#0079ff,#0058bc);
+    background: -o-linear-gradient(#0079ff,#0058bc); 
+    background: -moz-linear-gradient(#0079ff,#0058bc); 
+    background: linear-gradient(#0079ff,#0058bc); 
+}
+
+.radTileBgYellow {
+    background-color: #f7cb48;
+    background: -webkit-linear-gradient(#f7cb48,#b98d09); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#f7cb48,#b98d09); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#f7cb48,#b98d09); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#f7cb48,#b98d09); /* Standard syntax */
+}
+
+.radTileBgViolet {
+    background-color: #9b58b5;
+    background: -webkit-linear-gradient(#ab72c0,#773e8c); 
+    background: -o-linear-gradient(#ab72c0,#773e8c); 
+    background: -moz-linear-gradient(#ab72c0,#773e8c); 
+    background: linear-gradient(#ab72c0,#773e8c); 
+}
+
+.radTileBgLightGray {
+    background-color: #f2f2f2;
+    background: -webkit-linear-gradient(to right,#ffffff,#f2f2f2); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(to right,#ffffff,#f2f2f2); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(to right,#ffffff,#f2f2f2); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right,#ffffff,#f2f2f2); /* Standard syntax */
+}
+
+
+/* HEADINGS   
+----------------------------------------------------------*/
+
+h1, h2, h3, h4, h5, h6
+{
+    font-size: 1.5em;
+    color: #666666;
+    /*font-variant: small-caps;
+    text-transform: none;*/
+    font-weight: 200;
+    margin-bottom: 0px;
+}
+
+h1
+{
+    font-size: 1.6em;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+
+h2
+{
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+h3
+{
+    font-size: 1.2em;
+}
+
+h4
+{
+    font-size: 1.1em;
+}
+
+h5, h6
+{
+    font-size: 1em;
+}
+
+.txt-shadow {
+   text-shadow: 0 1px 1px #ccc;
+}
+
+/* this rule styles <h1> and <h2> tags that are the 
+first child of the left and right table columns */
+.rightColumn > h1, .rightColumn > h2, .leftColumn > h1, .leftColumn > h2
+{
+    margin-top: 0px;
+}
+
+.loginBody
+{
+background-color: white;/*#daeef9;*/
+align-content:center;
+}
+
+.loginBoxTitle
+{
+   margin: 146px auto 0px auto;
+   padding:45px 5px 0px 0px; 
+   text-align:right;
+   color: #4b6c9e;
+   font-weight: normal; 
+   font-family: 'Verdana';
+   font-size: 9px;
+}
+
+.loginBoxCopyright
+{
+   position: absolute;
+   top: 550px;
+   padding-left:385px; 
+   text-align:right;
+   color: black;
+   font-weight: normal; 
+   font-family: 'Verdana';
+   font-size: 10px;
+}
+
+.loginBoxCopyright a       {text-decoration:underline;color:black;}
+.loginBoxCopyright a:hover { color:darkred;} 
+
+.loginBoxContent
+{
+    /*margin: 20px auto 0px auto;*/
+    margin: 60px 100px 100px -90px;
+    padding-left:230px;
+    font-family: 'Verdana';
+	font-size: 12px;
+	font-weight: normal;
+	color: #505050;
+}
+
+.loginBox
+{
+    width: 600px;
+    height: 440px;
+    /*border: 1px solid #999999;*/
+    border-right: 1px solid #c2d2e2;
+    border-bottom: 1px solid #c2d2e2;
+    background-color: #fff;
+    margin: 100px auto 0px auto;
+    /*background-image:url('../Images/ND3Login.png');*/
+    background-image:url('../Images/splash-SolusERS.jpg');
+}
+
+.loginShadowBox
+{
+    text-align:center;
+    background-image:url('../Images/bg-shadow-tabs-trans.png');
+    width: 600px;
+    height: 45px; 
+    margin: 0px auto 0px auto; 
+}
+
+.loginLicenseInfo
+{
+    float: none;
+    margin: 100px auto 0px auto;
+}
+
+.sysMessage
+{
+    font-size: 2.1em;
+    font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+    color: Black;
+}
+
+.rptText
+{
+    font-size: 0.9em;
+    font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+    color: #000000;
+}
+
+.optHeaderText
+{
+    font-size: 1.2em;
+    font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+    color: #000000;
+    font-weight: bold;
+    border: 1px solid #ccc;    
+    margin: 5px 5px;
+    padding-left: 3px;
+    background-color: #e0e0e0;
+}
+
+.rptSummaryText10
+{
+    font-size: 1.0em;
+    font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+    color: #000000;
+}
+
+.rptSummaryText12
+{
+    font-size: 1.2em;
+    font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+    color: #000000;
+}
+
+.notificationMessage
+{
+    font-size: 1.5em;
+    font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+    color: #000000;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.divSysMessage
+{
+    font-size: 1.1em;
+    font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+    font-weight: normal;
+    color: white;
+    /*border: 1px solid #ccc;
+    background-color: #E8E8E8 ;*/  /*#303030 ;*/
+    text-align: center;
+    height: auto;
+    margin: 10px auto 0px 30px;
+    padding-bottom: 4px;
+    padding-left:3px; 
+    padding-right:3px; 
+}
+
+.otherDataHeading {
+    font: 1.5em 'Segoe UI', Arial, sans-serif;
+    color: #4888a2;
+    display: block;
+    height: 24px;
+    padding: 6px 18px 2px 10px; /*Mahfuz changed left padding from 18 to 10*/
+
+    border-bottom: 1px solid #c2d2e2;
+    background-color: #E0E0E0;
+    margin-bottom: 10px;
+    /*background-image: url('../Images/blue_sand_paper.jpg');*/
+    background-image: url('../Images/bgHeader.png');
+    background-repeat: repeat-x;
+    cursor: pointer;
+}
+
+
+/* DIV TABLE */
+.divTable{
+	display: table;
+}
+.divTableRow {
+	display: table-row;
+}
+.divTableHeading {
+	display: table-header-group;
+}
+.divTableCell, .divTableHead {
+	display: table-cell;
+}
+.divTableHeading {
+	display: table-header-group;
+}
+.divTableFoot {
+	display: table-footer-group;
+}
+.divTableBody {
+	display: table-row-group;
+}
+
+/* ERRORS   
+----------------------------------------------------------*/
+.aspxValidator {
+    font-size: 1.2em;
+    font-weight:bold;
+    color:red;
+    vertical-align:middle;
+}
+
+.aspxValidationSummary {
+    border:none;
+    background-color:transparent;
+    /*background-image: url(../Images/Ok.png);
+    background-repeat: no-repeat;*/
+    font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+    color:red;
+    font-size: 1.2em;
+    display:block;
+    padding-top:20px; 
+    padding-bottom:20px; 
+    padding-left:20px; 
+    padding-right:20px; 
+}
+
+.aspxValidationSummaryHeader {
+    font-weight:bold;
+    font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+    /*background-image: url(../Images/Err-24x24.png);
+    background-repeat: no-repeat;
+    background-size: 15px 15px;
+    background-position:10px 4px;*/ 
+    /*text-align:center;*/
+    height:20px;
+    /*padding-left: 35px;*/
+    font-size: 1.0em;
+}
+
+.aspxValidationSummary ul {
+    /*background-image: url(../Images/error_round.png);
+    background-repeat: no-repeat;
+    background-size: 25px 25px;*/
+}
+
+.aspxValidationSummary ul li {
+    margin-left:5px;
+}
+
+.sessionTimeOutNotificationHeader {
+    color:black;
+    font-weight:bold;
+    font-size:14px;
+    /*background-image: url(../Images/Err-24x24.png);
+    background-repeat: no-repeat;
+    background-size: 15px 15px;
+    background-position:10px 4px; 
+    padding-left: 35px;*/
+    /*text-align:center;*/
+    height:20px;
+    
+}
+
+
+/* CONTENT ELEMENTS   
+----------------------------------------------------------*/
+.formText {
+    font-size: 10px;
+    font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+    margin: 10px 10px;
+}
+
+
+/* PRIMARY LAYOUT ELEMENTS   
+----------------------------------------------------------*/
+
+.page
+{
+    width: 960px;
+    background-color: #fff;
+    margin: 20px auto 0px auto;
+    border: 1px solid #496077;
+}
+
+.UniPage
+{
+    width: 960px;
+    background-color: #fff;
+    margin: 0px auto 0px auto;
+    /*border: 1px solid #496077; */
+    border-right-style: solid; border-width: 1px; border-left-style: solid;
+}
+
+.uniPrintPreview
+{
+    width: 960px;
+    background-color: #fff;
+    margin: 0px auto 0px auto;
+    /*border: 1px solid #496077; */
+    border-right-style: solid; border-width: 1px; border-left-style: solid;
+}
+
+.UniBorder
+{
+    width: 320px;
+    height: 180px;
+    border: 1px solid #cccccc;
+}
+
+.canvasBack
+{
+    background-image:url('../Images/colon.png');
+}
+
+.header
+{
+    position: relative;
+    margin: 0px;
+    padding: 0px;
+    background: #4b6c9e;
+    width: 100%;
+}
+
+.UniHeader
+{
+    position: relative;
+    margin: 0px;
+    padding: 0px;
+    background: #FFFFFF;
+    width: 100%;
+}
+
+.header h1
+{
+    font-weight: 700;
+    margin: 0px;
+    padding: 0px 0px 0px 20px;
+    color: #f9f9f9;
+    border: none;
+    line-height: 2em;
+    font-size: 2em;
+}
+
+.main
+{
+    /*padding: 0px 12px;*/
+    /*margin: 10px 8px 8px 8px;*/
+    min-height: 100% !important;
+    /*height: auto;*/
+}
+.mainSummary {
+    max-height: 600px;
+    overflow-y: auto;
+    height: 600px;
+    /*    min-height: 900px;
+    overflow-y: auto;
+    height: 100%;*/
+}
+.leftCol
+{
+    padding: 6px 0px;
+    margin: 12px 8px 8px 8px;
+    width: 200px;
+    min-height: 200px;
+}
+
+.footer
+{
+    color: #fff;
+    padding: 0px 0px 0px 0px;
+    /*margin: 0px auto;*/
+    text-align: center;
+    vertical-align: middle;
+    /*line-height: normal;*/
+    background: #000000;
+}
+
+.UniPageFooter
+{
+    color: #fff;
+    padding: 0px 0px 0px 0px;
+    margin: 0px auto;
+    /*background: #000000;*/
+}
+
+.UniTableFooter
+{
+    border: 0;
+    height: 40px;
+    width: 100%;
+    padding: 0px 0px 0px 0px;
+    font-family: 'Tahoma';
+	font-size: 11px;
+}
+
+
+.UniTableFooter a       {text-decoration: none;color:#3d70ae ;}
+.UniTableFooter a:hover { color: #701c8d; border-bottom: solid 1px; }  
+
+.UniPatCaption
+{
+    width: 400px;
+    border: 1px solid #999999;
+    background-color: #e0ecff;
+    margin: 15px auto 0px 7px;
+    font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif, Tahoma;
+	font-size: 12px;
+	padding-left: 5px;
+}
+
+.uniProductTitle
+{
+    font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif, Tahoma;
+	font-size: 1.5em;
+	font-weight: bold;
+	color: #666666;
+	margin: -2px 8px;
+    border:dashed;
+    border-color:#e1e1e1; 
+    border-width: 1px 0px 1px 0px;
+    margin-top:0px; 
+    padding-top:3px; 
+    padding-bottom:4px; 
+	background: -webkit-linear-gradient(top, #909090, #484848);
+	background: linear-gradient(top, #909090, #484848);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.loginProductTitle
+{
+    font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif, Tahoma;
+	font-size: 1em;
+    color: #979191;
+    margin-left: 0px;
+    padding-left: 7px;
+    padding-top:54px;
+    float:left;
+}
+
+.divInfoSection
+{
+    border: 1px solid #ccc;
+    background-color: #e0ecff;
+    font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif, Tahoma;
+	font-size: 1.1em;
+    color: #666666;
+    margin-left: 10px;
+    width: 400px;
+    padding-left: 5px;
+}
+
+.DivDiagram
+{
+    margin: 15px 0px 0px auto;
+    background-image:url('../../Images/Colon.jpg');
+    border: 1px solid #999999;
+    width: 230px;
+    padding: 5px 0px 5px 0px;
+}
+
+.DivDiagramReport {
+    margin-left: 0px;
+    overflow: hidden; 
+    height:260px;
+    width:227px;
+}
+
+.Div.ProcForm.Left
+{
+    margin: 15px 0px 0px auto;
+}
+
+.DivFooter
+{
+    position: relative;
+    width: 100px;
+    height: 30px;
+    font-size: 10px;
+    font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+}
+
+.divSearchBox {
+    border: 1px solid #ccddff;
+    width: 275px;
+    /*margin-bottom:5px;*/
+    background-color: #ecf2f7;
+    /*background-color: white;*/
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-size: 0.9em;
+    /*padding-left: 5px;*/
+    /*font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif, Tahoma;
+	font-size: 12px;*/
+}
+
+.divSearchBoxOld {
+    border: 1px solid #999999;
+    width: 425px;
+    margin-bottom: 10px;
+    background-color: #e0ecff;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-size: 0.9em;
+    /*padding-left: 5px;*/
+    /*font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif, Tahoma;
+	font-size: 12px;*/
+    background: -webkit-linear-gradient(white,#ccddff); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(white,#ccddff); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(white,#ccddff); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(white,#ccddff); /* Standard syntax */
+}
+
+.divAlertBox
+{
+    border: 1px solid #999999;
+    width: 475px;
+    height: 70px;
+	margin-bottom: 10px;
+	margin-left: 10px;
+	background-color: #F5A9A9;
+	font-family: 'Segoe UI' , Arial, sans-serif;
+	font-size: 1.2em;
+	color: #000000;
+	padding-left: 5px;
+	/*padding-left: 5px;*/
+	/*font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif, Tahoma;
+	font-size: 12px;*/
+}
+
+.divSearchExampleFont
+{
+    font-size: 11px;
+    font-style: italic;
+    font-family: Tahoma;
+    vertical-align: text-top;
+}
+
+.divPatientList
+{
+    width: 500px;
+	margin-bottom: 10px;
+	margin-left: 0px;
+	/*border: 1px solid #999999;*/
+	border: 1px solid #fff;
+	/*height: 200px;*/
+	float: left;
+}
+
+.divPLButtons
+{
+    width: 200px;
+	margin-bottom: 10px;
+	margin-left: 15px;
+	border: 1px solid #fff;
+	float: left;
+}
+
+.divPDDetails
+{
+    width: auto;
+	margin-bottom: 10px;
+	margin-left: 0px;
+	margin-top: 0px;
+	/*border: 1px solid #999999;*/
+	border: 1px solid #fff;
+	/*height: 200px;*/
+	/*float: left;*/
+	font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif, Tahoma;
+	font-size: 12px;
+}
+
+.divPDProcs
+{
+    width: 100px;
+	margin-bottom: 10px;
+	margin-left: 0px;
+	/*border: 1px solid #999999;*/
+	border: 1px solid #fff;
+	/*height: 200px;*/
+	float: left;
+}
+
+.divPDPanel
+{
+    float: left;
+    /*border: 1px solid #999999;*/
+    margin-right: 20px;
+    font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif, Tahoma;
+	font-size: 12px;
+}
+
+.pageView
+{
+    border: 1px solid #898c95;
+    /*border-top: none;*/
+    margin-top: -1px;
+    /*height: 120px;
+    width: 230px;*/
+    padding-left: 16px;
+}
+
+.tabView
+{
+    border-left: 1px solid #696969;
+    padding-left: 16px;
+}
+
+.formRow
+{
+    float: left;
+    /*border-right: solid 1px #cbcbcb;*/
+    /*height: 220px;*/
+    height: auto;
+    padding-left: 16px;
+    color: Black;
+    font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif, Tahoma;
+	font-size: 1.1em;
+	padding-top: 5px;
+}
+
+.formRowBorder
+{
+    float: left;
+    background-color: #dfe9f5;
+    height: 75px;
+    width: auto;
+}
+
+.formRowTitle
+{
+    background-color: #bfdbff;
+    font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+    font-size: 1.5em;
+    /*font-weight: 600;*/
+    padding: 0px 5px 0px 5px;
+    float: left;
+    height: 75px; 
+}
+
+.tabTest
+{
+    padding-left: 10px;
+}
+
+/* TAB MENU   
+----------------------------------------------------------*/
+
+div.hideSkiplink
+{
+    background-color:#3a4f63;
+    width:100%;
+}
+
+div.menu
+{
+    padding: 4px 0px 4px 8px;
+}
+
+div.menu ul
+{
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    width: auto;
+}
+
+div.menu ul li a, div.menu ul li a:visited
+{
+    background-color: #465c71;
+    border: 1px #4e667d solid;
+    color: #dde4ec;
+    display: block;
+    line-height: 1.35em;
+    padding: 4px 20px;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+div.menu ul li a:hover
+{
+    background-color: #bfcbd6;
+    color: #465c71;
+    text-decoration: none;
+}
+
+div.menu ul li a:active
+{
+    background-color: #465c71;
+    color: #cfdbe6;
+    text-decoration: none;
+}
+
+
+/* FORM ELEMENTS   
+----------------------------------------------------------*/
+
+/*FieldSet - Generalised*/
+
+fieldset {
+    margin: 5px 5px;
+    border: #A4C1CC solid 1px !important;
+    border-radius: 10px !important;
+}
+
+    fieldset legend {
+        color: black !important;
+        font-weight: bold;
+    }
+
+    fieldset p {
+        margin: 2px 12px 10px 10px;
+    }
+
+    fieldset.login label, fieldset.register label, fieldset.changePassword label {
+        display: block;
+    }
+
+    fieldset label.inline {
+        display: inline;
+    }
+
+    fieldset .Option {
+        clear:both;
+    }
+
+/*FieldSet - Specialised (on top of generalised style)*/
+
+.otherDataFieldset {
+    width: 720px;
+}
+
+.siteDetailsFieldset {
+    width: 600px;
+}
+
+.siteDetailsFieldset legend {
+    /*background-color:red; huss*/
+}
+
+.siteDetailsHeadCheckBoxDiv {
+    margin-left: 10px; 
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.siteDetailsContentDiv {
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.siteDetailsHeadCheckBoxText {
+    font-size:larger;
+}
+
+input.textEntry 
+{
+    width: 320px;
+    border: 1px solid #ccc;
+}
+
+input.passwordEntry 
+{
+    width: 320px;
+    border: 1px solid #ccc;
+}
+
+div.accountInfo
+{
+    width: 42%;
+}
+
+/* Mahfuz added on 12 Mar 2021 - Duncan requirement to make radio button to square box look*/
+input[type='radio'] {
+    box-sizing: border-box !important;
+    appearance: none !important;
+    background: white;
+    outline: 2px solid #64a6e3 !important;
+    border: 1px solid white !important;
+    border-radius:20px !important;
+    width: 9px !important;
+    height: 9px !important;
+    margin-right:5px!important;
+    margin-left:5px!important;
+}
+
+    input[type='radio']:checked {
+        background: #64a6e3 !important;
+    }
+Label {
+    padding-left: 5px !important;
+}
+
+.boldparaheader{
+    font-weight:bold;
+}
+
+.MinTableWidth300 {
+    min-width: 300px;
+}
+
+
+.MinTableWidth500{
+    min-width:500px;
+}
+.MinTableWidth600 {
+    min-width: 600px !important;
+}
+/*.ss{
+    min-width: 700px;
+}*/
+.Fixed700TableWidth{
+    width:1000px !important;
+}
+/* MISC  
+----------------------------------------------------------*/
+.optionsHeading {
+    font: 1.4em 'Segoe UI', Arial, sans-serif;
+    color: #4888a2;
+    padding: 6px 10px;
+    display: block;
+}
+
+.optionsSubHeading {
+    font: 1.3em 'Segoe UI', Arial, sans-serif;
+    color: #4888a2;
+    margin-bottom: 5px;
+}
+
+.optionsHeading2 {
+    font: 1em 'Segoe UI', Arial, sans-serif;
+    font-weight: bold;
+    color: #4888a2;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+div.optionsHeadingNote {
+    font-size: 0.8em;
+    font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+    background-color:#F0F4F9; /*#DDE1DF;*/
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 6px 10px;
+    border: #A4C1CC solid 1px !important;
+    border-radius: 5px !important;
+    width:75%;
+    background: -webkit-linear-gradient(#F0F4F9,#FFFFFF); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#F0F4F9,#FFFFFF); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#F0F4F9,#FFFFFF); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#F0F4F9,#FFFFFF); /* Standard syntax */
+
+    /*background: -webkit-linear-gradient(#DDE1DF,#f0f2f1); 
+    background: -o-linear-gradient(#DDE1DF,#f0f2f1); 
+    background: -moz-linear-gradient(#DDE1DF,#f0f2f1); 
+    background: linear-gradient(#DDE1DF,#f0f2f1);*/ 
+}
+
+.treeviewBackground {
+    background-color:#DDE1DF;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background: -webkit-linear-gradient(#f0f2f1,#ffffff); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#f0f2f1,#ffffff); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#f0f2f1,#ffffff); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#f0f2f1,#ffffff); /* Standard syntax */
+}
+
+div.optionsHeadingNote_bgWhite {
+    font-size: 0.8em;
+    font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+    background-color:white;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 6px 10px;
+    border: #A4C1CC solid 1px !important;
+    border-radius: 5px !important;
+    width:75%;
+}
+
+.optionsBodyText {
+    font-size: 13px;
+    font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+    color: #000000;
+}
+
+    .optionsBodyText label {
+         font-size: inherit !important; 
+    }
+
+    .optionsBodyText fieldset {
+        margin: 5px 5px;
+        border: #A4C1CC solid 1px !important;
+        border-radius: 10px !important;
+    }
+
+    .optionsBodyText fieldset legend {
+        margin-left: 5px;
+        padding-left: 5px;
+        padding-right: 5px;
+        color: #4888a2 !important;
+        font-weight: bold;
+    }
+
+.divButtons {
+    height: 10px;
+    margin-left: 10px;
+    padding-top: 6px;
+}
+
+.clear
+{
+    clear: both;
+}
+
+.UniClear
+{
+    margin-top: 10px;
+}
+
+label.txtLabelStyle.riLabel {
+    color: #333333;
+}
+
+.title
+{
+    display: block;
+    float: left;
+    text-align: left;
+    width: auto;
+}
+
+.loginDisplay
+{
+    font-size: 1.1em;
+    display: block;
+    text-align: right;
+    padding: 10px;
+    color: White;
+}
+
+.loginDisplay a:link
+{
+    color: white;
+}
+
+.loginDisplay a:visited
+{
+    color: white;
+}
+
+.loginDisplay a:hover
+{
+    color: white;
+}
+
+.failureNotification
+{
+    font-size: 1.2em;
+    color: Red;
+}
+
+.bold
+{
+    font-weight: bold;
+}
+
+.submitButton
+{
+    text-align: right;
+    padding-right: 10px;
+}
+
+.telerikSaveButton
+{
+    background-image: url('../Images/icons/save.png');
+}
+
+.telerikCancelButton
+{
+    background-image: url('../Images/icons/cancel.png');
+}
+
+.telerikCloseButton
+{
+    background-image: url('../Images/icons/cancel.png');
+}
+
+.telerikOkButton
+{
+    background-image: url('../Images/Ok.png');
+}
+
+.telerikArrowDownButton
+{
+    background-image: url('../Images/icons/move_down.png');
+}
+
+.telerikArrowUpButton
+{
+    background-image: url('../Images/icons/move_up.png');
+}
+
+.telerikDefaultButton
+{
+    background-image: url('../Images/icons/default.png');
+}
+
+.telerikPreviewButton
+{
+    background-image: url('../Images/icons/preview.png');
+}
+.telerikGenerate
+{
+    background-image: url('../Images/icons/generate.png');
+}
+.telerikUndoButton {
+    background-image: url('../Images/icons/undo.png');
+}
+
+.divSpacer
+{
+    margin-bottom: 5px;
+}
+
+.divContainer
+{
+    float: left;
+    width:100%; 
+    /*border-right: 1px solid #696969;*/
+}
+
+.divSectionTitle
+{
+    background-color: #bfdbff;
+    font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+    font-size: 1.5em;
+    /*font-weight: 600;*/
+    padding: 0px 5px 0px 5px;
+    float: left;
+    height: auto;
+}
+
+.divSectionContent
+{
+    float: left;
+    background-color: #dfe9f5;
+    /*border-right: solid 1px #cbcbcb;*/
+    /*height: 220px;*/
+    height: auto;
+    padding-left: 16px;
+    color: Black;
+    font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif, Tahoma;
+	font-size: 1.0em;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.divSectionSlide
+{
+    float: left;
+    padding-left: 20px;
+}
+
+.divPanel
+{
+    float: left;
+    padding-left: 16px;
+    padding-top: 5px;
+    color: Black;
+    font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif, Tahoma;
+	font-size: 1.0em;
+	height: auto;
+}
+
+.divPanelLeft
+{
+    padding-left: 16px;
+    color: Black;
+    font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif, Tahoma;
+	font-size: 1.0em;
+	height: auto;
+}
+
+.divBorder
+{
+    height: 100%;
+    background-color: #dfe9f5;
+}
+
+.divPatientHeader
+{
+    padding: 3px 0px 3px 0px;
+    text-align: center;
+    font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif, Tahoma;
+	font-size: 1.0em;
+	color: Black;
+}
+
+.multiPageOLD
+{
+    float:left;
+    /*border:1px solid #94A7B5;*/
+    border-left: 1px solid #94A7B5;
+    border-bottom: 1px solid #94A7B5;
+    /*background-color:#F0F1EB;*/
+    padding:4px;
+    padding-left:0;
+    /*margin-left:-1px;                */
+}
+
+.multiPage
+{
+    float:left;
+    border:1px solid #94A7B5;
+    background-color:#F0F1EB;
+    padding:4px;
+    padding-left:0;
+    width:565px;
+    height: 400px;
+    margin-left:-1px;                
+}
+        
+.multiPage div
+{
+    border:1px solid #94A7B5;
+    border-left:0;
+    background-color:#ECE9D8;
+}
+
+.multiPageDivTab {
+    border: 1px solid #ccc; /*#d9d9ff;*/
+    padding:5px 10px 10px 10px;
+    background-color: #F8F8F8;
+    /*width: 95%;  630px;   */
+}
+        
+.radGridPanel
+{
+    margin-left: 0px;
+    margin-top: -1px;
+}
+
+.radPane
+{
+    background-color:#dfe9f5;
+    background: -webkit-linear-gradient(#dfe9f5,#f3f8fc); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#dfe9f5,#f3f8fc); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#dfe9f5,#f3f8fc); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#dfe9f5,#f3f8fc); /* Standard syntax */
+}
+
+.OptionsBackgroundPane {
+    /*background-image: url('../Images/blue_sand_paper.jpg');
+    background-repeat: repeat;*/
+}
+
+.divBackground
+{
+    background-color: #dfe9f5;
+}
+
+.procFormLabel
+{
+    padding-left: 10px;    
+    float: left;
+    width: 90px;
+    color: #000000;
+    font: 1em 'Segoe UI' , Arial, sans-serif;
+}
+
+.printFormLabel
+{
+    padding-left: 10px;    
+    float: left;
+    width: 60px;
+    color: #000000;
+    font: 1.2em 'Segoe UI' , Arial, sans-serif;
+}
+
+.printOptionLabel
+{
+    padding-left: 10px;    
+    float: left;
+    width: 100px;
+    color: #000000;
+    font: 1.0em 'Segoe UI' , Arial, sans-serif;
+}
+
+.printReportLabel
+{    
+    float: left;
+    width: 70px;
+    color: #000000;
+    font: 0.9em 'Segoe UI' , Arial, sans-serif;
+}
+
+.printPatientLabel
+{   
+    padding-left: 10px;  
+    float: left;
+    width: 100px;
+    color: #000000;
+    font: 0.9em 'Segoe UI' , Arial, sans-serif;
+}
+
+.printPatientDetails
+{   
+    padding-left: 10px;  
+    width: 100px;
+    color: #000000;
+    font: 0.9em 'Segoe UI' , Arial, sans-serif;
+}
+
+.procText
+{
+    color: #000000;
+    font: 1.0em 'Segoe UI', Arial, sans-serif;
+    /*padding-left: 18px;*/
+    margin: 5px 5px;
+}
+
+.formList
+{
+    width: 683px;
+    list-style: none;
+    padding: 0 0 0 23px;
+}
+
+.formList li
+{
+    /*border-bottom: 1px solid #959485;*/
+    padding: 3px 0px;
+}
+
+ul.treeview-list
+{
+    list-style:none;
+    padding:0;
+    margin:0;
+}
+
+li.treeview-item
+{
+    float:left;
+    width:228px;
+    padding-right:4px;
+    border-left: solid 1px #b1d8eb;
+}
+
+div.text
+{
+    font: 1.5em 'Segoe UI' , Arial, sans-serif;
+    color: #4888a2;
+    padding: 6px 18px 2px 18px;
+    display: block;
+    border-bottom: 1px solid #c2d2e2; 
+    background-color:#c2d2e2;
+    margin-bottom:10px;
+    /*background-image: url('../Images/blue_sand_paper.jpg');*/
+    background-image: url('../Images/bgHeader.png');  
+    background-repeat: repeat-x;
+}
+
+div.groupHeader
+{
+    font: 0.9em 'Segoe UI' , Arial, sans-serif;
+    color:darkblue;
+    display: block;
+    border-style:solid;
+    border-color:#c2d2e2; 
+    border-width: 1px 1px 0px 1px; 
+    background-color:#c2d2e2;
+    background-image: url('../Images/bgHeader.png');  
+    background-repeat: repeat-x;
+}
+
+div.leftHeaderText
+{
+    font: 1.5em 'Segoe UI' , Arial, sans-serif;
+    color: white;
+    padding: 6px 18px 2px 18px;
+    display: block;
+    border-bottom: 1px solid #c2d2e2; 
+    background-color:#25a0de; /*#0072c6;#25a0de;*/
+    margin-bottom:10px;
+}
+
+div.subText
+{
+    font: 1.5em 'Segoe UI' , Arial, sans-serif;
+    color: #4888a2;
+    padding: 6px 18px;
+    display: block;
+}
+
+.text2
+{
+    font: 14px 'Segoe UI', Arial, sans-serif;
+    font-size:14px;
+    color: #4888a2;
+}
+
+div.text12
+{
+    font: 1.3em 'Segoe UI' , Arial, sans-serif;
+    color: #4888a2;
+    padding: 0px 10px;
+    display: block;
+}
+
+div.abnorHeader
+{
+    font: 1.3em 'Segoe UI' , Arial, sans-serif;
+    color: #4888a2;
+    padding: 0px 10px;
+    font-weight:bold; /*Mahfuz added on 17 Mar 2021*/
+    display: block;
+    border-bottom:1px dotted #c2d2e2;
+    /*background-image:url("../images/bgHeader.png");  */
+    background-color: #e9eff8;
+    padding-bottom:3px; 
+    background: -webkit-linear-gradient(#fff,#e9eff8); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#fff,#e9eff8); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#fff,#e9eff8); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#fff,#e9eff8); /* Standard syntax */
+}
+
+.filterRepHeader
+{
+    font: 1.0em 'Segoe UI' , Arial, sans-serif;
+    color: #4888a2;
+    padding: 0px 5px;
+    display: block;
+    border-bottom:1px dotted #c2d2e2;
+    /*background-image:url("../images/bgHeader.png");  */
+    background-color: #e9eff8;
+    padding-bottom:3px; 
+    background: -webkit-linear-gradient(#e9eff8,#c2d2e2); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#e9eff8,#c2d2e2); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#e9eff8,#c2d2e2); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#e9eff8,#c2d2e2); /* Standard syntax */
+}
+
+.filterPanel
+{
+    font: 1.0em 'Segoe UI' , Arial, sans-serif;
+    color: #4888a2;
+    padding: 0px 5px;
+    display: block;
+    border-bottom:1px dotted #c2d2e2;
+    /*background-image:url("../images/bgHeader.png");  */
+    background-color: #e9eff8;
+    padding-bottom:3px; 
+    background: -webkit-linear-gradient(#fff,#e9eff8); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#fff,#e9eff8); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#fff,#e9eff8); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#fff,#e9eff8); /* Standard syntax */
+}
+
+div.text14Blue
+{
+    font: 1.4em 'Segoe UI' , Arial, sans-serif;
+    color: #ffffff;
+    background-color: #25a0da;
+    padding: 6px 10px;
+    display: block;
+}
+
+div.text14Black
+{
+    font: 1.4em 'Segoe UI' , Arial, sans-serif;
+    color: #000000;
+    background-color: #ffffff;
+    padding: 6px 10px;
+    display: block;
+}
+
+div.repTitle16
+{
+    font: 1.6em 'Segoe UI' , Arial, sans-serif;
+    color: #000000;
+    display: block;
+    font-weight: bold;
+}
+
+div.formTitle
+{
+    font: 1.2em 'Segoe UI' , Arial, sans-serif;
+    color: #4888a2;
+}
+
+
+.treeListBorder
+{
+    float: left;
+    width: 200px;
+    margin-left: 10px;
+    margin-top: 10px;
+    /*border-right: solid 1px #b1d8eb;*/
+    /*border-right: solid 1px #cccccc;*/
+}
+
+.slidePanel
+{
+    border-right: 1px solid #bfdbff;
+}
+
+.simpleBorder
+{
+    border: 1px solid #ccc;
+    padding: 5px 5px 35px 5px;
+}
+
+.borderDottedLeft
+{
+    border-left: 1px dotted #ccc;
+}
+
+.spinAlign
+{
+    text-align: center;
+}
+
+.lblText
+{
+    font: 1.1em 'Segoe UI' , Arial, sans-serif;
+    color: #000000;
+}
+
+.lblText1
+{
+    font: 1.1em 'Segoe UI' , Arial, sans-serif;
+    color: #000000;
+}
+
+.comboNewItem
+{           
+    background-image:url("../images/bgHeader.png");
+    background-repeat:no-repeat;
+    color:  #6e9bd0;
+    border-top: 1px solid #f0f0f5;
+}
+.comboNewItem:hover { 
+    color: #00cc00 !important;
+}
+
+.comboNewItem
+{           
+    background-image:url("../images/bgHeader.png");
+    background-repeat:no-repeat;
+    color:  #6e9bd0;
+    border-top: 1px solid #f0f0f5;
+}
+.comboNewItem:hover { 
+    color: #00cc00 !important;
+}
+
+.validation-error-field{
+    border:1px solid red !important;
+}
+
+.validation-error-field tr td label, .validation-error-input tr td label {
+        color: red !important;
+    }
+
+/* GIAK ELEMENTS   
+----------------------------------------------------------*/
+
+span.text
+{
+    float: left;
+    font: 1.2em 'Segoe UI', Arial, san-serif;
+    color: #4888a2;
+    display: block;
+    width: 139px;
+    padding: 2px 20px 0 0;
+}
+
+span.comboTitle
+{
+    float: left;
+    font: 1.0em 'Segoe UI', Arial, san-serif;
+    color: #000000;
+    display: block;
+    width: 110px;
+    padding: 2px 20px 0 0;
+}
+
+node-summary-data
+{
+    width: 100px;
+}
+
+node-summary-data .detail
+{
+    display: block;
+    margin-left: 90px;
+    margin-top: 10px;
+    white-space: normal;
+}
+
+.myLabel
+{
+    position: relative;
+}
+
+.rtileTitle
+{
+    font-family: Arial !important;
+    font-weight: bold !important;
+}
+
+.rtlistGroupSeparator 
+{
+    margin-left: 20px !important;
+}
+
+/* Display Date  
+----------------------------------------------------------*/
+.date {
+background: url("../images/calendar_icon.png") no-repeat scroll 0 0 transparent;
+    color: #666666;
+    float: right;
+    font: 22px/100% Arial,Helvetica,sans-serif;
+    height: 50px;
+    padding: 0 2px 0 0;
+    text-align: center;
+    width: 45px;
+}
+
+.date span {
+    color: #FFFFFF;
+    display: block;
+    font: 11px Arial,Helvetica,sans-serif;
+    height: 16px;
+    padding-top: 5px;
+    text-align: center;
+}
+
+/* Report
+----------------------------------------------------------*/
+.reportHeader {
+    color: #0072c6;
+}
+
+.ConfigureBg {
+    border: 1px solid #88D6E3;
+    background-color: #FFFFFF;
+    -webkit-box-shadow: inset 0px 0px 20px 0px rgba(158,222,233,1);
+    -moz-box-shadow: inset 0px 0px 20px 0px rgba(158,222,233,1);
+    box-shadow: inset 0px 0px 20px 0px rgba(158,222,233,1);
+}
+
+.ReportBg
+{
+	background-color: #fff;
+	-webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+	-moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+}
+
+/* IFRAME Size and other style. Shawkat Osman; 2017-06-13 */
+
+#RadMultiPageReports h2 {
+    margin-left:1em;
+}
+
+.FrameStyle {
+    padding:1em;
+    height:500px;
+}
+
+
+/* Abnormalities tables
+----------------------------------------------------------*/
+    .rgview table
+    {
+        border-collapse: collapse;
+    }
+    .rgview th, .rgview td
+    {  
+        padding: 6px 8px;
+    }
+    .rgview th, .shaded-tab-header
+    {           
+        background-color: #ffffff;
+        background-image:url("../images/bgGridHeader.png");
+        background-size: 100% 100%;
+        background-repeat:no-repeat;
+        color: #384e76;
+        border: 1px solid #c2d2e2;
+    }
+
+    .rgview th a
+    {
+        color: #fff;
+        text-decoration: none;
+    }
+    /*.rgview tr:hover
+    {  
+        background: #d8e4bc;
+        background-image:url("../images/bgTableHover.png");
+    }*/
+    .rgview td
+    {
+        border: 1px solid #c2d2e2;           
+    }
+    .rgview .rgCell {
+        text-align:center; 
+    }
+
+    .shaded-tab-header
+    {           
+        background-color: #ffffff;
+        background-image:url("../images/bgGridHeader.png");
+        background-size: 100% 100%;
+        background-repeat:no-repeat;
+        color: #384e76;
+        border: 1px solid #c2d2e2;
+        height:40px;
+        padding:10px;
+    }
+
+.bgResectedColons
+{
+    font: 1em 'Segoe UI' , Arial, sans-serif;
+    color: #4888a2;
+    /*display: block;*/
+    
+    padding: 2px 2px 2px 2px;
+    height:100px; 
+    width:130px; 
+
+    /*border-bottom: 1px solid #c2d2e2 ;
+
+    background-color:#E0E0E0;
+    margin-bottom:10px;*/
+    text-align:center; 
+    background-image: url('../Images/bgHeader.png');  
+    background-repeat: repeat-x;
+}
+
+.bgResectedColonsHighlighted
+{
+    font: 1em 'Segoe UI' , Arial, sans-serif;
+    color: #4888a2;
+    /*display: block;*/
+    
+    padding: 2px 2px 2px 2px;
+    height:100px; 
+    width:130px; 
+
+    /*border-bottom: 1px solid #c2d2e2 ;
+
+    background-color:#E0E0E0;
+    margin-bottom:10px;*/
+    text-align:center; 
+    background-image: url('../Images/bgHeader.png');  
+    background-repeat: repeat-x;
+
+    box-shadow: 0px 12px 22px 1px #666;
+}
+
+.txtResectedColons
+{
+    /*display: table-cell;*/ 
+    font: 1em 'Segoe UI' , Arial, sans-serif;
+    color: #4888a2;
+    height:37px; 
+    width:140px; 
+    text-align:center; 
+    vertical-align:middle;
+    background-image: url('../Images/bgHeader.png');  
+    background-repeat: repeat-x;
+}
+
+.txtResectedColonsHighlighted
+{
+    /*display: table-cell;*/ 
+    font: 1em 'Segoe UI' , Arial, sans-serif;
+    font-weight: bold;
+    color: #0276A4;
+    height:37px; 
+    width:140px; 
+    text-align:center; 
+    vertical-align:middle;
+    background-image: url('../Images/bgHeader.png');  
+    background-repeat: repeat-x;
+}
+
+.selectedimg {
+    /*opacity: .3;*/
+    filter: brightness(50%);
+    -ms-filter: brightness(50%);
+}
+
+/* Common Styles    */
+.hidden {
+    display:none;
+}
+.ErrorAlertRedFont {
+    color:red;
+
+}
+.ErrorAlertRedBox {
+    border:1px solid red;
+    color:red;
+}
+
+/*  Error */
+#ErrorDetails{
+    width:1000px;height:600px;
+    border:1px groove grey;
+    padding:1em;
+    text-align:center;
+    margin:1em auto;
+    
+
+}
+#ErrorDetails h2 {
+    color:red; text-align:center;
+}
+
+/* End: Common Styles    */
+
+
+/* REPORTS*/
+
+.repFrame{
+    border:none;
+    height:540px;
+    /*min-width:740px;*/
+    width:100%;
+    min-height:540px;
+    overflow-x:scroll;
+    margin-right:50px;
+}
+
+#iFrameReportPanel {
+    width:98%; height:460px; padding:1em;
+}
+
+/*custom styles*/
+/*
+        radwindows: 7777
+        rad popups: 7778
+        radcomboboxes: 7779
+        raddatepickers: 7999
+    */
+.rad-window {
+    z-index: 7777;
+}
+
+.rad-window-popup {
+    z-index: 7778;
+}
+
+.top-rad-window-popup {
+    z-index: 9999;
+}
+
+.rad-popup-action-buttons{
+    position:absolute;
+    bottom:15px;
+    text-align:center;
+    padding-left:15px;
+}
+
+.procedure-fieldset{
+    width:750px !important;
+    margin:15px !important
+}
+.previousDiseaseUrology-child{
+    margin:2px;
+    padding:2px;
+}
+.previousDiseaseUrology-middleCol {
+    width: 400px;
+    vertical-align: top
+}
+.previousDiseaseUrology-otherCol {
+    width: 200px;
+    vertical-align: top
+}
+.UrineDipstickCytology-child {
+    margin: 5px;
+    padding: 5px;
+    float:right;
+}
+
+.SiteDetailsButtonsPane:not(.excluded) {
+    position: absolute;
+    bottom: 25px;
+}

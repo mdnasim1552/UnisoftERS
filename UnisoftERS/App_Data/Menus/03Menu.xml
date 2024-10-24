@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Menu>
+    <Group>
+      <Item Text="File" Key="F" >
+        <Group>
+          <Item Text="Save record" />
+          <Item IsSeparator="True" />
+          <Item Text="Print setup" />
+          <Item Text="Print..." AccessKey="P" NavigateUrl="~/Products/Gastro/PatientReport.aspx" />
+          <Item IsSeparator="True" />
+          <!--<Item Text="ToolTip Item" ToolTip="This is a tooltip" />-->
+          <Item Text="Return to patient screen" NavigateUrl="~/Products/Default.aspx?patient=true"/>
+          <Item Text="Return to main screen" NavigateUrl="~/Products/Default.aspx"/>
+        </Group>
+      </Item>
+      <Item Text="Supporting data" AccessKey="S" >
+        <Group Flow="Vertical">
+          <Item Text="Notes for the procedure" />
+          <Item Text="Add consultant/operators" />
+          <Item Text="Add/Edit instruments" />
+        </Group>
+      </Item>
+      <Item  ImageUrl="~/Images/icons/GoPrevious.png" NavigateUrl="~/Products/Default.aspx?patient=true" >
+      </Item>
+      <Item  ImageUrl="~/Images/icons/Print.png" >
+      </Item>
+    </Group>
+  </Menu>

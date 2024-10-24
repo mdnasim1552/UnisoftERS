@@ -1,0 +1,3445 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:gen="http://www.show.scot.nhs.uk/isd/General" xmlns:sci="http://www.show.scot.nhs.uk/isd/SCIStore" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.show.scot.nhs.uk/isd/SCIStore" version="8.1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="general-v2-10a.xsd" namespace="http://www.show.scot.nhs.uk/isd/General" />
+  <xsd:annotation>
+    <xsd:documentation>Definition of components for SCIStore message types. Uses: general-v2-10a.xsd
+		</xsd:documentation>
+  </xsd:annotation>
+  <xsd:simpleType name="RecordModifcationType">
+    <xsd:annotation>
+      <xsd:documentation>Values are:
+I - Insert
+A - Amend
+D - Delete
+C - Confirm
+</xsd:documentation>
+    </xsd:annotation>
+    <xsd:union>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="I" />
+          <xsd:enumeration value="A" />
+          <xsd:enumeration value="D" />
+          <xsd:enumeration value="C" />
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:union>
+  </xsd:simpleType>
+  <xsd:simpleType name="MergeAction">
+    <xsd:annotation>
+      <xsd:documentation>Values are:
+Merge
+UnMerge
+</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="35" />
+      <xsd:enumeration value="UnMerge" />
+      <xsd:enumeration value="Merge" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="DocumentData">
+    <xsd:annotation>
+      <xsd:documentation>Document Data type for base64</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:base64Binary" />
+  </xsd:simpleType>
+  <xsd:simpleType name="GMCcode">
+    <xsd:annotation>
+      <xsd:documentation>definition of GMC code</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="0" />
+      <xsd:maxLength value="20" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="BreakGlassTypeCode">
+    <xsd:annotation>
+      <xsd:documentation>definition of BreakGlassTypeCode</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="10" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="CHInumber">
+    <xsd:annotation>
+      <xsd:documentation>definition of CHI number</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="10" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="MessageQueueName">
+    <xsd:annotation>
+      <xsd:documentation>standard definition of message Queue name</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string" />
+  </xsd:simpleType>
+  <xsd:simpleType name="NotificationID">
+    <xsd:annotation>
+      <xsd:documentation>Notification identifier</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string" />
+  </xsd:simpleType>
+  <xsd:simpleType name="ProviderSearchType">
+    <xsd:annotation>
+      <xsd:documentation>search provider valid list</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="MergedResults" />
+      <xsd:enumeration value="FirstHit" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="SearchComparator">
+    <xsd:annotation>
+      <xsd:documentation>search comparitor valid list</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="equals" />
+      <xsd:enumeration value="begins" />
+      <xsd:enumeration value="contains" />
+      <xsd:enumeration value="soundex" />
+      <xsd:enumeration value="index equals" />
+      <xsd:enumeration value="index begins" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="PatientIdentifier">
+    <xsd:annotation>
+      <xsd:documentation>generic definition for Patient identifier</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="15" />
+      <xsd:minLength value="1" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="ReferralUrgencySource">
+    <xsd:annotation>
+      <xsd:documentation>generic definition for Referral dataset source id</xsd:documentation>
+    </xsd:annotation>
+    <xsd:union>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:positiveInteger">
+          <xsd:enumeration value="1" />
+          <xsd:enumeration value="2" />
+          <xsd:enumeration value="3" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:positiveInteger" />
+      </xsd:simpleType>
+    </xsd:union>
+  </xsd:simpleType>
+  <xsd:simpleType name="PatientCareTypeDescription">
+    <xsd:annotation>
+      <xsd:documentation>A stipulation of patient type description.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:union>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Inpatient" />
+          <xsd:enumeration value="Outpatient" />
+          <xsd:enumeration value="Daycase" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1" />
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:union>
+  </xsd:simpleType>
+  <xsd:simpleType name="PatientCareTypeCode">
+    <xsd:annotation>
+      <xsd:documentation>A stipulation of patient type code.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:union>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="I" />
+          <xsd:enumeration value="O" />
+          <xsd:enumeration value="D" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1" />
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:union>
+  </xsd:simpleType>
+  <xsd:simpleType name="UrgencyValue">
+    <xsd:annotation>
+      <xsd:documentation>A stipulation by the referring practitioner regarding how urgently a patient should be seen.</xsd:documentation>
+      <xsd:appinfo>SIGN Report on a Recommended Referral Document November 1998</xsd:appinfo>
+    </xsd:annotation>
+    <xsd:union>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Urgent" />
+          <xsd:enumeration value="Soon" />
+          <xsd:enumeration value="Routine" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1" />
+          <xsd:maxLength value="35" />
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:union>
+  </xsd:simpleType>
+  <xsd:simpleType name="UrgencyReason">
+    <xsd:annotation>
+      <xsd:documentation>A specific reason given by the referring practitioner if the UrgencyValue content is anything other than "Routine".  *Note : But mandatory if Urgency Value is "Urgent" or "Soon" .</xsd:documentation>
+      <xsd:appinfo>SIGN Report on a Recommended Referral Document November 1998</xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="198" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="RequestStatus">
+    <xsd:annotation>
+      <xsd:documentation>The status of a treatment request.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Outstanding" />
+      <xsd:enumeration value="Completed" />
+      <xsd:enumeration value="Cancelled" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="ReferralSourceCode">
+    <xsd:annotation>
+      <xsd:documentation>generic definition for Referral dataset source code</xsd:documentation>
+    </xsd:annotation>
+    <xsd:union>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:positiveInteger">
+          <xsd:enumeration value="1" />
+          <xsd:enumeration value="2" />
+          <xsd:enumeration value="3" />
+          <xsd:enumeration value="4" />
+          <xsd:enumeration value="5" />
+          <xsd:enumeration value="7" />
+          <xsd:enumeration value="8" />
+          <xsd:enumeration value="11" />
+          <xsd:enumeration value="12" />
+          <xsd:enumeration value="13" />
+          <xsd:enumeration value="99" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:positiveInteger" />
+      </xsd:simpleType>
+    </xsd:union>
+  </xsd:simpleType>
+  <xsd:simpleType name="StoreGenericIdentifier">
+    <xsd:annotation>
+      <xsd:documentation>Generic internal Identifier</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:nonNegativeInteger" />
+  </xsd:simpleType>
+  <xsd:simpleType name="SubscriptionID">
+    <xsd:annotation>
+      <xsd:documentation>Subscription identifier</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="NotificationType">
+    <xsd:annotation>
+      <xsd:documentation>Notification type</xsd:documentation>
+    </xsd:annotation>
+    <xsd:union>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="PATIENT" />
+          <xsd:enumeration value="RESULT" />
+          <xsd:enumeration value="TREATMENTLOG" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1" />
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:union>
+  </xsd:simpleType>
+  <xsd:simpleType name="SubscriptionType">
+    <xsd:annotation>
+      <xsd:documentation>Subscription type</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="PATIENT" />
+      <xsd:enumeration value="RESULT" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="Token">
+    <xsd:annotation>
+      <xsd:documentation>Definition of login token</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="50" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="ADTrecordIdentifier">
+    <xsd:annotation>
+      <xsd:documentation>Unique Identifier used for ADT type transactions</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="35" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="OutpatientRecordIdentifier">
+    <xsd:annotation>
+      <xsd:documentation>ADT Unique Identifier</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="35" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="OpenClosedStatus">
+    <xsd:annotation>
+      <xsd:documentation>Status type for generic open closed status</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Open" />
+      <xsd:enumeration value="Closed" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="ReportDiagnosticService">
+    <xsd:annotation>
+      <xsd:documentation>Report type or diagnostic service</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="50" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="FindResultGroupByType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="ResultSet" />
+      <xsd:enumeration value="Sample" />
+      <xsd:enumeration value="Report" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="ProviderIdentifier">
+    <xsd:annotation>
+      <xsd:documentation>Definition of ProviderIdentifier</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="20" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="PatientMatchType">
+    <xsd:annotation>
+      <xsd:documentation>Enum of reposes to a LocationPatient</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="ZERO" />
+      <xsd:enumeration value="ONE" />
+      <xsd:enumeration value="MANY" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="ClinicalRecordType">
+    <xsd:annotation>
+      <xsd:documentation>type of clinical information  i.e. results, document, adt etc</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="50" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:element name="DisplayHTML" type="xsd:string">
+    <xsd:annotation>
+      <xsd:documentation>Embedded Display HTML element</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="UniqueCarePathwayNumberDataType">
+    <xsd:annotation>
+      <xsd:documentation>A general type to represent a a ucpn and the datasets that contain ucpns</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="UniqueCarePathwayNumber" type="gen:UNIQUE_CARE_PATHWAY_NUMBER_TYPE" />
+      <xsd:element minOccurs="0" name="FirstEncounteredDate" type="xsd:date" />
+      <xsd:element minOccurs="0" name="FirstEncounteredTime" type="xsd:time" />
+      <xsd:element minOccurs="0" name="LastEncounteredDate" type="xsd:date" />
+      <xsd:element minOccurs="0" name="LastEncounteredTime" type="xsd:time" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="UCPNusage" type="sci:UniqueCarePathwayNumberUsageType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PATIENT_CARE_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>Defines the structure for holding a description and or code for patient care type: Inpatient, Outpatient, Daycase</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="Description" type="sci:PatientCareTypeDescription">
+        <xsd:annotation>
+          <xsd:documentation>Patient care type description</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="Code" type="sci:PatientCareTypeCode">
+        <xsd:annotation>
+          <xsd:documentation>Patient care type code</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="UniqueCarePathwayNumberUsageType">
+    <xsd:annotation>
+      <xsd:documentation>A general type to represent a a ucpn and the datasets that contain ucpns</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="DataType">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="35" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="FirstEncounteredDate" type="xsd:date" />
+      <xsd:element minOccurs="0" name="FirstEncounteredTime" type="xsd:time" />
+      <xsd:element minOccurs="0" name="LastEncounteredDate" type="xsd:date" />
+      <xsd:element minOccurs="0" name="LastEncounteredTime" type="xsd:time" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="GENERAL_CODE_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A general type to represent a code/description pair.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="CodeDescription">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="100" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="CodeValue">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="10" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="MESSAGE_HEADER_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A generic header structure for data relating to an electronic message</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" name="MessageIdentifier" type="gen:ID_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Identification of message</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="OriginatingSystem" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>This element represents an identifier of the originating system. This should be unique for each system that originates a message</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="MessageCreationDate" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation>Date of creation of message. Only date implemented here.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="MessageCreationTime" type="xsd:time">
+        <xsd:annotation>
+          <xsd:documentation>Date of creation of message.  Only time implemented here.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="CLINICAL_INDEX_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>Category type with subtype optional to allow for sci store where subtype is not required  </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="DocumentType">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="70" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element fixed="|" name="Separator" type="xsd:string" />
+      <xsd:element minOccurs="0" name="DocumentSubType">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="70" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DateRangeSelection">
+    <xsd:annotation>
+      <xsd:documentation>Standard Date Range Selection</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="DateFrom" type="xsd:date" />
+      <xsd:element minOccurs="0" name="DateTo" type="xsd:date" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FindDateRange">
+    <xsd:annotation>
+      <xsd:documentation>Date Range for FindResults</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="DateFrom" type="xsd:date" />
+      <xsd:element name="DateTo" type="xsd:date" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FindDateTimeRange">
+    <xsd:annotation>
+      <xsd:documentation>Datetime Range for FindResults</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="DateFrom" type="xsd:dateTime" />
+      <xsd:element name="DateTo" type="xsd:dateTime" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="MedicalFacility">
+    <xsd:annotation>
+      <xsd:documentation>MedicalFacility</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Code">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="35" />
+            <xsd:minLength value="1" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="Description">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="35" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="UserInfo">
+    <xsd:annotation>
+      <xsd:documentation>Standard User Info Block</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="UserName">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="20" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="FriendlyName">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="100" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="SystemCode">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="20" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="SystemLocation">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="40" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ProviderList">
+    <xsd:annotation>
+      <xsd:documentation>List of provider items</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="Provider" type="sci:ProviderItem" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ProviderItem">
+    <xsd:annotation>
+      <xsd:documentation>Provider item </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="ProviderIdentifier">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="20" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FindUserCriteria">
+    <xsd:annotation>
+      <xsd:documentation>Standard User Info Selection Block</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="UserName">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="50" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="SystemCode">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="20" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="SystemLocation">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="40" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="OutPatientInterface">
+    <xsd:annotation>
+      <xsd:documentation>Detailed outpatient information</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="OutPatientMessageContent" type="sci:OutpatientInfo">
+        <xsd:annotation>
+          <xsd:documentation>Element is not present for transactions of Type "Deletion"</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="PatientInformation" type="sci:PatientInformation" />
+      <xsd:element minOccurs="0" name="TransactionType" type="sci:RecordModifcationType" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="OutpatientInfo">
+    <xsd:annotation>
+      <xsd:documentation>Outpatient type definition</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="AppointmentID" type="sci:OutpatientRecordIdentifier" />
+      <xsd:element name="AppointmentSlot" type="gen:SLOT_TYPE" />
+      <xsd:element name="Status">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="2" />
+            <xsd:minLength value="1" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="AttendanceType" type="xsd:string" />
+      <xsd:element name="CancellationReason" type="xsd:string" />
+      <xsd:element name="OutpatientCarePoint" type="sci:OutpatientCarepoint" />
+      <xsd:element minOccurs="0" name="AdmissionID" type="sci:ADTrecordIdentifier" />
+      <xsd:element minOccurs="0" name="PatientCategory" type="xsd:integer">
+        <xsd:annotation>
+          <xsd:documentation>Patient Category (COPPISH SMR Data Manual version 1.1 Episode Management Section item 9 p 3-20)</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="PatientType" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Field is derived in the PAS interface; values I (Inpatient) or D (Daycase)</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="TransactionDetails">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="TransactionDateTime" nillable="true" type="xsd:dateTime" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="OutpatientCarepoint">
+    <xsd:annotation>
+      <xsd:documentation>outpatient patient care point definition</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="ConsultantID" type="gen:ID_TYPE" />
+      <xsd:element minOccurs="0" name="Specialty" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>COPPISH code</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="Facility" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>COPPISH code</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ADTadmissionType">
+    <xsd:annotation>
+      <xsd:documentation>ADT admission type definition</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="AdmissionDateTime" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" name="Status">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="AdmissionFromCode">
+        <xsd:annotation>
+          <xsd:documentation>Admission/Transfer From code on admission to hospital (COPPISH SMR Data Manual version 1.1 Episode Management Section item 16 pp 3-37-3-39)</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="2" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="AdmittedCode" type="xsd:integer">
+        <xsd:annotation>
+          <xsd:documentation>Admission Type (COPPISH SMR Data Manual version 1.1 Episode Management Section item 14 pp 3-31-3-33)</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="AdmissionReason">
+        <xsd:annotation>
+          <xsd:documentation>Admission Reason</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="2" />
+            <xsd:minLength value="1" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="PatientCategory" type="xsd:integer">
+        <xsd:annotation>
+          <xsd:documentation>Patient Category (COPPISH SMR Data Manual version 1.1 Episode Management Section item 9 p 3-20)</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="PatientType" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Field is derived in the PAS interface; values I (Inpatient) or D (Daycase)</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="AdmissionCarePoint" type="sci:ADTpatientCarePoint" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ADTtransferType">
+    <xsd:annotation>
+      <xsd:documentation>ADT transfer type definition</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="TransferDateTime" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" name="TransferCode" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Transfer Type (free text)</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="PatientCategory" type="xsd:integer">
+        <xsd:annotation>
+          <xsd:documentation>Patient Category (COPPISH SMR Data Manual version 1.1 Episode Management Section item 9 p 3-20)</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="PatientType" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Field is derived in the PAS interface; values I (Inpatient) or D (Daycase)</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="PreCarePoint" type="sci:ADTpatientCarePoint" />
+      <xsd:element name="PostCarePoint" type="sci:ADTpatientCarePoint" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ADTdischargeType">
+    <xsd:annotation>
+      <xsd:documentation>ADT discharge type definition</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="DischargeDateTime" nillable="true" type="xsd:dateTime" />
+      <xsd:element name="DischargeCode" type="xsd:integer">
+        <xsd:annotation>
+          <xsd:documentation>Discharge Type (COPPISH SMR Data Manual version 1.1 Episode Management Section item 21 pp 3-45-3-46)</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="DischargeDescription">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="100" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="DateReadyForDischarge" nillable="true" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" name="DischargeDestination" type="xsd:integer">
+        <xsd:annotation>
+          <xsd:documentation>Discharge/Transfer To(COPPISH SMR Data Manual version 1.1 Episode Management Section)</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="PatientCategory" type="xsd:integer">
+        <xsd:annotation>
+          <xsd:documentation>Patient Category (COPPISH SMR Data Manual version 1.1 Episode Management Section item 9 p 3-20)</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="PatientType" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Field is derived in the PAS interface; values I (Inpatient) or D (Daycase)</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="DischargeCarePoint" type="sci:ADTpatientCarePoint" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="WAITING_TIMES_DATA_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>Complex type to hold referral data for calculation of waiting times under the New Ways for Waiting Times initiative.Ref: New Ways of Measuring and Monitoring Waiting Times for NHS Services in Scotland 'The New Ways Project' Specification of Data Required and its extraction v1.1 28 Feb 2007</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="PatientAvailableAtShortNotice" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation>Is the patient available to attend or be admitted at short notice. Ref: New Ways of Measuring and Monitoring Waiting Times for NHS Services in Scotland 'The New Ways Project' Specification of Data Required and its extraction v1.1 28 Feb 2007</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="PatientSuitableForPooledList" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation>Is the patient suitable for being part of a pooled list.Ref: New Ways of Measuring and Monitoring Waiting Times for NHS Services in Scotland 'The New Ways Project' Specification of Data Required and its extraction v1.1 28 Feb 2007</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="PatientWillingToChangeClinician" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation>Is the patient willing to change clinician.Ref: New Ways of Measuring and Monitoring Waiting Times for NHS Services in Scotland 'The New Ways Project' Specification of Data Required and its extraction v1.1 28 Feb 2007</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="PatientWillingToChangeHealthBoard" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation>Is the patient willing to change health board.Ref: New Ways of Measuring and Monitoring Waiting Times for NHS Services in Scotland 'The New Ways Project' Specification of Data Required and its extraction v1.1 28 Feb 2007</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="TreatmentLog">
+    <xsd:annotation>
+      <xsd:documentation>Detailed TreatmentLog information</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="RecordIdentifier" type="sci:ADTrecordIdentifier" />
+      <xsd:element minOccurs="0" name="PatientInformation" type="sci:PatientInformation" />
+      <xsd:element minOccurs="0" name="TreatmentRequestPrf" type="sci:TreatmentRequestInfo">
+        <xsd:annotation>
+          <xsd:documentation>Container for data relating to the  functions associated with the request for treatment.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="RequestStatusPrf" type="sci:TreatmentRequestStatusType">
+        <xsd:annotation>
+          <xsd:documentation>Container for data relating to the overall status of the request to treat. This will include request state (open and closed) and request status (outstanding, completed and cancelled)</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="AttendanceRequestedPrf" type="sci:AttendanceRequestedType">
+        <xsd:annotation>
+          <xsd:documentation>Container for data relating to the attendance details requested for a treatment.  Including treatment care point, target date to come in and target breach date</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="RequestOutcomePrf" type="sci:TreatmentRequestOutcomeType">
+        <xsd:annotation>
+          <xsd:documentation>Container for data relating to the overall outcome relating to the request to treat. This will include closure information and any actual attendance information</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="DeliveryStatusPrf" type="sci:TreatmentRequestDeliveryScheduleType">
+        <xsd:annotation>
+          <xsd:documentation>This container is for data relating to the delivery of the treatment with regard to RTT.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="TreatmentRequestInfo">
+    <xsd:annotation>
+      <xsd:documentation>Container for data relating to the  functions associated with the request for treatment.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="PatientCareType" type="sci:PATIENT_CARE_TYPE" />
+      <xsd:element minOccurs="0" name="PatientCategory" type="sci:GENERAL_CODE_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Determines the category the patient falls into, codes and description should be taken from the ISD List for Patient Category: Amenity, Paying, NHS etc..</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="RequestDate" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation>Date of request</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="RequestTime" type="xsd:time">
+        <xsd:annotation>
+          <xsd:documentation>Time of request</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="TreatmentIdentifiers" type="sci:TreatmentRequestIdentifiers" />
+      <xsd:element minOccurs="0" name="TreatmentRequested" type="gen:CLINICAL_CIRCUMSTANCE_TYPE" />
+      <xsd:element minOccurs="0" name="AssessedUrgencyValue" type="sci:UrgencyValue" />
+      <xsd:element minOccurs="0" name="AssessedUrgencyReason" type="sci:UrgencyReason" />
+      <xsd:element minOccurs="0" name="Comment" type="gen:COMMENT_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Other relevant unstructured commentary on the request. </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="ReferralDetails">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="ReferralIdentifier" type="gen:ID_TYPE" />
+            <xsd:element minOccurs="0" name="ReferralReason" type="sci:REFERRAL_REASON_TYPE" />
+            <xsd:element minOccurs="0" name="ReferralUrgencyValue" type="sci:UrgencyValue">
+              <xsd:annotation>
+                <xsd:documentation>A stipulation by a practitioner regarding how urgently a patient should be seen.</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="ReferralUrgencyReason" type="sci:UrgencyReason">
+              <xsd:annotation>
+                <xsd:documentation>A specific reason given by a practitioner if the UrgencyValue content is anything other than "Routine".  *Note : But mandatory if Urgency Value is "Urgent" or "Soon" .</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="WaitingTimesData" type="sci:WAITING_TIMES_DATA_TYPE" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="AttendanceRequestedType">
+    <xsd:annotation>
+      <xsd:documentation>Container for data relating to the attendance details requested for a treatment.  Including treatment care point,
+											target date to come in and target breach date.
+			</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="TreatmentCarePoint" type="sci:PatientCarePoint">
+        <xsd:annotation>
+          <xsd:documentation>This will represent carepoint that will provde the treatment.
+							Note: For a carepoint Site = Hospital/Clinic, Location = Ward/Room</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="ToComeInTargetDate" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation>Proposed Date that the patient should attend</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="ToComeInTargetTime" type="xsd:time">
+        <xsd:annotation>
+          <xsd:documentation>Proposed treatment time that the patient should attend</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="TreatmentBreachDate" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation>Breach date</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="TreatmentRequestStatusType">
+    <xsd:annotation>
+      <xsd:documentation>Container for data relating to the overall status of the request to treat.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="RequestState" type="sci:OpenClosedStatus">
+        <xsd:annotation>
+          <xsd:documentation>Holds the state of the treatment request e.g Open, Closed.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="RequestStatus" type="sci:RequestStatus">
+        <xsd:annotation>
+          <xsd:documentation>Holds the overall status of the treatment request e.g. Outstanding, Completed, Cancelled.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="RequestStatusComment" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Holds any additional information relating to the status of the treatment request.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="TreatmentRequestOutcomeType">
+    <xsd:annotation>
+      <xsd:documentation>Container for data relating to the overall outcome relating to the request to treat.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="DateClosed" type="xsd:date" />
+      <xsd:element minOccurs="0" name="AttendanceStatus" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Holds the attendance status of an appointment \ visit</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="ActualAttendanceDetails">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="ArrivalDate" type="xsd:date">
+              <xsd:annotation>
+                <xsd:documentation>Arrival  Date</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="ArrivalTime" type="xsd:time">
+              <xsd:annotation>
+                <xsd:documentation>Arrival time</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="DepartureDate" type="xsd:date">
+              <xsd:annotation>
+                <xsd:documentation>Departure  Date</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="DepartureTime" type="xsd:time">
+              <xsd:annotation>
+                <xsd:documentation>Departure time</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="TreatmentDate" type="xsd:date">
+              <xsd:annotation>
+                <xsd:documentation>Actual treatment Date</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="TreatmentTime" type="xsd:time">
+              <xsd:annotation>
+                <xsd:documentation>Actual treatment time</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="TreatmentReceived" type="gen:CLINICAL_CIRCUMSTANCE_TYPE" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="TreatmentRequestDeliveryScheduleType">
+    <xsd:annotation>
+      <xsd:documentation>This container is for data relating to the delivery of the treatment. Primarily RTT details</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="ReferralToTreatClock">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="StartDate" type="xsd:date" />
+            <xsd:element name="TargetDate" type="xsd:date" />
+            <xsd:element name="Status" type="sci:GENERAL_CODE_TYPE" />
+            <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ADTinterface">
+    <xsd:annotation>
+      <xsd:documentation>Detailed ADT information</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="ADTInformation" type="sci:ADTinfoDetailed" />
+      <xsd:element minOccurs="0" name="PatientInformation" type="sci:PatientInformation" />
+      <xsd:element name="OriginatingSystem" type="xsd:string" />
+      <xsd:element minOccurs="0" name="TransactionType" type="sci:RecordModifcationType" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ADTinfoDetailed">
+    <xsd:annotation>
+      <xsd:documentation>Detailed ADT information Detailed</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="ADTid" type="sci:ADTtransactionID" />
+      <xsd:element minOccurs="0" name="ADTmessageContent">
+        <xsd:annotation>
+          <xsd:documentation>Element is not present for transactions of Type "Deletion"</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+          <xsd:choice>
+            <xsd:element name="AdmissionContent" type="sci:ADTadmissionType" />
+            <xsd:element name="TransferContent" type="sci:ADTtransferType" />
+            <xsd:element name="DischargeContent" type="sci:ADTdischargeType" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="TransactionDateTime" nillable="true" type="xsd:dateTime" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PatientCarePoint">
+    <xsd:annotation>
+      <xsd:documentation>Patient care point definition</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="Site" type="gen:ORGANISATION_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>This will represent the site of patient care  Hospital/Clinic</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="Location" type="gen:ORGANISATION_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>This will represent the site of patient care  Ward/Room</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="ResponsibleHCP" type="gen:HCP_DETAIL_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Healthcare professional responsible for the patient care</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="Clinic" type="gen:CLINIC_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>The name of a schedule of appointments normally arranged to be held on a regular basis at a particular location.  Coded value or string.</xsd:documentation>
+          <xsd:appinfo>SMR Data Manual 3-5</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="Specialty" type="gen:SPECIALTY_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Simple Type : A division of medicine or dentistry covering a specific area of clinical activity and identified within one of the Royal Colleges or Faculties . Ref: ISD Definitions and Codes for the Health Service in Scotland : 5-5 </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="Facility" type="sci:GENERAL_CODE_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Facility</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ADTpatientCarePoint">
+    <xsd:annotation>
+      <xsd:documentation>ADT patient care point definition</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="Site" type="gen:ID_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>e.g. Hospital</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="Location" type="sci:MedicalFacility">
+        <xsd:annotation>
+          <xsd:documentation>e.g. Ward</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="Consultant" type="gen:ID_TYPE" />
+      <xsd:element minOccurs="0" name="Specialty" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>COPPISH code</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="Facility" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>COPPISH code</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ComponentID">
+    <xsd:annotation>
+      <xsd:documentation>PAS Component ID</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="SpellOfCareID">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="35" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="EpisodeID">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="35" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="EventID">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="35" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ADTtransactionID">
+    <xsd:annotation>
+      <xsd:documentation>ADT messages from HOMER have simpleID
+ADT messages from COMPAS have compoundID</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="RecordIdentifier" type="sci:ADTrecordIdentifier" />
+      <xsd:element minOccurs="0" name="ADTComponentID" type="sci:ComponentID" />
+      <xsd:element minOccurs="0" name="IncidenceID" type="xsd:string" />
+      <xsd:element minOccurs="0" name="UniqueCarePathwayNumber" type="gen:UNIQUE_CARE_PATHWAY_NUMBER_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>The Unique Care Pathway Number which should identify a pathway of care for the patient. Introduced as part of 18 weeks programme (see www.18weeks.scot.nhs.uk)</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ADTsystemInformation">
+    <xsd:annotation>
+      <xsd:documentation>Report related system information</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="ADTid" type="xsd:integer">
+        <xsd:annotation>
+          <xsd:documentation>Database ID of  testReport</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Provider" type="sci:ProviderItem" />
+      <xsd:element name="PatientID" type="sci:StoreGenericIdentifier">
+        <xsd:annotation>
+          <xsd:documentation>Database ID of the patient on table PatientMaster</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ReferraltransactionID">
+    <xsd:annotation>
+      <xsd:documentation>Structure used to identify referrals</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="RecordIdentifier" type="sci:ADTrecordIdentifier" />
+      <xsd:element minOccurs="0" name="IncidenceID" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="InpatientPassID">
+    <xsd:annotation>
+      <xsd:documentation>Structure used to identify inpatient Pass details</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="ADTrecordIdentifier" type="sci:ADTrecordIdentifier" />
+      <xsd:element minOccurs="0" name="IncidenceID" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="InpatientPasslInfo">
+    <xsd:annotation>
+      <xsd:documentation>Detailed ADT information</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="InpatientPassID" type="sci:ADTtransactionID" />
+      <xsd:element name="PassDate" type="xsd:dateTime" />
+      <xsd:element name="ExpectedReturnDate" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" name="ReturnDate" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" name="PassReason" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ContactAddress" type="gen:ADDRESS_TYPE" />
+      <xsd:element minOccurs="0" name="TransactionDetails">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="TransactionDateTime" nillable="true" type="xsd:dateTime" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="MergePatientInterface">
+    <xsd:annotation>
+      <xsd:documentation>Merge Patient interface specification</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="PrimaryPatient" type="sci:PatientInformation" />
+      <xsd:element name="SubordinatePatient" type="sci:PatientInformation" />
+      <xsd:element name="MergeAction" type="sci:MergeAction" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="UnMergePatientInterface">
+    <xsd:annotation>
+      <xsd:documentation>Merge Patient interface specification</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="PrimaryPatient" type="gen:ID_TYPE" />
+      <xsd:element name="SubordinatePatient" type="gen:ID_TYPE" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="BreakGlassInfo">
+    <xsd:annotation>
+      <xsd:documentation>ADT messages from HOMER have simpleID
+ADT messages from COMPAS have compoundID</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="PatientID" type="sci:PatientIdentifier" />
+      <xsd:element name="BreakGlassTypeCode" type="sci:BreakGlassTypeCode" />
+      <xsd:element name="Reason">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="250" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="BreakGlassItem">
+    <xsd:annotation>
+      <xsd:documentation>Breakglass item </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="PatientID" type="sci:PatientIdentifier" />
+      <xsd:element name="BreakGlassToken" type="sci:Token" />
+      <xsd:element minOccurs="0" name="BreakGlassExpires" type="xsd:dateTime" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="BreakGlassItemList">
+    <xsd:annotation>
+      <xsd:documentation>List of breakglass items</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="BreakGlassItem" type="sci:BreakGlassItem" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="BreakGlassTypeItem">
+    <xsd:annotation>
+      <xsd:documentation>Break Glass Type</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="BreakGlassTypeID" type="sci:StoreGenericIdentifier" />
+      <xsd:element name="BreakGlassTypeCode" type="sci:BreakGlassTypeCode" />
+      <xsd:element name="BreakGlassTypeDescription">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="30" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="BreakGlassTypeItemList">
+    <xsd:annotation>
+      <xsd:documentation>Break Glass type list</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="BreakGlassType" type="sci:BreakGlassTypeItem" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="BreakGlassAuditItem">
+    <xsd:annotation>
+      <xsd:documentation>Breakglass item </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="PatientDetails">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="PatientID" type="sci:PatientIdentifier" />
+            <xsd:element minOccurs="0" name="CHI" type="sci:CHInumber" />
+            <xsd:element minOccurs="0" name="DateOfBirth" type="xsd:date" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="BreakGlassDetails">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Reason">
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:minLength value="1" />
+                  <xsd:maxLength value="250" />
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="BreakGlassDateTime" type="xsd:dateTime" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="BreakGlassType" type="sci:BreakGlassTypeItem" />
+      <xsd:element name="UserDetails" type="sci:UserInfo" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="BreakGlassAuditItemList">
+    <xsd:annotation>
+      <xsd:documentation>Break Glass type list</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="BreakGlassAuditInstance" type="sci:BreakGlassAuditItem" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FindHCPcriteria">
+    <xsd:annotation>
+      <xsd:documentation>Selection criteria for FindHCP</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="HCPcode">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="10" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="HCPid" type="sci:StoreGenericIdentifier" />
+      <xsd:element minOccurs="0" name="Name">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="50" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="Position">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="50" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FindOrganisationCriteria">
+    <xsd:annotation>
+      <xsd:documentation>Selection criteria for FindOrganisationCriteria</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="OrganisationCode">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="10" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="OrganisationID" type="sci:StoreGenericIdentifier" />
+      <xsd:element minOccurs="0" name="OrganisationName">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="50" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="OrganisationType">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="50" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FindBreakGlassAuditCriteria">
+    <xsd:annotation>
+      <xsd:documentation>Selection criteria for FindDocument</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="PatientID" type="sci:PatientIdentifier" />
+      <xsd:element minOccurs="0" name="DateRange" type="sci:DateRangeSelection" />
+      <xsd:element minOccurs="0" name="User" type="sci:FindUserCriteria" />
+      <xsd:element minOccurs="0" name="TypeCode">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="10" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DocumentInfo">
+    <xsd:annotation>
+      <xsd:documentation>base definition for document information</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="SystemInformation" type="sci:DocumentSystemInformation" />
+      <xsd:element name="DocumentDetails" type="sci:DocumentMetadata" />
+      <xsd:element minOccurs="0" name="DocumentStylesheet" type="sci:DocumentStylesheetType" />
+      <xsd:element minOccurs="0" name="PatientInformation" type="sci:PatientInformation" />
+      <xsd:element name="DocumentData" type="sci:DocumentData" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DocumentMetadata">
+    <xsd:annotation>
+      <xsd:documentation>base definition for document metadata</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="DocumentCategory" type="sci:CLINICAL_INDEX_TYPE" />
+      <xsd:element name="DocumentIdentifier" type="xsd:string" />
+      <xsd:element minOccurs="0" name="UniqueCarePathwayNumber" type="gen:UNIQUE_CARE_PATHWAY_NUMBER_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>The Unique Care Pathway Number which should identify a pathway of care for the patient. Introduced as part of 18 weeks programme (see www.18weeks.scot.nhs.uk)</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="DocumentTitle" type="xsd:string" />
+      <xsd:element name="DocumentRevision" type="xsd:string" />
+      <xsd:element minOccurs="0" name="DocumentSpecialty" type="gen:SPECIALTY_TYPE" />
+      <xsd:element minOccurs="0" name="DocumentOrganisationName" type="xsd:string" />
+      <xsd:element minOccurs="0" name="DocumentOrganisationType" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Stylesheet" type="xsd:string" />
+      <xsd:element minOccurs="0" name="AdditionalText" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Text normally embedded in a CDATA block</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="DocumentAttestationDateTime" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" name="OriginatingHcp_HealthcareProfessionalID" type="xsd:integer" />
+      <xsd:element minOccurs="0" name="AttestingHcp_HealthcareProfessionalID" type="xsd:integer" />
+      <xsd:element minOccurs="0" name="ReceivingHcp_HealthcareProfessionalID" type="xsd:integer" />
+      <xsd:element name="CopiedHcp_HealthcareProfessionalIDs">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="CopiedHcp_HealthcareProfessionalID" type="xsd:integer" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ConsentToShare" type="gen:DOCUMENT_PATIENT_CONSENT_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Y="Yes"
+N= "No"
+Permissions restrict "N" documents</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Sensitivity" type="gen:DOCUMENT_SENSITIVITY_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>S="Sensitive"
+HS="Highly Sensitive"
+Permissions restrict HS documents</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="PackageIdentifier" type="xsd:string" />
+      <xsd:element minOccurs="0" name="UserNotes" type="sci:DocumentNoteList">
+        <xsd:annotation>
+          <xsd:documentation>Text normally embedded in a CDATA block</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="Stylesheets" type="sci:DocumentStylesheetList" />
+      <xsd:element minOccurs="0" name="Keywords">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="255" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="UserNotesAvailable" type="xsd:boolean" />
+      <xsd:element name="AdditionalStylesheetsAvailable" type="xsd:boolean" />
+      <xsd:element name="IsRetired" type="xsd:boolean" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DocumentSearchSummary">
+    <xsd:annotation>
+      <xsd:documentation>This definition includes summary details for document finds</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="TotalDocuments" type="xsd:integer">
+        <xsd:annotation>
+          <xsd:documentation>The total number of documents selected according to the selection criteria</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="HiddenDocuments" type="xsd:integer">
+        <xsd:annotation>
+          <xsd:documentation>the number of documents hidden, i.e. which the User is not permitted to see because of restricions associated with permission settings</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DocumentSystemInformation">
+    <xsd:annotation>
+      <xsd:documentation>database keys and related system information</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="PatientID" type="sci:PatientIdentifier">
+        <xsd:annotation>
+          <xsd:documentation>Database ID of the patient on table PatientMaster</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="PatientDocumentSearchID" type="sci:StoreGenericIdentifier">
+        <xsd:annotation>
+          <xsd:documentation>Database ID of row on table t_PatientDocumentSearch, which holds document metadata and link information</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Provider" type="sci:ProviderItem" />
+      <xsd:element minOccurs="0" name="DocumentSourceID" nillable="true" type="sci:StoreGenericIdentifier">
+        <xsd:annotation>
+          <xsd:documentation>Database ID of row on table t_DocumentSource. May be null if table has been tidied to remove no-current data</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="PatientDocumentID" type="sci:StoreGenericIdentifier">
+        <xsd:annotation>
+          <xsd:documentation>Database ID of the document on table t_PatientDocument. Note that this may be on a remote database, or -1 if document stored on a file server</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="DocumentToDatabaseID" type="sci:StoreGenericIdentifier">
+        <xsd:annotation>
+          <xsd:documentation>Database ID of the Document To Database Service</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="DocumentStatusID" type="sci:StoreGenericIdentifier">
+        <xsd:annotation>
+          <xsd:documentation>Status of Document In Store</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="DocumentIsLinked" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation>Indicator whether document is a linked document</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="DocumentHasHistory" type="xsd:boolean" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DocumentUpload">
+    <xsd:annotation>
+      <xsd:documentation>Contains information identifying a patient and a separate binary document to be uploaded</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="MessageData" type="sci:DocumentUploadMessageType">
+        <xsd:annotation>
+          <xsd:documentation>A container for data which comprises the message contained in the Clinical Letter. Ref: ENV 13606 - 4:2000 3.50.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="DocumentData" type="gen:DOCUMENT_DATA_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Container for data describing the characteristics of the document itself. Ref:ENV 13606 - 4:2000  7.5.2</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DocumentUploadMessageType">
+    <xsd:annotation>
+      <xsd:documentation>A structure for data relating to the message contained in the Clinical Letter, as opposed to the data about the document. Ref: ENV 13606 - 4:2000 3.50.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="PatientDemographics" type="sci:PatientInformation">
+        <xsd:annotation>
+          <xsd:documentation>Container for patient identifying details of the patient who is the subject of the document.  Ref: ENV 13606 - 4:2000 7.4.6  </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="ClinicalData">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="DocumentSubCategory">
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:minLength value="1" />
+                  <xsd:maxLength value="255" />
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="PackageIdentifier" type="xsd:string" />
+            <xsd:element name="DocumentSpecialty" type="gen:SPECIALTY_TYPE" />
+            <xsd:element name="DocumentTitle">
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:minLength value="1" />
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="DocumentOrganisationName">
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:minLength value="1" />
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="DocumentOrganisationType">
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:minLength value="1" />
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="AdditionalText">
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:minLength value="1" />
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="Stylesheet">
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:minLength value="1" />
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="AdditionalStylesheets" type="sci:DocumentStylesheetList" />
+            <xsd:element minOccurs="0" name="Notes" type="sci:DocumentNoteList" />
+            <xsd:element minOccurs="0" name="KeywordText" type="xsd:string" />
+            <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FindDocumentItem">
+    <xsd:annotation>
+      <xsd:documentation>This definition specified the information return during document find</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="SystemInformation" type="sci:DocumentSystemInformation" />
+      <xsd:element name="DocumentDetails" type="sci:DocumentMetadata" />
+      <xsd:element minOccurs="0" name="PatientDetails" type="sci:FindPatientItem" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="TreatmentLogSystemInformation">
+    <xsd:annotation>
+      <xsd:documentation>database keys and related system information</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="PatientID" type="sci:PatientIdentifier">
+        <xsd:annotation>
+          <xsd:documentation>Database ID of the patient on table PatientMaster</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="TreatmentLogID" type="sci:StoreGenericIdentifier">
+        <xsd:annotation>
+          <xsd:documentation>Internal Treatment log id</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Provider" type="sci:ProviderItem" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="TreatmentLogInfo">
+    <xsd:annotation>
+      <xsd:documentation>base definition for treatmentlog information</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="SystemInformation" type="sci:TreatmentLogSystemInformation" />
+      <xsd:element name="TreatmentLogDetails" type="sci:TreatmentLog" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FindTreatmentLogItem">
+    <xsd:annotation>
+      <xsd:documentation>This definition specified the information return during document find</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="TreatmentLog">
+        <xsd:complexType>
+          <xsd:annotation>
+            <xsd:documentation>Selection criteria for FindTreatmentLog</xsd:documentation>
+          </xsd:annotation>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="TreatmentLogID" type="xsd:positiveInteger" />
+            <xsd:element minOccurs="0" name="PatientID" type="sci:PatientIdentifier" />
+            <xsd:element minOccurs="0" name="PatientCareType" type="sci:PatientCareTypeDescription" />
+            <xsd:element minOccurs="0" name="RequestState" type="sci:OpenClosedStatus">
+              <xsd:annotation>
+                <xsd:documentation>This value will allow the user to filter on whether the request is currently open or closed.</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="RequestStatus" type="sci:RequestStatus">
+              <xsd:annotation>
+                <xsd:documentation>This value will allow the user to filter on whether the request is currently outstanding, completed or cancelled.</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="RecordIdentifier" type="sci:ADTrecordIdentifier" />
+            <xsd:element minOccurs="0" name="AssessedUrgencyValue" type="sci:UrgencyValue" />
+            <xsd:element minOccurs="0" name="RequestDateTime" type="xsd:dateTime" />
+            <xsd:element minOccurs="0" name="ToComeInTargetDateTime" type="xsd:dateTime" />
+            <xsd:element minOccurs="0" name="PatientCarePointSiteId" type="sci:StoreGenericIdentifier" />
+            <xsd:element minOccurs="0" name="PatientCarePointLocationId" type="sci:StoreGenericIdentifier" />
+            <xsd:element minOccurs="0" name="PatientCarePointResponsibleHcpId" type="sci:StoreGenericIdentifier" />
+            <xsd:element minOccurs="0" name="PatientCarePointClinic" type="xsd:string" />
+            <xsd:element minOccurs="0" name="PatientCarePointSpecialtyName" type="xsd:string" />
+            <xsd:element minOccurs="0" name="PatientCarePointFacilityName" type="xsd:string" />
+            <xsd:element minOccurs="0" name="UniqueCarePathwayNumber" type="gen:UNIQUE_CARE_PATHWAY_NUMBER_TYPE">
+              <xsd:annotation>
+                <xsd:documentation>The Unique Care Pathway Number which should identify a pathway of care for the patient. Introduced as part of 18 weeks programme (see www.18weeks.scot.nhs.uk)</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="DateClosed" type="xsd:date" />
+            <xsd:element name="Provider" type="sci:ProviderItem" />
+            <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="PatientDetails" type="sci:FindPatientItem" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FindDocumentItemList">
+    <xsd:annotation>
+      <xsd:documentation>This is a list of type DocumentSearchItem</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="Document" type="sci:FindDocumentItem" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="TreatmentLogList">
+    <xsd:annotation>
+      <xsd:documentation>This is a list of type DocumentSearchItem</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="TreatmentLog" type="sci:FindTreatmentLogItem" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DocumentNote">
+    <xsd:annotation>
+      <xsd:documentation>Document note type</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="NoteText" type="xsd:string" />
+      <xsd:element name="NoteDate" type="xsd:dateTime" />
+      <xsd:element name="NoteUser" type="sci:UserInfo" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DocumentNoteList">
+    <xsd:annotation>
+      <xsd:documentation>List of notes</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="Note" type="sci:DocumentNote" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DocumentStylesheetType">
+    <xsd:annotation>
+      <xsd:documentation>Details Of the stylesheet</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="StylesheetID" type="xsd:string" />
+      <xsd:element name="StylesheetData" type="sci:DocumentData" />
+      <xsd:element name="Provider" type="sci:ProviderItem" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DocumentStylesheetList">
+    <xsd:annotation>
+      <xsd:documentation>List of stylesheets</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="Stylesheet" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FindADTcriteria">
+    <xsd:annotation>
+      <xsd:documentation>Defines search criteria for finding ADT entries</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="IncludePatientInformation" type="xsd:boolean" />
+      <xsd:element minOccurs="0" name="PatientID" type="sci:PatientIdentifier" />
+      <xsd:element minOccurs="0" name="CHI" type="sci:CHInumber" />
+      <xsd:element minOccurs="0" name="ActionCode">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="3" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="ActionDateRange" type="sci:FindDateRange" />
+      <xsd:element minOccurs="0" name="UniqueCarePathwayNumber" type="gen:UNIQUE_CARE_PATHWAY_NUMBER_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>The Unique Care Pathway Number which should identify a pathway of care for the patient. Introduced as part of 18 weeks programme (see www.18weeks.scot.nhs.uk)</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="PatientDetails" type="sci:FindPatientBasicCriteria" />
+      <xsd:element minOccurs="0" name="ProviderSearch" type="sci:ProviderSearchCriteria" />
+      <xsd:element minOccurs="0" name="BreakGlassItems" type="sci:BreakGlassItemList" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FindADTItem">
+    <xsd:annotation>
+      <xsd:documentation>Defines an individual ADT item return during the finfADT</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="ADTDetails">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ADTid" type="xsd:integer" />
+            <xsd:element name="ActionType">
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:minLength value="1" />
+                  <xsd:maxLength value="3" />
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="PatientID" type="xsd:nonNegativeInteger" />
+            <xsd:element minOccurs="0" name="ActionDateTime" type="xsd:dateTime" />
+            <xsd:element minOccurs="0" name="TransactionDateTime" type="xsd:dateTime" />
+            <xsd:element minOccurs="0" name="AdmissionDateTime" nillable="true" type="xsd:dateTime" />
+            <xsd:element minOccurs="0" name="DischargeDateTime" nillable="true" type="xsd:dateTime" />
+            <xsd:element minOccurs="0" name="TransferDateTime" nillable="true" type="xsd:dateTime" />
+            <xsd:element minOccurs="0" name="HospitalCode" type="xsd:string" />
+            <xsd:element minOccurs="0" name="DateTimeReadyForDischarge" nillable="true" type="xsd:dateTime" />
+            <xsd:element minOccurs="0" name="AdmittedCode" nillable="true" type="xsd:integer" />
+            <xsd:element minOccurs="0" name="AdmittedFromCode">
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:minLength value="0" />
+                  <xsd:maxLength value="2" />
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="DischargeCode" nillable="true" type="xsd:integer" />
+            <xsd:element minOccurs="0" name="PatientCategory" type="xsd:string" />
+            <xsd:element minOccurs="0" name="PatientType">
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:minLength value="0" />
+                  <xsd:maxLength value="1" />
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="UniqueCarePathwayNumber" type="gen:UNIQUE_CARE_PATHWAY_NUMBER_TYPE">
+              <xsd:annotation>
+                <xsd:documentation>The Unique Care Pathway Number which should identify a pathway of care for the patient. Introduced as part of 18 weeks programme (see www.18weeks.scot.nhs.uk)</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="Provider" type="sci:ProviderItem" />
+            <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="PatientDetails" type="sci:FindPatientItem" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="HCPitem">
+    <xsd:annotation>
+      <xsd:documentation>definition of items returned via HCP</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="HCPid" type="sci:StoreGenericIdentifier" />
+      <xsd:element name="HCPdetails" type="gen:HCP_DETAIL_TYPE" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="HCPitemList">
+    <xsd:annotation>
+      <xsd:documentation>List definition of items returned via HCP</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="HCP" type="sci:HCPitem" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="OrganisationItem">
+    <xsd:annotation>
+      <xsd:documentation> definition of Organisation</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="OrganisationID" type="sci:StoreGenericIdentifier" />
+      <xsd:element name="OrganisationDetails" type="gen:ORGANISATION_TYPE" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="OrganisationItemList">
+    <xsd:annotation>
+      <xsd:documentation>List definition of items returned via Organisation</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="Organisation" type="sci:OrganisationItem" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FindADTItemList">
+    <xsd:annotation>
+      <xsd:documentation>List definition of items returned via FindADT</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="ADTmessage" type="sci:FindADTItem" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FindDocumentCriteria">
+    <xsd:annotation>
+      <xsd:documentation>Selection criteria for FindDocument</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="IncludePatientInformation" type="xsd:boolean" />
+      <xsd:element minOccurs="0" name="PatientID" type="sci:PatientIdentifier" />
+      <xsd:element minOccurs="0" name="DocumentToDatabaseID" type="xsd:positiveInteger" />
+      <xsd:element minOccurs="0" name="DocumentAttestationDate" type="sci:DateRangeSelection" />
+      <xsd:element minOccurs="0" name="DocumentIdentifier" type="sci:FindDocumentIdentifierCriteria" />
+      <xsd:element minOccurs="0" name="DocumentType">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="70" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="DocumentSubType">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="70" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="DocumentTitle">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="AdditionalText">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="DocumentSpecialty">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="DocumentOrganisationName">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="DocumentOrganisationType">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="ConsentToShare" type="gen:DOCUMENT_PATIENT_CONSENT_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Y="Yes"
+N= "No"
+Permissions restrict "N" documents</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="Sensitivity" type="gen:DOCUMENT_SENSITIVITY_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>S="Sensitive"
+HS="Highly Sensitive"
+Permissions restrict HS documents</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="PackageIdentifier">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="OriginatingHCP">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="AttestingHCP">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="ReceivingHCP">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="CopiedHCP">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="Keywords">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="UniqueCarePathwayNumber" type="gen:UNIQUE_CARE_PATHWAY_NUMBER_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>The Unique Care Pathway Number which should identify a pathway of care for the patient. Introduced as part of 18 weeks programme (see www.18weeks.scot.nhs.uk)</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="PatientDetails" type="sci:FindPatientBasicCriteria" />
+      <xsd:element minOccurs="0" name="ProviderSearch" type="sci:ProviderSearchCriteria" />
+      <xsd:element minOccurs="0" name="BreakGlassItems" type="sci:BreakGlassItemList" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FindTreatmentLogCriteria">
+    <xsd:annotation>
+      <xsd:documentation>Selection criteria for FindDocument</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="IncludePatientInformation" type="xsd:boolean" />
+      <xsd:element minOccurs="0" name="TreatmentLogID" type="xsd:positiveInteger">
+        <xsd:annotation>
+          <xsd:documentation>This is the internal id within sci store</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="PatientID" type="sci:PatientIdentifier">
+        <xsd:annotation>
+          <xsd:documentation>This is the internal patient id withing store</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="RecordIdentifier" type="sci:ADTrecordIdentifier">
+        <xsd:annotation>
+          <xsd:documentation>This is the unique treatment log record identifier generated by source systems</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="RequestState" type="sci:OpenClosedStatus">
+        <xsd:annotation>
+          <xsd:documentation>This value will allow the user to filter on whether the request is currently open or closed.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="RequestStatus" type="sci:RequestStatus">
+        <xsd:annotation>
+          <xsd:documentation>This value will allow the user to filter on whether the request is currently outstanding, completed or cancelled</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="AssessedUrgencyValue" type="sci:UrgencyValue" />
+      <xsd:element minOccurs="0" name="PatientCareType" type="sci:PatientCareTypeDescription" />
+      <xsd:element minOccurs="0" name="RequestDate" type="sci:DateRangeSelection" />
+      <xsd:element minOccurs="0" name="TreatmentToComeInDate" type="sci:DateRangeSelection" />
+      <xsd:element minOccurs="0" name="TreatmentRequestProcedureCode" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PatientCarepointSiteID" type="sci:StoreGenericIdentifier" />
+      <xsd:element minOccurs="0" name="PatientCarepointLocationID" type="sci:StoreGenericIdentifier" />
+      <xsd:element minOccurs="0" name="SpecialtyName">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="50" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="Facility">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="50" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="UniqueCarePathwayNumber" type="gen:UNIQUE_CARE_PATHWAY_NUMBER_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>The Unique Care Pathway Number which should identify a pathway of care for the patient. Introduced as part of 18 weeks programme (see www.18weeks.scot.nhs.uk)</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="PatientDetails" type="sci:FindPatientBasicCriteria" />
+      <xsd:element minOccurs="0" name="ProviderSearch" type="sci:ProviderSearchCriteria" />
+      <xsd:element minOccurs="0" name="BreakGlassItems" type="sci:BreakGlassItemList" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FindMergeCriteria">
+    <xsd:annotation>
+      <xsd:documentation>Selection criteria for FindMerge</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="PrimaryPatientID" type="sci:PatientIdentifier" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FindMergeItem">
+    <xsd:annotation>
+      <xsd:documentation>Item returned during FindMerge</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="PrimaryPatientID" type="sci:PatientIdentifier" />
+      <xsd:element name="SecondaryPatientID" type="sci:PatientIdentifier" />
+      <xsd:element minOccurs="0" name="CHI" type="sci:CHInumber" />
+      <xsd:element minOccurs="0" name="FamilyName" type="xsd:string" />
+      <xsd:element minOccurs="0" name="GivenName" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Sex" type="xsd:string" />
+      <xsd:element minOccurs="0" name="DateOfBirth" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation>Format dd/MM/yyyy</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Unmerge">
+        <xsd:annotation>
+          <xsd:documentation>In the Web Service transacton message, this should always be 'N' and is irrelevant to the information supplied</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="1" />
+            <xsd:enumeration value="N" />
+            <xsd:enumeration value="Y" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FindMergeItemList">
+    <xsd:annotation>
+      <xsd:documentation>List definition for FindMerge</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="Patient" type="sci:FindMergeItem" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SearchSummaryItem">
+    <xsd:annotation>
+      <xsd:documentation>Defines criteria for FindPatient</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Identifier" type="xsd:string" />
+      <xsd:element name="ResultCount" type="xsd:nonNegativeInteger" />
+      <xsd:element minOccurs="0" name="InfoMessage" type="xsd:string" />
+      <xsd:element minOccurs="0" name="WarningMessage" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ErrorMessage" type="xsd:string" />
+      <xsd:element minOccurs="0" name="SearchTime" type="xsd:string" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SearchSummaryItemList">
+    <xsd:annotation>
+      <xsd:documentation>List definition for FindMerge</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="SearchSummaryItem" type="sci:SearchSummaryItem" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ProviderSearchCriteria">
+    <xsd:sequence>
+      <xsd:element name="SearchType" type="sci:ProviderSearchType" />
+      <xsd:element name="Providers" type="sci:ProviderList" />
+      <xsd:element minOccurs="0" name="IncludeAll" type="xsd:boolean" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FindDocumentIdentifierCriteria">
+    <xsd:annotation>
+      <xsd:documentation>Patient Selection criteria for names</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Identifier" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Comparator" type="sci:SearchComparator" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FindPatientNameCriteria">
+    <xsd:annotation>
+      <xsd:documentation>Patient Selection criteria for names</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="Forename" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ForenameComparator" type="sci:SearchComparator" />
+      <xsd:element minOccurs="0" name="Surname" type="xsd:string" />
+      <xsd:element minOccurs="0" name="SurnameComparator" type="sci:SearchComparator" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FindPatientAddressCriteria">
+    <xsd:annotation>
+      <xsd:documentation>Patient Selection criteria for Addresses</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Postcode" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PostCodeComparator" type="sci:SearchComparator" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FindPatientIDCriteria">
+    <xsd:annotation>
+      <xsd:documentation>Patient Selection criteria for ID's</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="ID" type="xsd:string" />
+      <xsd:element minOccurs="0" name="IDcomparator" type="sci:SearchComparator" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FindPatientBasicCriteria">
+    <xsd:annotation>
+      <xsd:documentation>Common basic Patient Selection criteria</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="Name" type="sci:FindPatientNameCriteria" />
+      <xsd:element minOccurs="0" name="Ids" type="sci:FindPatientIDCriteria" />
+      <xsd:element minOccurs="0" name="DateOfBirth" type="xsd:date" />
+      <xsd:element minOccurs="0" name="IncludeAnonymous" type="xsd:boolean" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FindPatientCriteria">
+    <xsd:annotation>
+      <xsd:documentation>Defines criteria for FindPatient</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="Name" type="sci:FindPatientNameCriteria" />
+      <xsd:element minOccurs="0" name="Address" type="sci:FindPatientAddressCriteria" />
+      <xsd:element minOccurs="0" name="Ids" type="sci:FindPatientIDCriteria" />
+      <xsd:element minOccurs="0" name="Date">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="DateOfBirth" type="xsd:date" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="Sex" type="xsd:string" />
+      <xsd:element minOccurs="0" name="GPid" type="sci:StoreGenericIdentifier" />
+      <xsd:element minOccurs="0" name="PracticeID" type="sci:StoreGenericIdentifier" />
+      <xsd:element minOccurs="0" name="ConsultantID" type="sci:StoreGenericIdentifier" />
+      <xsd:element minOccurs="0" name="HospitalID" type="sci:StoreGenericIdentifier" />
+      <xsd:element minOccurs="0" name="WardID" type="sci:StoreGenericIdentifier" />
+      <xsd:element minOccurs="0" name="UniqueCarePathwayNumber" type="gen:UNIQUE_CARE_PATHWAY_NUMBER_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>The Unique Care Pathway Number which should identify a pathway of care for the patient. Introduced as part of 18 weeks programme (see www.18weeks.scot.nhs.uk)</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="IncludeAnonymous" type="xsd:boolean" />
+      <xsd:element minOccurs="0" name="IncludeInactiveDemographics" type="xsd:boolean" />
+      <xsd:element minOccurs="0" name="ProviderSearch" type="sci:ProviderSearchCriteria" />
+      <xsd:element minOccurs="0" name="BreakGlassItems" type="sci:BreakGlassItemList" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FindResultReportItem">
+    <xsd:annotation>
+      <xsd:documentation>Item returned as part of the FindPatient</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="PatientID" type="sci:PatientIdentifier" />
+      <xsd:element minOccurs="0" name="OrderCol" type="xsd:integer" />
+      <xsd:element minOccurs="0" name="GivenName" type="xsd:string" />
+      <xsd:element minOccurs="0" name="MiddleName" type="xsd:string" />
+      <xsd:element minOccurs="0" name="FamilyName" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Sex" type="xsd:string" />
+      <xsd:element minOccurs="0" name="DateOfBirth" type="xsd:date" />
+      <xsd:element minOccurs="0" name="CHI" type="sci:CHInumber" />
+      <xsd:element minOccurs="0" name="Address" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PostCode" type="xsd:string" />
+      <xsd:element minOccurs="0" name="GP" type="sci:StoreGenericIdentifier" />
+      <xsd:element minOccurs="0" name="GPPractice" type="sci:StoreGenericIdentifier" />
+      <xsd:element minOccurs="0" name="Consultant" type="sci:StoreGenericIdentifier" />
+      <xsd:element minOccurs="0" name="Ward" type="sci:StoreGenericIdentifier" />
+      <xsd:element minOccurs="0" name="Hospital" type="sci:StoreGenericIdentifier" />
+      <xsd:element minOccurs="0" name="Soundex" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ServiceID" type="sci:StoreGenericIdentifier" />
+      <xsd:element minOccurs="0" name="EventUser" type="xsd:string" />
+      <xsd:element minOccurs="0" name="EventDateTime" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" name="DateTimeCreated" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" name="Name" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Exception">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="1" />
+            <xsd:enumeration value="N" />
+            <xsd:enumeration value="Y" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="SeededRecord">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="1" />
+            <xsd:enumeration value="N" />
+            <xsd:enumeration value="Y" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="Merged" type="xsd:boolean" />
+      <xsd:element minOccurs="0" name="Anonymous" type="xsd:boolean" />
+      <xsd:element name="Consent" type="xsd:string" />
+      <xsd:element name="Provider" type="sci:ProviderItem" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FindPatientItem">
+    <xsd:annotation>
+      <xsd:documentation>Item returned as part of the FindPatient</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="PatientID" type="sci:PatientIdentifier" />
+      <xsd:element minOccurs="0" name="OrderCol" type="xsd:integer" />
+      <xsd:element minOccurs="0" name="GivenName" type="xsd:string" />
+      <xsd:element minOccurs="0" name="MiddleName" type="xsd:string" />
+      <xsd:element minOccurs="0" name="FamilyName" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Sex" type="xsd:string" />
+      <xsd:element minOccurs="0" name="DateOfBirth" type="xsd:date" />
+      <xsd:element minOccurs="0" name="CHI" type="sci:CHInumber" />
+      <xsd:element minOccurs="0" name="Address" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PostCode" type="xsd:string" />
+      <xsd:element minOccurs="0" name="GP" type="sci:StoreGenericIdentifier" />
+      <xsd:element minOccurs="0" name="GPPractice" type="sci:StoreGenericIdentifier" />
+      <xsd:element minOccurs="0" name="Consultant" type="sci:StoreGenericIdentifier" />
+      <xsd:element minOccurs="0" name="Ward" type="sci:StoreGenericIdentifier" />
+      <xsd:element minOccurs="0" name="Hospital" type="sci:StoreGenericIdentifier" />
+      <xsd:element minOccurs="0" name="Soundex" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ServiceID" type="sci:StoreGenericIdentifier" />
+      <xsd:element minOccurs="0" name="EventUser" type="xsd:string" />
+      <xsd:element minOccurs="0" name="EventDateTime" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" name="DateTimeCreated" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" name="Name" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Exception">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="1" />
+            <xsd:enumeration value="N" />
+            <xsd:enumeration value="Y" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="SeededRecord">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="1" />
+            <xsd:enumeration value="N" />
+            <xsd:enumeration value="Y" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="Merged" type="xsd:boolean" />
+      <xsd:element minOccurs="0" name="Anonymous" type="xsd:boolean" />
+      <xsd:element name="Consent" type="xsd:string" />
+      <xsd:element name="Provider" type="sci:ProviderItem" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FindPatientItemList">
+    <xsd:annotation>
+      <xsd:documentation>List definition for FindPatient</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="Patient" type="sci:FindPatientItem" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FindResultCriteria">
+    <xsd:annotation>
+      <xsd:documentation>Selection criteria for FindResult</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="IncludePatientInformation" type="xsd:boolean" />
+      <xsd:element minOccurs="0" name="IncludeInactiveResults" type="xsd:boolean" />
+      <xsd:element minOccurs="0" name="GroupResponseBy" type="sci:FindResultGroupByType" />
+      <xsd:element minOccurs="0" name="PatientID" type="sci:PatientIdentifier" />
+      <xsd:element minOccurs="0" name="ReportIdentifier" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ReportDate" type="sci:FindDateRange" />
+      <xsd:element minOccurs="0" name="EventDateTime" type="sci:FindDateTimeRange" />
+      <xsd:element minOccurs="0" name="DateSampled" type="sci:FindDateRange" />
+      <xsd:element minOccurs="0" name="SampleDateReceived " type="sci:FindDateRange" />
+      <xsd:element minOccurs="0" name="SampleDateTested" type="sci:FindDateRange" />
+      <xsd:element minOccurs="0" name="TestResultSet" type="xsd:string" />
+      <xsd:element minOccurs="0" name="RequestingPartyHealthcareProfessionalID" type="xsd:string" />
+      <xsd:element minOccurs="0" name="RequestingOrganisationID" type="sci:StoreGenericIdentifier" />
+      <xsd:element minOccurs="0" name="SampleDescription" type="xsd:string" />
+      <xsd:element minOccurs="0" name="SearchNotes" type="xsd:string" />
+      <xsd:element minOccurs="0" name="TestPerformed" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Discipline" type="xsd:string" />
+      <xsd:element minOccurs="0" name="GPid" type="sci:StoreGenericIdentifier" />
+      <xsd:element minOccurs="0" name="PracticeID" type="sci:StoreGenericIdentifier" />
+      <xsd:element minOccurs="0" name="ConsultantID" type="sci:StoreGenericIdentifier" />
+      <xsd:element minOccurs="0" name="UniqueCarePathwayNumber" type="gen:UNIQUE_CARE_PATHWAY_NUMBER_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>The Unique Care Pathway Number which should identify a pathway of care for the patient. Introduced as part of 18 weeks programme (see www.18weeks.scot.nhs.uk)</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="ResultStatusType" type="gen:RESULT_STATUS_TYPE" />
+      <xsd:element minOccurs="0" name="PatientDetails" type="sci:FindPatientBasicCriteria" />
+      <xsd:element minOccurs="0" name="ProviderSearch" type="sci:ProviderSearchCriteria" />
+      <xsd:element minOccurs="0" name="BreakGlassItems" type="sci:BreakGlassItemList" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FindResultItem">
+    <xsd:annotation>
+      <xsd:documentation>Item return as part of FindResult</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="ReportDetails">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="TestReportID" type="sci:StoreGenericIdentifier" />
+            <xsd:element name="PatientID" type="sci:PatientIdentifier" />
+            <xsd:element minOccurs="0" name="RequestingPartyHealthcareProfessionalID" type="sci:StoreGenericIdentifier" />
+            <xsd:element minOccurs="0" name="RequestingOrganisationID" type="sci:StoreGenericIdentifier" />
+            <xsd:element minOccurs="0" name="ConfidentialityStatus" type="xsd:string" />
+            <xsd:element minOccurs="0" name="PatientDemographicsID" type="sci:StoreGenericIdentifier" />
+            <xsd:element name="Discipline" type="xsd:string" />
+            <xsd:element minOccurs="0" name="SectionName" type="sci:ReportDiagnosticService" />
+            <xsd:element name="ReportIdentifier" type="xsd:string" />
+            <xsd:element minOccurs="0" name="ReportDateTime" type="xsd:dateTime" />
+            <xsd:element minOccurs="0" name="EventDateTime" type="xsd:dateTime" />
+            <xsd:element minOccurs="0" name="EventUser" type="xsd:string" />
+            <xsd:element minOccurs="0" name="RecipientOrganisationID" type="sci:StoreGenericIdentifier" />
+            <xsd:element name="DocumentType">
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:minLength value="1" />
+                  <xsd:maxLength value="70" />
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="DocumentSubType">
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:minLength value="1" />
+                  <xsd:maxLength value="70" />
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="ReportAbnormal" type="xsd:boolean" />
+            <xsd:element name="NumComments" type="xsd:integer" />
+            <xsd:element name="DateTimeCreated" type="xsd:dateTime" />
+            <xsd:element name="Provider" type="sci:ProviderItem" />
+            <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="SampleDetails">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="SampleID" type="sci:StoreGenericIdentifier" />
+            <xsd:element minOccurs="0" name="SampleCode" type="xsd:string" />
+            <xsd:element minOccurs="0" name="SampleDescription" type="xsd:string" />
+            <xsd:element minOccurs="0" name="DateTimeSampled" type="xsd:dateTime" />
+            <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="SetDetails">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="TestID" type="sci:StoreGenericIdentifier" />
+            <xsd:element minOccurs="0" name="SetDescription" type="xsd:string" />
+            <xsd:element name="ResultSetStatus" type="gen:TEST_STATUS_TYPE" />
+            <xsd:element name="SetAbnormal" type="xsd:boolean" />
+            <xsd:element minOccurs="0" name="UniqueCarePathwayNumber" type="gen:UNIQUE_CARE_PATHWAY_NUMBER_TYPE">
+              <xsd:annotation>
+                <xsd:documentation>The Unique Care Pathway Number which should identify a pathway of care for the patient. Introduced as part of 18 weeks programme (see www.18weeks.scot.nhs.uk)</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="PatientDetails" type="sci:FindPatientItem" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FindResultItemList">
+    <xsd:annotation>
+      <xsd:documentation>List definition for FindResult</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="Result" type="sci:FindResultItem" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="InvestigationReportMessageType">
+    <xsd:annotation>
+      <xsd:documentation>Returned during getResult. A structure for data relating to the message contained in the Investigation  Report, as opposed to the data about the document. Ref:  ENV 12838:1996 6.3.30.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:annotation>
+        <xsd:documentation>The organisation (eg laboratory) providing the service  Ref:ENV-13838:1996 P66</xsd:documentation>
+      </xsd:annotation>
+      <xsd:element name="ReportIdentifier" type="gen:ID_VALUE_TYPE" />
+      <xsd:element name="ReportDate" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation>Date of report</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="ReportTime" type="xsd:time">
+        <xsd:annotation>
+          <xsd:documentation>Time of report</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Discipline" type="sci:ReportDiagnosticService" />
+      <xsd:element minOccurs="0" name="SectionName" type="sci:ReportDiagnosticService" />
+      <xsd:element name="ServiceProvider">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="ProvidingSite" type="gen:ORGANISATION_TYPE">
+              <xsd:annotation>
+                <xsd:documentation>This is the physical site that is providing the service (Hospital/clinic)</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="ProvidingLocation" type="gen:ORGANISATION_TYPE">
+              <xsd:annotation>
+                <xsd:documentation>This is the location within the site that is providing the service (Ward/room)</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="RequestingParty" type="gen:HCP_DETAIL_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>The Health Care Professional who orders a service  Ref : Pathology Messaging Enabler Project V1.00 (implied)</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="ConfidentialityStatus" type="gen:CONFIDENTIALITY_STATUS">
+        <xsd:annotation>
+          <xsd:documentation>Indicator of whether the data is particularly sensitive or not. Ref: Order Communication Technical Reference Manual (Northgate) </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="ServiceRequest" type="gen:SERVICE_REQUEST_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>This is a container for the details required for requesting the service  Ref:  ENV - 12838:1996</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="ServiceResult" type="sci:ResultSuite">
+        <xsd:annotation>
+          <xsd:documentation>This is a container for the details required for requesting the service  Ref:  ENV - 12838:1996</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="PatientInformation" type="sci:PatientInformation">
+        <xsd:annotation>
+          <xsd:documentation>Container for patient identifying details of the patient who is the subject of the document.  Ref: ENV 13606 - 4:2000 7.4.6  </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="PatientClass" type="xsd:string" />
+      <xsd:element name="ReportAbnormal" type="xsd:boolean" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="STRUCTURED_REFERRAL_REASON_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A structure for describing the reason for referral.</xsd:documentation>
+      <xsd:appinfo>SIGN Report on a Recommended Referral Document November 1998</xsd:appinfo>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="CareTypeRequested">
+        <xsd:annotation>
+          <xsd:documentation>The type of care that is being requested. SIGN examples indicate an expectation of types of service e.g. "Inpatient Care", "Day Case Care".  It is NOT expected that these will be implemented as a list of values in the near future.</xsd:documentation>
+          <xsd:appinfo>SIGN Report on Recommendation Referral Document November 1998</xsd:appinfo>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="70" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="ExpectedOutcome">
+        <xsd:annotation>
+          <xsd:documentation>The type of outcome that is expected. SIGN examples indicate an expectation of types of healthcare activity e.g. 'consultation', 'assessment'.  It is NOT expected that these will be implemented as a list of values in the near future.</xsd:documentation>
+          <xsd:appinfo>SIGN Report on Recommendation Referral Document November 1998</xsd:appinfo>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="70" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="REFERRAL_REASON_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A structure for data pertaining to a referral reason.</xsd:documentation>
+      <xsd:appinfo>SIGN Report on a Recommended Referral Document November 1998</xsd:appinfo>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:choice>
+        <xsd:element name="StructuredReferralReason" type="sci:STRUCTURED_REFERRAL_REASON_TYPE" />
+        <xsd:element name="UnstructuredReferralReason">
+          <xsd:annotation>
+            <xsd:documentation>The reason for referral expressed in an unstructured format.</xsd:documentation>
+            <xsd:appinfo>SIGN Report on Recommendation Referral Document November 1998</xsd:appinfo>
+          </xsd:annotation>
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+              <xsd:minLength value="1" />
+              <xsd:maxLength value="198" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+      </xsd:choice>
+      <xsd:element minOccurs="0" name="Comment" type="xsd:normalizedString">
+        <xsd:annotation>
+          <xsd:documentation>A piece of free text. Used generally to contain information which is supplementary to the structured area. Ref: ???? </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ResultSuite">
+    <xsd:annotation>
+      <xsd:documentation>Defines a type relationship between samples and tests</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="SampleDetails" type="gen:SAMPLE_TYPE" />
+      <xsd:element minOccurs="0" name="TestResultSets">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" name="TestResultSet" type="gen:TEST_SET_RESULT_TYPE" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="InvestigationReport">
+    <xsd:sequence>
+      <xsd:element name="ReportData" type="sci:InvestigationReportMessageType" />
+      <xsd:element name="DocumentData" type="gen:DOCUMENT_DATA_TYPE" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ReportSystemInformation">
+    <xsd:annotation>
+      <xsd:documentation>Report related system information</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="TestReportID" type="xsd:integer">
+        <xsd:annotation>
+          <xsd:documentation>Database ID of  testReport</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Provider" type="sci:ProviderItem" />
+      <xsd:element name="ReportHasHistory" nillable="true" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation>An indicator whether a report has history available in the system</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="PatientID" type="sci:StoreGenericIdentifier">
+        <xsd:annotation>
+          <xsd:documentation>Database ID of the patient on table PatientMaster</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="SystemReportStatus" type="gen:STATUS_TYPE" />
+      <xsd:element name="ReportDisplayTemplate">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="100" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="TreatmentRequestIdentifiers">
+    <xsd:annotation>
+      <xsd:documentation>Treatment requests require a uniue record identifier. They can also have PAS releated identifiers</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="ComponentID" type="sci:ComponentID">
+        <xsd:annotation>
+          <xsd:documentation>This component identifier is commonly used in PMS systems. It is provided here for reference</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="CRN" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>This identifier will allow a local identifier to be associated with the treatments request.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="UniqueCarePathwayNumber" type="gen:UNIQUE_CARE_PATHWAY_NUMBER_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>The Unique Care Pathway Number which should identify a pathway of care for the patient. Introduced as part of 18 weeks programme (see www.18weeks.scot.nhs.uk)</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="TreatmentRequestType">
+    <xsd:sequence>
+      <xsd:element name="MessageDataPrf" type="sci:TreatmentLog" />
+      <xsd:element name="MessageHeaderPrf" type="sci:MESSAGE_HEADER_TYPE" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ADTmessageType">
+    <xsd:sequence>
+      <xsd:element name="MessageData" type="sci:ADTinterface" />
+      <xsd:element minOccurs="0" name="MessageHeaderPrf" type="sci:MESSAGE_HEADER_TYPE" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Login">
+    <xsd:annotation>
+      <xsd:documentation>Login request definition</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:annotation>
+        <xsd:documentation>Login request data</xsd:documentation>
+      </xsd:annotation>
+      <xsd:element name="Username" type="xsd:string" />
+      <xsd:element name="Password" type="xsd:string" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="LoginTokenResponse">
+    <xsd:annotation>
+      <xsd:documentation>Login response definition</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:annotation>
+        <xsd:documentation>If login error soap exception raised</xsd:documentation>
+      </xsd:annotation>
+      <xsd:element name="Token">
+        <xsd:simpleType>
+          <xsd:restriction base="sci:Token" />
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="Application">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Version" type="xsd:string" />
+            <xsd:element name="BuiltDateTime" type="xsd:dateTime" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="MessageQueue">
+    <xsd:annotation>
+      <xsd:documentation>Schema for message queue</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Name" type="sci:MessageQueueName" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PatientSystemInformation">
+    <xsd:annotation>
+      <xsd:documentation>Header information detailed during patient request</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="PatientID" type="sci:PatientIdentifier" />
+      <xsd:element name="Consent" type="xsd:boolean" />
+      <xsd:element minOccurs="0" name="CurrentUID" type="gen:ID_TYPE" />
+      <xsd:element minOccurs="0" name="OriginatingSystem" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The system from which the data comes
+This will be "PAS" if not a "LocalListener" system</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="OriginatingUser" nillable="true" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Unused</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="EffectiveDate" nillable="true" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Unused</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Provider" type="sci:ProviderItem" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PatientInformation">
+    <xsd:annotation>
+      <xsd:documentation>Schema for message queue</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="BasicDemographics" type="gen:PATIENT_DEMOGRAPHICS_TYPE" />
+      <xsd:element minOccurs="0" name="SocialCircumstances" type="gen:SOCIAL_CIRCUMSTANCES_TYPE" />
+      <xsd:element minOccurs="0" name="ExtendedDemographics" type="sci:PatientExtendedInformation" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PatientExtendedInformation">
+    <xsd:annotation>
+      <xsd:documentation>Extended demographics for a patient that are not included as part of the standard type from NHS schema</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="CurrentUID" type="gen:ID_TYPE" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="PatientUCPN" type="sci:UniqueCarePathwayNumberDataType" />
+      <xsd:element minOccurs="0" name="Consent" type="xsd:boolean" />
+      <xsd:element minOccurs="0" name="Consultant" type="gen:HCP_DETAIL_TYPE" />
+      <xsd:element minOccurs="0" name="Hospital" type="gen:ORGANISATION_TYPE" />
+      <xsd:element minOccurs="0" name="Ward" type="gen:ORGANISATION_TYPE" />
+      <xsd:element minOccurs="0" name="GPpractice" type="gen:ORGANISATION_TYPE" />
+      <xsd:element minOccurs="0" name="IsDead" type="xsd:boolean" />
+      <xsd:element minOccurs="0" name="DateOfDeath" nillable="true" type="xsd:date" />
+      <xsd:element minOccurs="0" name="TimeofDeath" nillable="true" type="xsd:time" />
+      <xsd:element minOccurs="0" name="LocationOfDeath">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="198" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="PreviousNames" nillable="true">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="PreviousName" type="gen:PERSONAL_NAME_TYPE" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="PreviousAddresses" type="gen:ADDRESS_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Previous Postal address of patient.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="CurrentPatientStatus" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PatientNationality" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="OverseasStatus" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="IsAnomymous" type="xsd:boolean" />
+      <xsd:element minOccurs="0" name="NextOfKin" type="sci:NextOfKinInfo" />
+      <xsd:element minOccurs="0" name="Provider" type="sci:ProviderItem" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PatientNotificationInfo">
+    <xsd:annotation>
+      <xsd:documentation>Definition of a patient notification returned during the GetNotification process</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="NotificationID" type="sci:NotificationID" />
+      <xsd:element name="NotificationInfo" type="sci:PatientNotification" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PatientSubscription">
+    <xsd:annotation>
+      <xsd:documentation>Schema for the patientsubscription request transaction</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="PatientID" type="sci:PatientIdentifier" />
+      <xsd:element minOccurs="0" name="CHI" type="sci:CHInumber" />
+      <xsd:element minOccurs="0" name="GPpractice" type="sci:StoreGenericIdentifier" />
+      <xsd:element minOccurs="0" name="Consultant" type="sci:StoreGenericIdentifier" />
+      <xsd:element minOccurs="0" name="PatientLocation" type="sci:StoreGenericIdentifier" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PatientSubscriptionInfo">
+    <xsd:annotation>
+      <xsd:documentation>Definition of a subscription returned during the subscription process</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="SubscriptionID" type="sci:SubscriptionID" />
+      <xsd:element name="SubscriptionInfo" type="sci:PatientSubscription" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ResultNotification">
+    <xsd:annotation>
+      <xsd:documentation>ResultNotification information</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="ReportID" type="sci:StoreGenericIdentifier" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="NotificationInfo">
+    <xsd:annotation>
+      <xsd:documentation>Definition of a notification returned during the GetNotification process</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="NotificationID" type="sci:NotificationID" />
+      <xsd:element name="NotificationType" type="sci:NotificationType" />
+      <xsd:element name="NotificationDetail">
+        <xsd:complexType>
+          <xsd:choice>
+            <xsd:element name="StoreIdentifier" type="sci:StoreGenericIdentifier" />
+            <xsd:element name="PatientNotificationInfo" type="sci:PatientNotification" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ResultNotificationInfo">
+    <xsd:annotation>
+      <xsd:documentation>Definition of a result notification returned during the GetNotification process</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="NotificationID" type="sci:NotificationID" />
+      <xsd:element name="NotificationInfo" type="sci:ResultNotification" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ResultNotificationList">
+    <xsd:annotation>
+      <xsd:documentation>List of result notifications</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="ResultNotification" type="sci:ResultNotificationInfo" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="NotificationList">
+    <xsd:annotation>
+      <xsd:documentation>List of notifications</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="Notification" type="sci:NotificationInfo" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ResultSubscription">
+    <xsd:annotation>
+      <xsd:documentation>Schema for the resultsubscription request transaction</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="RequestingHCP" type="sci:StoreGenericIdentifier" />
+      <xsd:element minOccurs="0" name="RequestingOrganisation" type="sci:StoreGenericIdentifier" />
+      <xsd:element minOccurs="0" name="Investigation">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string" />
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="TestType">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string" />
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="Discipline">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string" />
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="GP" type="sci:StoreGenericIdentifier" />
+      <xsd:element minOccurs="0" name="GPpractice" type="sci:StoreGenericIdentifier" />
+      <xsd:element minOccurs="0" name="Consultant" type="sci:StoreGenericIdentifier" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ResultSubscriptionInfo">
+    <xsd:annotation>
+      <xsd:documentation>Extended definition of ResultSubscription to extend</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="SubscriptionID" type="sci:SubscriptionID" />
+      <xsd:element name="SubscriptionInfo" type="sci:ResultSubscription" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ServiceItem">
+    <xsd:annotation>
+      <xsd:documentation>Service Information</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="ServiceID" type="xsd:string" />
+      <xsd:element name="ServiceName" type="xsd:string" />
+      <xsd:element minOccurs="0" name="MessagesReceived" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Minutes" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Status" type="xsd:string" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ServiceItemList">
+    <xsd:annotation>
+      <xsd:documentation>List of Service Items</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="Service" type="sci:ServiceItem" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="InterfaceStatusLimits">
+    <xsd:annotation>
+      <xsd:documentation>Limits used to check Interface Status</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="RedLimit" type="xsd:positiveInteger" />
+      <xsd:element minOccurs="0" name="AmberLimit" type="xsd:positiveInteger" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PatientConsentAuditItem">
+    <xsd:annotation>
+      <xsd:documentation>Breakglass item </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="PatientDetails">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="PatientID" type="sci:PatientIdentifier" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ConsentDetails">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Reason">
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:minLength value="1" />
+                  <xsd:maxLength value="250" />
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="UpdatedDateTime" type="xsd:dateTime" />
+            <xsd:element name="NewValue">
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="10" />
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UserDetails" type="sci:UserInfo" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PatientConsentAuditItemList">
+    <xsd:annotation>
+      <xsd:documentation>Break Glass type list</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="PatientConsentAuditInstance" type="sci:PatientConsentAuditItem" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ResultSubscriptionList">
+    <xsd:annotation>
+      <xsd:documentation>List of Result Subscriptions</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="ResultSubscription" type="sci:ResultSubscriptionInfo" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PatientSubscriptionList">
+    <xsd:annotation>
+      <xsd:documentation>List of Patient Subscriptions</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="PatientSubscription" type="sci:PatientSubscriptionInfo" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PatientConsentAuditCriteria">
+    <xsd:annotation>
+      <xsd:documentation>Selection criteria for FindDocument</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="PatientID" type="sci:PatientIdentifier" />
+      <xsd:element minOccurs="0" name="DateRange" type="sci:DateRangeSelection" />
+      <xsd:element minOccurs="0" name="User" type="sci:FindUserCriteria" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="NextOfKinInfo">
+    <xsd:annotation>
+      <xsd:documentation>Details Next Of Kin Information against a patient</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="KinName" type="gen:PERSONAL_NAME_TYPE" />
+      <xsd:element minOccurs="0" name="KinAddress" type="gen:ADDRESS_TYPE" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="KinTelecom" type="gen:TELECOM_TYPE" />
+      <xsd:element minOccurs="0" name="KinRelationship" nillable="true" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="CumulativeTestResultValue">
+    <xsd:annotation>
+      <xsd:documentation>Details a Cumulative Test Result Value for a test in a particular result set</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="ResultSetID" type="sci:StoreGenericIdentifier" />
+      <xsd:element name="ReportDate" type="xsd:date" />
+      <xsd:element name="TestResult" type="gen:QUANTIFIABLE_RESULT_TYPE" />
+      <xsd:element name="HasComments" type="xsd:boolean" />
+      <xsd:element name="ResultAbnormal" type="xsd:boolean" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="CumulativeTestResult">
+    <xsd:annotation>
+      <xsd:documentation>Details a Cumulative Test result.  This represents a test that may have appeared across several result sets.  Each Test should be unique in the combination of Test Code, Range Upper limit, Range Lower Limit and Units</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="TestName" type="gen:CLINICAL_CIRCUMSTANCE_TYPE" />
+      <xsd:element name="TestOrder" type="xsd:integer" />
+      <xsd:element minOccurs="0" name="Range" type="gen:RANGE_TYPE" />
+      <xsd:element minOccurs="0" name="RangeText" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ArithmeticComparator" type="gen:ARITHMETIC_COMPARATOR_TYPE" />
+      <xsd:element name="TestResultValues">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" name="TestResultValue" type="sci:CumulativeTestResultValue" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="CumulativeResultSet">
+    <xsd:annotation>
+      <xsd:documentation>Details a Cumulative Result Set / Investigation</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="ResultSetID" type="sci:StoreGenericIdentifier" />
+      <xsd:element name="TestReportID" type="sci:StoreGenericIdentifier" />
+      <xsd:element name="SampleID" type="sci:StoreGenericIdentifier" />
+      <xsd:element name="ReportIdentifier" type="gen:ID_VALUE_TYPE" />
+      <xsd:element name="ReportDate" type="xsd:date" />
+      <xsd:element minOccurs="0" name="SampleDate" type="xsd:date" />
+      <xsd:element name="SetName" type="gen:CLINICAL_CIRCUMSTANCE_TYPE" />
+      <xsd:element name="HasComments" type="xsd:boolean" />
+      <xsd:element name="Status" type="gen:TEST_STATUS_TYPE" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="CumulativeReport">
+    <xsd:annotation>
+      <xsd:documentation>Details a Cumulative Report object</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="PatientID" type="sci:PatientIdentifier" />
+      <xsd:element name="SelectedSetCode" type="xsd:string" />
+      <xsd:element name="ResultSets">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="ResultSet" type="sci:CumulativeResultSet" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="TestResults">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="TestResult" type="sci:CumulativeTestResult" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="CumulativeReportCriteria">
+    <xsd:annotation>
+      <xsd:documentation>Selection criteria for GetCumulativeReport</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="PatientID" type="sci:PatientIdentifier" />
+      <xsd:element name="SelectedSetCode" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ReportDate" type="sci:FindDateRange" />
+      <xsd:element minOccurs="0" name="DataPoints" type="xsd:integer" />
+      <xsd:element minOccurs="0" name="BreakGlassItems" type="sci:BreakGlassItemList" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SubscriptionFieldInfo">
+    <xsd:annotation>
+      <xsd:documentation>Details a subscription field and value pair</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="SubscriptionField" type="xsd:string" />
+      <xsd:element name="SubscriptionValue" type="xsd:string" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SubscriptionFieldList">
+    <xsd:annotation>
+      <xsd:documentation>Details a list of subscription fields</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="SubscriptionFieldInfo" type="sci:SubscriptionFieldInfo" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SubscriptionInfo">
+    <xsd:annotation>
+      <xsd:documentation>Definition of a subscription returned during the subscription process</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="SubscriptionID" type="sci:SubscriptionID" />
+      <xsd:element name="SubscriptionType" type="xsd:string" />
+      <xsd:element name="SubscriptionFieldList" type="sci:SubscriptionFieldList" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SubscriptionList">
+    <xsd:annotation>
+      <xsd:documentation>List of Subscriptions</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="Subscription" type="sci:SubscriptionInfo" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PatientNotification">
+    <xsd:annotation>
+      <xsd:documentation>PatientNotification information</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="PatientID" type="xsd:string" />
+      <xsd:element minOccurs="0" name="MergeID" type="xsd:string" />
+      <xsd:element name="EventType" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Consent" type="xsd:string" />
+      <xsd:element minOccurs="0" name="TransactionType" type="xsd:string" />
+      <xsd:element minOccurs="0" name="CHI" type="xsd:string" />
+      <xsd:element minOccurs="0" name="RecordType" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>The type of file that caused the notification i.e. results, document, adt etc</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="RecordKey" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation> Store ID of the record that caused the event i.e. result ID, adt ID etc</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="ProcessEvents" type="xsd:string" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ProviderLocation">
+    <xsd:annotation>
+      <xsd:documentation>Definition of a remote location returned during the GetRemoteLocations process</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="ProviderIdentifier" type="sci:ProviderIdentifier" />
+      <xsd:element name="ProviderName">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="50" />
+            <xsd:minLength value="1" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ProviderLocationItemList">
+    <xsd:annotation>
+      <xsd:documentation>List of remote locations</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="ProviderLocation" type="sci:ProviderLocation" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="LocatePatientDemographics">
+    <xsd:annotation>
+      <xsd:documentation>Locate Patient Selection criteria</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="CHI" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Surname" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Forname" type="xsd:string" />
+      <xsd:element minOccurs="0" name="DateOfBirth" type="xsd:date" />
+      <xsd:element minOccurs="0" name="PostCode" type="xsd:string" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="LocatePatientCriteria">
+    <xsd:annotation>
+      <xsd:documentation>Locate Patient Selection criteria</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="PatientDemographics" type="sci:LocatePatientDemographics" />
+      <xsd:element name="Providers">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" name="ProviderIdentifier" type="sci:ProviderIdentifier" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ProviderItemList">
+    <xsd:annotation>
+      <xsd:documentation>List of ProviderItems</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" name="ProviderIdentifier" type="sci:ProviderIdentifier" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PatientMatch">
+    <xsd:sequence>
+      <xsd:element name="ProviderLocation" type="sci:ProviderLocation" />
+      <xsd:element name="MatchType" type="sci:PatientMatchType" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="MatchedPatients" type="sci:PatientMatchDetails" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PatientMatchDetails">
+    <xsd:sequence>
+      <xsd:element name="Patient" type="sci:FindPatientItem" />
+      <xsd:element name="Information">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="InformationType" type="sci:ClinicalRecordType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PatientMatchList">
+    <xsd:annotation>
+      <xsd:documentation>List of Patient Matches</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="PatientMatch" type="sci:PatientMatch" />
+      <xsd:element name="SearchSummary" type="sci:SearchSummaryItemList" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ProviderPatientIdentifier">
+    <xsd:annotation>
+      <xsd:documentation>Definition of a remote location returned during the GetRemoteLocations process</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="PatientID" type="sci:PatientIdentifier" />
+      <xsd:element name="ProviderIdentifier" type="sci:ProviderIdentifier" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PatientIdentifierList">
+    <xsd:annotation>
+      <xsd:documentation>List of Patient IDs</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="PatientIdentifer" type="sci:ProviderPatientIdentifier" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PatientSearchSummaryItem">
+    <xsd:annotation>
+      <xsd:documentation>Defines criteria for FindPatient</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Identifier" type="sci:ProviderPatientIdentifier" />
+      <xsd:element name="ResultCount" type="xsd:nonNegativeInteger" />
+      <xsd:element minOccurs="0" name="InfoMessage" type="xsd:string" />
+      <xsd:element minOccurs="0" name="WarningMessage" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ErrorMessage" type="xsd:string" />
+      <xsd:element minOccurs="0" name="SearchTime" type="xsd:string" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PatientSearchSummaryItemList">
+    <xsd:annotation>
+      <xsd:documentation>List definition for FindMerge</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="PatientSearchSummaryItem" type="sci:PatientSearchSummaryItem" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

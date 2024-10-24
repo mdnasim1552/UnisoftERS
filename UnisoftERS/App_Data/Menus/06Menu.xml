@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Menu Skin="Black" Width="100%">
+  <Group>
+    <Item Text="File" AccessKey="F" >
+      <Group Flow="Vertical">
+        <Item Text="Save record" />
+        <Item IsSeparator="True" />
+        <Item Text="Patient Demographics" />
+      </Group>
+    </Item>
+  </Group>
+</Menu>

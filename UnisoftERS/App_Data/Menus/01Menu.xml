@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Menu>
+    <Group>
+      <Item Text="Home" AccessKey="H" NavigateUrl="~/Products/Default.aspx" imageurl="~/Images/Home.png" popoutimageurl="" tooltip="Home"  />
+      <!--<Item Text="File" Key="F" >
+        <Group>
+          <Item Text="Return to home page" NavigateUrl="~/Products/Default.aspx" />
+          <Item IsSeparator="True" />
+          <Item Text="Logout" NavigateUrl="~/Security/Logout.aspx" />
+        </Group>
+      </Item>
+      <Item Text="Record" AccessKey="O" >
+        <Group Flow="Vertical">
+          <Item Text="Add New Patient"  />
+          <Item Text="Edit Patient" Enabled="False"/>
+          <Item Text="Search for Duplicates / Merge Records"  />
+        </Group>
+      </Item>-->
+      <!--<Item IsSeparator="true" />-->
+      <Item Text="Configure" AccessKey="O" NavigateUrl="~/Products/Options/OptionsMain.aspx" tooltip="Configure"  />
+      <!--<Item Text="Reports" AccessKey="R"  NavigateUrl="~/Products/Reports/ReportsMain.aspx" tooltip="Reports" />-->
+      <!--<Item Text="Configure" AccessKey="O" NavigateUrl="~/Products/Options/OptionsMain.aspx" imageurl="~/Images/setting.png" popoutimageurl="" tooltip="Configure"  />-->
+      <!--<Item IsSeparator="true" />-->
+      <!--<Item Text="Configure" AccessKey="O" NavigateUrl="~/Products/Options/OptionsMain.aspx">
+        <Group Flow="Vertical">
+        </Group>
+      </Item>-->
+      <!--<Item Text="Reports" AccessKey="T"  NavigateUrl="~/Products/Reports/ReportsMain.aspx" >
+        <Group Flow="Vertical">-->
+          <!--<Item Text="Open Auditors Kit" NavigateUrl="Products/GIAK/GIAKMain.aspx" />
+          <Item IsSeparator="True" />-->
+          <!--<Item Text="Open AuditLog" NavigateUrl="~/Products/AuditLog/AuditLog2.aspx"  />-->
+        <!--</Group>
+      </Item>-->
+      <!--<Item Text="Administrator utilities" AccessKey="U" >
+        <Group Flow="Vertical">
+          <Item Text="Toolbox" />
+        </Group>
+      </Item>
+      <Item Text="Test forms">
+        <Group Flow="Vertical">
+          <Item Text="Patient List V2" NavigateUrl="Products/BSG/PatMain.aspx" />
+        </Group>
+      </Item>-->
+      <!--<Item Text="Help" Key="H" imageurl="~/Images/help.png">-->
+      <!--<Item Text="Help" Key="H">
+        <Group Flow="Vertical" OffsetX="-26">
+          <Item Text="About Unisoft Report Tool" Href="http://www.unisoftmedical.co.uk" />
+          --><!--<Item Text="Support" Href="~/Security/Support.aspx" />
+          <Item IsSeparator="True" />
+          <Item Text="Unisoft Newsletter" NavigateUrl="~/Newsletter/Newsletter.aspx" />
+          <Item Text="Downloads" NavigateUrl="~/Downloads/Downloads.aspx" />
+          <Item Text="Unisoft Home Page" Href="http://www.unisoftmedical.co.uk" />
+          <Item IsSeparator="True" />
+          <Item Text="Update CRM" Href="~/Security/UpdateCRM.aspx" />
+          <Item IsSeparator="True" />
+          <Item Text="PAS Data" Href="~/Products/PAS/PASData.aspx" />--><!--
+        </Group>
+      </Item>-->
+      <!--<Item IsSeparator="true" ForeColor="red" />-->
+      <Item Text="Logout" AccessKey="L" NavigateUrl="~/Security/Logout.aspx" imageurl="~/Images/logout.png" popoutimageurl="" tooltip="Logout"  />
+    </Group>
+  </Menu>

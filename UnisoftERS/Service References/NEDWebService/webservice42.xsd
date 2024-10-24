@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://Microsoft.ServiceModel.Samples" elementFormDefault="qualified" targetNamespace="http://Microsoft.ServiceModel.Samples" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://jets.thejag.org.uk/webservice/Live/V2/2/webservice.svc?xsd=xsd2" namespace="http://www.weblogik.co.uk/types" />
+  <xs:import schemaLocation="https://jets.thejag.org.uk/webservice/Live/V2/2/webservice.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:element name="Send">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="organisationApiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="organisationCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="batchId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="messageData" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="isCompressed" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://www.weblogik.co.uk/types" minOccurs="0" name="SendResult" nillable="true" type="q1:SendResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMultiple">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="organisationApiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="organisationCode" nillable="true" type="xs:string" />
+        <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="supplierBatchId" nillable="true" type="q2:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMultipleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://www.weblogik.co.uk/types" minOccurs="0" name="GetMultipleResult" nillable="true" type="q3:GetResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSingle">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="organisationApiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="organisationCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="supplierBatchId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSingleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://www.weblogik.co.uk/types" minOccurs="0" name="GetSingleResult" nillable="true" type="q4:GetResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteMultiple">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="organisationApiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="organisationCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="siteCode" nillable="true" type="xs:string" />
+        <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="localProcedureId" nillable="true" type="q5:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteMultipleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://www.weblogik.co.uk/types" minOccurs="0" name="DeleteMultipleResult" nillable="true" type="q6:GetResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteSingle">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="organisationApiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="organisationCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="siteCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="localProcedureId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteSingleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://www.weblogik.co.uk/types" minOccurs="0" name="DeleteSingleResult" nillable="true" type="q7:GetResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Ping">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PingResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PingResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckValidIdentifier">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="organisationApiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="organisationCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ProfessionalBodyCode" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckValidIdentifierResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://www.weblogik.co.uk/types" minOccurs="0" name="CheckValidIdentifierResult" nillable="true" type="q8:CheckResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendProcedureSummary">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="organisationApiKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="organisationCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="messageData" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendProcedureSummaryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://www.weblogik.co.uk/types" minOccurs="0" name="SendProcedureSummaryResult" nillable="true" type="q9:SummaryResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

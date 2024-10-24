@@ -1,0 +1,97 @@
+﻿<%@ Master Language="VB" MasterPageFile="~/Templates/Unisoft.master" AutoEventWireup="false" CodeBehind="Reports.master.vb" Inherits="UnisoftERS.Reports1" %>
+
+<asp:Content ID="HeadContent" ContentPlaceHolderID="HeadContentPlaceHolder" runat="server">
+    <asp:ContentPlaceHolder ID="HeadContentPlaceHolder2" runat="server" />
+    <style type="text/css">
+        .lb {
+            width: 310px;
+            height: 205px;
+            float: left;
+        }
+        .halfBlock {
+            width:45%; box-sizing:content-box; padding:1em; margin:0; float:left;
+        }
+        .block400px {
+            width:400px; box-sizing:content-box; margin:0; float:left;
+        }
+        .padding1em {
+            padding:1em;
+        }
+        .labelSpan {
+            width:200px;
+        }
+        .iFrameDimension iframe {
+            width:1200px;
+            height:800px;
+            frameborder:0;
+            border:0;
+            cellspacing:0;
+        }
+
+        /* Report Analysis.aspx, Report Filter Option     */
+        .searchIcon {
+            background: #fff url('../../images/search_icon.png') no-repeat 0 0;
+            position: absolute;
+            width: 13px;
+            height: 13px;
+            display: inline-block;
+            right: 7em;
+            top: 6px;
+        }
+
+        .searchBox {
+            position: relative;
+        }
+ 
+        .searchBox .RadInput {
+            /* margin-bottom: 36px; */
+        }
+        .align-centre {
+            text-align:center;
+        }
+        .image-link:hover {
+            /*cursor:cell;*/
+            cursor: pointer; background-color:#b7b7ff;
+        }
+
+        .dateFilterDiv{
+            margin:3.25px 0px;
+        }
+
+        #NEDRPatient .autosize{
+            margin:7px 0px;
+        }
+
+        .NEDRDates fieldset{
+            height: 170px;
+        }
+
+        #chkProcedureType{
+            width:100%;
+        }
+
+        #ContentDiv > div {
+            margin-bottom:40px;
+            width:1200px;
+        }
+    </style>
+    <%--<link href="../Styles/Reporting.css" rel="stylesheet" type="text/css" />--%>
+</asp:Content>
+
+<%--<asp:Content ID="LeftContent" ContentPlaceHolderID="LeftPaneContentPlaceHolder" runat="server">
+    <asp:ContentPlaceHolder ID="LeftContentPlaceHolder" runat="server">
+        <div id="LeftTreePane" class="treeListBorder" style="margin-top: -5px;">
+            <telerik:radtreeview id="LeftMenuTreeView" runat="server" checkchildnodes="True" tristatecheckboxes="False" checkboxes="True" skin="Default" backcolor="#f2f9fc" width="280px" height="595px" cssclass="OptionsBackgroundPane">
+                <DataBindings>
+                    <telerik:RadTreeNodeBinding DataMember="Node" CssClass="class" NavigateUrl="navigateurl" ImageUrlField="ImageUrl" ToolTip="ToolTip" CssClassField="cssAttrib" CheckableField="enablecheckbox" Checked="False" Checkable="False" />
+                </DataBindings>
+            </telerik:radtreeview>
+        </div>
+    </asp:ContentPlaceHolder>
+
+</asp:Content>--%>
+<asp:Content ID="BodyContent" ContentPlaceHolderID="BodyContentPlaceHolder" runat="server">    
+    <asp:ContentPlaceHolder ID="BodyContentPlaceHolder" runat="server">
+        <h3>asp:Content ID="Content3" ContentPlaceHolderID="BodyContentPlaceHolder" runat="server"</h3>
+    </asp:ContentPlaceHolder>
+</asp:Content>

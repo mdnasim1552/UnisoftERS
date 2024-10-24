@@ -1,0 +1,6 @@
+﻿<Tree>
+  <Node Text="Options" Value="~/Products/Options/SystemSettings.aspx" CustomId="Options" Expanded="True">
+    <Node Text="System Settings" Value="~/Products/Options/SystemSettings.aspx" CustomId="SystemSettings" />
+    <Node Text="License" Value="~/Products/Options/License.aspx" CustomId="License" />
+  </Node>
+</Tree>

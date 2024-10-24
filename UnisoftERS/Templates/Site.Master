@@ -1,0 +1,32 @@
+﻿<%@ Master Language="VB" AutoEventWireup="false" CodeBehind="Site.master.vb" Inherits="UnisoftERS.Site" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <telerik:RadStyleSheetManager ID="RadStyleSheetManager1" runat="server" />
+    <link href="../Styles/Site.css" rel="stylesheet" type="text/css" />
+    <title></title>
+    <asp:ContentPlaceHolder ID="HeadContentPlaceHolder" runat="server" />
+
+</head>
+<body>
+    <form id="form1" runat="server">
+        <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server" />
+        <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server" Skin="Metro">
+        </telerik:RadAjaxLoadingPanel>
+           <asp:ScriptManager ID="RadScriptManager1" runat="server" EnablePageMethods="true" ScriptMode="Release">
+            <Scripts>
+                <asp:ScriptReference Path="../Scripts/jquery-3.6.3.min.js" />
+                <asp:ScriptReference Path="../Scripts/Global.js" />
+            </Scripts>
+        </asp:ScriptManager>
+        <div>
+            <asp:ContentPlaceHolder ID="LeftPaneContentPlaceHolder" runat="server" />
+
+            <asp:ContentPlaceHolder ID="BodyContentPlaceHolder" runat="server" />
+
+        </div>
+    </form>
+</body>
+</html>

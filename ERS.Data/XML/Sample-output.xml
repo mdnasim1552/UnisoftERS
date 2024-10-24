@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hospital.SendBatchMessage xmlns="http://weblogik.co.uk/jets/Hospital.SendBatchMessage.xsd">
+  <session uniqueId="uniqueId1" description="description1" date="date1" time="AM" type="Dedicated Training List" site="site1">
+    <procedures>
+      <procedure localProcedureId="localProcedureId1" previousLocalProcedureId="previousLocalProcedureId1" procedureName="OGD" endoscopistDiscomfort="Not Specified" nurseDiscomfort="Not Specified" bowelPrep="Not Specified" extent="Stomach" entonox="Not Specified" antibioticGiven="Not Specified" generalAnaes="Not Specified" pharyngealAnaes="Not Specified" polypsDetected="1" digitalRectalExamination="Not Specified" magneticEndoscopeImagerUsed="Not Specified" scopeWithdrawalTime="1">
+        <patient gender="Male" age="1" admissionType="Not Specified" urgencyType="Not Specified" />
+        <drugs pethidine="1" midazolam="1" fentanyl="1" buscopan="1" propofol="1" noDrugsAdministered="Not Specified" />
+        <staff.members>
+          <Staff professionalBodyCode="professionalBodyCode1" endoscopistRole="Trainer" procedureRole="Independent (no trainer)" extent="Stomach" jManoeuvre="Not Specified">
+            <therapeutics>
+              <therapeutic type="None" site="None" role="Independent (no trainer)" polypSize="ItemLessThan10mm" tattooed="No" performed="1" successful="1" retrieved="1" comment="comment1" />
+              <therapeutic type="Other" site="Oesophagus" role="Was observed" polypSize="Item10to19mm" tattooed="Yes" performed="-2147483647" successful="-2147483647" retrieved="-2147483647" comment="comment2" />
+              <therapeutic type="Argon beam photocoagulation" site="Stomach" role="Was assisted physically" polypSize="Item20OrLargermm" tattooed="Previously Tattooed" performed="2147483647" successful="2147483647" retrieved="2147483647" comment="comment3" />
+            </therapeutics>
+          </Staff>
+          <Staff professionalBodyCode="professionalBodyCode2" endoscopistRole="Trainee" procedureRole="Was observed" extent="Oesophagus" jManoeuvre="No">
+            <therapeutics>
+              <therapeutic type="Balloon dilation" site="Duodenal bulb" role="I observed" polypSize="ItemLessThan10mm" tattooed="No" performed="0" successful="0" retrieved="0" comment="comment4" />
+              <therapeutic type="Banding of haemorrhoid" site="D2 - 2nd part of duodenum" role="I assisted physically" polypSize="Item10to19mm" tattooed="Yes" performed="2" successful="2" retrieved="2" comment="comment5" />
+              <therapeutic type="Clip placement" site="Terminal ileum" role="Independent (no trainer)" polypSize="Item20OrLargermm" tattooed="Previously Tattooed" performed="-2147483646" successful="-2147483646" retrieved="-2147483646" comment="comment6" />
+            </therapeutics>
+          </Staff>
+          <Staff professionalBodyCode="professionalBodyCode3" endoscopistRole="Independent" procedureRole="Was assisted physically" extent="Intubation failed" jManoeuvre="Yes">
+            <therapeutics>
+              <therapeutic type="Endoloop placement" site="Neo-terminal ileum" role="Was observed" polypSize="ItemLessThan10mm" tattooed="No" performed="2147483646" successful="2147483646" retrieved="2147483646" comment="comment7" />
+              <therapeutic type="Foreign body removal" site="Ileo-colon anastomosis" role="Was assisted physically" polypSize="Item10to19mm" tattooed="Yes" performed="-1" successful="-1" retrieved="-1" comment="comment8" />
+              <therapeutic type="Injection therapy" site="Ascending Colon" role="I observed" polypSize="Item20OrLargermm" tattooed="Previously Tattooed" performed="3" successful="3" retrieved="3" comment="comment9" />
+            </therapeutics>
+          </Staff>
+        </staff.members>
+        <indications>
+          <indication indication="Other" comment="comment1" />
+          <indication indication="Abdominal pain" comment="comment2" />
+          <indication indication="Abnormality on CT / barium" comment="comment3" />
+        </indications>
+        <limitations>
+          <limitation limitation="Other" comment="comment1" />
+          <limitation limitation="Not Limited" comment="comment2" />
+          <limitation limitation="benign stricture" comment="comment3" />
+        </limitations>
+        <biopsies>
+          <Biopsy biopsySite="None" numberPerformed="1" />
+          <Biopsy biopsySite="Oesophagus" numberPerformed="-2147483647" />
+          <Biopsy biopsySite="Stomach" numberPerformed="2147483647" />
+        </biopsies>
+        <diagnoses>
+          <Diagnose diagnosis="Normal" tattooed="No" site="None" comment="comment1" />
+          <Diagnose diagnosis="Other" tattooed="Yes" site="Oesophagus" comment="comment2" />
+          <Diagnose diagnosis="Anal fissure" tattooed="Previously Tattooed" site="Stomach" comment="comment3" />
+        </diagnoses>
+        <adverse.events>
+          <adverse.event adverseEvent="None" comment="comment1" />
+          <adverse.event adverseEvent="Other" comment="comment2" />
+          <adverse.event adverseEvent="Ventilation" comment="comment3" />
+        </adverse.events>
+      </procedure>
+      <procedure localProcedureId="localProcedureId2" previousLocalProcedureId="previousLocalProcedureId2" procedureName="FLEXI" endoscopistDiscomfort="Comfortable" nurseDiscomfort="Comfortable" bowelPrep="excellent" extent="Oesophagus" entonox="No" antibioticGiven="No" generalAnaes="No" pharyngealAnaes="No" polypsDetected="-2147483647" digitalRectalExamination="No" magneticEndoscopeImagerUsed="No" scopeWithdrawalTime="-2147483647">
+        <patient gender="Female" age="-2147483647" admissionType="Inpatient" urgencyType="Routine" />
+        <drugs pethidine="-3.40282347E+38" midazolam="-3.40282347E+38" fentanyl="-3.40282347E+38" buscopan="-3.40282347E+38" propofol="-3.40282347E+38" noDrugsAdministered="No" />
+        <staff.members>
+          <Staff professionalBodyCode="professionalBodyCode4" endoscopistRole="Trainer" procedureRole="I observed" extent="D2 - 2nd part of duodenum" jManoeuvre="Not Specified">
+            <therapeutics>
+              <therapeutic type="Marking / tattooing" site="Hepatic flexure" role="I assisted physically" polypSize="ItemLessThan10mm" tattooed="No" performed="-2147483645" successful="-2147483645" retrieved="-2147483645" comment="comment10" />
+              <therapeutic type="Polyp - cold biopsy" site="Transverse Colon" role="Independent (no trainer)" polypSize="Item10to19mm" tattooed="Yes" performed="2147483645" successful="2147483645" retrieved="2147483645" comment="comment11" />
+              <therapeutic type="Polyp - EMR" site="Splenic flexure" role="Was observed" polypSize="Item20OrLargermm" tattooed="Previously Tattooed" performed="-2" successful="-2" retrieved="-2" comment="comment12" />
+            </therapeutics>
+          </Staff>
+          <Staff professionalBodyCode="professionalBodyCode5" endoscopistRole="Trainee" procedureRole="I assisted physically" extent="Duodenal bulb" jManoeuvre="No">
+            <therapeutics>
+              <therapeutic type="Polyp - ESD" site="Descending Colon" role="Was assisted physically" polypSize="ItemLessThan10mm" tattooed="No" performed="4" successful="4" retrieved="4" comment="comment13" />
+              <therapeutic type="Polyp - hot biopsy" site="Sigmoid Colon" role="I observed" polypSize="Item10to19mm" tattooed="Yes" performed="-2147483644" successful="-2147483644" retrieved="-2147483644" comment="comment14" />
+              <therapeutic type="Polyp - snare cold" site="Rectum" role="I assisted physically" polypSize="Item20OrLargermm" tattooed="Previously Tattooed" performed="2147483644" successful="2147483644" retrieved="2147483644" comment="comment15" />
+            </therapeutics>
+          </Staff>
+          <Staff professionalBodyCode="professionalBodyCode6" endoscopistRole="Independent" procedureRole="Independent (no trainer)" extent="Anastomosis" jManoeuvre="Yes">
+            <therapeutics>
+              <therapeutic type="Polyp - snare hot" site="Anus" role="Independent (no trainer)" polypSize="ItemLessThan10mm" tattooed="No" performed="-3" successful="-3" retrieved="-3" comment="comment16" />
+              <therapeutic type="Stent change" site="Pouch" role="Was observed" polypSize="Item10to19mm" tattooed="Yes" performed="5" successful="5" retrieved="5" comment="comment17" />
+              <therapeutic type="Stent placement" site="Caecum" role="Was assisted physically" polypSize="Item20OrLargermm" tattooed="Previously Tattooed" performed="-2147483643" successful="-2147483643" retrieved="-2147483643" comment="comment18" />
+            </therapeutics>
+          </Staff>
+        </staff.members>
+        <indications>
+          <indication indication="Anaemia" comment="comment4" />
+          <indication indication="Barretts oesophagus" comment="comment5" />
+          <indication indication="Diarrhoea" comment="comment6" />
+        </indications>
+        <limitations>
+          <limitation limitation="inadequate bowel prep" comment="comment4" />
+          <limitation limitation="malignant stricture" comment="comment5" />
+          <limitation limitation="patient discomfort" comment="comment6" />
+        </limitations>
+        <biopsies>
+          <Biopsy biopsySite="Duodenal bulb" numberPerformed="0" />
+          <Biopsy biopsySite="D2 - 2nd part of duodenum" numberPerformed="2" />
+          <Biopsy biopsySite="Terminal ileum" numberPerformed="-2147483646" />
+        </biopsies>
+        <diagnoses>
+          <Diagnose diagnosis="Angiodysplasia" tattooed="No" site="Duodenal bulb" comment="comment4" />
+          <Diagnose diagnosis="Colitis - ischemic" tattooed="Yes" site="D2 - 2nd part of duodenum" comment="comment5" />
+          <Diagnose diagnosis="Colitis - pseudomembranous" tattooed="Previously Tattooed" site="Terminal ileum" comment="comment6" />
+        </diagnoses>
+        <adverse.events>
+          <adverse.event adverseEvent="Perforation of lumen" comment="comment4" />
+          <adverse.event adverseEvent="Bleeding" comment="comment5" />
+          <adverse.event adverseEvent="O2 desaturation" comment="comment6" />
+        </adverse.events>
+      </procedure>
+      <procedure localProcedureId="localProcedureId3" previousLocalProcedureId="previousLocalProcedureId3" procedureName="ERCP" endoscopistDiscomfort="Minimal" nurseDiscomfort="Minimal" bowelPrep="good" extent="Intubation failed" entonox="Yes" antibioticGiven="Yes" generalAnaes="Yes" pharyngealAnaes="Yes" polypsDetected="2147483647" digitalRectalExamination="Yes" magneticEndoscopeImagerUsed="Yes" scopeWithdrawalTime="2147483647">
+        <patient gender="Unknown" age="2147483647" admissionType="Outpatient" urgencyType="Urgent" />
+        <drugs pethidine="3.40282347E+38" midazolam="3.40282347E+38" fentanyl="3.40282347E+38" buscopan="3.40282347E+38" propofol="3.40282347E+38" noDrugsAdministered="Yes" />
+        <staff.members>
+          <Staff professionalBodyCode="professionalBodyCode7" endoscopistRole="Trainer" procedureRole="Was observed" extent="Transverse Colon" jManoeuvre="Not Specified">
+            <therapeutics>
+              <therapeutic type="Stent removal" site="None" role="I observed" polypSize="ItemLessThan10mm" tattooed="No" performed="2147483643" successful="2147483643" retrieved="2147483643" comment="comment19" />
+              <therapeutic type="YAG laser" site="Oesophagus" role="I assisted physically" polypSize="Item10to19mm" tattooed="Yes" performed="-4" successful="-4" retrieved="-4" comment="comment20" />
+              <therapeutic type="Balloon trawl" site="Stomach" role="Independent (no trainer)" polypSize="Item20OrLargermm" tattooed="Previously Tattooed" performed="6" successful="6" retrieved="6" comment="comment21" />
+            </therapeutics>
+          </Staff>
+          <Staff professionalBodyCode="professionalBodyCode8" endoscopistRole="Trainee" procedureRole="Was assisted physically" extent="Terminal ileum" jManoeuvre="No">
+            <therapeutics>
+              <therapeutic type="Bougie dilation" site="Duodenal bulb" role="Was observed" polypSize="ItemLessThan10mm" tattooed="No" performed="-2147483642" successful="-2147483642" retrieved="-2147483642" comment="comment22" />
+              <therapeutic type="Brush cytology" site="D2 - 2nd part of duodenum" role="Was assisted physically" polypSize="Item10to19mm" tattooed="Yes" performed="2147483642" successful="2147483642" retrieved="2147483642" comment="comment23" />
+              <therapeutic type="Cannulation" site="Terminal ileum" role="I observed" polypSize="Item20OrLargermm" tattooed="Previously Tattooed" performed="-5" successful="-5" retrieved="-5" comment="comment24" />
+            </therapeutics>
+          </Staff>
+          <Staff professionalBodyCode="professionalBodyCode9" endoscopistRole="Independent" procedureRole="I observed" extent="Splenic flexure" jManoeuvre="Yes">
+            <therapeutics>
+              <therapeutic type="Combined (rendezvous) proc" site="Neo-terminal ileum" role="I assisted physically" polypSize="ItemLessThan10mm" tattooed="No" performed="7" successful="7" retrieved="7" comment="comment25" />
+              <therapeutic type="Diagnostic cholangiogram" site="Ileo-colon anastomosis" role="Independent (no trainer)" polypSize="Item10to19mm" tattooed="Yes" performed="-2147483641" successful="-2147483641" retrieved="-2147483641" comment="comment26" />
+              <therapeutic type="Diagnostic pancreatogram" site="Ascending Colon" role="Was observed" polypSize="Item20OrLargermm" tattooed="Previously Tattooed" performed="2147483641" successful="2147483641" retrieved="2147483641" comment="comment27" />
+            </therapeutics>
+          </Staff>
+        </staff.members>
+        <indications>
+          <indication indication="Dyspepsia" comment="comment7" />
+          <indication indication="Dysphagia" comment="comment8" />
+          <indication indication="Haematemesis" comment="comment9" />
+        </indications>
+        <limitations>
+          <limitation limitation="severe colitis" comment="comment7" />
+          <limitation limitation="unresolved loop" comment="comment8" />
+          <limitation limitation="clinical intention achieved" comment="comment9" />
+        </limitations>
+        <biopsies>
+          <Biopsy biopsySite="Neo-terminal ileum" numberPerformed="2147483646" />
+          <Biopsy biopsySite="Ileo-colon anastomosis" numberPerformed="-1" />
+          <Biopsy biopsySite="Ascending Colon" numberPerformed="3" />
+        </biopsies>
+        <diagnoses>
+          <Diagnose diagnosis="Colitis - unspecified" tattooed="No" site="Neo-terminal ileum" comment="comment7" />
+          <Diagnose diagnosis="Colorectal cancer" tattooed="Yes" site="Ileo-colon anastomosis" comment="comment8" />
+          <Diagnose diagnosis="Crohn's - terminal ileum" tattooed="Previously Tattooed" site="Ascending Colon" comment="comment9" />
+        </diagnoses>
+        <adverse.events>
+          <adverse.event adverseEvent="Flumazenil" comment="comment7" />
+          <adverse.event adverseEvent="Naloxone" comment="comment8" />
+          <adverse.event adverseEvent="Consent signed in room" comment="comment9" />
+        </adverse.events>
+      </procedure>
+    </procedures>
+  </session>
+  <session uniqueId="uniqueId2" description="description2" date="date2" time="PM" type="Adhoc Training List" site="site2">
+    <procedures>
+      <procedure localProcedureId="localProcedureId4" previousLocalProcedureId="previousLocalProcedureId4" procedureName="COLON" endoscopistDiscomfort="Mild" nurseDiscomfort="Mild" bowelPrep="fair" extent="D2 - 2nd part of duodenum" entonox="Not Specified" antibioticGiven="Not Specified" generalAnaes="Not Specified" pharyngealAnaes="Not Specified" polypsDetected="0" digitalRectalExamination="Not Specified" magneticEndoscopeImagerUsed="Not Specified" scopeWithdrawalTime="0">
+        <patient gender="Indeterminate" age="0" admissionType="Not Specified" urgencyType="Emergency" />
+        <drugs pethidine="-0.100000024" midazolam="-0.100000024" fentanyl="-0.100000024" buscopan="-0.100000024" propofol="-0.100000024" noDrugsAdministered="Not Specified" />
+        <staff.members>
+          <Staff professionalBodyCode="professionalBodyCode10" endoscopistRole="Trainer" procedureRole="I assisted physically" extent="Sigmoid colon" jManoeuvre="Not Specified">
+            <therapeutics>
+              <therapeutic type="Endoscopic cyst puncture" site="Hepatic flexure" role="Was assisted physically" polypSize="ItemLessThan10mm" tattooed="No" performed="-6" successful="-6" retrieved="-6" comment="comment28" />
+              <therapeutic type="Haemostasis" site="Transverse Colon" role="I observed" polypSize="Item10to19mm" tattooed="Yes" performed="8" successful="8" retrieved="8" comment="comment29" />
+              <therapeutic type="Manometry" site="Splenic flexure" role="I assisted physically" polypSize="Item20OrLargermm" tattooed="Previously Tattooed" performed="-2147483640" successful="-2147483640" retrieved="-2147483640" comment="comment30" />
+            </therapeutics>
+          </Staff>
+          <Staff professionalBodyCode="professionalBodyCode11" endoscopistRole="Trainee" procedureRole="Independent (no trainer)" extent="Rectum" jManoeuvre="No">
+            <therapeutics>
+              <therapeutic type="Nasopancreatic / bilary drain" site="Descending Colon" role="Independent (no trainer)" polypSize="ItemLessThan10mm" tattooed="No" performed="2147483640" successful="2147483640" retrieved="2147483640" comment="comment31" />
+              <therapeutic type="Sphincterotomy" site="Sigmoid Colon" role="Was observed" polypSize="Item10to19mm" tattooed="Yes" performed="-7" successful="-7" retrieved="-7" comment="comment32" />
+              <therapeutic type="Stent placement - CBD" site="Rectum" role="Was assisted physically" polypSize="Item20OrLargermm" tattooed="Previously Tattooed" performed="9" successful="9" retrieved="9" comment="comment33" />
+            </therapeutics>
+          </Staff>
+          <Staff professionalBodyCode="professionalBodyCode12" endoscopistRole="Independent" procedureRole="Was observed" extent="Pouch" jManoeuvre="Yes">
+            <therapeutics>
+              <therapeutic type="Stent placement - pancreas" site="Anus" role="I observed" polypSize="ItemLessThan10mm" tattooed="No" performed="-2147483639" successful="-2147483639" retrieved="-2147483639" comment="comment34" />
+              <therapeutic type="Stone extraction &gt;=10mm" site="Pouch" role="I assisted physically" polypSize="Item10to19mm" tattooed="Yes" performed="2147483639" successful="2147483639" retrieved="2147483639" comment="comment35" />
+              <therapeutic type="Stone extraction 0x3c 10mm" site="Caecum" role="Independent (no trainer)" polypSize="Item20OrLargermm" tattooed="Previously Tattooed" performed="-8" successful="-8" retrieved="-8" comment="comment36" />
+            </therapeutics>
+          </Staff>
+        </staff.members>
+        <indications>
+          <indication indication="Heartburn / reflux" comment="comment10" />
+          <indication indication="Melaena" comment="comment11" />
+          <indication indication="Nausea / vomiting" comment="comment12" />
+        </indications>
+        <limitations>
+          <limitation limitation="Other" comment="comment10" />
+          <limitation limitation="Not Limited" comment="comment11" />
+          <limitation limitation="benign stricture" comment="comment12" />
+        </limitations>
+        <biopsies>
+          <Biopsy biopsySite="Hepatic flexure" numberPerformed="-2147483645" />
+          <Biopsy biopsySite="Transverse Colon" numberPerformed="2147483645" />
+          <Biopsy biopsySite="Splenic flexure" numberPerformed="-2" />
+        </biopsies>
+        <diagnoses>
+          <Diagnose diagnosis="Crohn's colitis" tattooed="No" site="Hepatic flexure" comment="comment10" />
+          <Diagnose diagnosis="Diverticulosis" tattooed="Yes" site="Transverse Colon" comment="comment11" />
+          <Diagnose diagnosis="Fistula" tattooed="Previously Tattooed" site="Splenic flexure" comment="comment12" />
+        </diagnoses>
+        <adverse.events>
+          <adverse.event adverseEvent="Withdrawal of consent" comment="comment10" />
+          <adverse.event adverseEvent="Unplanned admission" comment="comment11" />
+          <adverse.event adverseEvent="Unsupervised trainee" comment="comment12" />
+        </adverse.events>
+      </procedure>
+      <procedure localProcedureId="localProcedureId5" previousLocalProcedureId="previousLocalProcedureId5" procedureName="OGD" endoscopistDiscomfort="Moderate" nurseDiscomfort="Moderate" bowelPrep="inadequate" extent="Duodenal bulb" entonox="No" antibioticGiven="No" generalAnaes="No" pharyngealAnaes="No" polypsDetected="2" digitalRectalExamination="No" magneticEndoscopeImagerUsed="No" scopeWithdrawalTime="2">
+        <patient gender="Male" age="2" admissionType="Inpatient" urgencyType="Surveillance" />
+        <drugs pethidine="2.1" midazolam="2.1" fentanyl="2.1" buscopan="2.1" propofol="2.1" noDrugsAdministered="No" />
+        <staff.members>
+          <Staff professionalBodyCode="professionalBodyCode13" endoscopistRole="Trainer" procedureRole="Was assisted physically" extent="Neo-terminal ileum" jManoeuvre="Not Specified">
+            <therapeutics>
+              <therapeutic type="Band ligation" site="None" role="Was observed" polypSize="ItemLessThan10mm" tattooed="No" performed="10" successful="10" retrieved="10" comment="comment37" />
+              <therapeutic type="Botox injection" site="Oesophagus" role="Was assisted physically" polypSize="Item10to19mm" tattooed="Yes" performed="-2147483638" successful="-2147483638" retrieved="-2147483638" comment="comment38" />
+              <therapeutic type="EMR" site="Stomach" role="I observed" polypSize="Item20OrLargermm" tattooed="Previously Tattooed" performed="2147483638" successful="2147483638" retrieved="2147483638" comment="comment39" />
+            </therapeutics>
+          </Staff>
+          <Staff professionalBodyCode="professionalBodyCode14" endoscopistRole="Trainee" procedureRole="I observed" extent="Ileo-colon anastomosis" jManoeuvre="No">
+            <therapeutics>
+              <therapeutic type="ESD" site="Duodenal bulb" role="I assisted physically" polypSize="ItemLessThan10mm" tattooed="No" performed="-9" successful="-9" retrieved="-9" comment="comment40" />
+              <therapeutic type="Heater probe" site="D2 - 2nd part of duodenum" role="Independent (no trainer)" polypSize="Item10to19mm" tattooed="Yes" performed="11" successful="11" retrieved="11" comment="comment41" />
+              <therapeutic type="Hot biopsy" site="Terminal ileum" role="Was observed" polypSize="Item20OrLargermm" tattooed="Previously Tattooed" performed="-2147483637" successful="-2147483637" retrieved="-2147483637" comment="comment42" />
+            </therapeutics>
+          </Staff>
+          <Staff professionalBodyCode="professionalBodyCode15" endoscopistRole="Independent" procedureRole="I assisted physically" extent="Hepatic flexure" jManoeuvre="Yes">
+            <therapeutics>
+              <therapeutic type="PEG change" site="Neo-terminal ileum" role="Was assisted physically" polypSize="ItemLessThan10mm" tattooed="No" performed="2147483637" successful="2147483637" retrieved="2147483637" comment="comment43" />
+              <therapeutic type="PEG placement" site="Ileo-colon anastomosis" role="I observed" polypSize="Item10to19mm" tattooed="Yes" performed="-10" successful="-10" retrieved="-10" comment="comment44" />
+              <therapeutic type="PEG removal" site="Ascending Colon" role="I assisted physically" polypSize="Item20OrLargermm" tattooed="Previously Tattooed" performed="12" successful="12" retrieved="12" comment="comment45" />
+            </therapeutics>
+          </Staff>
+        </staff.members>
+        <indications>
+          <indication indication="Odynophagia" comment="comment13" />
+          <indication indication="PEG change" comment="comment14" />
+          <indication indication="PEG placement" comment="comment15" />
+        </indications>
+        <limitations>
+          <limitation limitation="inadequate bowel prep" comment="comment13" />
+          <limitation limitation="malignant stricture" comment="comment14" />
+          <limitation limitation="patient discomfort" comment="comment15" />
+        </limitations>
+        <biopsies>
+          <Biopsy biopsySite="Descending Colon" numberPerformed="4" />
+          <Biopsy biopsySite="Sigmoid Colon" numberPerformed="-2147483644" />
+          <Biopsy biopsySite="Rectum" numberPerformed="2147483644" />
+        </biopsies>
+        <diagnoses>
+          <Diagnose diagnosis="Foreign body" tattooed="No" site="Descending Colon" comment="comment13" />
+          <Diagnose diagnosis="Haemorrhoids" tattooed="Yes" site="Sigmoid Colon" comment="comment14" />
+          <Diagnose diagnosis="Lipoma" tattooed="Previously Tattooed" site="Rectum" comment="comment15" />
+        </diagnoses>
+        <adverse.events>
+          <adverse.event adverseEvent="Death" comment="comment13" />
+          <adverse.event adverseEvent="Pancreatitis" comment="comment14" />
+          <adverse.event adverseEvent="None" comment="comment15" />
+        </adverse.events>
+      </procedure>
+      <procedure localProcedureId="localProcedureId6" previousLocalProcedureId="previousLocalProcedureId6" procedureName="FLEXI" endoscopistDiscomfort="Severe" nurseDiscomfort="Severe" bowelPrep="Not Specified" extent="Anastomosis" entonox="Yes" antibioticGiven="Yes" generalAnaes="Yes" pharyngealAnaes="Yes" polypsDetected="-2147483646" digitalRectalExamination="Yes" magneticEndoscopeImagerUsed="Yes" scopeWithdrawalTime="-2147483646">
+        <patient gender="Female" age="-2147483646" admissionType="Outpatient" urgencyType="Not Specified" />
+        <drugs pethidine="-3.40282347E+38" midazolam="-3.40282347E+38" fentanyl="-3.40282347E+38" buscopan="-3.40282347E+38" propofol="-3.40282347E+38" noDrugsAdministered="Yes" />
+        <staff.members>
+          <Staff professionalBodyCode="professionalBodyCode16" endoscopistRole="Trainer" procedureRole="Independent (no trainer)" extent="Descending Colon" jManoeuvre="Not Specified">
+            <therapeutics>
+              <therapeutic type="Polypectomy" site="Hepatic flexure" role="Independent (no trainer)" polypSize="ItemLessThan10mm" tattooed="No" performed="-2147483636" successful="-2147483636" retrieved="-2147483636" comment="comment46" />
+              <therapeutic type="Radio frequency ablation" site="Transverse Colon" role="Was observed" polypSize="Item10to19mm" tattooed="Yes" performed="2147483636" successful="2147483636" retrieved="2147483636" comment="comment47" />
+              <therapeutic type="Variceal sclerotherapy" site="Splenic flexure" role="Was assisted physically" polypSize="Item20OrLargermm" tattooed="Previously Tattooed" performed="-11" successful="-11" retrieved="-11" comment="comment48" />
+            </therapeutics>
+          </Staff>
+          <Staff professionalBodyCode="professionalBodyCode17" endoscopistRole="Trainee" procedureRole="Was observed" extent="Caecum" jManoeuvre="No">
+            <therapeutics>
+              <therapeutic type="None" site="Descending Colon" role="I observed" polypSize="ItemLessThan10mm" tattooed="No" performed="13" successful="13" retrieved="13" comment="comment49" />
+              <therapeutic type="Other" site="Sigmoid Colon" role="I assisted physically" polypSize="Item10to19mm" tattooed="Yes" performed="-2147483635" successful="-2147483635" retrieved="-2147483635" comment="comment50" />
+              <therapeutic type="Argon beam photocoagulation" site="Rectum" role="Independent (no trainer)" polypSize="Item20OrLargermm" tattooed="Previously Tattooed" performed="2147483635" successful="2147483635" retrieved="2147483635" comment="comment51" />
+            </therapeutics>
+          </Staff>
+          <Staff professionalBodyCode="professionalBodyCode18" endoscopistRole="Independent" procedureRole="Was assisted physically" extent="Ascending Colon" jManoeuvre="Yes">
+            <therapeutics>
+              <therapeutic type="Balloon dilation" site="Anus" role="Was observed" polypSize="ItemLessThan10mm" tattooed="No" performed="-12" successful="-12" retrieved="-12" comment="comment52" />
+              <therapeutic type="Banding of haemorrhoid" site="Pouch" role="Was assisted physically" polypSize="Item10to19mm" tattooed="Yes" performed="14" successful="14" retrieved="14" comment="comment53" />
+              <therapeutic type="Clip placement" site="Caecum" role="I observed" polypSize="Item20OrLargermm" tattooed="Previously Tattooed" performed="-2147483634" successful="-2147483634" retrieved="-2147483634" comment="comment54" />
+            </therapeutics>
+          </Staff>
+        </staff.members>
+        <indications>
+          <indication indication="PEG removal" comment="comment16" />
+          <indication indication="Positive TTG / EMA" comment="comment17" />
+          <indication indication="Stent change" comment="comment18" />
+        </indications>
+        <limitations>
+          <limitation limitation="severe colitis" comment="comment16" />
+          <limitation limitation="unresolved loop" comment="comment17" />
+          <limitation limitation="clinical intention achieved" comment="comment18" />
+        </limitations>
+        <biopsies>
+          <Biopsy biopsySite="Anus" numberPerformed="-3" />
+          <Biopsy biopsySite="Pouch" numberPerformed="5" />
+          <Biopsy biopsySite="Caecum" numberPerformed="-2147483643" />
+        </biopsies>
+        <diagnoses>
+          <Diagnose diagnosis="Melanosis" tattooed="No" site="Anus" comment="comment16" />
+          <Diagnose diagnosis="Parasites" tattooed="Yes" site="Pouch" comment="comment17" />
+          <Diagnose diagnosis="Pneumatosis coli" tattooed="Previously Tattooed" site="Caecum" comment="comment18" />
+        </diagnoses>
+        <adverse.events>
+          <adverse.event adverseEvent="Other" comment="comment16" />
+          <adverse.event adverseEvent="Ventilation" comment="comment17" />
+          <adverse.event adverseEvent="Perforation of lumen" comment="comment18" />
+        </adverse.events>
+      </procedure>
+    </procedures>
+  </session>
+  <session uniqueId="uniqueId3" description="description3" date="date3" time="AM" type="Service List" site="site3">
+    <procedures>
+      <procedure localProcedureId="localProcedureId7" previousLocalProcedureId="previousLocalProcedureId7" procedureName="ERCP" endoscopistDiscomfort="Not Specified" nurseDiscomfort="Not Specified" bowelPrep="excellent" extent="Transverse Colon" entonox="Not Specified" antibioticGiven="Not Specified" generalAnaes="Not Specified" pharyngealAnaes="Not Specified" polypsDetected="2147483646" digitalRectalExamination="Not Specified" magneticEndoscopeImagerUsed="Not Specified" scopeWithdrawalTime="2147483646">
+        <patient gender="Unknown" age="2147483646" admissionType="Not Specified" urgencyType="Routine" />
+        <drugs pethidine="3.40282347E+38" midazolam="3.40282347E+38" fentanyl="3.40282347E+38" buscopan="3.40282347E+38" propofol="3.40282347E+38" noDrugsAdministered="Not Specified" />
+        <staff.members>
+          <Staff professionalBodyCode="professionalBodyCode19" endoscopistRole="Trainer" procedureRole="I observed" extent="Anus" jManoeuvre="Not Specified">
+            <therapeutics>
+              <therapeutic type="Endoloop placement" site="None" role="I assisted physically" polypSize="ItemLessThan10mm" tattooed="No" performed="2147483634" successful="2147483634" retrieved="2147483634" comment="comment55" />
+              <therapeutic type="Foreign body removal" site="Oesophagus" role="Independent (no trainer)" polypSize="Item10to19mm" tattooed="Yes" performed="-13" successful="-13" retrieved="-13" comment="comment56" />
+              <therapeutic type="Injection therapy" site="Stomach" role="Was observed" polypSize="Item20OrLargermm" tattooed="Previously Tattooed" performed="15" successful="15" retrieved="15" comment="comment57" />
+            </therapeutics>
+          </Staff>
+          <Staff professionalBodyCode="professionalBodyCode20" endoscopistRole="Trainee" procedureRole="I assisted physically" extent="Papilla" jManoeuvre="No">
+            <therapeutics>
+              <therapeutic type="Marking / tattooing" site="Duodenal bulb" role="Was assisted physically" polypSize="ItemLessThan10mm" tattooed="No" performed="-2147483633" successful="-2147483633" retrieved="-2147483633" comment="comment58" />
+              <therapeutic type="Polyp - cold biopsy" site="D2 - 2nd part of duodenum" role="I observed" polypSize="Item10to19mm" tattooed="Yes" performed="2147483633" successful="2147483633" retrieved="2147483633" comment="comment59" />
+              <therapeutic type="Polyp - EMR" site="Terminal ileum" role="I assisted physically" polypSize="Item20OrLargermm" tattooed="Previously Tattooed" performed="-14" successful="-14" retrieved="-14" comment="comment60" />
+            </therapeutics>
+          </Staff>
+          <Staff professionalBodyCode="professionalBodyCode21" endoscopistRole="Independent" procedureRole="Independent (no trainer)" extent="Pancreatic duct" jManoeuvre="Yes">
+            <therapeutics>
+              <therapeutic type="Polyp - ESD" site="Neo-terminal ileum" role="Independent (no trainer)" polypSize="ItemLessThan10mm" tattooed="No" performed="16" successful="16" retrieved="16" comment="comment61" />
+              <therapeutic type="Polyp - hot biopsy" site="Ileo-colon anastomosis" role="Was observed" polypSize="Item10to19mm" tattooed="Yes" performed="-2147483632" successful="-2147483632" retrieved="-2147483632" comment="comment62" />
+              <therapeutic type="Polyp - snare cold" site="Ascending Colon" role="Was assisted physically" polypSize="Item20OrLargermm" tattooed="Previously Tattooed" performed="2147483632" successful="2147483632" retrieved="2147483632" comment="comment63" />
+            </therapeutics>
+          </Staff>
+        </staff.members>
+        <indications>
+          <indication indication="Stent placement" comment="comment19" />
+          <indication indication="Stent removal" comment="comment20" />
+          <indication indication="Follow up of gastric ulcer" comment="comment21" />
+        </indications>
+        <limitations>
+          <limitation limitation="Other" comment="comment19" />
+          <limitation limitation="Not Limited" comment="comment20" />
+          <limitation limitation="benign stricture" comment="comment21" />
+        </limitations>
+        <biopsies>
+          <Biopsy biopsySite="None" numberPerformed="2147483643" />
+          <Biopsy biopsySite="Oesophagus" numberPerformed="-4" />
+          <Biopsy biopsySite="Stomach" numberPerformed="6" />
+        </biopsies>
+        <diagnoses>
+          <Diagnose diagnosis="Polyp/s" tattooed="No" site="None" comment="comment19" />
+          <Diagnose diagnosis="Polyposis syndrome" tattooed="Yes" site="Oesophagus" comment="comment20" />
+          <Diagnose diagnosis="Postoperative appearance" tattooed="Previously Tattooed" site="Stomach" comment="comment21" />
+        </diagnoses>
+        <adverse.events>
+          <adverse.event adverseEvent="Bleeding" comment="comment19" />
+          <adverse.event adverseEvent="O2 desaturation" comment="comment20" />
+          <adverse.event adverseEvent="Flumazenil" comment="comment21" />
+        </adverse.events>
+      </procedure>
+      <procedure localProcedureId="localProcedureId8" previousLocalProcedureId="previousLocalProcedureId8" procedureName="COLON" endoscopistDiscomfort="Comfortable" nurseDiscomfort="Comfortable" bowelPrep="good" extent="Terminal ileum" entonox="No" antibioticGiven="No" generalAnaes="No" pharyngealAnaes="No" polypsDetected="-1" digitalRectalExamination="No" magneticEndoscopeImagerUsed="No" scopeWithdrawalTime="-1">
+        <patient gender="Indeterminate" age="-1" admissionType="Inpatient" urgencyType="Urgent" />
+        <drugs pethidine="-1.2" midazolam="-1.2" fentanyl="-1.2" buscopan="-1.2" propofol="-1.2" noDrugsAdministered="No" />
+        <staff.members>
+          <Staff professionalBodyCode="professionalBodyCode22" endoscopistRole="Trainer" procedureRole="Was observed" extent="Common bile duct" jManoeuvre="Not Specified">
+            <therapeutics>
+              <therapeutic type="Polyp - snare hot" site="Hepatic flexure" role="I observed" polypSize="ItemLessThan10mm" tattooed="No" performed="-15" successful="-15" retrieved="-15" comment="comment64" />
+              <therapeutic type="Stent change" site="Transverse Colon" role="I assisted physically" polypSize="Item10to19mm" tattooed="Yes" performed="17" successful="17" retrieved="17" comment="comment65" />
+              <therapeutic type="Stent placement" site="Splenic flexure" role="Independent (no trainer)" polypSize="Item20OrLargermm" tattooed="Previously Tattooed" performed="-2147483631" successful="-2147483631" retrieved="-2147483631" comment="comment66" />
+            </therapeutics>
+          </Staff>
+          <Staff professionalBodyCode="professionalBodyCode23" endoscopistRole="Trainee" procedureRole="Was assisted physically" extent="CBD and PD" jManoeuvre="No">
+            <therapeutics>
+              <therapeutic type="Stent removal" site="Descending Colon" role="Was observed" polypSize="ItemLessThan10mm" tattooed="No" performed="2147483631" successful="2147483631" retrieved="2147483631" comment="comment67" />
+              <therapeutic type="YAG laser" site="Sigmoid Colon" role="Was assisted physically" polypSize="Item10to19mm" tattooed="Yes" performed="-16" successful="-16" retrieved="-16" comment="comment68" />
+              <therapeutic type="Balloon trawl" site="Rectum" role="I observed" polypSize="Item20OrLargermm" tattooed="Previously Tattooed" performed="18" successful="18" retrieved="18" comment="comment69" />
+            </therapeutics>
+          </Staff>
+          <Staff professionalBodyCode="professionalBodyCode24" endoscopistRole="Independent" procedureRole="I observed" extent="Abandoned" jManoeuvre="Yes">
+            <therapeutics>
+              <therapeutic type="Bougie dilation" site="Anus" role="I assisted physically" polypSize="ItemLessThan10mm" tattooed="No" performed="-2147483630" successful="-2147483630" retrieved="-2147483630" comment="comment70" />
+              <therapeutic type="Brush cytology" site="Pouch" role="Independent (no trainer)" polypSize="Item10to19mm" tattooed="Yes" performed="2147483630" successful="2147483630" retrieved="2147483630" comment="comment71" />
+              <therapeutic type="Cannulation" site="Caecum" role="Was observed" polypSize="Item20OrLargermm" tattooed="Previously Tattooed" performed="-17" successful="-17" retrieved="-17" comment="comment72" />
+            </therapeutics>
+          </Staff>
+        </staff.members>
+        <indications>
+          <indication indication="Varices surveillance / screening" comment="comment22" />
+          <indication indication="Weight loss" comment="comment23" />
+          <indication indication="BCSP" comment="comment24" />
+        </indications>
+        <limitations>
+          <limitation limitation="inadequate bowel prep" comment="comment22" />
+          <limitation limitation="malignant stricture" comment="comment23" />
+          <limitation limitation="patient discomfort" comment="comment24" />
+        </limitations>
+        <biopsies>
+          <Biopsy biopsySite="Duodenal bulb" numberPerformed="-2147483642" />
+          <Biopsy biopsySite="D2 - 2nd part of duodenum" numberPerformed="2147483642" />
+          <Biopsy biopsySite="Terminal ileum" numberPerformed="-5" />
+        </biopsies>
+        <diagnoses>
+          <Diagnose diagnosis="Proctitis" tattooed="No" site="Duodenal bulb" comment="comment22" />
+          <Diagnose diagnosis="Rectal ulcer" tattooed="Yes" site="D2 - 2nd part of duodenum" comment="comment23" />
+          <Diagnose diagnosis="Stricture - inflammatory" tattooed="Previously Tattooed" site="Terminal ileum" comment="comment24" />
+        </diagnoses>
+        <adverse.events>
+          <adverse.event adverseEvent="Naloxone" comment="comment22" />
+          <adverse.event adverseEvent="Consent signed in room" comment="comment23" />
+          <adverse.event adverseEvent="Withdrawal of consent" comment="comment24" />
+        </adverse.events>
+      </procedure>
+      <procedure localProcedureId="localProcedureId9" previousLocalProcedureId="previousLocalProcedureId9" procedureName="OGD" endoscopistDiscomfort="Minimal" nurseDiscomfort="Minimal" bowelPrep="fair" extent="Splenic flexure" entonox="Yes" antibioticGiven="Yes" generalAnaes="Yes" pharyngealAnaes="Yes" polypsDetected="3" digitalRectalExamination="Yes" magneticEndoscopeImagerUsed="Yes" scopeWithdrawalTime="3">
+        <patient gender="Male" age="3" admissionType="Outpatient" urgencyType="Emergency" />
+        <drugs pethidine="3.2" midazolam="3.2" fentanyl="3.2" buscopan="3.2" propofol="3.2" noDrugsAdministered="Yes" />
+        <staff.members>
+          <Staff professionalBodyCode="professionalBodyCode25" endoscopistRole="Trainer" procedureRole="I assisted physically" extent="Stomach" jManoeuvre="Not Specified">
+            <therapeutics>
+              <therapeutic type="Combined (rendezvous) proc" site="None" role="Was assisted physically" polypSize="ItemLessThan10mm" tattooed="No" performed="19" successful="19" retrieved="19" comment="comment73" />
+              <therapeutic type="Diagnostic cholangiogram" site="Oesophagus" role="I observed" polypSize="Item10to19mm" tattooed="Yes" performed="-2147483629" successful="-2147483629" retrieved="-2147483629" comment="comment74" />
+              <therapeutic type="Diagnostic pancreatogram" site="Stomach" role="I assisted physically" polypSize="Item20OrLargermm" tattooed="Previously Tattooed" performed="2147483629" successful="2147483629" retrieved="2147483629" comment="comment75" />
+            </therapeutics>
+          </Staff>
+          <Staff professionalBodyCode="professionalBodyCode26" endoscopistRole="Trainee" procedureRole="Independent (no trainer)" extent="Oesophagus" jManoeuvre="No">
+            <therapeutics>
+              <therapeutic type="Endoscopic cyst puncture" site="Duodenal bulb" role="Independent (no trainer)" polypSize="ItemLessThan10mm" tattooed="No" performed="-18" successful="-18" retrieved="-18" comment="comment76" />
+              <therapeutic type="Haemostasis" site="D2 - 2nd part of duodenum" role="Was observed" polypSize="Item10to19mm" tattooed="Yes" performed="20" successful="20" retrieved="20" comment="comment77" />
+              <therapeutic type="Manometry" site="Terminal ileum" role="Was assisted physically" polypSize="Item20OrLargermm" tattooed="Previously Tattooed" performed="-2147483628" successful="-2147483628" retrieved="-2147483628" comment="comment78" />
+            </therapeutics>
+          </Staff>
+          <Staff professionalBodyCode="professionalBodyCode27" endoscopistRole="Independent" procedureRole="Was observed" extent="Intubation failed" jManoeuvre="Yes">
+            <therapeutics>
+              <therapeutic type="Nasopancreatic / bilary drain" site="Neo-terminal ileum" role="I observed" polypSize="ItemLessThan10mm" tattooed="No" performed="2147483628" successful="2147483628" retrieved="2147483628" comment="comment79" />
+              <therapeutic type="Sphincterotomy" site="Ileo-colon anastomosis" role="I assisted physically" polypSize="Item10to19mm" tattooed="Yes" performed="-19" successful="-19" retrieved="-19" comment="comment80" />
+              <therapeutic type="Stent placement - CBD" site="Ascending Colon" role="Independent (no trainer)" polypSize="Item20OrLargermm" tattooed="Previously Tattooed" performed="21" successful="21" retrieved="21" comment="comment81" />
+            </therapeutics>
+          </Staff>
+        </staff.members>
+        <indications>
+          <indication indication="Abdominal mass" comment="comment25" />
+          <indication indication="Abnormal sigmoidoscopy" comment="comment26" />
+          <indication indication="Chronic alternating diarrhoea / constipation" comment="comment27" />
+        </indications>
+        <limitations>
+          <limitation limitation="severe colitis" comment="comment25" />
+          <limitation limitation="unresolved loop" comment="comment26" />
+          <limitation limitation="clinical intention achieved" comment="comment27" />
+        </limitations>
+        <biopsies>
+          <Biopsy biopsySite="Neo-terminal ileum" numberPerformed="7" />
+          <Biopsy biopsySite="Ileo-colon anastomosis" numberPerformed="-2147483641" />
+          <Biopsy biopsySite="Ascending Colon" numberPerformed="2147483641" />
+        </biopsies>
+        <diagnoses>
+          <Diagnose diagnosis="Stricture - malignant" tattooed="No" site="Neo-terminal ileum" comment="comment25" />
+          <Diagnose diagnosis="Stricture - postoperative" tattooed="Yes" site="Ileo-colon anastomosis" comment="comment26" />
+          <Diagnose diagnosis="Ulcerative colitis" tattooed="Previously Tattooed" site="Ascending Colon" comment="comment27" />
+        </diagnoses>
+        <adverse.events>
+          <adverse.event adverseEvent="Unplanned admission" comment="comment25" />
+          <adverse.event adverseEvent="Unsupervised trainee" comment="comment26" />
+          <adverse.event adverseEvent="Death" comment="comment27" />
+        </adverse.events>
+      </procedure>
+    </procedures>
+  </session>
+</hospital.SendBatchMessage>

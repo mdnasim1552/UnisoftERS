@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:mstns="http://www.show.scot.nhs.uk/isd/SCIStore/Headers" xmlns="http://www.show.scot.nhs.uk/isd/SCIStore/Headers" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.show.scot.nhs.uk/isd/SCIStore/Headers" version="8.1" id="StoreWebservicesHeaderData" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:simpleType name="Token">
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="20" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="Credentials">
+    <xsd:sequence>
+      <xsd:element name="Token" type="xsd:string" />
+      <xsd:element name="UserInfo">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="UserName">
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="20" />
+                  <xsd:minLength value="1" />
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="FriendlyName">
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="100" />
+                  <xsd:minLength value="1" />
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="SystemCode">
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="20" />
+                  <xsd:minLength value="1" />
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="SystemLocation">
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:minLength value="1" />
+                  <xsd:maxLength value="40" />
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="UserCredentials" type="mstns:Credentials" />
+</xsd:schema>

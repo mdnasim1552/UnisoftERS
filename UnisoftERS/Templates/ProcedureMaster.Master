@@ -1,0 +1,329 @@
+﻿<%@ Master Language="VB" AutoEventWireup="false" CodeBehind="ProcedureMaster.master.vb" Inherits="UnisoftERS.ProcedureMaster" MasterPageFile="~/Templates/Unisoft.master" %>
+
+<%@ MasterType VirtualPath="~/Templates/Unisoft.master" %>
+
+<%@ Register Src="~/UserControls/PatientDetails.ascx" TagPrefix="uc1" TagName="PatientDetails" %>
+<%@ Register Src="~/UserControls/procedurefooter.ascx" TagPrefix="uc1" TagName="procedurefooter" %>
+
+<asp:Content ID="pHeadContent" ContentPlaceHolderID="HeadContentPlaceHolder" runat="Server">
+    <asp:ContentPlaceHolder ID="pHeadContentPlaceHolder" runat="server" />
+    <style type="text/css">
+        a.incomplete-link, .page-validation a {
+            color: red;
+        }
+
+        .summaryPrev {
+            height: calc(100vh - 120px) !important;
+            overflow-y: scroll;
+        }
+    </style>
+    <script type="text/javascript">
+        function DisplayProcedureInfo() {
+            var procID = '<%=Session(UnisoftERS.Constants.SESSION_PROCEDURE_ID)%>';
+            var patientID = getCookie('patientId');
+            var appVersion = '<%=Session(UnisoftERS.Constants.SESSION_APPVERSION)%>';
+            var operatingHospital = '<%=Session("OperatingHospitalID")%>';
+            var userID = '<%=Session("UserID").ToString().Replace("\", "-")%>';
+            var roomID = '<%=Session("RoomId")%>';
+            var imagePortId = '<%=Session("PortId")%>';
+            var imagePortName = '<%=Session("PortName")%>';
+            alert('App Version: ' + appVersion + '\nPatientID: ' + patientID + '\nProcedureID: ' + procID + '\nOperatingHospital: ' + operatingHospital + '\nUserID: ' + userID + '\nRoomID: ' + roomID + '\nPortId: ' + imagePortId + '\nPortName: ' + imagePortName);
+        }
+
+        function getCookie(cname) {
+            let name = cname + "=";
+            let ca = document.cookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+
+
+        function refreshSummary() {
+            $('#<%= btnRefresh.ClientID %>').click();
+        }
+
+        function showProcNotCarriedOutWindow(isChecked) {
+            var webMethodUrl = document.URL.slice(0, docURL.indexOf("/Products/")) + "/Products/Reports/WebMethods.aspx/CheckProcedureDNA";
+            var obj = {};
+            obj.procedureId = parseInt(<%=Session(UnisoftERS.Constants.SESSION_PROCEDURE_ID)%>);
+
+            if (isChecked) {
+                $.ajax({
+                    type: "POST",
+                    url: webMethodUrl,
+                    data: JSON.stringify(obj),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        var resp = JSON.parse(data.d);
+                        if (resp != null) {
+                            if (resp.DNAReasonId > 0) {
+                                $('#<%=ProcNotCarriedOutRadioButtonList.ClientID%>').find("input[value='" + resp.DNAReasonId + "']").prop("checked", true)
+                                $find('<%=CancelReasonRadTextBox.ClientID%>').set_textBoxValue(resp.DNAReasonText);
+
+                                if (resp.DNAInRecovery == '')
+                                    $('.cb-in-recovery').hide();
+                                else if (resp.DNAInRecovery == 'RC')
+                                    $('#<%=chkPatientDNAInRecovery.ClientID%>').prop('checked', true);
+                                else
+                                    $('#<%=chkPatientDNAInRecovery.ClientID%>').prop('checked', false);
+                            }
+                            else {
+                                if (resp.DNAInRecovery == '')
+                                    $('.cb-in-recovery').hide();
+                                else
+                                    $('.cb-in-recovery').show();
+                            }
+                        }
+                    },
+                    error: function (jqXHR, textStatus, data) {
+                        OnError_UpdateReason(jqXHR, textStatus, data);
+                    }
+                });
+
+                var oWnd = $find("<%= ProcNotCarriedOutRadWindow.ClientID%>");
+                oWnd.set_title("Procedure NOT carried out");
+                oWnd.show();
+            } else {
+                $.ajax({
+                    type: "POST",
+                    url: document.URL.slice(0, docURL.indexOf("/Products/")) + "/Products/Default.aspx/ProcedureNotCarriedOut_Reset",
+                    data: JSON.stringify(obj),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        $("#<%= ProcNotCarriedOutRadioButtonList.ClientID %> input[type=radio]").prop('checked', false); 
+                        $find('<%=CancelReasonRadTextBox.ClientID%>').set_textBoxValue('');
+                        $('#<%=chkPatientDNAInRecovery.ClientID%>').prop('checked', false);
+                        enableDisableProcedureButton(isChecked);
+                    },
+                    error: function (jqXHR, textStatus, data) {
+                        OnError_UpdateReason(jqXHR, textStatus, data);
+                    }
+                });
+            }
+        }
+
+        var docURL = document.URL;
+        var webMethodLocation = docURL.slice(0, docURL.indexOf("/Products/")) + "/Products/Default.aspx/";
+
+        function ProcNotCarriedOut_UpdateSelection() {
+            var selectedProcedureId = <%=Session(UnisoftERS.Constants.SESSION_PROCEDURE_ID)%>;
+            var selectedReason = $('#<%=ProcNotCarriedOutRadioButtonList.ClientID%> input:checked');
+            var selectedReasonId = selectedReason.val();
+            var selectedReasonTest = selectedReason.parent().text().trim();
+            var PP_DNA_Text = $find('<%=CancelReasonRadTextBox.ClientID%>').get_textBoxValue();
+            var inRecovery = $('#<%=chkPatientDNAInRecovery.ClientID%>').is(':checked');
+
+            let dnaReason = '';
+            if (PP_DNA_Text.length === 0) {
+                dnaReason = selectedReasonTest;
+            } else {
+                dnaReason = selectedReasonTest + ' (' + PP_DNA_Text + ')';
+            }
+
+            var webMethodUrl = document.URL.slice(0, docURL.indexOf("/Products/")) + "/Products/Default.aspx/ProcedureNotCarriedOut_UpdateReason";
+            var jsonData = JSON.stringify({
+                procedureId: selectedProcedureId,
+                DNA_ReasonId: selectedReasonId,
+                PP_DNA_Text: dnaReason,
+                patientInRecovery: inRecovery
+            });
+
+            //console.log("jsonData: " + jsonData);
+            //console.log("webMethodUrl: " + webMethodUrl);
+
+            ///return; //#### do nothing
+            $.ajax({
+                type: "POST",
+                url: webMethodUrl,
+                data: jsonData,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    OnSuccess_Update(data)
+                    enableDisableProcedureButton(true);
+                },
+                error: function (jqXHR, textStatus, data) {
+                    OnError_UpdateReason(jqXHR, textStatus, data);
+                }
+            });
+
+            //check if patient in recover and update patient/procedure journey status
+
+        }
+
+        function OnSuccess_Update() {
+            //update page
+            ProcNotCarriedOutCloseDialogueBox(true);
+            //RefreshDNASummary();
+            disableForDNA();
+            setDNAControls();
+            refreshSummary();
+        }
+
+        function OnError_UpdateReason(jqXHR, textStatus, data) {
+            console.log("Failed: UpdateReasonByAjaxCall() ==> !\n\jqXHR: " + jqXHR + ". textStatus: " + textStatus); //
+        }
+
+        function ProcNotCariedOutCancel_clicked() {
+            ProcNotCarriedOutCloseDialogueBox(false);
+            $("#<%= ProcNotCarriedOutRadioButtonList.ClientID %> input[type=radio]").prop('checked', false);
+            $find('<%=CancelReasonRadTextBox.ClientID%>').set_textBoxValue('');
+            $('#<%=chkPatientDNAInRecovery.ClientID%>').prop('checked', false);
+        }
+
+        function ProcNotCarriedOutCloseDialogueBox(saved) {
+            var oWnd = $find("<%= ProcNotCarriedOutRadWindow.ClientID%>");
+            if (oWnd != null) {
+                oWnd.close();
+            }
+        }
+
+    </script>
+</asp:Content>
+<asp:Content ID="pBodyContent" ContentPlaceHolderID="BodyContentPlaceHolder" runat="server">
+
+    <telerik:RadSplitter ID="MainPageRadSplitter" runat="server" Width="100%" BorderWidth="1" Orientation="Horizontal" Skin="Windows7">
+        <%--<telerik:RadPane runat="server" Height="45" Scrolling="None">
+            <uc1:procedurefooter runat="server" ID="procedurefooter" />
+         </telerik:RadPane>--%>
+        <telerik:RadPane ID="RadPane2" runat="server" CssClass="radPane" Height="100px" Scrolling="None">
+            <uc1:PatientDetails runat="server" ID="PatientDetails" />
+        </telerik:RadPane>
+        <%--  <telerik:RadPane runat="server" Height="30" BackColor="AliceBlue" Scrolling="None">
+            <uc1:procedurefooter runat="server" ID="procedurefooter" />
+         </telerik:RadPane>--%>
+        <telerik:RadPane ID="BottomRadPane" runat="server" Scrolling="None">
+            <telerik:RadSplitter ID="radReportPage" runat="server" Orientation="Horizontal" Skin="Windows7">
+                <telerik:RadPane ID="radContentPane" Height="535px" runat="server" Scrolling="None">
+                    <%--Change left panel (pic portion)--%>
+                    <uc1:procedurefooter runat="server" ID="procedurefooter" Height="30" BackColor="AliceBlue" OnShowSummary_Clicked="procedurefooter_ShowSummary_Clicked" />
+                    <asp:ContentPlaceHolder ID="pBodyContentPlaceHolder" runat="server" />
+                </telerik:RadPane>
+                <%--<telerik:RadPane runat="server" Height="30" BackColor="AliceBlue" Scrolling="None">
+                    <uc1:procedurefooter runat="server" ID="procedurefooter" />
+                 </telerik:RadPane>--%>
+            </telerik:RadSplitter>
+        </telerik:RadPane>
+    </telerik:RadSplitter>
+</asp:Content>
+<asp:Content ID="pLeftContent" ContentPlaceHolderID="LeftPaneContentPlaceHolder" runat="server">
+    <asp:ObjectDataSource ID="PremedSummaryObjectDataSource" runat="server" SelectMethod="GetPremedReportSummary" TypeName="UnisoftERS.DataAccess"></asp:ObjectDataSource>
+    <asp:ObjectDataSource ID="SummaryObjectDataSource" runat="server" SelectMethod="GetReportSummary" TypeName="UnisoftERS.DataAccess"></asp:ObjectDataSource>
+    <telerik:RadAjaxPanel ID="ap1" runat="server">
+
+        <telerik:RadButton ID="btnRefresh" runat="server" OnClick="btnRefresh_Click" Style="display: none;" />
+
+        <div id="SummaryPreviewDiv" runat="server" class="summaryPrev radPane">
+            <div class="leftHeaderText" style="margin-left: -8px; padding-bottom: 6px;">
+                <asp:Label ID="lblProcDate" runat="server" Text="" />
+            </div>
+            <asp:ListView ID="PremedSummaryListView" runat="server" DataSourceID="PremedSummaryObjectDataSource" OnItemCreated="PremedSummaryListView_ItemCreated">
+                <ItemTemplate>
+                    <asp:Panel runat="server" ID="myPanel1">
+                        <tr>
+                            <th align="left">
+                                <asp:Label ID="NodeNameLabel" runat="server" Text='<%#Eval("NodeName") %>' ForeColor="#0072c6" />
+                            </th>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 5px;">
+                                <asp:Label ID="NodeSummaryLabel" runat="server" Text='<%#Eval("NodeSummary") %>' />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="height: 5px"></td>
+                        </tr>
+                    </asp:Panel>
+                </ItemTemplate>
+                <LayoutTemplate>
+                    <table id="itemPlaceholderContainer1" runat="server" border="0" class="rptSummaryText10" style="margin-left: 15px;">
+                        <tr id="itemPlaceholder" runat="server">
+                        </tr>
+                    </table>
+                </LayoutTemplate>
+            </asp:ListView>
+
+            <asp:ListView ID="SummaryListView" runat="server" DataSourceID="SummaryObjectDataSource" OnItemCreated="SummaryListView_ItemCreated">
+                <ItemTemplate>
+                    <asp:Panel runat="server" ID="myPanel">
+                        <tr>
+                            <th align="left">
+                                <asp:Label ID="NodeNameLabel" runat="server" Text='<%#Eval("NodeName") %>' ForeColor="#0072c6" />
+                            </th>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 5px;">
+                                <asp:Label ID="NodeSummaryLabel" runat="server" Text='<%#Eval("NodeSummary") %>' />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="height: 5px"></td>
+                        </tr>
+                    </asp:Panel>
+                </ItemTemplate>
+                <LayoutTemplate>
+                    <table id="itemPlaceholderContainer" runat="server" border="0" class="rptSummaryText10" style="margin-left: 15px;">
+                        <tr id="itemPlaceholder" runat="server">
+                        </tr>
+                    </table>
+                </LayoutTemplate>
+            </asp:ListView>
+
+        </div>
+    </telerik:RadAjaxPanel>
+    <div id="LeftPaneContentPlaceHolderDiv" runat="server" visible="false">
+        <asp:ContentPlaceHolder ID="LeftPaneContentPlaceHolder" runat="server" />
+    </div>
+
+    <telerik:RadWindowManager ID="ResectedColonWindowManager" runat="server" ShowContentDuringLoad="false" Style="z-index: 7001" Behaviors="Close, Move" Skin="Metro" EnableShadow="True" Modal="True" Behavior="Close, Move">
+        <Windows>
+            <telerik:RadWindow ID="ProcNotCarriedOutRadWindow" Modal="true" runat="server" Title="Procedure NOT carried out"
+                KeepInScreenBounds="true" Width="500px" Height="420px" VisibleStatusbar="false" ShowContentDuringLoad="false" Skin="Metro" Behaviors="None">
+                <ContentTemplate>
+                    <div class="abnorHeader">Reason the procedure was NOT carried out:</div>
+                    <div style="padding: 1em; margin-bottom: 1em;" id="ProcNotCarriedOutRadWindowDiv">
+                        <div style="width: 90%; border-radius: 0px; box-sizing: content-box;">
+                            <label />
+                            <asp:RadioButtonList ID="ProcNotCarriedOutRadioButtonList" runat="server">
+                                <asp:ListItem Value="1" Text="Patient DNA" />
+                                <asp:ListItem Value="2" Text="Patient cancelled" />
+                                <asp:ListItem Value="3" Text="Hospital cancelled" />
+                            </asp:RadioButtonList>
+
+
+                            <input type="checkbox" id="chkPatientDNA_Text" name="chkPatientDNA_Text" value="combine" style="display: none; margin-top: 10px;">
+                            <label for="chkPatientDNA_Text" id="lblDNA_PP_Text"></label>
+                            <br />
+                            <span>Notes/comments:</span><br />
+                            <telerik:RadTextBox ID="CancelReasonRadTextBox" runat="server" TextMode="MultiLine" Width="100%" Height="110" /><br />
+                            <asp:CheckBox ID="chkPatientDNAInRecovery" CssClass="cb-in-recovery" runat="server" Text="Patient in recovery?" /><br />
+
+                        </div>
+
+                        <p class="">
+                            Please record the indications and enter in to the Follow up screen why the Procedure was not carried out.
+                        </p>
+                        <div id="divProcNotcarriedOutButtons" class="" style="height: auto; text-align: center">
+                            <telerik:RadButton ID="btnProcNotcarriedOutSubmit" runat="server" Text="Save" Skin="Web20" AutoPostBack="false" OnClientClicked="ProcNotCarriedOut_UpdateSelection" Icon-PrimaryIconCssClass="telerikOkButton" ClientIDMode="Static" />
+                            &nbsp;
+                            <telerik:RadButton ID="btnProcNotCariedOutCancel" runat="server" Text="Cancel" Skin="Web20" AutoPostBack="false" OnClientClicked="ProcNotCariedOutCancel_clicked" Icon-PrimaryIconCssClass="telerikCancelButton" />
+                        </div>
+                        <asp:HiddenField runat="server" ID="selectedProcedureId" Value="123" ClientIDMode="Static" />
+                        <asp:HiddenField runat="server" ID="selectedProcedureType" Value="UPPERGI, PROCT" ClientIDMode="Static" />
+                        <asp:HiddenField runat="server" ID="selectedNodeText" Value="123" ClientIDMode="Static" />
+                    </div>
+                </ContentTemplate>
+            </telerik:RadWindow>
+        </Windows>
+    </telerik:RadWindowManager>
+</asp:Content>

@@ -1,0 +1,13 @@
+﻿<Tree>
+  <Node Text="Reports" Value="" CustomId="" enablecheckbox="false">
+    <Node Text="JAG/GRS" Value="JAGGRS" CustomId="JAGGRSReports" enablecheckbox="false" Visible="False" />
+    <Node Text="GRS" Value="GRS" navigateurl="~/Products/Reports/GRS1.aspx" CustomId="GRSReports" enablecheckbox="false" Visible="false" />
+        
+    <Node Text="Blank reports" Value="BlankReports.aspx" navigateurl="~/Products/Reports/GRS.aspx" GRS="" CustomId="BlankReports" enablecheckbox="false" cssAttrib="pending" Finished="false" ToolTip="Blank reports"  Visible="false"/>
+    <Node Text="List Analysis" Value="ListAnalysis.aspx" navigateurl="~/Products/Reports/ListAnalysisMain.aspx" GRS="" CustomId="ListAnalysis" enablecheckbox="false" cssAttrib="pending" Finished="false" ToolTip="List Analysis" />
+    <Node Text="NED Audit" Value="NED_Audit.aspx" navigateurl="~/Products/Reports/NED_Audit.aspx" GRS="" CustomId="NED_Audit" enablecheckbox="false" ToolTip="NED Audit Report- XML Viewer"/>
+    <!--<Node Text="Solus Audit" Value="NED_Audit.aspx" navigateurl="~/Products/AuditLog/AuditLog2.aspx" GRS="" CustomId="SolusAudit" enablecheckbox="false" ToolTip="Audit Log"/>-->
+    <Node Text="Audit Log" Value="AuditLog.aspx" navigateurl="~/Products/Reports/AuditLog.aspx" GRS="" CustomId="AuditLog" enablecheckbox="false" ToolTip="Audit Log Report"/>
+    <Node Text="JAG GRS" Value="JAGGRS.aspx" navigateurl="~/Products/Reports/JAGGRS.aspx" GRS="" CustomId="JAGGRS" enablecheckbox="false" ToolTip="JAG GRS Report"/>
+  </Node>
+</Tree>

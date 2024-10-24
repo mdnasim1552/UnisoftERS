@@ -1,0 +1,591 @@
+﻿<%@ Master Language="VB" Inherits="UnisoftERS.Unisoft" CodeBehind="Unisoft.master.vb" %>
+
+<%@ Register TagPrefix="unisoft" TagName="Footer" Src="~/UserControls/Footer.ascx" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <telerik:RadStyleSheetManager ID="RadStyleSheetManager1" runat="server" />
+    <link href="../Styles/Site.css" rel="stylesheet" type="text/css" />
+
+    <link rel="icon" type="image/png" href="../images/icons/favicon.png" />
+    <style type="text/css">
+        .toppane {
+            border-bottom-style: solid !important;
+            border-bottom-width: 1px !important;
+            border-bottom-color: inherit !important;
+        }
+
+        .absoluteHeight {
+            height: calc(100vh - 20px) !important;
+        }
+
+        .footer2 {
+            border-style: solid !important;
+            border-width: 10px !important;
+            border-color: red !important;
+        }
+
+        .footerlink a:link {
+            color: red;
+        }
+
+        .footerlink a:visited {
+            color: blue;
+        }
+
+        .footerlink a:hover {
+            color: green;
+            text-decoration: none;
+        }
+
+        .footerlink a:active {
+            color: yellow;
+        }
+
+        #ctl00_RadPane1 {
+            border-bottom-style: solid !important;
+            border-bottom-width: 1px !important;
+        }
+
+        #RAD_SPLITTER_PANE_CONTENT_ctl00_RadPane1 {
+            overflow-x: auto !important;
+        }
+
+        .MainPage {
+            position: fixed;
+            top: 0px;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+            overflow: hidden;
+        }
+
+        .RadMainMenu.RadMenu .rmHorizontal .rmItem {
+            padding-right: 10px !important;
+            max-height: 30px;
+        }
+
+        #ValidationNotification {
+            display: none;
+            border-color: #6788be;
+            color: #333;
+            background-color: #fff;
+            font-size: 12px;
+            font-family: "Segoe UI",Arial,Helvetica,sans-serif;
+            box-shadow: 2px 2px 3px #6788be;
+            position: fixed;
+            width: 500px;
+            z-index: 10000;
+            visibility: visible;
+            left: 40%;
+            top: 30%;
+            border-radius: .41666667em;
+            box-sizing: content-box;
+            margin: 0;
+            padding: 0;
+            border-width: 1px;
+            border-style: solid;
+            word-wrap: break-word;
+            overflow: hidden;
+        }
+
+            #ValidationNotification .rnTitleBar {
+                border-color: #5f90cf;
+                color: #fff;
+                background-color: #92b3de;
+                background-image: linear-gradient(#9db7db,#7b95c6 50%,#698ac0 50%,#92b3de);
+                border-bottom-color: inherit;
+                margin: 0;
+                padding: 4px;
+                line-height: 1.25;
+                border-bottom-width: 1px;
+                border-bottom-style: solid;
+                background-repeat: repeat-x;
+                background-position: 0 0;
+                border-radius: .41666667em .41666667em 0 0;
+            }
+
+            #ValidationNotification .rnCommands {
+                margin: 0;
+                padding: 0;
+                width: auto;
+                float: right;
+                list-style: none;
+            }
+
+        .validation-modal {
+            display: none;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            z-index: 9999;
+            background-color: rgb(170, 170, 170);
+            opacity: 0.5;
+            width: 100%;
+            height: 100%;
+        }
+
+        .RadComboBoxDropDown {
+            max-height: 200px !important;
+        }
+
+        .preOrPostProcedureWithoutSummary {
+            width: calc(100vw - 9px) !important;
+            height: calc(100vh - 230px) !important;
+            overflow-y: auto !important;
+        }
+
+        .preOrPostProcedureWithSummary {
+            width: calc(100vw - 370px) !important;
+            height: calc(100vh - 230px) !important;
+            overflow-y: auto !important;
+        }
+
+        #ctl00_UnisoftMenu {
+            z-index: auto !important;
+        }
+    </style>
+    <asp:ContentPlaceHolder ID="HeadContentPlaceHolder" runat="server" />
+</head>
+
+<body>
+    <form id="MasterForm" runat="server" autocomplete="off">
+
+        <telerik:RadScriptBlock ID="RadScriptBlock1" runat="server">
+            <script type="text/javascript">
+                var newProcedureInitiated = false;
+                var AddNewItemRadTextBoxClientId = "<%= AddNewItemRadTextBox.ClientID %>";
+                var AddNewItemRadWindowClientId = "<%= AddNewItemRadWindow.ClientID %>";
+                function DisableRootClick(sender, args) {
+                    if (args.get_item().get_items().get_count() != 0 && args.get_item().get_level() == 0) {
+                        args.get_item().set_selected(false);
+                        args.get_item().set_focused(false);
+                        args.set_cancel(true); // Cancel the event
+                    }
+                }
+
+                $(window).on('load', function () {
+                    pageLoad();
+                });
+
+                window.onbeforeunload = onLogOutClick;
+
+                //session time out code start
+                var timeLeftCounter = null;
+                var seconds = 60;
+
+                function pageLoad() {
+                    var xmlPanel = $find("<%= SessionTimeoutNotification.ClientID %>")._xmlPanel;
+                    if (xmlPanel != null) {
+                        xmlPanel.set_enableClientScriptEvaluation(true);
+                    }
+                };
+
+
+                function stopTimer(timer) {
+                    clearInterval(this[timer]);
+                    this[timer] = null;
+                };
+
+                function resetTimer(timer, func, interval) {
+                    this.stopTimer(timer);
+                    this[timer] = setInterval(Function.createDelegate(this, func), interval);
+                };
+
+                function OnClientShowing(sender, args) {
+                    //seconds = 60;
+                    resetTimer("timeLeftCounter", UpdateTimeLabel, 1000);
+                }
+
+                function UpdateTimeLabel(toReset) {
+                    var sessionExpired = (seconds == 0);
+                    if (sessionExpired) {
+                        stopTimer("timeLeftCounter");
+                        window.location.href = $find("<%= SessionTimeoutNotification.ClientID%>").get_value();
+                    } else {
+                        var timeLbl = $get("timeLbl");
+                        timeLbl.innerHTML = seconds--;
+                    }
+                }
+
+                function ContinueSession() {
+                    var notification = $find("<%= SessionTimeoutNotification.ClientID%>");
+                    notification.update();
+                    notification.hide();
+                    var showIntervalStorage = notification.get_showInterval();
+                    notification.set_showInterval(0);
+                    notification.set_showInterval(showIntervalStorage);
+                    stopTimer("timeLeftCounter");
+                    seconds = 60;
+                }
+
+                function TreeNodeClicked(sender, eventArgs) {
+                    var node = eventArgs.get_node();
+                }
+
+                function SplitterLoaded(splitter, arg) {
+                    var pane = splitter.getPaneById('<%= RadPane1.ClientID %>');
+                    var height = pane.getContentElement().scrollHeight;
+                    splitter.set_height(height);
+                    pane.set_height(height);
+                }
+
+                function OpenPopUpWindow(window, param1) {
+                    var url = "";
+                    var oWnd = $find("<%= PatientDetailsRadWindow.ClientID %>");
+                    switch (window) {
+                        case "PatientDetails":
+                            oWnd.set_height(570);
+                            oWnd.set_width(820);
+                            url = "<%= ResolveUrl("~/Products/Common/PatientDetails.aspx") %>";
+                            if (param1 == true) { //param1 : if new patient
+                                url = url + "?NewPatient=True"
+                            }
+                            break;
+                        case "PASDownload":
+                            oWnd.set_height(650);
+                            oWnd.set_width(1000);
+                            url = "<%= ResolveUrl("~/Products/PAS/PASDownload.aspx")%>";
+                            break;
+                        case "UpdateCRM":
+                            oWnd.set_height(360);
+                            oWnd.set_width(390);
+                            url = "<%= ResolveUrl("~/Security/UpdateCRM.aspx")%>";
+                            break;
+                        case "About":
+                            oWnd.set_height(500);
+                            oWnd.set_width(550);
+                            url = "<%= ResolveUrl("~/Security/About.aspx")%>";
+                            break;
+                        case "Feedback":
+                            oWnd.set_height(550);
+                            oWnd.set_width(550);
+                            url = "<%= ResolveUrl("mailto:support@hd-clinical.com?subject=Solus%20Endoscopy%20Feedback&body=Thank%20you%20for%20your%20feedback")%>";
+                            break;
+                        case "Support":
+                            oWnd.set_height(500);
+                            oWnd.set_width(580);
+                        <%--url = "<%= ResolveUrl("~/Security/Support.aspx")%>";--%>
+                            url = "<%= "https://hd-clinicalsupport.zendesk.com/hc/en-gb/requests/new"%>";
+                            break;
+                        case "PASData":
+                            oWnd.set_height(650);
+                            oWnd.set_width(1000);
+                            url = "<%= ResolveUrl("~/Products/PAS/PASData.aspx")%>";
+                            break;
+                    }
+                    oWnd._navigateUrl = url
+                    //Add the name of the function to be executed when RadWindow is closed.
+                    oWnd.add_close(OnClientClose);
+                    oWnd.show();
+                }
+
+
+
+                function OnClientClose(oWnd, eventArgs) {
+                    //Remove the OnClientClose function to avoid
+                    //adding it for a second time when the window is shown again.
+                    oWnd.remove_close(OnClientClose);
+
+                    $find("<%=RadAjaxManager1.ClientID%>").ajaxRequest();
+                }
+
+                var summaryState;
+
+
+                function setRehideSummary() {
+                    $('.preOrPostProcedureWithSummary').addClass('preOrPostProcedureWithoutSummary');
+                    $('.preOrPostProcedureWithoutSummary').removeClass('preOrPostProcedureWithSummary');
+
+                    var splitter = $find("<%= radMainPage.ClientID %>");
+                    var pane = splitter.getPaneById("<%= radLeftPane.ClientID %>");
+
+                    pane.collapse(); // collapse this pane
+                    //pane.resize(0); // increase panes size with 100px
+                    summaryState = 'collapsed'
+                    if ($('.procedure-form') != undefined) {
+                        $('.procedure-form').css('position', 'relative');
+                    }
+
+                }
+                function setShowSummary() {
+                    var splitter = $find("<%= radMainPage.ClientID %>");
+                    var pane = splitter.getPaneById("<%= radLeftPane.ClientID %>");
+
+                    pane.collapse(); // collapse this pane
+                    //pane.resize(0); // increase panes size with 100px
+                    summaryState = 'expanded'
+                    if ($('.procedure-form') != undefined) {
+                        $('.procedure-form').css('position', 'absolute');
+                    }
+
+                }
+
+
+                function setHideShowSummary() {
+                    var splitter = $find("<%= radMainPage.ClientID %>");
+                    var pane = splitter.getPaneById("<%= radLeftPane.ClientID %>");
+                    if (pane.get_collapsed()) {
+                        $('.preOrPostProcedureWithoutSummary').addClass('preOrPostProcedureWithSummary');
+                        $('.preOrPostProcedureWithSummary').removeClass('preOrPostProcedureWithoutSummary');
+                        pane.expand(pane); // expand this pane
+                        //pane.resize(290); // increase panes size with 100px
+                        summaryState = 'expanded'
+                        if ($('.procedure-form') != undefined) {
+                            $('.procedure-form').css('position', 'absolute');
+                        }
+                    }
+                    else {
+                        pane.collapse(); // collapse this pane
+                        //pane.resize(0); // increase panes size with 100px
+                        $('.preOrPostProcedureWithSummary').addClass('preOrPostProcedureWithoutSummary');
+                        $('.preOrPostProcedureWithoutSummary').removeClass('preOrPostProcedureWithSummary');
+
+                        summaryState = 'collapsed'
+                        if ($('.procedure-form') != undefined) {
+                            $('.procedure-form').css('position', 'relative');
+                        }
+                    }
+                    $find("<%=RadAjaxManager1.ClientID%>").ajaxRequest(summaryState);
+                }
+
+                function hideShowSummary(show) {
+
+
+                    var splitter = $find("<%= radMainPage.ClientID %>");
+                    var pane = splitter.getPaneById("<%= radLeftPane.ClientID %>");
+                    var paneState = '<%=Session("PaneState")%>';
+
+                    if (show == false) {
+                        pane.collapse(); // collapse this pane
+                        //pane.resize(0); // increase panes size with 100px
+                        $('.preOrPostProcedureWithSummary').addClass('preOrPostProcedureWithoutSummary');
+                        $('.preOrPostProcedureWithoutSummary').removeClass('preOrPostProcedureWithSummary');
+                    }
+                    else {
+                        pane.expand(pane); // expand this pane
+                        $('.preOrPostProcedureWithoutSummary').addClass('preOrPostProcedureWithSummary');
+                        $('.preOrPostProcedureWithSummary').removeClass('preOrPostProcedureWithoutSummary');
+                        //pane.resize(290); // increase panes size with 100px
+
+                    }
+                }
+
+                var confimationMessage = 'Are you sure you want to ';
+                confimationMessage += location.pathname.split("/")[2] == 'Default.aspx' ? 'discard your changes?' : 'exit current page?';
+
+                function onClicking(sender, eventArgs) {
+
+                    if (newProcedureInitiated) {
+                        var proceed = confirm(confimationMessage);
+                        if (!proceed)
+                            eventArgs.set_cancel(true);
+                        else {
+                            newProcedureInitiated = false;
+                            eventArgs.set_cancel(false);
+                        }
+                    }
+                }
+
+                function onLogOutClick() {
+                    if (newProcedureInitiated) {
+                        var proceed = confirm(confimationMessage);
+                        if (!proceed)
+                            return false;
+                        else {
+                            newProcedureInitiated = false;
+                            document.location.href = "<%= ResolveUrl("~/Security/Logout.aspx")%>";
+                        }
+                    } else
+                        document.location.href = "<%= ResolveUrl("~/Security/Logout.aspx")%>";
+                }
+            </script>
+        </telerik:RadScriptBlock>
+
+
+        <asp:ScriptManager ID="RadScriptManager1" runat="server" EnablePageMethods="true" ScriptMode="Release">
+            <Scripts>
+                <asp:ScriptReference Path="../Scripts/jquery-3.6.3.min.js" />
+                <asp:ScriptReference Path="../Scripts/Global.js?v=1" />
+            </Scripts>
+        </asp:ScriptManager>
+        <telerik:RadFormDecorator ID="RadFormDecorator1" runat="server" DecoratedControls="All" DecorationZoneID="cmdOtherData" Skin="Metro" />
+        <telerik:RadWindowManager ID="RadWindowManager1" runat="server" ShowContentDuringLoad="False" Style="z-index: 7001" Behaviors="Close, Move, Resize"
+            Skin="Metro" EnableShadow="true" Modal="true">
+            <Windows>
+                <telerik:RadWindow ID="PatientDetailsRadWindow" runat="server" Modal="true" ReloadOnShow="true" KeepInScreenBounds="true"
+                    Width="800px" Height="570px" VisibleStatusbar="false" />
+
+                <telerik:RadWindow ID="AddNewItemRadWindow" runat="server" ReloadOnShow="true" VisibleStatusbar="false" Title="Add new entry"
+                    KeepInScreenBounds="true" Width="400px" Height="150px" OnClientClose="AddNewItemWindowClientClose">
+                    <ContentTemplate>
+                        <table cellspacing="3" cellpadding="3" style="width: 100%">
+                            <tr>
+                                <td>
+                                    <br />
+                                    <div class="left">
+                                        <telerik:RadTextBox ID="AddNewItemRadTextBox" runat="Server" Width="250px" />
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div id="buttonsdiv" style="height: 10px; padding-top: 16px;">
+                                        <telerik:RadButton ID="AddNewItemSaveRadButton" runat="server" Text="OK" Skin="Office2010Blue" AutoPostBack="false" OnClientClicked="AddNewItem" Icon-PrimaryIconCssClass="telerikOkButton" />
+                                        &nbsp;&nbsp;
+                                        <telerik:RadButton ID="AddNewItemCancelRadButton" runat="server" Text="Cancel" Skin="Office2010Blue" AutoPostBack="false" OnClientClicked="CancelAddNewItem" Icon-PrimaryIconCssClass="telerikCancelButton" />
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </ContentTemplate>
+                </telerik:RadWindow>
+            </Windows>
+        </telerik:RadWindowManager>
+
+
+        <asp:UpdatePanel runat="server" UpdateMode="Always">
+            <ContentTemplate>
+
+                <telerik:RadScriptBlock ID="RadScriptBlock2" runat="server">
+                    <script type="text/javascript">
+
+</script>
+                </telerik:RadScriptBlock>
+                <div class="validation-modal"></div>
+                <div id="ValidationNotification">
+                    <div class="rnTitleBar">
+                        <span class="rnTitleBarIcon"></span><span class="rnTitleBarTitle">Please correct the following</span>
+                        <ul class="rnCommands">
+                            <li class="rnCloseIcon"><a href="javascript:void(0);" title="Close"></a></li>
+                        </ul>
+                    </div>
+                    <div id="masterValDiv" class="aspxValidationSummary"></div>
+                    <div style="height: 20px; margin: 0 5px 5px 10px; float: right">
+                        <telerik:RadButton ID="CloseNotificationButton" runat="server" Text="Close" Skin="Metro" AutoPostBack="false" OnClientClicked="closeNotificationWindow" ButtonType="SkinnedButton"
+                            Icon-PrimaryIconCssClass="telerikCloseButton" />
+                    </div>
+                </div>
+
+                <telerik:RadNotification ID="SessionTimeoutNotification" runat="server"
+                    Position="Center" Width="500" Height="170" OnCallbackUpdate="OnCallbackUpdate"
+                    Skin="Silk" EnableRoundedCorners="true" ShowCloseButton="false" KeepOnMouseOver="false"
+                    OnClientShowing="OnClientShowing" LoadContentOn="PageLoad" AutoCloseDelay="60000"
+                    Title="<div class='sessionTimeOutNotificationHeader'>Session Expiring!</div>" TitleIcon="none">
+                    <ContentTemplate>
+                        <table cellspacing="3" cellpadding="3" style="font-size: 13px; padding-top: 20px;">
+                            <tr>
+                                <td>
+                                    <asp:Image ID="ClockImage" runat="server" ImageUrl="~/Images/clock2.png" Width="25px" Height="25px" />
+                                </td>
+                                <td>Your session expires in <span id="timeLbl" style="font-weight: bold; color: saddlebrown;">60</span> seconds. Click the button below to stay on.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="padding-top: 30px; text-align: center;">
+                                    <telerik:RadButton Skin="Silk" ID="ContinueSessionButton" runat="server" Text="Continue my session"
+                                        AutoPostBack="false" OnClientClicked="ContinueSession">
+                                    </telerik:RadButton>
+                                </td>
+                            </tr>
+                        </table>
+                    </ContentTemplate>
+                </telerik:RadNotification>
+            </ContentTemplate>
+        </asp:UpdatePanel>
+
+        <div id="procZone" runat="server" style="margin: 0px; min-width: 1300px;">
+            <telerik:RadSplitter ID="RadSplitter1" runat="server" Width="100%" Orientation="Horizontal" Skin="Windows7" PanesBorderSize="0" BorderSize="0" ResizeWithBrowserWindow="true"
+                OnClientLoaded="SplitterLoaded">
+                <telerik:RadPane ID="RadPane1" runat="server" Scrolling="None" Width="100%" CssClass="toppane absoluteHeight">
+                    <telerik:RadSplitter ID="radMainPage" runat="server" Skin="Windows7" CssClass="MainPage" ResizeWithParentPane="true">
+                        <telerik:RadPane ID="radLeftPane" runat="server" Width="290" Scrolling="None">
+                            <div>
+                                <asp:LinkButton ID="lbLogo" OnClick="lbLogo_Click" runat="server">
+                                    <asp:Image ID="imgLogo" runat="server" ImageUrl="~/Images/SolusLogoSmall.png" BorderWidth="0" Height="58" />
+                                </asp:LinkButton>
+                                <div id="divDate" class="date" runat="server">
+                                </div>
+                            </div>
+                            <div class="uniProductTitle"><%If CBool(Session("isERSViewer")) Then%><font size="2">Solus Endoscopy | Viewer</font><%Else%>Solus Endoscopy<%End If%></div>
+                            <br />
+                            <div id="Div2" class="main" runat="server">
+                                <asp:ContentPlaceHolder ID="LeftPaneContentPlaceHolder" runat="server" />
+                            </div>
+                            <div id="Div1" class="main" runat="server">
+                                <div class="treeListBorder" style="margin-top: -5px;">
+                                    <telerik:RadTreeView ID="LeftMenuRadTreeView" runat="server" Skin="Metro" BackColor="#ffffff" />
+                                </div>
+                            </div>
+                        </telerik:RadPane>
+
+                        <telerik:RadSplitBar ID="MainRadSplitBar" runat="server" CollapseMode="forward" Visible="true" />
+                        <telerik:RadPane ID="radRightPane" runat="server" Scrolling="None">
+                            <div id="holder" runat="server">
+                                <div id="divMenuSystem" style="width: 100%; max-height: 50px; min-width: 1497px">
+                                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                        <tr style="background-color: #3e9ed6;">
+                                            <td style="width: 40%; padding-top: 0px;">
+                                                <telerik:RadMenu ID="UnisoftMenu" runat="server" Skin="Metro" DataFieldParentID="ParentID" DataFieldID="MapID" CssClass="RadMainMenu"
+                                                    ClickToOpen="false" OnClientItemClicking="onClicking" OnItemDataBound="UnisoftMenuDataBound" BackColor="Transparent" ShowToggleHandle="true" TabIndex="0">
+                                                </telerik:RadMenu>
+                                            </td>
+                                            <td style="width: 60%; text-align: right;">
+                                                <div style="text-align: center;display: inline-block; margin-right:360px;">
+
+
+                                                    <span style="color: white; display: inline-block; padding-right: 23px !important;" runat="server" id="loginRoomLabel"></span>
+                                                    <span style="color: white; display: inline-block; padding-right: 23px !important;" runat="server" id="loginUserLabel"></span>
+                                                    <a href='javascript:' onclick="onLogOutClick()" style="cursor: pointer; text-decoration: none; display: inline-block;">
+                                                        <span style="color: #bfdbff; font-size: xx-small; height: 6px;" runat="server" id="Label1">Logout</span><br />
+                                                        <asp:Image runat="server" ImageUrl="~/Images/logout.png" Width="13px" />
+                                                    </a>
+                                                </div>
+                                            </td>
+                                            
+                                            <%--<td style="width: 10%; min-width: 100px; text-align: center; vertical-align: top;">
+                                                
+                                            </td>
+                                            <td style="width: 10%; height: 20px; text-align: center;">
+                                            </td>--%>
+                                            <%--<td style="padding-right: 10px;"></td>--%>
+                                        </tr>
+
+                                    </table>
+                                </div>
+                                <div id="MainContentDiv" class="main" runat="server">
+                                    <asp:ContentPlaceHolder ID="BodyContentPlaceHolder" runat="server" />
+                                </div>
+                            </div>
+                        </telerik:RadPane>
+                    </telerik:RadSplitter>
+                </telerik:RadPane>
+                <telerik:RadPane ID="RadPane2" runat="server" Height="15px" Scrolling="None" MinHeight="15">
+                    <div id="cmdOtherData" runat="server" style="margin-left: 10px; height: 15px;">
+                        <unisoft:Footer ID="SchFooter" runat="server" />
+                    </div>
+                </telerik:RadPane>
+            </telerik:RadSplitter>
+        </div>
+
+        <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server" OnAjaxRequest="RadAjaxManager1_AjaxRequest">
+            <AjaxSettings>
+                <telerik:AjaxSetting AjaxControlID="UnisoftMenu">
+                    <UpdatedControls>
+                        <telerik:AjaxUpdatedControl ControlID="holder" LoadingPanelID="RadAjaxLoadingPanel1" />
+                    </UpdatedControls>
+                </telerik:AjaxSetting>
+            </AjaxSettings>
+
+        </telerik:RadAjaxManager>
+
+        <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server" Skin="Metro">
+        </telerik:RadAjaxLoadingPanel>
+    </form>
+
+</body>
+</html>

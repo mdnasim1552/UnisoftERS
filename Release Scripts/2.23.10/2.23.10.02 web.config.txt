@@ -1,0 +1,95 @@
+Check this key exists in AppSettings, if no add it.
+	<!--NHS SCotland will Pass Trust/Healthboard name as part of  group name  , Set Y for NHS SCotland and  N   for Normal Mode. This will taken when only when user logged on as SSO-->
+    <add key="TrustNamePassedInSSOADGroupName" value="N" />
+    
+Add following lines to the bottom of the AppSettings section
+
+	<add key="NIPAPINoRecordFound" value="No patients found for this Chi Number. Amend your search criteria." />
+	<!--Define the Cookie time -->
+    <add key="CookieTime" value="600" />
+	<!--START - This Part for NHS Spine Search Configuration -->
+	<!--SPINEAPIURL  contain url of The API developed for Spine Search  -->
+	<add key="SPINEAPIURL" value="https://ers.hd-clinical.com/NHSSPINE" />
+	<add key="NHSSPINEAPINoRecordFound" value="No patients found for this NHS Number in NHS Spine. Amend your search criteria." />
+	<!--SPINEAPIKEY have  same values AS configured Key in SPINEAPIURL API  -->
+	<add key="SPINEAPIKEY" value="THISISNHSSPINESERVICEKEYTHISISNHSSPINESERVICEKEY" />
+	<!--Audience have  same values AS configured in Audience of SPINEAPIURL API  -->
+	<add key="Audience" value="https://localhost:44398/" />
+	<!--Issuer have  same values AS configured in Issuer of SPINEAPIURL API  -->
+	<add key="Issuer" value="https://localhost:44398/" />
+	<add key="TimeOutInMinute" value="5" />
+	<!--END -This Part for NHS Spine Search Configuration-->
+    <!--LetterStroageOption, FileSystem, Azure or Database (Defualt)-->
+    <add key="LetterStorageOption" value=""/>
+    <!--LetterStorageUNC used for FileSystem Letter Storage option to provide path for letters to be saved, if not set this defaults to the ~\App_Data\Letters folder in the application directory on the web server-->
+    <add key="LetterStorageUNC" value=""/>
+    <!--AzureLetterStorageShare used for Azure Letter Storage option to provide Azure Fileshare for letters to be saved, if not set this defaults to a share named "letters"-->
+    <add key="AzureLetterStorageShare" value=""/>
+	<!-- Add the below line to enable/disable the selection of imageports when creating a procedure -->
+	<add key="SetDefaultImageport" value="true" />
+
+
+
+Add these dependent assembly if required
+	
+	
+	 <dependentAssembly>
+        <assemblyIdentity name="Microsoft.Bcl.AsyncInterfaces" publicKeyToken="cc7b13ffcd2ddd51" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-7.0.0.0" newVersion="7.0.0.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Threading.Tasks.Extensions" publicKeyToken="cc7b13ffcd2ddd51" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-4.2.0.1" newVersion="4.2.0.1" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.ComponentModel.Annotations" publicKeyToken="b03f5f7f11d50a3a" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-4.2.1.0" newVersion="4.2.1.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="Microsoft.Owin.Security.OAuth" publicKeyToken="31bf3856ad364e35" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-4.2.2.0" newVersion="4.2.2.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Text.Json" publicKeyToken="cc7b13ffcd2ddd51" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-4.0.1.2" newVersion="4.0.1.2" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="Microsoft.IdentityModel.Tokens" publicKeyToken="31bf3856ad364e35" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-7.0.2.0" newVersion="7.0.2.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="Microsoft.IdentityModel.Protocols" publicKeyToken="31bf3856ad364e35" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-7.0.2.0" newVersion="7.0.2.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="Microsoft.IdentityModel.Logging" publicKeyToken="31bf3856ad364e35" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-7.0.2.0" newVersion="7.0.2.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="Microsoft.IdentityModel.Protocols.OpenIdConnect" publicKeyToken="31bf3856ad364e35" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-7.0.2.0" newVersion="7.0.2.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.IdentityModel.Tokens.Jwt" publicKeyToken="31bf3856ad364e35" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-7.0.2.0" newVersion="7.0.2.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="Microsoft.IdentityModel.Xml" publicKeyToken="31bf3856ad364e35" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-7.0.2.0" newVersion="7.0.2.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="Microsoft.IdentityModel.Tokens.Saml" publicKeyToken="31bf3856ad364e35" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-7.0.2.0" newVersion="7.0.2.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Web.Helpers" publicKeyToken="31bf3856ad364e35" />
+        <bindingRedirect oldVersion="1.0.0.0-3.0.0.0" newVersion="3.0.0.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Web.WebPages" publicKeyToken="31bf3856ad364e35" />
+        <bindingRedirect oldVersion="1.0.0.0-3.0.0.0" newVersion="3.0.0.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Web.Mvc" publicKeyToken="31bf3856ad364e35" />
+        <bindingRedirect oldVersion="1.0.0.0-5.2.9.0" newVersion="5.2.9.0" />
+      </dependentAssembly>

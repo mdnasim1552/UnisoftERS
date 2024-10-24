@@ -1,0 +1,817 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:gen="http://www.show.scot.nhs.uk/isd/General" xmlns:sci="http://www.show.scot.nhs.uk/isd/SCIStore" xmlns:store="http://www.show.scot.nhs.uk/isd/SCIStore/Messages" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.show.scot.nhs.uk/isd/SCIStore/Messages" version="8.1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="SCIStoreGeneral-V8-1.xsd" namespace="http://www.show.scot.nhs.uk/isd/SCIStore" />
+  <xsd:import schemaLocation="general-v2-10a.xsd" namespace="http://www.show.scot.nhs.uk/isd/General" />
+  <xsd:element name="Login" type="sci:Login">
+    <xsd:annotation>
+      <xsd:documentation>Login Request</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="LoginResponse" type="sci:LoginTokenResponse">
+    <xsd:annotation>
+      <xsd:documentation>Login Response</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="Logout">
+    <xsd:annotation>
+      <xsd:documentation>Logout Request</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="Message">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+              <xsd:maxLength value="50" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="LogoutResponse">
+    <xsd:annotation>
+      <xsd:documentation>Logout Response</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:any minOccurs="0" namespace="##other" processContents="lax" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="GetNotifications">
+    <xsd:annotation>
+      <xsd:documentation>Get notifications for a type</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="NotificationType" type="sci:NotificationType" />
+        <xsd:element minOccurs="0" name="TotalNotificationsToReturn">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:int">
+              <xsd:minInclusive value="1" />
+              <xsd:maxInclusive value="100" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element minOccurs="0" name="NotificationAction">
+          <xsd:simpleType>
+            <xsd:union>
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:enumeration value="Peek" />
+                  <xsd:enumeration value="Receive" />
+                </xsd:restriction>
+              </xsd:simpleType>
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:minLength value="1" />
+                  <xsd:maxLength value="20" />
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:union>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="GetNotificationsResponse">
+    <xsd:annotation>
+      <xsd:documentation>Get notifications for a type response</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="NotificationList" type="sci:NotificationList" />
+        <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="DeleteSubscription">
+    <xsd:annotation>
+      <xsd:documentation>Delete a subscription</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="SubscriptionID" type="sci:SubscriptionID" />
+        <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="DeleteSubscriptionResponse">
+    <xsd:annotation>
+      <xsd:documentation>Delete Subscription</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:any minOccurs="0" namespace="##other" processContents="lax" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="UnSubscribeToStore">
+    <xsd:annotation>
+      <xsd:documentation>unSubscribe to store</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:any minOccurs="0" namespace="##other" processContents="lax" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="UnSubscribeToStoreResponse">
+    <xsd:annotation>
+      <xsd:documentation>UnSubscribe To Store</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:any minOccurs="0" namespace="##other" processContents="lax" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="BreakGlass" type="sci:BreakGlassInfo">
+    <xsd:annotation>
+      <xsd:documentation>Allow remote user to break glass</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="BreakGlassResponse">
+    <xsd:annotation>
+      <xsd:documentation>Break glass response</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="BreakGlassItem" type="sci:BreakGlassItem" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="GetBreakGlassTypes">
+    <xsd:annotation>
+      <xsd:documentation>Requests a list of breakglasstypes</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:any minOccurs="0" namespace="##other" processContents="lax" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="GetBreakGlassTypesResponse">
+    <xsd:annotation>
+      <xsd:documentation>Return list of valid breakglass types</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="BreakGlassTypes" type="sci:BreakGlassTypeItemList" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="FindADT" type="sci:FindADTcriteria">
+    <xsd:annotation>
+      <xsd:documentation>Find adminssion discharge transfer details for specific criteria</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="FindADTresponse">
+    <xsd:annotation>
+      <xsd:documentation>Find adminssion discharge transfer details response</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="ADTMessages" type="sci:FindADTItemList" />
+        <xsd:element name="SearchSummary" type="sci:SearchSummaryItemList" />
+        <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="GetADT">
+    <xsd:annotation>
+      <xsd:documentation>get full details on a specific ADT entry</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="ADTId" type="xsd:positiveInteger" />
+        <xsd:element name="IncludePatientInformation" type="xsd:boolean" />
+        <xsd:element minOccurs="0" name="Provider" type="sci:ProviderItem" />
+        <xsd:element minOccurs="0" name="BreakGlassItems" type="sci:BreakGlassItemList" />
+        <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="GetADTResponse">
+    <xsd:annotation>
+      <xsd:documentation>get full details on a specific ADT entry response</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="SystemInformation" type="sci:ADTsystemInformation" />
+        <xsd:element name="ADTinformation" type="sci:ADTmessageType" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="FindPatient" type="sci:FindPatientCriteria">
+    <xsd:annotation>
+      <xsd:documentation>Find patients in store for selected criteria</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="FindPatientResponse">
+    <xsd:annotation>
+      <xsd:documentation>Find patients in store for selected criteria response</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="Patients" type="sci:FindPatientItemList" />
+        <xsd:element name="SearchSummary" type="sci:SearchSummaryItemList" />
+        <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="GetPatient">
+    <xsd:annotation>
+      <xsd:documentation>Get full patient details for a specific patient</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="PatientID" type="sci:PatientIdentifier" />
+        <xsd:element name="IncludeExtendedDemographics" type="xsd:boolean" />
+        <xsd:element minOccurs="0" name="IncludeInactiveDemographics" type="xsd:boolean" />
+        <xsd:element minOccurs="0" name="IDformat">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+              <xsd:minLength value="1" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element minOccurs="0" name="Provider" type="sci:ProviderItem" />
+        <xsd:element minOccurs="0" name="SaveInStore" type="xsd:boolean" />
+        <xsd:element minOccurs="0" name="BreakGlassItems" type="sci:BreakGlassItemList" />
+        <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="GetPatientResponse">
+    <xsd:annotation>
+      <xsd:documentation>Get full patient details for a specific patient response</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="SystemInformation" type="sci:PatientSystemInformation" />
+        <xsd:element name="PatientInformation" type="sci:PatientInformation" />
+        <xsd:element name="SearchSummary" type="sci:SearchSummaryItem" />
+        <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="FindResult" type="sci:FindResultCriteria">
+    <xsd:annotation>
+      <xsd:documentation>Find results based on selected criteria</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="FindResultResponse">
+    <xsd:annotation>
+      <xsd:documentation>Find results based on selected criteria response</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="Results" type="sci:FindResultItemList" />
+        <xsd:element name="SearchSummary" type="sci:SearchSummaryItemList" />
+        <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="GetResult">
+    <xsd:annotation>
+      <xsd:documentation>Get results for a specific result report</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="ResultID" type="sci:StoreGenericIdentifier" />
+        <xsd:element name="IncludePatientInformation" type="xsd:boolean" />
+        <xsd:element name="IncludeSampleHtml" type="xsd:boolean" />
+        <xsd:element name="IncludeSetHtml" type="xsd:boolean" />
+        <xsd:element minOccurs="0" name="Provider" type="sci:ProviderItem" />
+        <xsd:element minOccurs="0" name="BreakGlassItems" type="sci:BreakGlassItemList" />
+        <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="GetResultResponse">
+    <xsd:annotation>
+      <xsd:documentation>Get results for a specific result report response</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="SystemInformation" type="sci:ReportSystemInformation" />
+        <xsd:element name="InvestigationReport" type="sci:InvestigationReport" />
+        <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="FindDocument" type="sci:FindDocumentCriteria">
+    <xsd:annotation>
+      <xsd:documentation>Find documents for specific selection criteria</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="FindDocumentResponse">
+    <xsd:annotation>
+      <xsd:documentation>Find documents for specific selection criteria response</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="Documents" type="sci:FindDocumentItemList" />
+        <xsd:element name="SearchSummary" type="sci:SearchSummaryItemList" />
+        <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="GetDocument">
+    <xsd:annotation>
+      <xsd:documentation>Get a specific document</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="DocumentID" type="sci:StoreGenericIdentifier" />
+        <xsd:element name="IncludePatientInformation" type="xsd:boolean" />
+        <xsd:element minOccurs="0" name="Provider" type="sci:ProviderItem" />
+        <xsd:element minOccurs="0" name="BreakGlassItems" type="sci:BreakGlassItemList" />
+        <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="GetDocumentResponse">
+    <xsd:annotation>
+      <xsd:documentation>Get a specific document response</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="Document" type="sci:DocumentInfo" />
+        <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="GetDocumentStylesheet">
+    <xsd:annotation>
+      <xsd:documentation>Retrieves the stylesheet</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="DocumentID" type="sci:StoreGenericIdentifier" />
+        <xsd:element minOccurs="0" name="Stylesheet" type="xsd:string" />
+        <xsd:element minOccurs="0" name="Provider" type="sci:ProviderItem" />
+        <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="GetDocumentStylesheetResponse">
+    <xsd:annotation>
+      <xsd:documentation>retrieves a stylesheet response</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="StyleSheetDetails" type="sci:DocumentStylesheetType" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="FindTreatmentLog" type="sci:FindTreatmentLogCriteria">
+    <xsd:annotation>
+      <xsd:documentation>Find treatment log record for specific selection criteria</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="FindTreatmentLogResponse">
+    <xsd:annotation>
+      <xsd:documentation>Find treatment log record for specific selection criteria response</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="TreatmentLogList" type="sci:TreatmentLogList" />
+        <xsd:element name="SearchSummary" type="sci:SearchSummaryItemList" />
+        <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="GetTreatmentLog">
+    <xsd:annotation>
+      <xsd:documentation>Get a specific treatment log record</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="TreatmentLogID" type="sci:StoreGenericIdentifier" />
+        <xsd:element name="IncludePatientInformation" type="xsd:boolean" />
+        <xsd:element minOccurs="0" name="Provider" type="sci:ProviderItem" />
+        <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="GetTreatmentLogResponse">
+    <xsd:annotation>
+      <xsd:documentation>Get a specific treatment log record response</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="TreatmentLog" type="sci:TreatmentLogInfo" />
+        <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="FindMerge">
+    <xsd:annotation>
+      <xsd:documentation>Find merge entries for a patient</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="PrimaryPatientId" type="sci:PatientIdentifier" />
+        <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="FindMergeResponse">
+    <xsd:annotation>
+      <xsd:documentation>Find merge entries for a patient response</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="Patients" type="sci:FindMergeItemList" />
+        <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="MergePatient">
+    <xsd:annotation>
+      <xsd:documentation>Merge two patients</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="PrimaryPatientID" type="sci:PatientIdentifier" />
+        <xsd:element name="SecondaryPatientID" type="sci:PatientIdentifier" />
+        <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="MergePatientResponse">
+    <xsd:annotation>
+      <xsd:documentation>MergePatient Response</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:any minOccurs="0" namespace="##other" processContents="lax" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="UnMergePatient">
+    <xsd:annotation>
+      <xsd:documentation>Unmerge two patients that were previously merged</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="PrimaryPatientID" type="sci:PatientIdentifier" />
+        <xsd:element name="SecondaryPatientID" type="sci:PatientIdentifier" />
+        <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="UnMergePatientResponse">
+    <xsd:annotation>
+      <xsd:documentation>UnMergePatient Response</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:any minOccurs="0" namespace="##other" processContents="lax" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="MessageQueueCount">
+    <xsd:annotation>
+      <xsd:documentation>Get number of entries in a message Queue</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="Queue" type="sci:MessageQueue" />
+        <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="MessageQueueCountResponse">
+    <xsd:annotation>
+      <xsd:documentation>Get number of entries in a message Queue response</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="Count" type="xsd:nonNegativeInteger" />
+        <xsd:element name="Queue" type="sci:MessageQueue" />
+        <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="MessageQueueDelete">
+    <xsd:annotation>
+      <xsd:documentation>delete an entry from a message Queue</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="Queue" type="sci:MessageQueue" />
+        <xsd:element name="MessageIdentifier" type="xsd:string" />
+        <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="MessageQueueDeleteResponse">
+    <xsd:annotation>
+      <xsd:documentation>delete an entry from a message Queue response</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="Queue" type="sci:MessageQueue" />
+        <xsd:element name="MessageIdentifier" type="xsd:string" />
+        <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="MessageQueuePeek">
+    <xsd:annotation>
+      <xsd:documentation>Have a peek at the next available message queue entry</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="Queue" type="sci:MessageQueue" />
+        <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="MessageQueuePeekResponse">
+    <xsd:annotation>
+      <xsd:documentation>Have a peek at the next available message queue entry response</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="Queue" type="sci:MessageQueue" />
+        <xsd:element name="MessageIdentifier" type="xsd:string" />
+        <xsd:element name="MessageBody" type="xsd:string" />
+        <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="FindHCP" type="sci:FindHCPcriteria">
+    <xsd:annotation>
+      <xsd:documentation>Find HCP request</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="FindHCPResponse">
+    <xsd:annotation>
+      <xsd:documentation>Find HCP response</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="HCPs" type="sci:HCPitemList" />
+        <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="FindOrganisation" type="sci:FindOrganisationCriteria">
+    <xsd:annotation>
+      <xsd:documentation>Find Organisation  request</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="FindOrganisationResponse">
+    <xsd:annotation>
+      <xsd:documentation>Find Organisation response</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="Organisations" type="sci:OrganisationItemList" />
+        <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="GetWebTimeout">
+    <xsd:annotation>
+      <xsd:documentation>return the web timeout in minutes</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:any minOccurs="0" namespace="##other" processContents="lax" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="GetWebTimeoutResponse">
+    <xsd:annotation>
+      <xsd:documentation>return the web timeout in minutes response</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="Minutes" type="xsd:positiveInteger" />
+        <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="GetInterfaceStatus">
+    <xsd:annotation>
+      <xsd:documentation>Get status of interfaces</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="Limits" type="sci:InterfaceStatusLimits" />
+        <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="GetInterfaceStatusResponse">
+    <xsd:annotation>
+      <xsd:documentation>Get status of interfaces response</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="Services" type="sci:ServiceItemList" />
+        <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="FindBreakGlassAudit" type="sci:FindBreakGlassAuditCriteria">
+    <xsd:annotation>
+      <xsd:documentation>Find break glass audit  request</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="FindBreakGlassAuditResponse">
+    <xsd:annotation>
+      <xsd:documentation>Find break glass audit instances response</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="BreakGlassAuditInstances" type="sci:BreakGlassAuditItemList" />
+        <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="FindPatientConsentAudit" type="sci:PatientConsentAuditCriteria">
+    <xsd:annotation>
+      <xsd:documentation>Find Patient consnet audit request</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="FindPatientConsentAuditResponse">
+    <xsd:annotation>
+      <xsd:documentation>Find Patient Consent audit instances</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="PatientConsentAuditInstances" type="sci:PatientConsentAuditItemList" />
+        <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="GetCumulativeReport" type="sci:CumulativeReportCriteria" />
+  <xsd:element name="GetCumulativeReportResponse">
+    <xsd:annotation>
+      <xsd:documentation>Get a Cumulative Report</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="CumulativeReport" type="sci:CumulativeReport" />
+        <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="FindSubscriptions">
+    <xsd:annotation>
+      <xsd:documentation>Find the users subscriptions for a type</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="SubscriptionType" type="xsd:string" />
+        <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="FindSubscriptionsResponse">
+    <xsd:annotation>
+      <xsd:documentation>Find the users subscriptions for a type response</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="Subscriptions" type="sci:SubscriptionList" />
+        <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="AddSubscription">
+    <xsd:annotation>
+      <xsd:documentation>Add a subscription</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="SubscriptionInfo" type="sci:SubscriptionInfo" />
+        <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="AddSubscriptionResponse">
+    <xsd:annotation>
+      <xsd:documentation>Add subscription response</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="SubscriptionID" type="sci:SubscriptionID" />
+        <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="AmendSubscription">
+    <xsd:annotation>
+      <xsd:documentation>Amend a subscription</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="SubscriptionInfo" type="sci:SubscriptionInfo" />
+        <xsd:any namespace="##other" processContents="lax" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="AmendSubscriptionResponse">
+    <xsd:annotation>
+      <xsd:documentation>AmendSubscription Response</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:any minOccurs="0" namespace="##other" processContents="lax" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="GetProviderLocations">
+    <xsd:annotation>
+      <xsd:documentation>Get valid provider locations for a user</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="IncludeFixedInterfaces" type="xsd:boolean" />
+        <xsd:any minOccurs="0" namespace="##other" processContents="lax" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="GetProviderLocationsResponse">
+    <xsd:annotation>
+      <xsd:documentation>Get valid provider locations for a user</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="ProviderLocations" type="sci:ProviderLocationItemList" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="LocatePatients" type="sci:LocatePatientCriteria">
+    <xsd:annotation>
+      <xsd:documentation>Locate patients in a list of remote locations for selected criteria</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="LocatePatientsResponse">
+    <xsd:annotation>
+      <xsd:documentation>List of Patient Matches</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" maxOccurs="unbounded" name="PatientMatches" type="sci:PatientMatch" />
+        <xsd:element name="SearchSummary" type="sci:SearchSummaryItemList" />
+        <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="GetPatientsResultList">
+    <xsd:annotation>
+      <xsd:documentation>Locate patients resullts for multiple requested patients</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="Patients" type="sci:PatientIdentifierList" />
+        <xsd:element minOccurs="0" name="IncludePatientInformation" type="xsd:boolean" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="GetPatientsResultListResponse">
+    <xsd:annotation>
+      <xsd:documentation>Find results based on selected criteria response</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="Results" type="sci:FindResultItemList" />
+        <xsd:element name="SearchSummary" type="sci:PatientSearchSummaryItemList" />
+        <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="GetPatientsDocumentList">
+    <xsd:annotation>
+      <xsd:documentation>Locate patients resullts for multiple requested patients</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="Patients" type="sci:PatientIdentifierList" />
+        <xsd:element minOccurs="0" name="IncludePatientInformation" type="xsd:boolean" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="GetPatientsDocumentListResponse">
+    <xsd:annotation>
+      <xsd:documentation>Locate patients resullts for multiple requested patients</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="Documents" type="sci:FindDocumentItemList" />
+        <xsd:element name="SearchSummary" type="sci:PatientSearchSummaryItemList" />
+        <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

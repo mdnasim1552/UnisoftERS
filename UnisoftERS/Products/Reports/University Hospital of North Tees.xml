@@ -1,0 +1,33 @@
+<!-- Workstation ID:  -->
+<hospital.SendBatchMessage xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://weblogik.co.uk/jets/Hospital.SendBatchMessage.xsd">
+  <session uniqueId="13868508s" description="NED List" date="30/Dec/1899" time="AM" type="Service List" site="RVWAE">
+    <procedures>
+      <procedure localProcedureId="13868508s" previousLocalProcedureId="" procedureName="FLEXI" endoscopistDiscomfort="Comfortable" nurseDiscomfort="Comfortable" bowelPrep="good" extent="Descending Colon" polypsDetected="0" digitalRectalExamination="Yes" magneticEndoscopeImagerUsed="No">
+        <patient gender="Female" age="55" admissionType="Outpatient" urgencyType="Routine" />
+        <drugs pethidine="0" midazolam="0" fentanyl="0" />
+        <staff.members>
+          <Staff professionalBodyCode="" endoscopistRole="Independent" procedureRole="Independent (no trainer)" extent="Descending Colon" jManoeuvre="Yes">
+            <therapeutics>
+              <therapeutic type="None" role="Independent (no trainer)" performed="1" successful="1" retrieved="0" />
+            </therapeutics>
+          </Staff>
+        </staff.members>
+        <indications>
+          <indication indication="Other" comment="National Bowel Scope screening" />
+        </indications>
+        <limitations>
+          <limitation limitation="Not Limited" />
+        </limitations>
+        <biopsies>
+          <Biopsy biopsySite="None" numberPerformed="0" />
+        </biopsies>
+        <diagnoses>
+          <Diagnose diagnosis="Normal" />
+        </diagnoses>
+        <adverse.events>
+          <adverse.event adverseEvent="None" />
+        </adverse.events>
+      </procedure>
+    </procedures>
+  </session>
+</hospital.SendBatchMessage>

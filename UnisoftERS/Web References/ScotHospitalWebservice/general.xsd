@@ -1,0 +1,3486 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:gen="http://www.show.scot.nhs.uk/isd/General" xmlns:h="http://www.w3.org/1999/xhtml" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.show.scot.nhs.uk/isd/General" version="2.10" id="general" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:annotation>
+    <xsd:documentation>
+      <h:h2 xmlns:h="http://www.w3.org/1999/xhtml">Definition of general NHSS components</h:h2>
+      <h:p xmlns:h="http://www.w3.org/1999/xhtml">Changes since version 2.9</h:p>
+      <h:ol xmlns:h="http://www.w3.org/1999/xhtml">
+        <h:li>Changed the EthnicOrigin element of SOCIAL_CIRCUMSTANCES_TYPE complex type. Changed to be simple type restriction of string between 1 and 70 characters. Recommended values moved from enumerated list to annotation</h:li>
+      </h:ol>
+      <h:p xmlns:h="http://www.w3.org/1999/xhtml">Changes since version 2.8</h:p>
+      <h:ol xmlns:h="http://www.w3.org/1999/xhtml">
+        <h:li>Added new RESULT_STATUS_DESCRIPTION simple type</h:li>
+        <h:li>Added new TEST_STATUS_TYPE complex type.</h:li>
+        <h:li>Amended RESULT_STATUS_TYPE to be simple enumerated list of values.</h:li>
+        <h:li>Added UniqueCarePathwayNumber of type UNIQUE_CARE_PATHWAY_NUMBER_TYPE to DOCUMENT_DATA_TYPE</h:li>
+        <h:li>Changed the regular expression validating the POST_CODE_TYPE simple type to allow the first digit of a postcode to be zero.</h:li>
+        <h:li>Extended the STRUCTURED_DOSAGE_TYPE's DoseDescription element's maxLength from 35 to 198</h:li>
+        <h:li>Added optional DateTimeReported element to TEST_RESULT_TYPE complex type.</h:li>
+      </h:ol>
+      <h:p xmlns:h="http://www.w3.org/1999/xhtml">Changes since version 2.7</h:p>
+      <h:ol xmlns:h="http://www.w3.org/1999/xhtml">
+        <h:li>Changed the DOCUMENT_CATEGORY_TYPE from a simple type to a complex type of DocumentType, Separator and DocumentSubType</h:li>
+        <h:li>Added DocumentCreationDate and DocumentCreationTime to DOCUMENT_DATA_TYPE.</h:li>
+        <h:li>Added optional AlcoholConsumptionHistory, SmokingConsumptionHistory and ExerciseStatusHistory elements to LIFESTYLE_RISK_TYPE.</h:li>
+        <h:li>Added following types for generic information GENERIC_STRING_VALUE_TYPE, NAME_VALUE_NAME_TYPE, GENERIC_ID_TYPE, GENERIC_TITLE_TYPE, GENERIC_INFORMATION_INSTANCE_TYPE, GENERIC_INFORMATION_TYPE, GENERIC_VALUE_TYPE, NAME_VALUE_PAIR_TYPE, TABULAR_CELL_TYPE, TABULAR_CELLS_TYPE, TABULAR_COLUMN_TYPE, TABULAR_COLUMNS_TYPE, TABULAR_INFORMATION_TYPE, TABULAR_ROW_TYPE, TABULAR_ROWS_TYPE.</h:li>
+        <h:li>Added NON_VALIDATED_POST_CODE_TYPE and NonValidatedPostCode element to the ADDRESS_TYPE</h:li>
+        <h:li>Added new complex type RANGE_COMPARATOR_TYPE.</h:li>
+        <h:li>Added new complex type ATTACHMENT_TYPE.</h:li>
+        <h:li>Added new element TestIdentifier of ID_TYPE to TEST_TYPE.</h:li>
+        <h:li>Added new element AbnormalReferenceLimit to REFERENCE_LIMIT_TYPE to replace choice between different abnormal limits.</h:li>
+        <h:li>Added new element ResultAttachments of type ATTACHMENT_TYPE to type TEST_RESULT_TYPE.</h:li>
+        <h:li>Made element TestName of TEST_TYPE unbounded.</h:li>
+        <h:li>Made enumerated type DEVIATING_RESULT_QUANTITATIVE_FLAG_TYPE a union restriction in order to allow a string.</h:li>
+        <h:li>Made enumerated type RESULT_STATUS_TYPE allow a string.</h:li>
+        <h:li>Made DeviatingResultQualitativeFlag in type INTERPRETATION_TYPE optional.</h:li>
+        <h:li>Made QuantityUnit of type QUANTITY_TYPE optional.</h:li>
+        <h:li>Make elements RangeHighValue and RangeLowValue of type RANGE_COMPARATOR_TYPE in RANGE_TYPE.</h:li>
+        <h:li>Increased the maxLength of Comment in CLINICAL_CONDITION_TYPE to be 256 characters.</h:li>
+      </h:ol>
+      <h:p xmlns:h="http://www.w3.org/1999/xhtml">Changes since version 2.6</h:p>
+      <h:ol xmlns:h="http://www.w3.org/1999/xhtml">
+        <h:li>Added new type TEST_SET_RESULT_TYPE.</h:li>
+        <h:li>Added new type TEST_REPORTING_TYPE .</h:li>
+        <h:li>Changed SERVICE_REQUEST_TYPE  made gen:TestRequested optional.</h:li>
+        <h:li>Added optional element SampleRequesterComments to gen:SAMPLE_TYPE .</h:li>
+        <h:li>Added optional element SampleProviderComments  to gen:SAMPLE_TYPE.</h:li>
+        <h:li>Added new simple type DATA _FORMAT_TYPE.</h:li>
+        <h:li>Added new simple type ID_SOURCE_TYPE. </h:li>
+        <h:li>Added new simple type CLINICAL_INFORMATION_TYPE. </h:li>
+        <h:li>Added new optional element ResultDataType of type DATA _FORMAT_TYPE  to TEST_RESULT_TYPE. </h:li>
+        <h:li>Added new optional element ResultDataType of type DATA _FORMAT_TYPE  to TEST_SET_RESULT_TYPE. </h:li>
+        <h:li>Added new optional element gen:IdSource of type  ID_SOURCE_TYPE to ID_TYPE. </h:li>
+        <h:li>Changed gen:Comment of TEST_RESULT_TYPE to make it unbounded. </h:li>
+        <h:li>Changed gen:CLINICAL_CIRCUMSTANCE_TYPE replaced non identifying sequence with new element ClinicalInformation of type CLINICAL_INFORMATION_TYPE . </h:li>
+        <h:li>Removed  gen:DateTimeReported from TEST_RESULT_TYPE. Superceded by TEST_REPORTING_TYPE</h:li>
+        <h:li>Removed gen:ReportingParty from INTERPRETATION_TYPE. Superceded by TEST_REPORTING_TYPE </h:li>
+        <h:li>Removed gen:ReportVerifyingParty from INTERPRETATION_TYPE. Superceded by TEST_REPORTING_TYPE</h:li>
+      </h:ol>
+      <h:p xmlns:h="http://www.w3.org/1999/xhtml">Changes since version 2.5</h:p>
+      <h:ol xmlns:h="http://www.w3.org/1999/xhtml">
+        <h:li>Added optional DateRecorded element to CLINICAL_CONDITION_TYPE.</h:li>
+        <h:li>Added optional LastPrescribedDate element to STRUCTURED_DOSAGE_TYPE.</h:li>
+        <h:li>Added optional Modifier element to CLINICAL_WARNING_TYPE.</h:li>
+      </h:ol>
+      <h:p xmlns:h="http://www.w3.org/1999/xhtml">Changes since version 2.4</h:p>
+      <h:ol xmlns:h="http://www.w3.org/1999/xhtml">
+        <h:li>Added DrugPeriodDescription to DRUG_DURATION_TYPE so that a drug duration can be described in words.</h:li>
+        <h:li>Added MedicationStopDate to DRUG_DURATION_TYPE so that a specific stop date can be specified for medication.</h:li>
+        <h:li>Added DOCUMENT_PATIENT_CONSENT_TYPE.</h:li>
+        <h:li>Added DOCUMENT_SENSITIVITY_TYPE.</h:li>
+        <h:li>Added SEX_AT_BIRTH_TYPE.</h:li>
+      </h:ol>
+      <h:p xmlns:h="http://www.w3.org/1999/xhtml">Changes since version 2.3e</h:p>
+      <h:ol xmlns:h="http://www.w3.org/1999/xhtml">
+        <h:li>Changed the processContents attribute from "strict" to "lax" for all the "any" schema elements.</h:li>
+        <h:li>Added comment element to the CLINICAL_PROCEDURE_TYPE.</h:li>
+        <h:li>Removed maxlength restriction from MEASUREMENT_DESCRIPTION_TYPE.</h:li>
+        <h:li>Increased length of QUANTITY_UNIT_TYPE to 255.</h:li>
+        <h:li>Increased length of UNSTRUCTURED_TELECOM_TYPE to 50.</h:li>
+        <h:li>Increased length of ClinicalCircumstanceDescription to 255 in CLINICAL_CIRCUMSTANCE_TYPE.</h:li>
+        <h:li>Increased length of SpecialtyName to 50 in SPECIALTY_TYPE, corresponding to SMR Specialty Description.</h:li>
+      </h:ol>
+      <h:p xmlns:h="http://www.w3.org/1999/xhtml">Changes since version 2.2draft20031211</h:p>
+      <h:ol xmlns:h="http://www.w3.org/1999/xhtml">
+        <h:li>Added optional StartDate element to CLINICAL_WARNING_TYPE to allow recording of the date at which the clinical warning first occurred.</h:li>
+        <h:li>Added optional TestDate element to TEST_RESULT_TYPE to allow recording of the date at which the test was performes.</h:li>
+        <h:li>Added optional DateRecorded element to PROCEDURE_PERFORMED_TYPE to allow recording of the date at which the procedure was recorded.</h:li>
+        <h:li>Sorted definitions into alphabetical order.</h:li>
+        <h:li>Changed attributeFormDefault to "unqualified".</h:li>
+        <h:li>Added schema id attribute.</h:li>
+        <h:li>Updated XSL stylesheet reference to spec-v2-0.xsl.</h:li>
+        <h:li>IdValue in ID_TYPE reverted to ID_VALUE_TYPE, which now has no maxLength.</h:li>
+      </h:ol>
+      <h:p xmlns:h="http://www.w3.org/1999/xhtml">Version 2.2: Various accumulated changes:</h:p>
+      <h:ol xmlns:h="http://www.w3.org/1999/xhtml">
+        <h:li>Added explicit values to ID_SCHEME_TYPE.</h:li>
+        <h:li>Allow any string as well as enumerated values in DEVIATING_RESULT_QUALITATIVE_FLAG_TYPE.</h:li>
+        <h:li>Added 'Preferred' to NAME_TYPE_TYPE.</h:li>
+        <h:li>Added shared assessment types from Jazz schema (with thanks to Ian McNicoll): CONTRIBUTOR_TYPE, NEEDS_MET_TYPE, 
+				CARER_TYPE (with PERSON_DEMOGRAPHICS_TYPE), ABILITY_TYPE and EQUIPMENT_NEEDS_TYPE.</h:li>
+        <h:li>Drawing from Jazz, extended data in SOCIAL_CIRCUMSTANCES_TYPE to include Pets, PersonalFinances and more 
+				detail in LanguageDetail, HousingDetail.  These extensions are intended to be backwards-compatible with version 2.1.1.</h:li>
+        <h:li>Allowed for multiple HcpId in HCP_DETAIL_TYPE and HCP_ABBREVIATED_TYPE (eg. GP with GMC and GP codes).</h:li>
+        <h:li>Changed ProcedureDisclosed in PAST_PROCEDURE_TYPE from CLINICAL_PROCEDURE_TYPE to 
+				PROCEDURE_PERFORMED_TYPE so that other details, especially date, can be recorded. <h:b>This is not backward-compatible
+				with previous versions.</h:b></h:li>
+        <h:li>Made Comment in PROCEDURE_PERFORMED_TYPE optional.</h:li>
+        <h:li>In DRUG_CODE_TYPE, made DrugCodeValue and DrugDictionary optional, to allow structured drug info without a specific code.
+				Probably DrugCode and DrugCodeDescription should have been StructuredDrugSpecification and UnstructuredDrugSpecification?</h:li>
+        <h:li>Added DoseDescription as an unstructured alternative to Dose.</h:li>
+        <h:li>Added Comment to CLINICAL_CONDITION_TYPE.</h:li>
+        <h:li>In TRANSPORT_DETAILS_TYPE, allowed for unstructured TransportTimeDescription.</h:li>
+        <h:li>Made UnstructuredDosage/StructuredDosage optional in MEDICATION_TYPE.</h:li>
+        <h:li>Increased ORGANISATION_NAME_TYPE length to 70, corresponding to ISD Reference data.</h:li>
+        <h:li>Added DateRecorded to CLINICAL_WARNING_TYPE.</h:li>
+        <h:li>Changed SPECIALTY_TYPE from a simple (string) type to a complex type to allow code.  <h:b>Not backward-compatible.</h:b></h:li>
+      </h:ol>
+      <h:p xmlns:h="http://www.w3.org/1999/xhtml">Version 2.1.1c: David Brazier corrections:</h:p>
+      <h:ol xmlns:h="http://www.w3.org/1999/xhtml">
+        <h:li>Removed spurious choice in TEST_RESULT_TYPE.</h:li>
+      </h:ol>
+      <h:p xmlns:h="http://www.w3.org/1999/xhtml">Version 2.1.1b: Updated to XML Schema Recommendation:</h:p>
+      <h:ol xmlns:h="http://www.w3.org/1999/xhtml">
+        <h:li>Removed NHSS_ATTRIBUTES (temporarily?) as constructs used no longer allowed.</h:li>
+        <h:li>timeDuration changed to duration.</h:li>
+        <h:li>PastCondition, PastProcedure, PastMedication in MEDICAL_HISTORY_TYPE should be unbounded.</h:li>
+      </h:ol>
+      <h:p xmlns:h="http://www.w3.org/1999/xhtml">Version 2.1.1a: Changes to resolve various technical issues:</h:p>
+      <h:ol xmlns:h="http://www.w3.org/1999/xhtml">
+        <h:li>XHTML documentation.</h:li>
+        <h:li>Introduced attributeGroup NHSS_ATTRIBUTES for mustUnderstand and added to all types.</h:li>
+        <h:li>Replaced <h:code>&lt;any namespace="##any" ...&gt;</h:code> with <h:code>&lt;any namespace="##other" ...&gt;</h:code> (XSV &amp; Authority complained non-deterministic).</h:li>
+        <h:li>Replaced second duplicate ClinicalCodeDescription with ClinicalCircumstanceDescription in CLINICAL_CIRCUMSTANCE_TYPE (non-deterministic).</h:li>
+        <h:li>Removed spurious <h:code>&lt;sequence&gt;</h:code> and <h:code>&lt;any&gt;</h:code> in LEGAL_TYPE (non-deterministic).</h:li>
+        <h:li>Replaced first duplicate DrugDescription with DrugCodeDescription in DRUG_IDENTIFICATION_TYPE (non-deterministic).</h:li>
+        <h:li>Replaced PERIOD_TYPE with xsd:timeDuration (non-deterministic).</h:li>
+      </h:ol>
+      <h:p xmlns:h="http://www.w3.org/1999/xhtml">Version 2.1.1: Equivalent of XML_STDS1 Generic Components version 2.1.1</h:p>
+    </xsd:documentation>
+  </xsd:annotation>
+  <xsd:simpleType name="ACT_OF_PARLIAMENT_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>Acts of Parliament which affect care given to patients.  Ref: ???</xsd:documentation>
+    </xsd:annotation>
+    <xsd:union>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Mental Health (Scotland) Act 1984" />
+          <xsd:enumeration value="Criminal Procedures  (Scotland) Act 1995" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1" />
+          <xsd:maxLength value="70" />
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:union>
+  </xsd:simpleType>
+  <xsd:simpleType name="ADDRESS_LINE_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A line in a postal address. 
+Note : The former ISD specification for 'Structured Address' designates only a number of address lines. It is recommended that this specification is upgraded to comply with European Prestandard Ref: ENV13606-4:2000.  ENV13606-4:2000 7.11.15 (does not comply) </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="35" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="ADDRESS_TYPE_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A classification of postal address e.g. current residence, temporary etc.
+There are no ISD standards for this item. E-Gov stds (Aug 00) have a limited set of enumerated values: Residential; Correspondence; Self Employed Business and Business.  E-Gov (non-compliant) B7 - P39</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="35" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="ARITHMETIC_COMPARATOR_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A mathematical sign indicating where a measurement is equal to, less than or greater than the numeric value.  ENV 13606 - 4:2000 7.11.9 and 7.12.6</xsd:documentation>
+    </xsd:annotation>
+    <xsd:union>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="=" />
+          <xsd:enumeration value="&lt;" />
+          <xsd:enumeration value="&gt;" />
+          <xsd:enumeration value="=&lt;" />
+          <xsd:enumeration value="=&gt;" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1" />
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:union>
+  </xsd:simpleType>
+  <xsd:simpleType name="ATTACHMENT_DATA_TYPE">
+    <xsd:restriction base="xsd:base64Binary" />
+  </xsd:simpleType>
+  <xsd:simpleType name="CERTAINTY_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>Indicator of certainty of diagnosis.  Ref:???</xsd:documentation>
+    </xsd:annotation>
+    <xsd:union>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Certain" />
+          <xsd:enumeration value="Confirmed" />
+          <xsd:enumeration value="Definite" />
+          <xsd:enumeration value="Negative" />
+          <xsd:enumeration value="Probable" />
+          <xsd:enumeration value="Possible" />
+          <xsd:enumeration value="Unlikely" />
+          <xsd:enumeration value="Ruled out" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1" />
+          <xsd:maxLength value="35" />
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:union>
+  </xsd:simpleType>
+  <xsd:simpleType name="CLINIC_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>The name of a schedule of appointments normally arranged to be ed on a regular basis at a particular location.   SMR Data Manual 3-5.  ENV13606-4:2000 7.11.17</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="35" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="CLINICAL_CODE_DESCRIPTION_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A free text version of a clinical circumstance (condition, procedure, etc.) which may be translated into one or more Clinical Codes.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="198" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="CLINICAL_CODE_SCHEME_ID_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>The identity of a Clinical Coding Scheme e.g. READ, BNF, OPCS</xsd:documentation>
+    </xsd:annotation>
+    <xsd:union>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="ICD" />
+          <xsd:enumeration value="OPCS" />
+          <xsd:enumeration value="READ" />
+          <xsd:enumeration value="BNF" />
+          <xsd:enumeration value="SNOMED-CT" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1" />
+          <xsd:maxLength value="10" />
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:union>
+  </xsd:simpleType>
+  <xsd:simpleType name="CLINICAL_CODE_SCHEME_VERSION_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>The issue version of a Coding Scheme 
+Not specified in ENV13606-4:2000</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="10" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="CLINICAL_CODE_SELECTED_TERM_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>The interpretation of a Clinical Code which is preferred by the originator of the data. It is one of the terms supplied as a reference by the Coding Scheme  ENV13606-4:2000 7.12.3</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="198" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="CLINICAL_CODE_VALUE_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A coded value which identifies a clinical circumstance (e.g. condition, procedure, etc.) within a given Coding Scheme.
+List of coded values.
+May require concatenation .
+Values:
+ICD10 - ANN.N(N) (D,A) 
+OPCS4 - ANN.N 
+ReadV2 - 5 A/N </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="198" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="CLINICAL_DATA_REQUIRED_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A container for data relating to clinical information concerning a patient which is required for, or relevant to,  a particular type of investigation  Ref: ???? 
+[Due to the diverse nature of this information, no further structure or definition is available at present.]</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string" />
+  </xsd:simpleType>
+  <xsd:simpleType name="COMMENT_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A piece of free text.  Used generally to contain information which is supplementary to the structured area.  Ref:????</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string" />
+  </xsd:simpleType>
+  <xsd:simpleType name="CONFIDENTIALITY_STATUS">
+    <xsd:annotation>
+      <xsd:documentation>Indicator of whether the data is particularly sensitive or not. Ref: Order Communication Technical Reference Manual (Northgate) </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:boolean" />
+  </xsd:simpleType>
+  <xsd:simpleType name="DATA_FORMAT_TYPE">
+    <xsd:annotation>
+      <xsd:documentation> Used to described contextually the format of data being represented</xsd:documentation>
+    </xsd:annotation>
+    <xsd:union>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Display" />
+          <xsd:enumeration value="Data" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string" />
+      </xsd:simpleType>
+    </xsd:union>
+  </xsd:simpleType>
+  <xsd:simpleType name="DEVIATING_RESULT_QUALITATIVE_FLAG_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>An indicator for the degree of deviation from normality of a qualitative test result
+Ref:  ENV12838:1996 6.3.4
+[Values given correspond with EDIFACT Pathology Message adjudication]
+</xsd:documentation>
+    </xsd:annotation>
+    <xsd:union>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="PA" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1" />
+          <xsd:maxLength value="70" />
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:union>
+  </xsd:simpleType>
+  <xsd:simpleType name="DEVIATING_RESULT_QUANTITATIVE_FLAG_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>An indicator for the degree of deviation from reference limits of a quantitative test result
+Ref:  ENV12838:1996 6.3.4
+[Values given correspond with EDIFACT Pathology Message adjudication]
+</xsd:documentation>
+    </xsd:annotation>
+    <xsd:union>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="LO" />
+          <xsd:enumeration value="HI" />
+          <xsd:enumeration value="OR" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1" />
+          <xsd:maxLength value="70" />
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:union>
+  </xsd:simpleType>
+  <xsd:simpleType name="DISCIPLINE_SPECIFIC_VALUES_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A number of discipline specific values are associated with each department e.g. Colony Count for Bacteriology, Blood Group for Blood Bank Serology, Recall Type for Cytology.  Perhaps these should be modelled in the same generic way as Protocol infomation.   Ref:  Order Communication Technical Reference Manual (Northgate).</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string" />
+  </xsd:simpleType>
+  <xsd:simpleType name="DOCUMENT_PATIENT_CONSENT_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>Consent to share document beyond originating sub-specialty and originating organisation. Each feeder system will have a default agreed with local department</xsd:documentation>
+    </xsd:annotation>
+    <xsd:union>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Y" />
+          <xsd:enumeration value="N" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1" />
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:union>
+  </xsd:simpleType>
+  <xsd:simpleType name="DOCUMENT_REVISION_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>Identifies version of the document.    ENV 13606 - 4:2000 7.5.2</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="10" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="DOCUMENT_SENSITIVITY_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>Sensitivity of document from HCP perspective. Each feeder system will have a default agreement with local department.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:union>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="HS" />
+          <xsd:enumeration value="S" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1" />
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:union>
+  </xsd:simpleType>
+  <xsd:simpleType name="DRUG_CODE_VALUE_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A code representing a drug, its strength and formulation as defined in a Drug Dictionary </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="198" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="DRUG_IDENTIFIER_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>The name of a drug as defined in a Drug Dictionary </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="198" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="DURATION_DESCRIPTION_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>An interval of time expressed in words.  ENV 13606 - 4:2000 7.11.3</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string" />
+  </xsd:simpleType>
+  <xsd:simpleType name="GENERIC_ID_TYPE">
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="35" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="GENERIC_STRING_VALUE_TYPE">
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="198" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="GENERIC_TITLE_TYPE">
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="198" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="HEALTH_BOARD_CIPHER_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A shortened identifier indicating the Health Board.  For Health Boards in Scotland, the cipher will be 1 alpha character, but for England, Wales and Northern Ireland, the cipher can be 2 or 3 alpha characters.  Seee PARTNERS Project System Specification Registration Appendix D.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="10" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="ID_SCHEME_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>The identity of a source of identifiers e.g. CHI System, GMC Register 
+May be omitted if source is evident.  ENV13606-4:2000 7.11.5   ENV13606-4:2000 7.12.6 </xsd:documentation>
+    </xsd:annotation>
+    <xsd:union>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="CHI" />
+          <xsd:enumeration value="GMC" />
+          <xsd:enumeration value="Gpass" />
+          <xsd:enumeration value="GPCode" />
+          <xsd:enumeration value="PracticeID" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1" />
+          <xsd:maxLength value="35" />
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:union>
+  </xsd:simpleType>
+  <xsd:simpleType name="ID_TYPE_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>An indication of the type of entity that is identified by an ID e.g. a GMC Number would indicate a Healthcare Person, a Location Code would indicate a Healthcare Organisation  ENV13606-4:2000 7.11.5   ENV13606-4:2000 7.12.6</xsd:documentation>
+    </xsd:annotation>
+    <xsd:union>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Person" />
+          <xsd:enumeration value="Organisation" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1" />
+          <xsd:maxLength value="35" />
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:union>
+  </xsd:simpleType>
+  <xsd:simpleType name="ID_VALUE_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A coded value which uniquely identifies an individual within a given identification scheme(e.g. a GMC Number as issued by the General Medical Council, a CHI number etc.)  ENV13606-4:2000 7.11.5</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="ID_SOURCE_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A coded value which uniquely identifiesthe source of the value type</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="35" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="LATERALITY_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>Side of body to which a clinical circumstance applies (e.g. fracture of right clavicle, amputation of left leg).</xsd:documentation>
+    </xsd:annotation>
+    <xsd:union>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Right" />
+          <xsd:enumeration value="Left" />
+          <xsd:enumeration value="Bilateral" />
+          <xsd:enumeration value="Not Applicable" />
+          <xsd:enumeration value="Not Stated" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1" />
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:union>
+  </xsd:simpleType>
+  <xsd:simpleType name="LEGAL_LIMIT_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>Information regarding the limitations on treatment or medication imposed by the patient's legal status.  Ref: ???</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="198" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="LEGAL_STATUS_EVENT_NAME_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>Names of legal events which may change the status of the patient within the terms of the Mental Health </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="198" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="LEGAL_STATUS_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>The legal status of a patient under a relevant Act of Parliament</xsd:documentation>
+    </xsd:annotation>
+    <xsd:union>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Formal" />
+          <xsd:enumeration value="Informal" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1" />
+          <xsd:maxLength value="35" />
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:union>
+  </xsd:simpleType>
+  <xsd:simpleType name="MARITAL_STATUS_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>The marital status of the patient</xsd:documentation>
+    </xsd:annotation>
+    <xsd:union>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Divorced" />
+          <xsd:enumeration value="Married" />
+          <xsd:enumeration value="Never Married" />
+          <xsd:enumeration value="Not Known" />
+          <xsd:enumeration value="Other" />
+          <xsd:enumeration value="Separated" />
+          <xsd:enumeration value="Single" />
+          <xsd:enumeration value="Widowed" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1" />
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:union>
+  </xsd:simpleType>
+  <xsd:simpleType name="MEASUREMENT_DESCRIPTION_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A test result expressed in words.  </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="NAME_TYPE_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A classification of Personal Name e.g. current name, previous name, birth name.  Coded Value or xsd:string.  ENV13606 - 4:2000 7.11.17</xsd:documentation>
+    </xsd:annotation>
+    <xsd:union>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Birth" />
+          <xsd:enumeration value="Maiden" />
+          <xsd:enumeration value="Previous" />
+          <xsd:enumeration value="Alias" />
+          <xsd:enumeration value="AKA" />
+          <xsd:enumeration value="Preferred" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1" />
+          <xsd:maxLength value="35" />
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:union>
+  </xsd:simpleType>
+  <xsd:simpleType name="NAME_VALUE_TITLE_TYPE">
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="98" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="NEEDS_MET_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>Defines level by which need has been met.  From Jazz.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Not at all" />
+      <xsd:enumeration value="Partially" />
+      <xsd:enumeration value="Mostly" />
+      <xsd:enumeration value="Fully" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="NON_VALIDATED_POST_CODE_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A postcode that is not validated against a regular expression. For use when partial or invalid postcodes need to be passed. Allows systems to decide whether to accept them or not whereas the POST_CODE_TYPE at least validates that the postcode matches the pattern for valid postcodes, athough it is not guaranteed to be a valid, issued postcode. Ref:???</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="10" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="ORDER_NUMBER_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>The number allocated to the test order. Ref:???</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="13" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="ORGANISATION_NAME_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>The name of an organisation.</xsd:documentation>
+      <xsd:appinfo>Ref: ENV 13606 - 4:2000 7.6.9 &amp; ISD Reference Data</xsd:appinfo>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="70" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="ORGANISATION_TYPE_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>Type of organisation e.g. NHSiS Trust, Private Hospital, Health Board.  ENV13606-4:2000 3.52 </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="35" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="POSITION_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>Position of Health Care Professional.  ENV 13606 - 4:2000 7.10.14</xsd:documentation>
+    </xsd:annotation>
+    <xsd:union>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Consultant" />
+          <xsd:enumeration value="Senior Registrar" />
+          <xsd:enumeration value="Senior House Officer" />
+          <xsd:enumeration value="House Officer" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1" />
+          <xsd:maxLength value="35" />
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:union>
+  </xsd:simpleType>
+  <xsd:simpleType name="POST_CODE_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A basic unit for identifying geographical locations.  ENV 13606 - 4:2000 7.11.1 - "[A-Z]{1,2}[0-9][0-9Z]?[0-9][A-Z]".   GovTalk - "[A-Z]{1,2}[0-9]{1}[0-9Z\S][0-9]{1}[A-Z]{2}".  Implemented with version by D.Brazier</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="[A-Z]{1,2}[0-9]([0-9]|[A-Z])?( [0-9][A-Z]{2})?" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="PROPERTY_NUMBER_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>The number, which in association with the Post Code, uniquely identifies an address within the Postal Address File (PAF).  ENV13606-4:2000 7.11.15</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="10" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="RANGE_COMPARATOR_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A structure describing a Range value associated with an arithmetic comparator.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="20" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="QUANTITY_UNIT_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>The unit of measurement in which a quantity is expressed, eg "mg/ml" in "50 mg/ml".   ENV 13606 - 4:2000 7.11.22 and 7.12.6</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="255" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="QUANTITY_VALUE_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>The numeric value component of an expression of quantity, eg "50" in "50 mg/ml".  ENV 13606 - 4:2000 7.11.22</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:decimal" />
+  </xsd:simpleType>
+  <xsd:simpleType name="REFERENCE_LIMIT_POPULATION_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>The description of the population to which a reference limit is applicable.  ENV 13606 - 4:2000</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="70" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="RELATION_TO_PATIENT_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>Familial relationship e.g. parent, sibling, grandparents etc.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="70" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="REQUEST_URGENCY_VALUE_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>An indicator, provided by the requester of a service, of how urgently a result is needed. Ref:Order Communications Technical Reference Manual (Northgate)</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string" />
+  </xsd:simpleType>
+  <xsd:simpleType name="RESULT_STATUS_DESCRIPTION">
+    <xsd:annotation>
+      <xsd:documentation>This represents an associated status of a test result</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="70" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="RESULT_STATUS_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>This represents the status of a test result</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Unreported" />
+      <xsd:enumeration value="Interim" />
+      <xsd:enumeration value="Final" />
+      <xsd:enumeration value="Supplementary" />
+      <xsd:enumeration value="Amended" />
+      <xsd:enumeration value="Other" />
+      <xsd:enumeration value="Not known" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="SECTION_OF_ACT_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>The particular Section of an Act of Parliament which affects the care given to a patient.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="70" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="SEX_AT_BIRTH_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>The biological or genetic sex of a person at birth. </xsd:documentation>
+    </xsd:annotation>
+    <xsd:union>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Male" />
+          <xsd:enumeration value="Female" />
+          <xsd:enumeration value="Not Specified" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1" />
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:union>
+  </xsd:simpleType>
+  <xsd:simpleType name="SEX_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>The perceived (as distinct from the biological or genetic) sex of a person.  Synonym : Administrative Sex.  ENV 13606 - 4:2000 7.4.6</xsd:documentation>
+    </xsd:annotation>
+    <xsd:union>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Male" />
+          <xsd:enumeration value="Female" />
+          <xsd:enumeration value="Not Specified" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1" />
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:union>
+  </xsd:simpleType>
+  <xsd:simpleType name="SUB_ORDER_NUMBER_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>The number allocated to a sub-division of the test order.  Ref: ??</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="13" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="TELECOM_AREA_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>Telephone area code.  ENV13606-4:2000 7.11.18</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="10" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="TELECOM_COUNTRY_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>Telephone country code.  ENV13606-4:2000 7.11.18</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="10" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="TELECOM_EXT_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>Telephone extension number.  ENV13606-4:2000 7.11.18</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="10" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="TELECOM_MODE_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A qualifier for a telecom contact, describing its context e.g. "Work", "Home".   ENV 13606 - 4:2000 7.11.19</xsd:documentation>
+    </xsd:annotation>
+    <xsd:union>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Home" />
+          <xsd:enumeration value="Business" />
+          <xsd:enumeration value="Mobile" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1" />
+          <xsd:maxLength value="35" />
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:union>
+  </xsd:simpleType>
+  <xsd:simpleType name="TELECOM_NO_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>Telephone number. ENV13606-4:2000 7.11.18</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="35" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="TELECOM_TYPE_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>Telecom mechanism e.g. telephone, facsimile, pager etc.  ENV 13606-4:2000 7.11.19</xsd:documentation>
+    </xsd:annotation>
+    <xsd:union>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Voice" />
+          <xsd:enumeration value="Mobile" />
+          <xsd:enumeration value="Pager" />
+          <xsd:enumeration value="Facsimile" />
+          <xsd:enumeration value="E-mail" />
+          <xsd:enumeration value="Website" />
+          <xsd:enumeration value="Other" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1" />
+          <xsd:maxLength value="35" />
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:union>
+  </xsd:simpleType>
+  <xsd:simpleType name="TEST_SPECIFICATION_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A textual description of complementary information to a named clinical investigation, such as the method used.   ENV12538:1996 6.3.3</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="70" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="TIME_UNIT_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>Unit in which an interval of time is expressed e.g. day, week etc. ENV 13606 - 4:2000 7.11.20</xsd:documentation>
+    </xsd:annotation>
+    <xsd:union>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="seconds" />
+          <xsd:enumeration value="minutes" />
+          <xsd:enumeration value="hours" />
+          <xsd:enumeration value="days" />
+          <xsd:enumeration value="weeks" />
+          <xsd:enumeration value="months" />
+          <xsd:enumeration value="years" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1" />
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:union>
+  </xsd:simpleType>
+  <xsd:simpleType name="TRANSPORT_INSTRUCTIONS_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>Relevant instructions pertinent to the pick-up and transportation of the patient, e.g. Stretcher Required, Patient in Wheelchair etc.  Ref: ???</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="198" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="TRANSPORT_REQUIRED_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>An indicator for a requirement for an ambulance transport for a patient.  SIGN Report on a recommended Referral Document November 1998.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:boolean" />
+  </xsd:simpleType>
+  <xsd:simpleType name="TRIGGER_FOR_CESSATION_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>An event which will halt the patient's medication</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="70" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="UNIQUE_CARE_PATHWAY_NUMBER_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>The unique care pathway number, introduced as part of the 18 Weeks Referral to Treatment programme. The pathway number is a 13 character field made up of a 3 alphanumeric system identifier followed by 9 rolling digits followed by a check digit.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="13" />
+      <xsd:minLength value="13" />
+      <xsd:pattern value="[1-9A-Z][0-9A-Z]{2}[0-9]{9}[0-9A-Z]" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="UNSTRUCTURED_ADDRESS_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A postal address expressed in an unstructured format. ENV 13606 - 4:2000 7.11.15</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="120" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="UNSTRUCTURED_NAME_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A person name composed of elements not individually recognised.  ENV 13606 - 4:2000 7.11.12</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="70" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="UNSTRUCTURED_TELECOM_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>Telephone, facsimile or similar telecommunication numbers in an unstructured format. 
+When used for email and internet addresses, the STRUCTURED_TEL option is disallowed.  Only as part of a structured telecommunications number.  ENV 13606-4:2000 7.11.19</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="50" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="ABILITY_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>Stores each Assessment variable including Scrugs Scores and Readcode.  From Jazz.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="AbilityName" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Name of this ability e.g. Mobility</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="AbilityLevel" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Level aceived for this ability. Actual code will depend on the Ability Type</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="Needs">
+        <xsd:annotation>
+          <xsd:documentation>Needs non/met/unmet</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="none" />
+            <xsd:enumeration value="met" />
+            <xsd:enumeration value="unmet" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="NeedsMetBy" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Persons helping to meet needs</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="Comments" type="xsd:string" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ADDRESS_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>The structure of a postal address representing the residence of a patient or the physical location of an organisation.  ENV 13606-4:2000 7.11.1</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:choice>
+        <xsd:element name="StructuredAddress" type="gen:STRUCTURED_ADDRESS_TYPE" />
+        <xsd:element name="UnstructuredAddress" type="gen:UNSTRUCTURED_ADDRESS_TYPE" />
+      </xsd:choice>
+      <xsd:element minOccurs="0" name="PostCode" type="gen:POST_CODE_TYPE" />
+      <xsd:element minOccurs="0" name="NonValidatedPostCode" type="gen:NON_VALIDATED_POST_CODE_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>This element is available for use when a partial postcode or an invalid postcode is required to be passed/made available.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="AddressType" type="gen:ADDRESS_TYPE_TYPE" />
+      <xsd:element minOccurs="0" name="AddressValidPeriod" type="xsd:duration">
+        <xsd:annotation>
+          <xsd:documentation>The period during which the associated address is applicable to the person / organisation.  ENV 13606 - 4:2000 7.11.11.  This describes the actual period.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="Status" type="gen:STATUS_TYPE" />
+      <xsd:element minOccurs="0" name="LastEncounteredDate" type="xsd:date" />
+      <xsd:element minOccurs="0" name="LastEncounteredTime" type="xsd:time" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ALERTS_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>The structure for information pertaining to factors about the patient to which the clinician should be alerted.  Ref:  ???</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="Allergy" type="gen:CLINICAL_WARNING_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>The record of a known allergic reaction of a patient to an allergen.  SIGN Report on a Recommended Referral Document November 1998</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="Intolerance" type="gen:CLINICAL_WARNING_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>The record of a known adverse reaction of a patient to a reagent.  SIGN Report on a Recommended Referral Document November 1998</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="LifestyleRisk" type="gen:LIFESTYLE_RISK_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Container for details of a patient's lifestyle which may constitute a risk to their health e.g. alcohol, tobacco or drug use.  SIGN Report on a Recommended Referral Document November 1998</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="RiskToOthers" type="gen:CLINICAL_WARNING_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>The record of a known condition or state of a patient which may constitute a risk to other people (e.g. HIV status, history of violence).  SIGN Report on a Recommended Referral Document November 1998 
+(Additional Relevant Information)</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="Legal" type="gen:LEGAL_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Details pertaining to the status of the patient with regard to an Act of Parliament.  Ref: ???</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ALCOHOL_CONSUMPTION_HISTORY_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A structure for holding multiple AlcoholConsumptionRecords</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" name="AlcoholConsumptionRecord" type="gen:CLINICAL_WARNING_TYPE" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ANATOMICAL_SITE_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A structure for details pertaining to a part of the body.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="BodyPart" type="gen:CLINICAL_CIRCUMSTANCE_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>The name of a part of the body e.g. upper arm.  Ref: ???</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="Laterality" type="gen:LATERALITY_TYPE" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="APPOINTMENT_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>The structure for an appointment.  Ref: ???</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="PatientDemographics" type="gen:PATIENT_DEMOGRAPHICS_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Container for patient identifying details of the patient who is the subject of the document.  ENV 13606 - 4:2000 7.4.6</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="unbounded" name="Slot" type="gen:SLOT_TYPE" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="ConsultingHcp" type="gen:HCP_SHORT_FORM_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>The Healthcare Professional taking part in a clinical encounter.  Implemented as NamedHcp if the individual can be identified, or UnnamedHcp when only an HCP role is identified (e.g. appointment with the practice nurse).</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ATTACHMENT_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>Type that represents a binary data type. Name and type (pdf,doc etc.) is included as part of the type. The actual data element AttachmentData is typed as a simple so that it can be restricted to allow certain schemas, e.g. Referrals or Discharges to not support/allow embedded attachments.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="DisplayName">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="255" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="OriginalFileName">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="255" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="FileType">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="50" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="FileSizeInBytes" type="xsd:positiveInteger" />
+      <xsd:element name="CompressionMethod">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="50" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="CompressedSizeInBytes" type="xsd:positiveInteger" />
+      <xsd:element name="AttachmentData" type="gen:ATTACHMENT_DATA_TYPE" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="BODY_MASS_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A structure for capturing details of the patient's body mass.   Ref: ???</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="Height" type="gen:QUANTITY_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Details of the height of the patient.  Ref: ???</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="Weight" type="gen:QUANTITY_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Details of the weight of the patient.  Ref: ???</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="DietaryDetails" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Information on specific dietary details of the patient.  ref: ???</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="CARER_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>Details of Carer, from Jazz.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="ContactDetails" type="gen:PERSON_DEMOGRAPHICS_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Care contact info - Name, Address, Telecom</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" default="false" name="KeyHolder" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation>Does this carer hold the patient's key</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="Relationship" type="gen:RELATION_TO_PATIENT_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>What is this person's relationship to the patient?</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="Comments">
+        <xsd:annotation>
+          <xsd:documentation>Any general comment about this Carer</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:whiteSpace value="preserve" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="CLINICAL_INFORMATION_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>This structure has been created to allow the expression of clinical circumstances as : clinical code and/or description both.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="ClinicalCode" type="gen:CLINICAL_CODE_TYPE" />
+      <xsd:element minOccurs="0" name="ClinicalCodeDescription">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="198" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="CLINICAL_CIRCUMSTANCE_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>This structure has been created to allow the expression of clinical circumstances as : a mandatory entry which may be either a free text description or a clinical code, or both.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:choice>
+      <xsd:element name="ClinicalInformation" type="gen:CLINICAL_INFORMATION_TYPE" />
+      <xsd:element name="ClinicalCircumstanceDescription">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="255" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:choice>
+  </xsd:complexType>
+  <xsd:complexType name="CLINICAL_CODE_SCHEME_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A  structure for defining the components of a Clinical Coding Scheme</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="ClinicalCodeSchemeVersion" type="gen:CLINICAL_CODE_SCHEME_VERSION_TYPE" />
+      <xsd:element name="ClinicalCodeSchemeId" type="gen:CLINICAL_CODE_SCHEME_ID_TYPE" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="CLINICAL_CODE_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A structure for the coded method of describing a clinical circumstance (e.g. condition, procedure, etc.)  ENV13606-4:2000 7.12.3</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" name="ClinicalCodeValue" type="gen:CLINICAL_CODE_VALUE_TYPE" />
+      <xsd:element name="ClinicalCodeScheme" type="gen:CLINICAL_CODE_SCHEME_TYPE" />
+      <xsd:element minOccurs="0" name="ClinicalCodeSelectedTerm" type="gen:CLINICAL_CODE_SELECTED_TERM_TYPE" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="CLINICAL_CONDITION_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A structure for describing a patient condition.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="ConditionName" type="gen:CLINICAL_CIRCUMSTANCE_TYPE" />
+      <xsd:element minOccurs="0" name="Laterality" type="gen:LATERALITY_TYPE" />
+      <xsd:element minOccurs="0" name="Modifier">
+        <xsd:annotation>
+          <xsd:documentation>A data item associated with a Clinical Code that allows the instance of the code to be qualified e.g. mild, recurrent</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="35" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="DateOfOnset" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation>Date of onset of condition.  ENV 13606 - 4:2000 7.8.7 (Date only implemented here).  Date:  DDMMYYYY.  Possible variation - Limited to Month + Year or Year only if exact date is unknown.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="DateRecorded" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation>The date the condition was recorded. </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="Comment">
+        <xsd:annotation>
+          <xsd:documentation>Other relevant unstructured commentary on the condition.  For Read coded daat, this may be the "extension" field.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="256" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="CLINICAL_PROCEDURE_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A structure for describing a clinical procedure.  SMR Data Manual P4 - 16 (Main Operation/Treatment/Investigative Procedure)</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="ProcedureName" type="gen:CLINICAL_CIRCUMSTANCE_TYPE" />
+      <xsd:element minOccurs="0" name="Laterality" type="gen:LATERALITY_TYPE" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="Modifier" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Comment" type="gen:COMMENT_TYPE" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="CLINICAL_WARNING_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A structure for information relating to clinical warnings such as allergies or intolerances.  SIGN Report on a Recommended Referral Document November 1998</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="ClinicalWarning" type="gen:CLINICAL_CIRCUMSTANCE_TYPE" />
+      <xsd:element minOccurs="0" name="StartDate" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation>Date the warning first occurred.  Added for SCI Discharge.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="DateRecorded" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation>Date the warning was recorded.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="Modifier">
+        <xsd:annotation>
+          <xsd:documentation>A data item associated with a Clinical Code that allows the instance of the code to be qualified e.g. mild, recurrent</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="35" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="Comment" type="gen:COMMENT_TYPE" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="CONTRIBUTOR_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>Extension to HCP_DETAIL_TYPE Person making contribution to a shared assesement.  From Jazz.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="HcpDetails" type="gen:HCP_DETAIL_TYPE" />
+      <xsd:element fixed="external" name="ContributorType">
+        <xsd:annotation>
+          <xsd:documentation>system,Assessor,CoreTeam, ExtendedTeam,External</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="system" />
+            <xsd:enumeration value="assessor" />
+            <xsd:enumeration value="coreteam" />
+            <xsd:enumeration value="extendedteam" />
+            <xsd:enumeration value="external" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DIAGNOSIS_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A structure for describing a diagnosis.  SMR Data Manual P 4 - 10 (Main Condition/Principal Diagnosis/Problem Managed)</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Diagnosis" type="gen:CLINICAL_CONDITION_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>The association of a clinical condition with a patient, establishing the nature of the patient's morbidity.  Diagnosis in SMR Data Manual refers to 'condition on admission or discharge'.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="AssessingHcp" type="gen:HCP_ABBREVIATED_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Name of the Health Care Professional who is responsible for establishing the patients diagnosis.  ENV 13606 - 4:2000 7.10.14</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="DateAssessed" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation>Date on which the patients diagnosis was established.  Date only implemented here.  Date: DDMMYYYY.  ENV 13606 -4:2000 7.8.7.  </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="TimeAssessed" type="xsd:time">
+        <xsd:annotation>
+          <xsd:documentation>Time at which the patient's diagnosis was established.  Time only implemented here.  Time:  HH:MM.  ENV 13606 - 4:2000 7.8.7.  </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="Certainty" type="gen:CERTAINTY_TYPE" />
+      <xsd:element minOccurs="0" name="Comment" type="gen:COMMENT_TYPE" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DOCUMENT_CATEGORY_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>Category of document e.g. Discharge Document, Referral Letter.  ENV 13606 - 4:2000 7.5.2 As of version 2.8 the document category is a two level heirarchy of type and subtype that should correspond to the values that are in the “Standard types and subtypes [2006 normative]” in “Clinical Document Index Standards version 5.2”.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="DocumentType">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="70" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element fixed="|" name="Separator" type="xsd:string" />
+      <xsd:element name="DocumentSubType">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="70" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DOCUMENT_DATA_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A structure for data relating to a document, as opposed to the message contained in a document.  ENV 13606 - 4:2000 7.5.2 - record component</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="DocumentCategory" type="gen:DOCUMENT_CATEGORY_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Category of document e.g. Discharge Document, Referral Letter.  ENV 13606 - 4:2000 7.5.2 As of version 2.8 the document category is a two level heirarchy of type and subtype that should correspond to the values that are in the “Standard types and subtypes [2006 normative]” in “Clinical Document Index Standards version 5.2”. Whilst the schema does not enforce the values, systems are encouraged to validate and enforce the combination of both category and subcategory.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="unbounded" name="DocumentIdentifier" type="gen:ID_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Identification of document.  ENV 13606 - 4:2000 7.5.2</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="DocumentRevision" type="gen:DOCUMENT_REVISION_TYPE" />
+      <xsd:element minOccurs="0" name="DocumentStatus" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>An indication of whether the document is the current valid version or has been superseded. 
+
+It is proposed that this definition is extended to include other status descriptions (List of Values to be finalised)
+
+Ref:ENV 13606 - 4:2000  7.5.2</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="UniqueCarePathwayNumber" type="gen:UNIQUE_CARE_PATHWAY_NUMBER_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>The Unique Care Pathway Number which should identify a pathway of care for the patient. Introduced as part of 18 weeks programme (see www.18weeks.scot.nhs.uk)</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="OriginatingHcp" type="gen:HCP_DETAIL_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>The Health Care Professional initiating the document.   ENV 13606 - 4:2000 7.5.2</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Attesting_Hcp" type="gen:HCP_DETAIL_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Name of the Health Care Professional  attesting the document.   Equivalent to the person who would normally sign a document.   ENV 13606 - 4:2000 7.5.2</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="DocumentAttestationDate" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation>Date of attestation of document.  PROV.  Date: DDMMYYYY.     ENV 13606 - 4:2000 7.8.7.  Only date implemented here.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="DocumentAttestationTime" type="xsd:time">
+        <xsd:annotation>
+          <xsd:documentation>Time of attestation of document.  PROV.  Time: HH:MM.     ENV 13606 - 4:2000 7.8.7.  Only time implemented here.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="ReceivingHcp" type="gen:HCP_DETAIL_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>The Health Care Professional who is the primary recipient of the document.  ENV 13606 - 4:2000 7.10.11</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="CopiedHcp" type="gen:HCP_DETAIL_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Details of any Health Care Professional who requires a copy of  the document (addition to the primary recipient RecievingHCP).   ENV 13606 - 4:2000 7.10.11</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="PatientId" type="gen:ID_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Unique identifier of a patient.  Where CHI number - 10 digit number - 6 digit date of birth followed by a 3 digit sequence number and a check digit. The ninth digit is always even for females and odd for males. The first digit of the CHI must be '3' or less. 
+Where Patient Health Record Identifier, the format is 6 - 10 extended character set.  ENV 13606 - 4:2000 7.11.5 
+CHI No - SMR Data Manual 2-13 
+Patient Health Record Identifier - SMR Data Manual 2-3 GPASS Identifier - GPASS</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="ConsentToShare" type="gen:DOCUMENT_PATIENT_CONSENT_TYPE" />
+      <xsd:element minOccurs="0" name="Sensitivity" type="gen:DOCUMENT_SENSITIVITY_TYPE" />
+      <xsd:element name="DocumentCreationDate" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation>Date of creation of document.  PROV.  Date: DDMMYYYY.     ENV 13606 - 4:2000 7.8.7.  Only date implemented here.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="DocumentCreationTime" type="xsd:time">
+        <xsd:annotation>
+          <xsd:documentation>Time of attestation of document.  PROV.  Time: HH:MM.     ENV 13606 - 4:2000 7.8.7.  Only time implemented here.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DRUG_CODE_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A structure for the coded method of describing a drug, its strength and formulation</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="DrugCodeValue" type="gen:DRUG_CODE_VALUE_TYPE" />
+      <xsd:element minOccurs="0" name="DrugIdentifier" type="gen:DRUG_IDENTIFIER_TYPE" />
+      <xsd:element minOccurs="0" name="Formulation">
+        <xsd:annotation>
+          <xsd:documentation>A classification of the nature of the preparation. Can include form of presentation (e.g. tablet, powder for inhalation) or form of administration (e.g. oral, sublingual) ENV 13607:2000 7.12.11</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="255" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="DrugStrength" type="gen:QUANTITY_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>The amount of active ingredient in a specified unit.  ENV 13607:2000 7.9.5 ???</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="DrugType">
+        <xsd:annotation>
+          <xsd:documentation>Whether manufactured or magistral.  ENV 13607:2000 7.9.3 (not implemented as mandatory in Gen Std)</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:union>
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="MANUFACTURED" />
+                <xsd:enumeration value="MAGISTRAL" />
+                <xsd:enumeration value="manufactured" />
+                <xsd:enumeration value="magistral" />
+              </xsd:restriction>
+            </xsd:simpleType>
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:minLength value="1" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:union>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="DrugDictionary" type="gen:CLINICAL_CODE_SCHEME_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>A specialisation of a clinical coding scheme dealing with drug preparations</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DRUG_DURATION_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A structure for detailing the duration period of the drug(s).  Ref: ???</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:choice>
+        <xsd:element name="DrugDays" type="gen:INTERVAL_TYPE">
+          <xsd:annotation>
+            <xsd:documentation>The number of days a drug should be given to a patient.  ENV 13607:2000 7.12.11</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="DrugDoses" type="gen:QUANTITY_TYPE">
+          <xsd:annotation>
+            <xsd:documentation>The number of doses of drug that should be given to patient.  Ref: ???</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="TriggerForCessation" type="gen:TRIGGER_FOR_CESSATION_TYPE" />
+        <xsd:element name="DrugPeriodDescription" type="gen:DURATION_DESCRIPTION_TYPE">
+          <xsd:annotation>
+            <xsd:documentation>A textual description of the duration period of the drug(s)</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+      </xsd:choice>
+      <xsd:element minOccurs="0" name="DrugReviewRequired">
+        <xsd:annotation>
+          <xsd:documentation>Indicator that a review of medication given be carried out on the expiry of DrugDays, DrugDoses, TriggerForCessation or DrugPeriodDescription.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:boolean" />
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="MedicationStopDate">
+        <xsd:annotation>
+          <xsd:documentation>The date on which the administration of medication should cease.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:date" />
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DRUG_IDENTIFICATION_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>This structure has been created to allow the identification of a drug as : a mandatory entry which may be either a free text description or a code derived from a Drug Dictionary, or both.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:choice>
+      <xsd:sequence>
+        <xsd:element name="DrugCode" type="gen:DRUG_CODE_TYPE" />
+        <xsd:element minOccurs="0" name="DrugCodeDescription">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+              <xsd:minLength value="1" />
+              <xsd:maxLength value="198" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+      </xsd:sequence>
+      <xsd:element name="DrugDescription">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="98" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:choice>
+  </xsd:complexType>
+  <xsd:complexType name="DURATION_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A structure for expressing a period of time as a date range, time interval or textual description.</xsd:documentation>
+      <xsd:appinfo> ENV : 13606 - 4:2000 7.11.3</xsd:appinfo>
+    </xsd:annotation>
+    <xsd:choice>
+      <xsd:element name="DateRange" type="xsd:duration">
+        <xsd:annotation>
+          <xsd:documentation>An interval of time expressed as a start and end date.  ENV 13606 - 4:2000 7.11.11</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Interval" type="gen:INTERVAL_TYPE" />
+      <xsd:element name="DurationDescription" type="gen:DURATION_DESCRIPTION_TYPE" />
+    </xsd:choice>
+  </xsd:complexType>
+  <xsd:complexType name="EQUIPMENT_NEEDS_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>Type of Equipment Needed and Used. From Jazz.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="EquipmentNeeded" type="xsd:string" />
+      <xsd:element minOccurs="0" name="DateOrdered" type="xsd:date" />
+      <xsd:element minOccurs="0" name="DateSupplied" type="xsd:date" />
+      <xsd:element minOccurs="0" name="SuppliedBy" type="gen:HCP_DETAIL_TYPE" />
+      <xsd:element name="NeedsMet" type="gen:NEEDS_MET_TYPE" />
+      <xsd:element minOccurs="0" name="Comments" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="EVIDENCE_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A container for medical information that is not held in character form. ENV 12838:1996 6.3.20</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="EvidenceLocator" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Actual location of evidence , e.g. imaging room, cd rom, tape no, e.t.c.  ENV 12838 6.3.20 </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="EvidenceItem" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Individual identifier of evidence item e.g. file name, document number etc..  ENV 12838 6.3.20</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="EvidenceFormat" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Type of format for evidence of examination/investigation e.g. - video, scan, sound file, e.t.c.  ENV 12838 6.3.20</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="EXERCISE_STATUS_HISTORY_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A structure for holding multiple ExerciseStatusRecords</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" name="ExerciseStatusRecord" type="gen:CLINICAL_WARNING_TYPE" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FAMILY_HISTORY_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A structure for data pertaining to relevant medical history of a member or members of a patient's family.  SIGN Report on a Recommended Referral Document November 1998</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="FamilyCondition" type="gen:CLINICAL_CONDITION_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Details of pertinent clinical family history.  Ref: ???</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="RelationToPatient" type="gen:RELATION_TO_PATIENT_TYPE" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="GENERIC_INFORMATION_INSTANCE_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A structure to hold generic information in the format of either multiple name/value pairs or in a generic table type format.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:choice>
+      <xsd:element name="NameValuePair" type="gen:NAME_VALUE_PAIR_TYPE" />
+      <xsd:element name="GenericTableInformation" type="gen:TABULAR_INFORMATION_TYPE" />
+    </xsd:choice>
+  </xsd:complexType>
+  <xsd:complexType name="GENERIC_INFORMATION_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>An instance of generic information that can either be a name/value pair or tabular information</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" name="GenericInformationInstance" type="gen:GENERIC_INFORMATION_INSTANCE_TYPE" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="GENERIC_VALUE_TYPE">
+    <xsd:choice>
+      <xsd:element name="GenericStringValue" type="gen:GENERIC_STRING_VALUE_TYPE" />
+      <xsd:element name="GenericDateValue" type="xsd:date" />
+      <xsd:element name="GenericTimeValue" type="xsd:time" />
+      <xsd:element name="GenericDateTimeValue" type="xsd:dateTime" />
+      <xsd:element name="GenericBooleanValue" type="xsd:boolean" />
+      <xsd:element name="GenericIntegerValue" type="xsd:integer" />
+      <xsd:element name="GenericDecimalValue" type="xsd:decimal" />
+    </xsd:choice>
+  </xsd:complexType>
+  <xsd:complexType name="HCP_ABBREVIATED_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A structure for identifying a Health Care Professional using minimum information.  Term in reference document is Healthcare Agent.  ENV 13606 - 4:2000 7.10.10 </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="HcpId" type="gen:ID_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Unique identifier of a Health Care Professional.  Coded value or xsd:string 1 - 35 
+GMC no, PIN no, etc.  ENV 13606 - 4:2000 7.10.10 and 7.11.5</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="HcpName" type="gen:PERSONAL_NAME_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Personal name of Health Care Professional.  ENV 13606 - 4:2000 7.10.14 and 7.11.12</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="HcpSpecialty" type="gen:SPECIALTY_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>A division of medicine or dentistry to which the Health Care Professional is affiliated.  ISD Definitions and Codes for the Health Service in Scotland.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="Position" type="gen:POSITION_TYPE" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="HCP_ANONYMOUS_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A structure for identifying a type of Health Care Professional by position within an organisation, as opposed to identifying an individual e.g. The Senior Registrar.  ENV 13606 - 4:2000 7.10.14 and 7.11.12</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="Position" type="gen:POSITION_TYPE" />
+      <xsd:element minOccurs="0" name="HcpSpecialty" type="gen:SPECIALTY_TYPE" />
+      <xsd:element minOccurs="0" name="EmployingOrganisation" type="gen:ORGANISATION_TYPE" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="HCP_DETAIL_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A structure for identifying a Health Care Professional using full details.  ENV 13606 - 4:2000 7.10.11 </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="HcpId" type="gen:ID_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Unique identifier of a Health Care Professional.  Coded value or xsd:string 1 - 35 
+GMC no, PIN no, etc.  ENV 13606 - 4:2000 7.10.10 and 7.11.5</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="HcpName" type="gen:PERSONAL_NAME_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Personal name of Health Care Professional.   ENV 13606 - 4:2000 7.10.14 and 7.11.12</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="EmployingOrganisation" type="gen:ORGANISATION_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>The name of the organisation employing the subject.    ENV 13606 - 4:2000 7.6.9</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="HcpTelecom" type="gen:TELECOM_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Telephone, facsimile or similar telecommunications type/number for a Health Care Professional.  ENV 13606 - 4:2000 7.11.19</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="HcpSpecialty" type="gen:SPECIALTY_TYPE" />
+      <xsd:element minOccurs="0" name="Position" type="gen:POSITION_TYPE" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="HCP_SHORT_FORM_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A structure identifying a Health Care professional using minimum information, either as an individual or as a position within the organisation.  Ref: ???</xsd:documentation>
+    </xsd:annotation>
+    <xsd:choice>
+      <xsd:element minOccurs="0" name="NamedHcp" type="gen:HCP_ABBREVIATED_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Health Care Professional identifiable by name. ENV 13606 - 4:2000 7.10.14 and 7.11.12</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="UnamedHcp" type="gen:HCP_ANONYMOUS_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>A Health Care Professional, who is not identified by name.  ENV 13606 - 4:2000 7.10.14</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:choice>
+  </xsd:complexType>
+  <xsd:complexType name="HEALTH_BOARD_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A structure defining a Health Board</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="HealthBoardCipher" type="gen:HEALTH_BOARD_CIPHER_TYPE" />
+      <xsd:element minOccurs="0" name="HealthBoardDetails" type="gen:ORGANISATION_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Name, Address, telephone details of the Health Board.  Ref:  ??&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="HOUSING_DETAIL_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>Housing and Household details. From Jazz.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="Accomodation" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>e.g. Flat,Bungalow,Caravan etc</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="CommunalControlledDoor" type="xsd:boolean" />
+      <xsd:element minOccurs="0" name="IndividualControlledDoor" type="xsd:boolean" />
+      <xsd:element minOccurs="0" name="KeyPadNumber" type="xsd:string" />
+      <xsd:element minOccurs="0" default="false" name="CommunityAlarm" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation>Does the patient have a community alarm?</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="SmokeAlarm" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation>Does the patient have a functioning smoke alarm?</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="Tenure" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>e.g. Council Tenant,Owner/Occupier etc.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="HouseholdComposition" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>e.g. Adult household, Single parent under 5s</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ID_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A structure for the coded method of identifying the subject in the context of a given identification scheme.  ENV13606-4:2000 7.11.5</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="IdValue" type="gen:ID_VALUE_TYPE" />
+      <xsd:element minOccurs="0" name="IdScheme" type="gen:ID_SCHEME_TYPE" />
+      <xsd:element minOccurs="0" name="IdType" type="gen:ID_TYPE_TYPE" />
+      <xsd:element minOccurs="0" name="IdSource" type="gen:ID_SOURCE_TYPE" />
+      <xsd:element minOccurs="0" name="Status" type="gen:STATUS_TYPE" />
+      <xsd:element minOccurs="0" name="LastEncounteredDate" type="xsd:date" />
+      <xsd:element minOccurs="0" name="LastEncounteredTime" type="xsd:time" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="INTERPRETATION_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A structure defining  the type of interpretation of a tes/investigation.   Data Interchange Standards Programme - Radiology Clinical Message</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Interpretation" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A result of an examination which is not based on quantifiable measurement e.g. the interpretation of an X-ray film.  Data Interchange Standards Programme - Radiology Clinical Message</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="DeviatingResultQualitativeFlag" type="gen:DEVIATING_RESULT_QUALITATIVE_FLAG_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>An indicator for the degree of deviation from normality of a qualitative test result
+Ref:  ENV12838:1996 6.3.4
+[Values given correspond with EDIFACT Pathology Message adjudication]
+</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="INTERVAL_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A structure defining a interval of time.  ENV 13606-4:2000 7.11.20 </xsd:documentation>
+      <xsd:appinfo>
+Describes actual Time Interval</xsd:appinfo>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="TimeValue" type="xsd:decimal" />
+      <xsd:element name="TimeUnit" type="gen:TIME_UNIT_TYPE" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="LANGUAGE_DETAIL_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>Language details, from Jazz.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="PreferredLanguage" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Details of preferred language</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="InterpreterRequired" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation>Is an interpreter required?</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="UsualInterpreter" type="gen:CARER_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>List of possible interpreters</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="LEGAL_STATUS_EVENT_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A structure for describing the type of legal status event.  Ref: ???</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="LegalStatusEventName" type="gen:LEGAL_STATUS_EVENT_NAME_TYPE" />
+      <xsd:element minOccurs="0" name="LegalStatusEventPeriod" type="xsd:duration">
+        <xsd:annotation>
+          <xsd:documentation>The start and/or finish dates of a legal event which may change the status of the patient within the terms of the Mental Health (Scotland) Act 1984 or the Criminal Procedures (Scotland) Act 1995.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="LEGAL_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A structure detailing the legal status of the patient.  Ref: ???</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="ActOfParliament" type="gen:ACT_OF_PARLIAMENT_TYPE" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="SectionOfAct" type="gen:SECTION_OF_ACT_TYPE" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="LegalStatusEvent" type="gen:LEGAL_STATUS_EVENT_TYPE" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="LegalLimit" type="gen:LEGAL_LIMIT_TYPE" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="LegalStatus" type="gen:LEGAL_STATUS_TYPE" />
+      <xsd:element minOccurs="0" name="Comment" type="gen:COMMENT_TYPE" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="LIFESTYLE_RISK_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>The structure for information relating to lifestyle factors which may affect the patient's health.  SIGN Report on a Recommended Referral Document November 1998</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="AlcoholConsumption" type="gen:CLINICAL_WARNING_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Level of alcohol consumption of patient.  Read code from 1361. - 1369., 136A. - 136Q. and 136Z.  SIGN Report on a Recommended Referral Document November 1998 </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="AlcoholConsumptionHistory" type="gen:ALCOHOL_CONSUMPTION_HISTORY_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Element to hold a history of alcohol consumption recordings. Systems should not rely on either the AlcoholConsumption or AlcoholConsumptionHistory elements being dependent on each other, although convention would be that the AlcoholConsumption should be the current or most recent of any recordings systems are free to put all recodings into the AlcoholConsumptionHistory and omit the AlcoholConsumption element. It is advised not to duplicate the AlcoholConsumption within the AlcoholConsumptionHistory, i.e. do not have the latest recording in both Consumption and ConsumptionHistory.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="SmokingConsumption" type="gen:CLINICAL_WARNING_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Smoking status of the patient.  Read code from 1371. - 1379. , 137A. - 137T. and 137Z.  SIGN Report on a Recommended Referral Document November 1998</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="SmokingConsumptionHistory" type="gen:SMOKING_CONSUMPTION_HISTORY_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Element to hold a history of smoking consumption recordings. Systems should not rely on either the SmokingConsumption or SmokingConsumptionHistory elements being dependent on each other, although convention would be that the SmokingConsumption should be the current or most recent of any recordings systems are free to put all recodings into the SmokingConsumptionHistory and omit the SmokingConsumption element. It is advised not to duplicate the SmokingConsumption within the SmokingConsumptionHistory, i.e. do not have the latest recording in both Consumption and ConsumptionHistory.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="NonTherapeuticDrug" type="gen:CLINICAL_WARNING_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Name of a non-theraputic drug taken by patient, where its use constitutes a health risk.</xsd:documentation>
+          <xsd:appinfo>SIGN Report on a Recommended Referral Document November 1998 
+(Additional Relevant Information)</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="ReligiousObservance">
+        <xsd:annotation>
+          <xsd:documentation>Any rules strictly followed by the patient under their religious faith and which is pertinent to their condition or treatment.  Ref: ???</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="198" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="ExerciseStatus">
+        <xsd:annotation>
+          <xsd:documentation>A description of the degree and/or nature of exercise which a patient undertakes.  Ref: ???</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="198" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="ExerciseStatusHistory" type="gen:EXERCISE_STATUS_HISTORY_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Element to hold a history of exercise status recordings. Systems should not rely on either the ExerciseStatus or ExerciseStatusHistory elements being dependent on each other, although convention would be that the ExerciseStatus should be the current or most recent of any recordings systems are free to put all recodings into the ExerciseStatusHistory and omit the ExerciseStatus element. It is advised not to duplicate the ExerciseStatus within the ExerciseStatusHistory, i.e. do not have the latest recording in both ExerciseStatus and ExerciseStatusHistory.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="MEDICAL_HISTORY_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A structure for data pertaining to previous clinical events in the patient's past.</xsd:documentation>
+      <xsd:appinfo>SIGN Report on a Recommended Referral Document November 1998</xsd:appinfo>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="PastCondition" type="gen:PAST_CONDITION_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>A clinical condition which the patient has suffered from in the past, relative to the current document. </xsd:documentation>
+          <xsd:appinfo>SIGN Report on a Recommended Referral Document November 1998</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="PastProcedure" type="gen:PAST_PROCEDURE_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>A procedure which the patient has undergone in the past, relative to the current document.</xsd:documentation>
+          <xsd:appinfo>SIGN Report on a Recommended Referral Document November 1998</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="PastMedication" type="gen:PAST_MEDICATION_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Medication regime which the patient has been prescribed in the past, relative to the current document.</xsd:documentation>
+          <xsd:appinfo>SIGN Report on a Recommended Referral Document November 1998</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="MEDICATION_ABBREVIATED_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A structure for  describing minimal details about a drug regime</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="DrugName" type="gen:DRUG_IDENTIFICATION_TYPE">
+        <xsd:annotation>
+          <xsd:documentation />
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="MedicationPeriod" type="xsd:duration">
+        <xsd:annotation>
+          <xsd:documentation>The period over which a drug has been taken.  Ref:???</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="MEDICATION_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A structure to describe medication given to a patient in order to achieve a therapeutic affect.  ENV 13607:2000 7.9.4</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="DrugName" type="gen:DRUG_IDENTIFICATION_TYPE" />
+      <xsd:choice minOccurs="0">
+        <xsd:element name="StructuredDosage" type="gen:STRUCTURED_DOSAGE_TYPE">
+          <xsd:annotation>
+            <xsd:documentation>A quantity of a drug prescribed or administered, expressed in structured form  ENV 13606 - 4:2000 7.6.5 and 7.11.22</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="UnstructuredDosage">
+          <xsd:annotation>
+            <xsd:documentation>A quantity of a drug prescribed or administered, expressed in unstructured form</xsd:documentation>
+          </xsd:annotation>
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+              <xsd:minLength value="1" />
+              <xsd:maxLength value="70" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+      </xsd:choice>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="NAME_VALUE_NAME_TYPE">
+    <xsd:sequence>
+      <xsd:element name="NameId" type="gen:GENERIC_ID_TYPE" />
+      <xsd:element minOccurs="0" name="Title" type="gen:NAME_VALUE_TITLE_TYPE" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="NAME_VALUE_PAIR_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A structure to hold a basic name/value pair of information.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="NameValueName" type="gen:NAME_VALUE_NAME_TYPE" />
+      <xsd:element minOccurs="0" name="NameValueValue" type="gen:GENERIC_VALUE_TYPE" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ORGANISATION_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A structure to describe an organisation within which people act or a designated to act towards some purpose.  ENV 13606-4:2000 3.52</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="OrganisationId" type="gen:ID_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Unique Identifier of an organisation.  ISD Location Codes.  ENV 13606-4:2000 7.6.9</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="OrganisationName" type="gen:ORGANISATION_NAME_TYPE" />
+      <xsd:element minOccurs="0" name="OrganisationType" type="gen:ORGANISATION_TYPE_TYPE" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="OrganisationAddress" type="gen:ADDRESS_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>The postal address of an organisation.  ENV 13606-4:2000 7.10.15 and 7.11.1</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="OrganisationTelecom" type="gen:TELECOM_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Telephone, facsimile or similar telecommuncations type/number for an organisation.  ENV 13606 - 4:2000 7.11.19</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PAST_CONDITION_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A structure for describing a patient's previous conditions.  Ref: ???</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="ConditionOnRecord" type="gen:DIAGNOSIS_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Details of past conditions as documented in the patients record.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="ConditionDisclosed" type="gen:CLINICAL_CONDITION_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Details of past clinical conditions as disclosed by the patient or relative/friend of the patient.  Ref: ???</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PAST_MEDICATION_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A structure for describing a patient's previous medication.   Ref: ???</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="MedicationOnRecord" type="gen:MEDICATION_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Details of past medication as documented in the patients record.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="MedicationDisclosed" type="gen:MEDICATION_ABBREVIATED_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Details of past medication as disclosed by the patient or relative/friend of the patient.  Ref: ???</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PAST_PROCEDURE_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A structure for describing a patient's previous procedures.  Ref: ???</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="ProcedureOnRecord" type="gen:PROCEDURE_PERFORMED_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Details of past clinical procedures as documented in the patients record.  Ref: ???</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="ProcedureDisclosed" type="gen:PROCEDURE_PERFORMED_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Details of past clinical procedures as disclosed by the patient or relative/friend of the patient.  Ref: ???</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PATIENT_DEMOGRAPHICS_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A structure for personal data pertaining to a patient, i.e. a person receiving treatment from the NHSiS. Primarily used for patient matching.  ENV 13606 - 4:2000 7.4.6</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="PatientId" type="gen:ID_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Unique identifier of a patient.  Where CHI number - 10 digit number - 6 digit date of birth followed by a 3 digit sequence number and a check digit. The ninth digit is always even for females and odd for males. The first digit of the CHI must be '3' or less. 
+Where Patient Health Record Identifier, the format is 6 - 10 extended character set.  ENV 13606 - 4:2000 7.11.5 
+CHI No - SMR Data Manual 2-13 
+Patient Health Record Identifier - SMR Data Manual 2-3 GPASS Identifier - GPASS</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="PatientName" type="gen:PERSONAL_NAME_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Personal name of the patient.  ENV 13606 - 4:2000 7.11.12</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="PatientAddress" type="gen:ADDRESS_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Postal address of patient.  ENV 13606 - 4:2000 7.11.1</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="PatientTelecom" type="gen:TELECOM_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Telephone, facsimile or similar telecommunications type/number for a patient.  ENV 13606 - 4:2000 7.11.19</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="DateOfBirth" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation>The date on which the subject is born.  Possible variations to this standard are : 
+a) Mandatory i.e. (1,1) 
+b) Limited to Month + Year or Year only if exact date is unknown.   ENV 13606 - 4:2000 7.4.6    </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="Age" type="xsd:decimal">
+        <xsd:annotation>
+          <xsd:documentation>A person's age (or estimated age) in years at the time at which associated data is relevant</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="SexAtBirth" type="gen:SEX_AT_BIRTH_TYPE" />
+      <xsd:element minOccurs="0" name="Sex" type="gen:SEX_TYPE" />
+      <xsd:element minOccurs="0" name="MaritalStatus" type="gen:MARITAL_STATUS_TYPE" />
+      <xsd:element minOccurs="0" name="RegisteredGp" type="gen:HCP_DETAIL_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>GP with whom the patient is registered.  ENV 13606 - 4:2000 7.10.12</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="HealthBoardOfResidence" type="gen:HEALTH_BOARD_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Name of Health Board area in which the patient resides.  Ref: ???</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PATIENT_TEST_ADMINISTRATION_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A structure for the information pertaining to the administration of patients attending investigations in person.  Ref: ???</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="Slot" type="gen:SLOT_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>A specific time allocation within a clinic or diary.   Ref:???</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="TransportDetails" type="gen:TRANSPORT_DETAILS_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Details pertaining to transport arrangements for a patient.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PERSON_DEMOGRAPHICS_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A structure for personal data pertaining to a person.  ENV 13606 - 4:2000 7.6.12-14</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="Name" type="gen:PERSONAL_NAME_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Personal name of the person.  ENV 13606 - 4:2000 7.11.12</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="Address" type="gen:ADDRESS_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Postal address of person.  ENV 13606 - 4:2000 7.11.13</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="Telecom" type="gen:TELECOM_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Telephone, facsimile or similar telecommunications type/number for a patient.  ENV 13606 - 4:2000 7.11.14</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PERSONAL_FINANCES_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>Details of Financal Affairs and Benefits.  From Jazz.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="BenefitsCheckRequired">
+        <xsd:annotation>
+          <xsd:documentation>Does this patient require a benefits check?</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="requested" />
+            <xsd:enumeration value="performed" />
+            <xsd:enumeration value="refused" />
+            <xsd:enumeration value="required" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="BenefitsReceived">
+        <xsd:annotation>
+          <xsd:documentation>Current State Benefits received</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="BenefitName" type="xsd:string" />
+            <xsd:element minOccurs="0" name="Amount" type="xsd:decimal" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="PensionDay" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Day pension is paid</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="NINumber" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>National Inurance number</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="SelfManaged" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation>Can patient manage their own finances ?</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="FinancialManager" type="gen:CARER_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>If not self managed, who manages finances?</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PERSONAL_NAME_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A structure for expressing a personal name. ENV 13606:4:2000 7.11.12</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:choice>
+        <xsd:element name="StructuredName" type="gen:STRUCTURED_NAME_TYPE" />
+        <xsd:element name="UnstructuredName" type="gen:UNSTRUCTURED_NAME_TYPE" />
+      </xsd:choice>
+      <xsd:element minOccurs="0" name="NameType" type="gen:NAME_TYPE_TYPE" />
+      <xsd:element minOccurs="0" name="NameValidPeriod" type="xsd:duration">
+        <xsd:annotation>
+          <xsd:documentation>Time period in which the person's name is valid.  ENV 13606:4:2000 7.11.11 - expresses actual period</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="Status" type="gen:STATUS_TYPE" />
+      <xsd:element minOccurs="0" name="LastEncounteredDate" type="xsd:date" />
+      <xsd:element minOccurs="0" name="LastEncounteredTime" type="xsd:time" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PROCEDURE_PERFORMED_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A structure for describing the type of procedure performed.  Ref: ???</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" name="Procedure" type="gen:CLINICAL_PROCEDURE_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Details of an operation or non-invasive procedure carried out on the patient.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="ResponsibleHcp" type="gen:HCP_ABBREVIATED_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>The Health Care Professional responsible for carrying out a procedure.  ENV 13606 - 4:2000 7.11.12</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="AssistingHcp" type="gen:HCP_ABBREVIATED_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Details of the Health Care Professional assisting with the procedure.  ENV 13606 - 4:2000 7.11.12</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="DatePerformed" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation>Date on which the procedure was performed.  Date : DDMMYYYY.  ENV 13606 - 4:20007.8.7</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="TimePerformed" type="xsd:time">
+        <xsd:annotation>
+          <xsd:documentation>Time the procedure was performed.  Time: HH:MM.  ENV 13606 - 4:20007.8.7</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="DateRecorded" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation>Date the procedure was recorded.  Added for SCI Discharge.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="Comment" type="gen:COMMENT_TYPE" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="QUANTIFIABLE_RESULT_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A structure for describing test results.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:choice>
+        <xsd:element name="MeasurementNumeric" type="gen:VALUE_COMPARATOR_TYPE">
+          <xsd:annotation>
+            <xsd:documentation>A test result expressed as a numeric value and unit, and optionally an arithmetic operator e.g. more than 50mg/ml</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="MeasurementRange" type="gen:RANGE_TYPE">
+          <xsd:annotation>
+            <xsd:documentation>A test results expressed as a range of values.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="MeasurementCode" type="gen:CLINICAL_CODE_TYPE">
+          <xsd:annotation>
+            <xsd:documentation>A test result expressed as a clinical code value e.g. O/E BP reading very low - 2461 (READV2)</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="MeasurementDate" type="xsd:date">
+          <xsd:annotation>
+            <xsd:documentation>A test result expressed as a date (e.g. expected delivery date of baby).   Date: DDMMYYYY.  ENV 13606 - 4:2000 7.8.7</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="MeasurementDescription" type="gen:MEASUREMENT_DESCRIPTION_TYPE">
+          <xsd:annotation>
+            <xsd:documentation>A test result expressed in words.  </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+      </xsd:choice>
+      <xsd:element minOccurs="0" name="MeasurementInterval" type="gen:INTERVAL_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>The time interval corresponding to the measurement, for use  where a series of measurements is made over time</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="ReferenceLimit" type="gen:REFERENCE_LIMIT_TYPE" />
+      <xsd:element minOccurs="0" name="DeviatingResultQuantitativeFlag" type="gen:DEVIATING_RESULT_QUANTITATIVE_FLAG_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>An indicator for the degree of deviation from reference limits of a quantitative test result
+Ref:  ENV12838:1996 6.3.4
+[Values given correspond with EDIFACT Pathology Message adjudication]
+</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="QUANTITY_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A structure for expressing quantity.   ENV13606-4:2000 7.11.22</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="QuantityValue" type="gen:QUANTITY_VALUE_TYPE" />
+      <xsd:element minOccurs="0" name="QuantityUnit" type="gen:QUANTITY_UNIT_TYPE" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="RANGE_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A structure for expressing a range of values.  ENV 13606 - 4:2000 7.11.8</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="RangeHighValue" type="gen:RANGE_COMPARATOR_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>The highest value of a measurement range.  ENV 13606 - 4:2000  7.11.8</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="RangeLowValue" type="gen:RANGE_COMPARATOR_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>The lowest value of a measurement range.  ENV 13606 - 4:2000  7.11.8</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="RangeUnit" type="gen:QUANTITY_UNIT_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>The unit of measurement in which a range of values is expressed.   ENV 13606 - 4:2000  7.11.8</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="REFERENCE_LIMIT_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A structure for defining reference limits for test measurements.  Ref: ???</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:choice>
+        <xsd:element name="ReferenceLimitNumeric" type="gen:RANGE_TYPE">
+          <xsd:annotation>
+            <xsd:documentation>The reference limits for a test result expressed as a range of values.  ENV 13606 - 4:2000 7.11.22 </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="ReferenceLimitText">
+          <xsd:annotation>
+            <xsd:documentation>The reference limits for a test result expressed as text.  ENV 13606 - 4:2000 </xsd:documentation>
+          </xsd:annotation>
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+              <xsd:minLength value="1" />
+              <xsd:maxLength value="70" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+      </xsd:choice>
+      <xsd:element minOccurs="0" name="AbnormalReferenceLimit">
+        <xsd:complexType>
+          <xsd:choice>
+            <xsd:element name="AbnormalReferenceLimitNumeric" type="gen:RANGE_TYPE">
+              <xsd:annotation>
+                <xsd:documentation>The reference limit or abnormal range expressed as a numeric measument range.  Order Communications Technical Reference Manual (Northgate). </xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="AbnormalReferenceLimitText">
+              <xsd:annotation>
+                <xsd:documentation>The reference limits for an abnormal  test result expressed as text  Order Communications Technical Reference Manual (Northgate). </xsd:documentation>
+              </xsd:annotation>
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:minLength value="1" />
+                  <xsd:maxLength value="70" />
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="ReferenceLimitPopulation" type="gen:REFERENCE_LIMIT_POPULATION_TYPE" />
+      <xsd:element minOccurs="0" name="Comment" type="gen:COMMENT_TYPE" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SAMPLE_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A structure for describing the type of sample for investigation and reporting.  Pathology Messaging Enabler Project P28.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="SampleName" type="gen:CLINICAL_CIRCUMSTANCE_TYPE" />
+      <xsd:element minOccurs="0" name="TissueType">
+        <xsd:annotation>
+          <xsd:documentation>Nature of tissue sampled e.g. blood, urine.  Pathology Messaging Enabler Project E264 
+EDIFACT SG16.REF.C506.1154</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="70" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="SampleRequesterId">
+        <xsd:annotation>
+          <xsd:documentation>Unique identifier of sample supplied by test requester.  Pathology Messaging Enabler Project E262</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="35" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="SampleLaboratoryId">
+        <xsd:annotation>
+          <xsd:documentation>Unique identifier of sample supplied by laboratory.  Pathology Messaging Enabler Project E263</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="35" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="DateTimeSampled" type="xsd:dateTime">
+        <xsd:annotation>
+          <xsd:documentation>Date sample collected.  ENV 13606 - 4:2000 7.8.7 </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="SampleAmount" type="gen:QUANTITY_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>The amount of tissue collected in order to perform one or more clinical tests.  Pathology Messaging Enabler Project - E054</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="DateTimeReceived" type="xsd:dateTime">
+        <xsd:annotation>
+          <xsd:documentation>Date and time a sample was received.  ENV 13606 - 4:2000 7.8.7</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="DateTimeTested" type="xsd:dateTime">
+        <xsd:annotation>
+          <xsd:documentation>Date and time a sample was tested.  ENV 13606 - 4:2000 7.8.7</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="AnatomicalSite" type="gen:ANATOMICAL_SITE_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>The body part of a patient. on which a clinical test or battery of tests may be performed.  Ref: ???</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="BiohazardAlert" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation>An indication that a tissue sample may pose a risk to the handler.  Ref: ???</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="SampleRequesterComment" type="gen:COMMENT_TYPE" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="ServiceProviderComment" type="gen:COMMENT_TYPE" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SERVICE_REQUEST_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A structure for information pertaining to a service request. Ref:  ENV 12838 1996</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="Department" type="gen:ORGANISATION_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>The department/laboratory/discipline providing the service.  A subdivision of a service provider organisation.  ENV 12838:1996</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="TestRequested" type="gen:TEST_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>A clinical investigation requested through a Service Request Ref:  ENV12838:1996 6.3.3</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="TestSampleDetails" type="gen:SAMPLE_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>A tissue specimen on which a clinical test or battery of tests may be performed. This includes both specimens removed from patients or tested in situ (e.g. brain scan).
+
+The optionality caters for the instances where tissue identification may not be appropriate e.g. psychological tests.
+Ref : Pathology Messaging Enabler Project P28 - E261  EDIFACT- 
+SG16.DTM.C057.2380
+</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="PatientTestAdministration" type="gen:PATIENT_TEST_ADMINISTRATION_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Administrative arrangements for patients attending investigations in person.. Ref : ???</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="RequestUrgencyValue" type="gen:REQUEST_URGENCY_VALUE_TYPE" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="ClinicalDataRequired" type="gen:CLINICAL_DATA_REQUIRED_TYPE" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="CurrentMedication" type="gen:MEDICATION_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Medication which the patient is currently taking, or has recently been taking (where recent is significant in the context of the clinical picture) Ref:  ???</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SLOT_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A specific time allocation within a clinic or diary.  Ref: ???</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="ClinicHealthcareOrganisation" type="gen:ORGANISATION_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>The organisation providing a clinic.  ENV 13606 - 4:2000 7.11.7</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="Clinic" type="gen:CLINIC_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>The name of a schedule of appointments normally arranged to be held on a regular basis at a particular location.  Coded value or xsd:string.  SMR Data Manual 3-5.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="AppointmentDate" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation>Date of appointment.  ENV 13606 - 4:2000 7.8.7 (Only date part implemented. Time implemented as separate field.)</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="AppointmentTime" type="xsd:time">
+        <xsd:annotation>
+          <xsd:documentation>The planned start time of an appointment.  ENV 13606 - 4:2000 7.8.7 (Only time part implemented. Date implemented as separate field.)</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="SlotLength" type="gen:INTERVAL_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>The duration of an appointment slot.  Ref: ???</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SMOKING_CONSUMPTION_HISTORY_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A structure for holding multiple SmokingConsumptionRecords</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" name="SmokingConsumptionRecord" type="gen:CLINICAL_WARNING_TYPE" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SOCIAL_CIRCUMSTANCES_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A structure for data pertaining to a patient's social circumstances.  SIGN Report on a Recommended Referral Document November 1998</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:choice minOccurs="0">
+        <xsd:element name="Housing">
+          <xsd:annotation>
+            <xsd:documentation>Free text information regarding the type of housing in which a patient lives.  Ref: ???</xsd:documentation>
+          </xsd:annotation>
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+              <xsd:minLength value="1" />
+              <xsd:maxLength value="198" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="HousingDetail" type="gen:HOUSING_DETAIL_TYPE">
+          <xsd:annotation>
+            <xsd:documentation>Clients Housing and Household composition.  From Jazz.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+      </xsd:choice>
+      <xsd:element minOccurs="0" name="Employment">
+        <xsd:annotation>
+          <xsd:documentation>Description of the patient's occupation</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="70" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="ReligionCode">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="35" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="Religion">
+        <xsd:annotation>
+          <xsd:documentation>Religious faith followed by the patient.  Ref: ???</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:union>
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="Atheist" />
+                <xsd:enumeration value="Agnostic" />
+                <xsd:enumeration value="Buddhist" />
+                <xsd:enumeration value="Church of Scotland" />
+                <xsd:enumeration value="Church of England" />
+                <xsd:enumeration value="Episcopalian Church" />
+                <xsd:enumeration value="Jewish" />
+                <xsd:enumeration value="Mormon" />
+                <xsd:enumeration value="Muslim" />
+                <xsd:enumeration value="Roman Catholic Church" />
+                <xsd:enumeration value="Sikh" />
+                <xsd:enumeration value="Other" />
+              </xsd:restriction>
+            </xsd:simpleType>
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:minLength value="1" />
+                <xsd:maxLength value="70" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:union>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="EthnicOriginCode">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="35" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="EthnicOrigin">
+        <xsd:annotation>
+          <xsd:documentation>An ethnic group is a group of people havuing racial, religious, linguistic and/or cultural traits in common.  The ethnic group to which a patient belongs is judged by the patient.  SMR Data Manual P2-23</xsd:documentation>
+          <xsd:documentation>Recommended values are Ethnic categories in accordance with the Scottish census 2011 are 
+Scottish
+Other British
+Irish
+Gypsy/Traveller
+Polish
+Other white
+Mixed or multiple ethnic groups
+Pakistani, Pakistani Scottish or Pakistani British
+Indian, Indian Scottish or Indian British
+Bangladeshi, Bangladeshi Scottish or Bangladeshi British
+Chinese, Chinese Scottish or Chinese British
+Other Asian
+African, African Scottish or African British
+Other African
+Caribbean, Caribbean Scottish or Caribbean British
+Black, Black Scottish or Black British
+Other Caribbean or Black
+Arab, Arab Scottish or Arab British
+Other Ethnic Group
+					</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="70" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:choice minOccurs="0">
+        <xsd:element name="Language">
+          <xsd:annotation>
+            <xsd:documentation>Details of the main language spoken by the patient, where anything other than English.  Ref: ???</xsd:documentation>
+          </xsd:annotation>
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+              <xsd:minLength value="1" />
+              <xsd:maxLength value="70" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element name="LanguageDetail" type="gen:LANGUAGE_DETAIL_TYPE">
+          <xsd:annotation>
+            <xsd:documentation>Patient's preferred langauge including Sign language.  From Jazz.</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+      </xsd:choice>
+      <xsd:element minOccurs="0" name="Pets" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>Details of pets and any pet-carers.  From Jazz.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="PersonalFinances" type="gen:PERSONAL_FINANCES_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Patient's Financial and Benefits details.  From Jazz.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SPECIALTY_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A division of medicine or dentistry covering a specific area of clinical activity and identified within one of the Royal Colleges or Faculties.</xsd:documentation>
+      <xsd:appinfo>ISD Definitions and Codes for the Health Service in Scotland : 5-5.</xsd:appinfo>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="SpecialtyName">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="50" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="SpecialtyCode">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="2" />
+            <xsd:maxLength value="4" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="STATUS_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A structure for expressing a status.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Status" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>A generic term for recording a status. </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="StatusDate" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation>Date at which Status was recorded.  ENV 13606 - 4:2000 7.8.7.  Date: DDMMYYYY</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="StatusTime" type="xsd:time">
+        <xsd:annotation>
+          <xsd:documentation>Time at which Status was recorded. </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="STRUCTURED_ADDRESS_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A postal address expressed in a structured  format ENV13606-4:2000 7.11.15</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="PropertyNumber" type="gen:PROPERTY_NUMBER_TYPE" />
+      <xsd:element maxOccurs="4" name="AddressLine" type="gen:ADDRESS_LINE_TYPE" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="STRUCTURED_DOSAGE_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A structure for a medication dosage.  ENV 13607 7.12.20</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:choice minOccurs="0">
+        <xsd:element name="Dose" type="gen:QUANTITY_TYPE">
+          <xsd:annotation>
+            <xsd:documentation>The quantity of medicinal product administered at one event of administration.  
+The same definition can be extended to encompass 'infusion rate'.  ENV 13607 - 4:2000 7.12.20</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="DoseDescription">
+          <xsd:annotation>
+            <xsd:documentation>An unstructured alternative to Dose. eg. "1 or 2 tabs"</xsd:documentation>
+          </xsd:annotation>
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+              <xsd:minLength value="1" />
+              <xsd:maxLength value="198" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+      </xsd:choice>
+      <xsd:element minOccurs="0" name="Frequency">
+        <xsd:annotation>
+          <xsd:documentation>A proposed schedule for drug administration specified by the prescriber. e.g. '3 times per day'.   ENV 13607 7.12.20 (specification simplified to 'xsd:string').</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="35" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="TimeOfAdministration">
+        <xsd:annotation>
+          <xsd:documentation>Instructions on when a drug should be administered e.g. Before meals, Last thing at night, 8:00 am, 4:00 pm etc.   Not referenced in ENV 13607:2000??  7.6.5   </xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="35" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="Route">
+        <xsd:annotation>
+          <xsd:documentation>Route or site of administration, e.g. oral, topical, right ear.  ENV 13607:2000</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:union>
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="Oral" />
+                <xsd:enumeration value="Topical" />
+                <xsd:enumeration value="Sublingual" />
+                <xsd:enumeration value="Subcutaneous" />
+                <xsd:enumeration value="Inhaler" />
+                <xsd:enumeration value="Intravenous" />
+              </xsd:restriction>
+            </xsd:simpleType>
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:minLength value="1" />
+                <xsd:maxLength value="35" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:union>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="MaximumDailyDose" type="gen:QUANTITY_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>The maximum quantity of drug allowed daily.  ENV 113607:2000 7.12.20</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:choice>
+        <xsd:element minOccurs="0" maxOccurs="unbounded" name="TriggerForAdministration">
+          <xsd:annotation>
+            <xsd:documentation>An event which triggers the administration of medication e.g. "on onset of migraine".  ENV 13607:2000 7.12.20 (specification simplified to 'xsd:string').</xsd:documentation>
+          </xsd:annotation>
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+              <xsd:minLength value="1" />
+              <xsd:maxLength value="70" />
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element minOccurs="0" name="MedicationStartDate">
+          <xsd:annotation>
+            <xsd:documentation>The date on which the administration of medication should commence. Date: DDMMYYYY.   Ref: ???</xsd:documentation>
+          </xsd:annotation>
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:date" />
+          </xsd:simpleType>
+        </xsd:element>
+      </xsd:choice>
+      <xsd:element minOccurs="0" name="DrugDuration" type="gen:DRUG_DURATION_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Length of treatment period.  ENV 13607 :2000 7.12.24</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="LastPrescribedDate" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation>The date this medication was last prescribed to the patient.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="STRUCTURED_NAME_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A person name composed of separately identifiable elements.   ENV13606-4:2000 7.11.17</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="Title">
+        <xsd:simpleType>
+          <xsd:annotation>
+            <xsd:documentation>Salutation e.g. Mr, Mrs, Sir, Lord, Dr, Ms, Miss, Rev.  Coded Value or xsd:string.   ENV13606-4:2000 7.11.17 </xsd:documentation>
+          </xsd:annotation>
+          <xsd:union>
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="Mr" />
+                <xsd:enumeration value="Mrs" />
+                <xsd:enumeration value="Miss" />
+                <xsd:enumeration value="Master" />
+                <xsd:enumeration value="Ms" />
+                <xsd:enumeration value="Dr" />
+                <xsd:enumeration value="Lord" />
+                <xsd:enumeration value="Lady" />
+                <xsd:enumeration value="Professor" />
+                <xsd:enumeration value="Reverend" />
+              </xsd:restriction>
+            </xsd:simpleType>
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:minLength value="1" />
+                <xsd:maxLength value="35" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:union>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="GivenName">
+        <xsd:simpleType>
+          <xsd:annotation>
+            <xsd:documentation>The part of a person's name which, after the Family Name, is the principal identifier of a person. Synonym : First Name.    ENV13606-4:2000 7.11.17</xsd:documentation>
+          </xsd:annotation>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="35" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="MiddleName">
+        <xsd:simpleType>
+          <xsd:annotation>
+            <xsd:documentation>Additional part of a complete name, besides the first (given) name and surname. Often expressed as an initial.   ENV13606-4:2000 7.11.17</xsd:documentation>
+          </xsd:annotation>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="35" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="FamilyName">
+        <xsd:simpleType>
+          <xsd:annotation>
+            <xsd:documentation>The part of a person's name which, in association with the Given Name, is the principal identifier of a person. Synonym : Surname.  ENV13606-4:2000 7.11.17</xsd:documentation>
+          </xsd:annotation>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="35" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="STRUCTURED_TELECOM_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A structure for telephone numbers composed of separately identifiable elements. ENV13606-4:2000 7.11.18</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="TelecomCountry" type="gen:TELECOM_COUNTRY_TYPE" />
+      <xsd:element name="TelecomArea" type="gen:TELECOM_AREA_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>ENV13606-4:2000 7.11.18: have made this mandatory instead of optional.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="TelecomNo" type="gen:TELECOM_NO_TYPE" />
+      <xsd:element minOccurs="0" name="TelecomExt" type="gen:TELECOM_EXT_TYPE" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="TABULAR_CELL_TYPE">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="RowId" type="gen:GENERIC_ID_TYPE" />
+      <xsd:element minOccurs="0" name="ColumnId" type="gen:GENERIC_ID_TYPE" />
+      <xsd:element minOccurs="0" name="CellValue" type="gen:GENERIC_VALUE_TYPE" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="TABULAR_CELLS_TYPE">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" name="Cell" type="gen:TABULAR_CELL_TYPE" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="TABULAR_COLUMN_TYPE">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="ColumnId" type="gen:GENERIC_ID_TYPE" />
+      <xsd:element name="ColumnTitle" type="gen:GENERIC_TITLE_TYPE" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="TABULAR_COLUMNS_TYPE">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" name="Column" type="gen:TABULAR_COLUMN_TYPE" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="TABULAR_INFORMATION_TYPE">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="TableId" type="gen:GENERIC_ID_TYPE" />
+      <xsd:element name="Title" type="gen:GENERIC_TITLE_TYPE" />
+      <xsd:element name="Columns" type="gen:TABULAR_COLUMNS_TYPE" />
+      <xsd:element name="Rows" type="gen:TABULAR_ROWS_TYPE" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="TABULAR_ROW_TYPE">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="RowId" type="gen:GENERIC_ID_TYPE" />
+      <xsd:element minOccurs="0" name="RowTitle" type="gen:GENERIC_TITLE_TYPE" />
+      <xsd:element name="Cells" type="gen:TABULAR_CELLS_TYPE" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="TABULAR_ROWS_TYPE">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" name="Row" type="gen:TABULAR_ROW_TYPE" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="TELECOM_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A structure for expressing a telecommunications contact number or address, e.g. a phone number, email address.  ENV 13606-4:2000 7.11.19</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:choice>
+        <xsd:element name="StructuredTelecom" type="gen:STRUCTURED_TELECOM_TYPE" />
+        <xsd:element name="UnstructuredTelecom" type="gen:UNSTRUCTURED_TELECOM_TYPE" />
+      </xsd:choice>
+      <xsd:element name="TelecomType" type="gen:TELECOM_TYPE_TYPE" />
+      <xsd:element minOccurs="0" name="TelecomMode" type="gen:TELECOM_MODE_TYPE" />
+      <xsd:element minOccurs="0" name="Status" type="gen:STATUS_TYPE" />
+      <xsd:element minOccurs="0" name="LastEncounteredDate" type="xsd:date" />
+      <xsd:element minOccurs="0" name="LastEncounteredTime" type="xsd:time" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="TEST_RESULT_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A structure for information resulting from an investigation.  ENV12538:1996 6.3.3</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="Department" type="gen:ORGANISATION_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>The department/laboratory/discipline providing the service.  A subdivision of a service provider organisation.  ENV 12838:1996</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="TestPerformed" type="gen:TEST_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>A clinical investigation performed in response to a Service Request.  ENV 12838:1996 6.3.3</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="TestDate" type="xsd:date">
+        <xsd:annotation>
+          <xsd:documentation>Date on which the test was performed.  Added for SCI Discharge. </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="TestSampleDetails" type="gen:SAMPLE_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>A tissue specimen on which a clinical test or battery of tests may be performed. This includes both specimens removed from patients or tested in situ (e.g. brain scan).
+
+The optionality caters for the instances where tissue identification may not be appropriate e.g. psychological tests.
+Ref : Pathology Messaging Enabler Project P28 - E261  EDIFACT- 
+SG16.DTM.C057.2380
+</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="TestMeasurement" type="gen:QUANTIFIABLE_RESULT_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Quantifiable result of test / investigation.  Pathology Messaging Enabler Programme P-31 E124</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="TestInterpretation" type="gen:INTERPRETATION_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>Interpretation of results by specialist.  ?? ENV 12838:1996 6.3.29</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="DateTimeReported" type="xsd:dateTime">
+        <xsd:annotation>
+          <xsd:documentation>Date and time a test result was reported. ENV 13606 - 4:2000 7.8.7 NOTE: This element is for backward compatibility only. Systems are advised to utilise the ReportDetails/ReportingDetails/ReportingDate element where possible.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="Evidence" type="gen:EVIDENCE_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>A product of an investigation or examination that cannot be be conveyed electronically in character format (e.g. a still or moving image, an audio clip).ENV 12838 1996 6.3.20</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="Comment" type="gen:COMMENT_TYPE">
+        <xsd:annotation>
+          <xsd:documentation />
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="DisciplineSpecificValues" type="gen:DISCIPLINE_SPECIFIC_VALUES_TYPE" />
+      <xsd:element minOccurs="0" name="ResultStatus" type="gen:TEST_STATUS_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>An indicator provided by the reporter of a test result to establish the status of the result as 'Preliminary' or 'Supplementary'.
+
+Note : The recommendation is that no status term is used if the result is deemed to be 'final'.
+
+Note : 'Interim' could be used instead of Preliminary if the majority prefer. Ref:  Order Comunications Technical Reference Manual (Northgate)
+</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="ResultDataType" type="gen:DATA_FORMAT_TYPE" />
+      <xsd:element minOccurs="0" name="ReportDetails" type="gen:TEST_REPORTING_TYPE" />
+      <xsd:element minOccurs="0" name="ResultAttachments">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" name="ResultAttachment" type="gen:ATTACHMENT_TYPE" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="TEST_SET_RESULT_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A structure for details pertaining to a SET of tests requested or performed on a patient. </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="TestSetDetails" type="gen:TEST_TYPE" />
+      <xsd:element minOccurs="0" name="TestResults">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="TestResult" type="gen:TEST_RESULT_TYPE" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="Comment" type="gen:COMMENT_TYPE">
+        <xsd:annotation>
+          <xsd:documentation />
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="ResultStatus" type="gen:TEST_STATUS_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>An indicator provided by the reporter of a test result to establish the status of the result as 'Preliminary' or 'Supplementary'.
+
+Note : The recommendation is that no status term is used if the result is deemed to be 'final'.
+
+Note : 'Interim' could be used instead of Preliminary if the majority prefer. Ref:  Order Comunications Technical Reference Manual (Northgate)
+</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="ResultDataType" type="gen:DATA_FORMAT_TYPE" />
+      <xsd:element minOccurs="0" name="ReportDetails" type="gen:TEST_REPORTING_TYPE" />
+      <xsd:element minOccurs="0" name="SetAbnormal" type="xsd:boolean" />
+      <xsd:element minOccurs="0" name="UniqueCarePathwayNumber" type="gen:UNIQUE_CARE_PATHWAY_NUMBER_TYPE" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="TEST_REPORTING_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A structure for details pertaining to the reporting details of an examination performed on a patient. 
+			</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="ExaminationDetails">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="ExaminationParty" type="gen:HCP_DETAIL_TYPE" />
+            <xsd:element minOccurs="0" name="ExaminationDate" type="xsd:dateTime" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="AuthorisingDetails">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="AuthorisingParty" type="gen:HCP_DETAIL_TYPE" />
+            <xsd:element minOccurs="0" name="AuthorisingDate" type="xsd:dateTime" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="ReportingDetails">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="ReportingParty" type="gen:HCP_DETAIL_TYPE" />
+            <xsd:element minOccurs="0" name="ReportingDate" type="xsd:dateTime" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="VerifyingDetails">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="VerifyingParty" type="gen:HCP_DETAIL_TYPE" />
+            <xsd:element minOccurs="0" name="VerifyingDate" type="xsd:dateTime" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="DataEntryDetails">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="Typist" type="gen:HCP_DETAIL_TYPE" />
+            <xsd:element minOccurs="0" name="DateTyped" type="xsd:dateTime" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="TEST_STATUS_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A structure for details pertaining to the status of a result</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="StatusType" type="gen:RESULT_STATUS_TYPE">
+        <xsd:annotation>
+          <xsd:documentation />
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="StatusDescription" type="gen:RESULT_STATUS_DESCRIPTION" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="TEST_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A structure for details pertaining to the results of an examination performed on a patient.  ?? ENV 12838:1996 6.3.29</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" name="TestName" type="gen:CLINICAL_CIRCUMSTANCE_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>A textual description of the name of a test e.g. serum bilirubin concentration, gastroscopy.  ENV12538:1996 6.3.3
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="TestSpecification" type="gen:TEST_SPECIFICATION_TYPE" />
+      <xsd:element minOccurs="0" name="OrderNumber" type="gen:ORDER_NUMBER_TYPE" />
+      <xsd:element minOccurs="0" name="SubOrderNumber" type="gen:SUB_ORDER_NUMBER_TYPE" />
+      <xsd:element minOccurs="0" name="TestIdentifier" type="gen:ID_TYPE" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="TRANSPORT_DETAILS_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A structure for information relating to treatment given to a patient.  Ref:???</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="TransportRequired" type="gen:TRANSPORT_REQUIRED_TYPE" />
+      <xsd:element minOccurs="0" name="TransportType">
+        <xsd:simpleType>
+          <xsd:annotation>
+            <xsd:documentation>Type of transport required e.g. 2 Man Ambulance, WRVS Car etc</xsd:documentation>
+          </xsd:annotation>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="35" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:choice minOccurs="0">
+        <xsd:element name="TransportDateTime">
+          <xsd:simpleType>
+            <xsd:annotation>
+              <xsd:documentation>Date and time that transport is required.   Date and Time:  DDMMYYYY and HH:MM.  ENV 13606 - 4:2000 7.8.7.  </xsd:documentation>
+            </xsd:annotation>
+            <xsd:restriction base="xsd:dateTime" />
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:sequence>
+          <xsd:element name="TransportDate" type="xsd:date">
+            <xsd:annotation>
+              <xsd:documentation>Alternative to TransportDateTime, to allow a date and an unstructured time.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="TransportTimeDescription">
+            <xsd:annotation>
+              <xsd:documentation>Unstructured time, e.g. "Afternoon"</xsd:documentation>
+            </xsd:annotation>
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:minLength value="1" />
+                <xsd:maxLength value="35" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:choice>
+      <xsd:element minOccurs="0" name="TransportPickup">
+        <xsd:simpleType>
+          <xsd:annotation>
+            <xsd:documentation>Location or address from which the patient is to be transported.  Ref: ???.</xsd:documentation>
+          </xsd:annotation>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="98" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="TransportDestination">
+        <xsd:simpleType>
+          <xsd:annotation>
+            <xsd:documentation>Location or address to which patient is to be transported.  Ref: ???</xsd:documentation>
+          </xsd:annotation>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="198" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="TransportInstructions" type="gen:TRANSPORT_INSTRUCTIONS_TYPE" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="VALUE_COMPARATOR_TYPE">
+    <xsd:annotation>
+      <xsd:documentation>A structure describing a value associated with an arithmetic comparator.   ENV 13606 - 4:2000 7.11.9</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Result" type="gen:QUANTITY_TYPE">
+        <xsd:annotation>
+          <xsd:documentation>A measurement expressed as a numeric value and unit   ENV 13606 - 4:2000 7.11.9</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="ArithmeticComparator" type="gen:ARITHMETIC_COMPARATOR_TYPE" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

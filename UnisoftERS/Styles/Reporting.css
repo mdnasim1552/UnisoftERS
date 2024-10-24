@@ -1,0 +1,711 @@
+﻿/* Begin of inheritance*/
+.toppane {
+    border-bottom-style: solid !important;
+    border-bottom-width: 1px !important;
+    border-bottom-color: inherit !important;
+}
+
+.footer2 {
+    border-style: solid !important;
+    border-width: 10px !important;
+    border-color: red !important;
+}
+
+.footerlink a:link {
+    color: red;
+}
+
+.footerlink a:visited {
+    color: blue;
+}
+
+.footerlink a:hover {
+    color: green;
+    text-decoration: none;
+}
+
+.footerlink a:active {
+    color: yellow;
+}
+
+#ctl00_RadPane1 {
+    border-bottom-style: solid !important;
+    border-bottom-width: 1px !important;
+}
+
+#RAD_SPLITTER_PANE_CONTENT_ctl00_RadPane1 {
+    overflow-x:auto !important;
+}
+.MainPage {
+    overflow:hidden;  
+}
+/* End of inheritance*/
+body {
+}
+.borded1{
+    border-style:dotted;
+    border-color:#b2b1f3;
+    border-width:1px;
+    box-sizing:content-box;
+}
+.borded2{
+    border-style:dotted;
+    border-color:red;
+    border-width:1px;
+    box-sizing:content-box;
+}
+.borded3{
+    /*border-style:dotted;
+    border-color:#ff6a00;
+    border-width:1px;*/
+    box-sizing:content-box;
+}
+.rtTemplate {
+    display:inline-block;
+    zoom: 1;
+    *display: inline; 
+}
+#RadTreeViewLeft{
+    border-style:solid;
+    border-width:1px;
+    border-color:#0072C6;
+    border-radius:3px;
+    min-height:200px;
+    height:auto;
+}
+#RadListReport{
+    border-style:solid;
+    border-width:1px;
+    border-color:#0072C6;
+    border-radius:3px;
+    min-height:200px;
+    height:auto;
+}
+#RPanelNET{
+    width:auto;
+    height:auto;
+    background-color:#d6d7f5;
+}
+.dynamic{
+    background-color:beige;color:red;
+}
+#RadWindowManager1{
+    min-width:400px;
+    min-height:300px;
+}
+#Help1{
+    left:580px;
+    top:150px;
+    position:absolute;
+    z-index:10;
+    overflow:hidden;
+}
+#Help2{
+    left:165px;
+    top:260px;
+    position:absolute;
+    z-index:10;
+    overflow:hidden;
+}
+#Help3{
+    left:390px;
+    top:320px;
+    position:absolute;
+    z-index:10;
+    overflow:hidden;
+}
+#Help4{
+    left:495px;
+    top:400px;
+    position:absolute;
+    z-index:10;
+    overflow:hidden;
+}
+#Help5{
+    left:50px;
+    top:570px;
+    position:absolute;
+    z-index:10;
+    overflow:hidden;
+}
+#Help6{
+    left:420px;
+    top:510px;
+    position:absolute;
+    z-index:10;
+    overflow:hidden;
+}
+.UnisoftHelpOn{
+    width:100px;
+    height:75px;
+    opacity:0.5;
+    background-color:#f7f8cb;
+    border-radius:5px;
+    border-style:solid;
+    border-bottom-color:lightgrey;
+    border-width:1px;
+    transition:0.5s;
+}
+.UnisoftHelpOff{
+    width:100px;
+    height:1px;
+    opacity:0.0;
+    background-color:#ffffff;
+    border-radius:5px;
+    border-style:solid;
+    border-bottom-color:lightgrey;
+    border-width:1px;
+    transition:0.5s;
+}
+#dateCompareValidator1{
+    color:red;
+}
+.BowelPrep{
+    width:300px;
+    text-align:center;
+}
+.div50{
+    width:50px;
+    text-align:center;
+}
+.div75{
+    width:75px;
+    text-align:center;
+}
+.div100{
+    width:100px;
+    text-align:center;
+}
+.div150{
+    width:150px;
+    text-align:center;
+}
+.div200{
+    width:200px;
+    text-align:center;
+}
+.div250{
+    width:250px;
+    text-align:center;
+}
+.div300{
+    width:300px;
+    text-align:center;
+}
+h1, h2, h3, h4, h5, h6{
+    font-family:'Segoe UI';
+}
+h1{
+    margin-top:0px;
+    padding-left:20px;
+    border-left-style:solid;
+    border-left-color:#777777;
+    border-left-width:1px;
+    border-top-style:solid;
+    border-top-color:#777777;
+    border-top-width:1px;
+    border-bottom-style:solid;
+    border-bottom-color:#777777;
+    border-bottom-width:1px;
+    border-right-style:solid;
+    border-right-color:#777777;
+    border-right-width:1px;
+}
+.rgMasterTable{
+    border-color:lightgrey;
+    border-style:solid;
+    border-width:2px;
+}
+#cbs{
+    width:250px;
+    height:150px;
+    float:left;
+}
+#apply{
+}
+#ApplyZone{
+    width:130px;
+    float:left;
+    vertical-align:middle;
+    text-align:center;
+
+}
+#RadButtonFilter{
+}
+.MasterTableView{
+    overflow-x:scroll;
+}
+div.rtsLevel rtsLevel1{
+    background-color:#ffffff;
+}
+#Consultants{
+    float:left;
+    padding-left:0px;
+}
+.JAGGRS{ 
+    width:50%;
+    float:left;
+}
+col:first-child{
+    width:50px;
+}
+div.RadGrid{
+    border:none;
+}
+#BottonReport{
+    width:25%;
+    float:right;
+}
+#Waiting {
+    position:absolute;
+    left: 325px;
+    top: 325px;
+}
+.Loading{
+    z-index: 9999;
+}
+.Loaded{
+    z-index: 9999;
+    opacity:0;
+}
+#RadMultiPage1{
+}
+/*.optionsBodyText{
+}*/
+/*.RadTabStrip{
+    margin-right:5px;
+    margin-left:5px;
+}*/
+/*.rtsLevel{
+    margin-right:5px;
+    margin-left:5px;
+}*/
+/*.optionsBodyText{
+    margin-left:10px;
+    margin-right:10px;
+}*/
+/*#RadMultiPage1{
+    border-width:1px;
+    border-style:solid;
+    border-color:grey;
+    border-radius:2px;
+}*/
+#WordsFiltered{
+    width:350px;
+    padding-right:0px;
+    margin-left:0px;
+}
+#tableofdates{
+    margin-left:0;
+    background-color:lightcyan;
+}
+#RadButton1{
+    margin-left:10px;
+}
+#EndoList{
+    font-size:0.9em;
+}
+#EndoLeft{
+    width:275px;
+    height:200px;
+    float:left;
+}
+#EndoCenter{
+    width:150px;
+    height:200px;
+    float:left;
+}
+#EndoRight{
+    width:275px;
+    height:200px;
+    float:left;
+}
+.rgMultiHeaderRow{color:#ebe8e8;background-color:#0072C6;}
+th{color:#ebe8e8;background-color:#0072C6;}
+#nTimes {
+    width: 56px;
+}
+div.USNcb{
+    float:left;
+    width:175px;
+    max-width:175px;
+}
+div.USNcbHidden{
+    float:right;
+    width:175px;
+    visibility:hidden;
+    max-width:0px;
+}
+.ControlHidded{
+    float:right;
+    visibility:hidden;
+    max-width:0px;
+}
+#Together{
+    margin-top:5px;
+    margin-bottom:5px;
+    margin-left:0px;
+    width:100%;
+    float:left;
+    padding-left:0px;
+}
+#EndoList{
+}
+#example .demo-container {
+    padding: 0;
+    width: 748px;
+    height: 383px;
+    border: 0;
+    position: relative;
+}
+.demo-container .RadListBox1 {
+}
+.demo-container .RadListBox2 {
+}
+.demo-container .targetTextBox {
+    position: absolute;
+    left: 545px;
+    top: 143px;
+}
+.demo-container .targetTextBox textarea {
+    border: 1px solid #979797;
+    font: 12px/1.2em "segoe ui", Arial, sans-serif;
+    cursor: default;
+}
+.rtsUL{
+    margin-left:10px;
+}
+.rtsLI{
+    margin-left:5px;
+}
+.RadListBox1 {
+    top: 0px;
+    left: 0px;
+}
+.loaded{
+}
+#form1{
+    background-color:white;
+}
+td.consultantsL{
+    min-width:150px;
+}
+td.consultantsC{
+    text-align:left;
+}
+#ButtonExport{
+    z-index:10;
+    position:absolute;
+    left:600px;
+    top:30px;
+}
+#FilterPanel{
+    max-width:700px;
+}
+.filtertable{
+}
+.filtertable checkbox{
+}
+table.radiobowel{
+}
+#reportDest{
+    width:100%;
+    min-width:710px;
+    min-height:550px;
+    overflow-x:visible;
+    overflow-y:scroll;
+    vertical-align:middle;
+    text-align:left;
+}
+#RadAjaxPanel1{
+    background-color:#ffffff;
+}
+#RadPivotGridPatient{
+    height:100%;
+}
+#RPanel{
+    float:left;
+    min-width:550px;
+    width:100%;
+    height:auto;
+    vertical-align:top;
+}
+/*.TextContainer{
+    height:95%;
+    width:auto;
+    margin-right:5px;
+    margin-left:5px;
+}*/
+.if{
+    height:700px;
+    /*min-width:740px;*/
+    width:100%;
+    min-height:560px;
+    overflow-x:scroll;
+    margin-right:50px;
+}
+#Book01Div{
+
+    
+}
+.switch_on{
+    visibility:visible;
+    opacity:1;
+    -webkit-transition: height 1s; /* Safari 3.1 to 6.0 */
+    transition: height 1s;
+    height:auto;
+    background-color:yellow;
+}
+.switch_off{
+    visibility:hidden;
+    opacity:0;
+    -webkit-transition: height 1s; /* Safari 3.1 to 6.0 */
+    transition: height 1s;
+    height:1px;
+    background-color:red;
+}
+.grsrep{
+}
+input.grsrep{
+    /*color:#384e73;
+    font-size:0.8em;
+    max-width:20px;*/
+}
+div.slides{
+    box-sizing:content-box;
+    border-color:blue;
+    border-style:solid;
+    border-width:1px;
+   padding:0px;
+   margin:0px;
+}
+table.condensed tr td{
+    padding-top:0px;
+    padding-bottom:0px;
+    border-width:0px;
+    vertical-align:top;
+}
+.pending{
+    color:red;
+}
+.inprogress{
+    color:blue;
+}
+.finished{
+    color:darkgrey;
+}
+.number{
+    width:40px;
+}
+.AutoHeight {
+    height: auto !important;
+}
+#LeftPaneContent{
+    height:500px;
+    width:278px;
+    /*border-style:dotted;
+    border-color:#39f3f3;
+    border-width:1px;*/
+    box-sizing:content-box;
+}
+.LeftTree{
+    /*border-style:dotted;
+    border-color:#0000ff;
+    border-width:1px;*/
+    box-sizing:content-box;
+}
+.treeviewBackground{
+    width:278px;
+    height:575px;
+    overflow-y:scroll;
+    /*border-style:dotted;
+    border-color:#00ff00;
+    border-width:1px;*/
+    box-sizing:content-box;
+}
+.treeListBorder{
+    width:278px;
+    /*border-style:dotted;
+    border-color:#ff0000;
+    border-width:1px;*/
+    box-sizing:content-box;
+}
+legend {
+    margin-left: 5px !important;
+    padding-right: 4px !important;
+    padding-left: 4px !important;
+    font-size:0.9em;
+}
+.secret{
+    opacity:0;
+    height:1px;
+}
+.whoRadioList {
+}
+
+.UrgentCheckBox label {
+    color: red;
+}
+
+.checkboxesTable td {
+    padding-right: 10px;
+    /*padding-bottom:1px;*/
+}
+.multiPageDivTab {
+    border: 1px solid #ccc; /*#d9d9ff;*/
+    padding:5px 5px 10px 10px;
+    background-color: #F8F8F8;
+    max-width: 745px;
+    width:700px;
+    margin-bottom:20px;
+    }
+fieldset{
+    font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+    font-size:0.9em;
+    margin-top:5px;
+    margin-bottom:5px;
+    padding-bottom:2px;
+    padding-top:3px;
+}
+.otherDataHeading
+{
+    font: 1.5em 'Segoe UI' , Arial, sans-serif;
+    color: #4888a2;
+    display: block;
+    height:24px; 
+    padding: 6px 18px 2px 18px;
+
+    border-bottom: 1px solid #c2d2e2 ;
+
+    background-color:#E0E0E0;
+    margin-bottom:10px;
+    background-image: url('../Images/bgHeader.png');  
+    background-repeat: repeat-x;
+
+}
+.UnisoftRGHead{
+    font-size:0.8em;
+    font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+}
+.UnisoftRG{
+    font-size:0.8em;
+    color:#777777;
+    font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+}
+.rgRow{
+    font-size:0.9em;
+    font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+    color:#384e73;
+}
+.rgAltRow{
+    font-size:0.9em;
+    font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+    color:#4a6798;
+}
+.red{
+    background-color:red;
+    color:#550000;
+}
+table.checkboxesTable{
+    max-width:680px;
+}
+.otherDataFieldset2{
+    max-width:340px;
+    border-color:red;
+    border-width:1px;
+    border-width:1px;
+}
+.tabsContainer{
+    --max-width:    px;
+}
+.selectorcontainer{
+    border-color:#0072C6;
+    border-style:solid;
+    border-width:1px;
+    height:20px;
+    padding:5px;
+}
+a.selector{
+    text-decoration:none;
+    color:#777777;
+    margin:2px;
+    padding:2px;
+    border-color:#000000;
+    border-style:solid;
+    border-width:1px;
+    min-width:90px;
+}
+a.selector:hover{
+    text-decoration:none;
+    color:#0072C6;
+    margin:2px;
+    padding:2px;
+    border-color:#000000;
+    border-style:solid;
+    border-width:1px;
+    box-shadow:#ccc 2px 2px;
+    min-width:90px;
+    background-color:#d6d7f5;
+}
+#Consultants{
+    width:675px;
+    height:210px;
+}
+.lb{
+    width:310px;
+    height:205px;
+    float:left;
+}
+#RadListBox1 {
+}
+#RadListBox2 {
+}
+table.adjusted{
+    margin-top:0px;
+    margin-bottom:0px;
+    padding-top:0px;
+    padding-bottom:0px;
+    border-width:0px;
+    border:none;
+}
+table.adjusted tr{
+    margin-top:0px;
+    margin-bottom:0px;
+    padding-top:0px;
+    padding-bottom:0px;
+}
+table.adjusted tr td{
+    margin-top:0px;
+    margin-bottom:0px;
+    padding-top:0px;
+    padding-bottom:0px;
+
+}
+.dfltVal{
+}
+.required{
+}
+.ajaxloadingP{
+    
+}
+#PrintBtn{
+    z-index:3;
+    position:absolute;
+    left:500px;
+    top:12px;
+}
+#ReportContainer{
+    margin:0;
+    padding:0;
+    border:0;
+}
+.RVcss{
+}
+.componentsContainer{
+    margin-left:10px;
+}
+.pxToRight{
+    padding-left:5px;
+}
+#rside{
+}

@@ -1,0 +1,32 @@
+<hospital.SendBatchMessage xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://weblogik.co.uk/jets/Hospital.SendBatchMessage.xsd">
+  <session uniqueId="00000102e" description="NED List" date="10/Nov/2017" time="PM" type="Dedicated Training List" site="99">
+    <procedures>
+      <procedure localProcedureId="00000102e" procedureName="ERCP" endoscopistDiscomfort="Mild" nurseDiscomfort="Severe" bowelPrep="Not Specified" entonox="No" generalAnaes="No" polypsDetected="0">
+        <patient gender="Male" age="81" admissionType="Outpatient" urgencyType="Not Specified" />
+        <drugs pethidine="0.00" midazolam="0.00" fentanyl="0.00" buscopan="0" propofol="0" noDrugsAdministered="Yes" />
+        <staff.members>
+          <Staff professionalBodyCode="UNITrainer" endoscopistRole="Independent (no trainer)" procedureRole="I observed" jManoeuvre="Not Specified" />
+          <Staff professionalBodyCode="UNITrainee" endoscopistRole="Trainee" procedureRole="Was observed" jManoeuvre="Not Specified" />
+        </staff.members>
+        <indications>
+          <indication indication="Bile duct injury" />
+          <indication indication="Other" comment="EPlan Endoscopic Cyst" />
+        </indications>
+        <limitations>
+          <limitation limitation="Other" comment="" />
+        </limitations>
+        <biopsies>
+          <Biopsy biopsySite="None" numberPerformed="0" />
+        </biopsies>
+        <diagnoses>
+          <Diagnose diagnosis="Pancreatitis - chronic" comment="" />
+          <Diagnose diagnosis="Other" comment="Pancreatitis Minimal change" />
+        </diagnoses>
+        <adverse.events>
+          <adverse.event adverseEvent="O2 desaturation" />
+          <adverse.event adverseEvent="Other" comment="Shock hypotension" />
+        </adverse.events>
+      </procedure>
+    </procedures>
+  </session>
+</hospital.SendBatchMessage>

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Menu>
+  <Group>
+    <Item Text="File" Key="F" >
+      <Group>
+        <Item Text="Save Record" />
+        <Item IsSeparator="True" />
+        <Item Text="Exit Form" />
+      </Group>
+    </Item>
+    <Item Text="Help" AccessKey="H" >
+      <Group>
+        <Item Text="About HD Clinical" />
+      </Group>
+    </Item>
+  </Group>
+</Menu>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DiscoveryClientResultsFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Results>
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://ned2.weblogik.co.uk/Webservices/Webservice.svc?xsd=xsd1" filename="Webservice.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://ned2.weblogik.co.uk/Webservices/Webservice.svc?xsd=xsd2" filename="Webservice0.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://ned2.weblogik.co.uk/Webservices/Webservice.svc?xsd=xsd3" filename="Webservice1.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="https://ned2.weblogik.co.uk/Webservices/Webservice.svc?wsdl" filename="Webservice.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.DiscoveryDocumentReference" url="https://ned2.weblogik.co.uk/Webservices/Webservice.svc?disco" filename="Webservice.disco" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://ned2.weblogik.co.uk/Webservices/Webservice.svc?xsd=xsd0" filename="Webservice2.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="https://ned2.weblogik.co.uk/Webservices/Webservice.svc?wsdl=wsdl0" filename="Webservice0.wsdl" />
+  </Results>
+</DiscoveryClientResultsFile>

@@ -1,0 +1,32 @@
+<hospital.SendBatchMessage xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://weblogik.co.uk/jets/Hospital.SendBatchMessage.xsd">
+<session uniqueId="00006808s" description="NED List" date="14/Jul/2016" time="AM" type="Adhoc Training List" site="">
+<procedures>
+<procedure localProcedureId="68" previousLocalProcedureId="00006408s" procedureName="FLEXI" endoscopistDiscomfort="Not Specified" nurseDiscomfort="Not Specified" bowelPrep="Not Specified" extent="Terminal ileum" polypsDetected="0" digitalRectalExamination="No" magneticEndoscopeImagerUsed="Yes">
+<patient gender="Male" age="69" admissionType="Not Specified"/>
+<drugs pethidine="0" midazolam="0" fentanyl="0"/>
+<staff.members>
+<Staff professionalBodyCode="UNITrainer" endoscopistRole="Independent" procedureRole="Independent (no trainer)" extent="Terminal ileum" jManoeuvre="No">
+<therapeutics>
+<therapeutic type="None" performed="0" successful="0" retrieved="0"/>
+</therapeutics>
+</Staff>
+</staff.members>
+<indications>
+<indication indication="Abnormality on CT / barium"/>
+</indications>
+<limitations>
+<limitation limitation="Not Limited"/>
+</limitations>
+<biopsies>
+<Biopsy biopsySite="None" numberPerformed= "0"/>
+</biopsies>
+<diagnoses>
+<Diagnose diagnosis="Normal"/>
+</diagnoses>
+<adverse.events>
+<adverse.event adverseEvent="None"/>
+</adverse.events>
+</procedure>
+</procedures>
+</session>
+</hospital.SendBatchMessage>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://Microsoft.ServiceModel.Samples" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://Microsoft.ServiceModel.Samples" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://Microsoft.ServiceModel.Samples/Imports">
+      <xsd:import schemaLocation="https://ned.jets.nhs.uk/webservice/Pilot/v1/16/Webservice.svc?xsd=xsd0" namespace="http://Microsoft.ServiceModel.Samples" />
+      <xsd:import schemaLocation="https://ned.jets.nhs.uk/webservice/Pilot/v1/16/Webservice.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="https://ned.jets.nhs.uk/webservice/Pilot/v1/16/Webservice.svc?xsd=xsd2" namespace="http://www.weblogik.co.uk/types" />
+      <xsd:import schemaLocation="https://ned.jets.nhs.uk/webservice/Pilot/v1/16/Webservice.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IWebService_Send_InputMessage">
+    <wsdl:part name="parameters" element="tns:Send" />
+  </wsdl:message>
+  <wsdl:message name="IWebService_Send_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWebService_GetMultiple_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMultiple" />
+  </wsdl:message>
+  <wsdl:message name="IWebService_GetMultiple_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMultipleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWebService_GetSingle_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSingle" />
+  </wsdl:message>
+  <wsdl:message name="IWebService_GetSingle_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSingleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWebService_DeleteMultiple_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteMultiple" />
+  </wsdl:message>
+  <wsdl:message name="IWebService_DeleteMultiple_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteMultipleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWebService_DeleteSingle_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteSingle" />
+  </wsdl:message>
+  <wsdl:message name="IWebService_DeleteSingle_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteSingleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWebService_Ping_InputMessage">
+    <wsdl:part name="parameters" element="tns:Ping" />
+  </wsdl:message>
+  <wsdl:message name="IWebService_Ping_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PingResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IWebService">
+    <wsdl:operation name="Send">
+      <wsdl:input wsaw:Action="http://Microsoft.ServiceModel.Samples/IWebService/Send" message="tns:IWebService_Send_InputMessage" />
+      <wsdl:output wsaw:Action="http://Microsoft.ServiceModel.Samples/IWebService/SendResponse" message="tns:IWebService_Send_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMultiple">
+      <wsdl:input wsaw:Action="http://Microsoft.ServiceModel.Samples/IWebService/GetMultiple" message="tns:IWebService_GetMultiple_InputMessage" />
+      <wsdl:output wsaw:Action="http://Microsoft.ServiceModel.Samples/IWebService/GetMultipleResponse" message="tns:IWebService_GetMultiple_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSingle">
+      <wsdl:input wsaw:Action="http://Microsoft.ServiceModel.Samples/IWebService/GetSingle" message="tns:IWebService_GetSingle_InputMessage" />
+      <wsdl:output wsaw:Action="http://Microsoft.ServiceModel.Samples/IWebService/GetSingleResponse" message="tns:IWebService_GetSingle_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteMultiple">
+      <wsdl:input wsaw:Action="http://Microsoft.ServiceModel.Samples/IWebService/DeleteMultiple" message="tns:IWebService_DeleteMultiple_InputMessage" />
+      <wsdl:output wsaw:Action="http://Microsoft.ServiceModel.Samples/IWebService/DeleteMultipleResponse" message="tns:IWebService_DeleteMultiple_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSingle">
+      <wsdl:input wsaw:Action="http://Microsoft.ServiceModel.Samples/IWebService/DeleteSingle" message="tns:IWebService_DeleteSingle_InputMessage" />
+      <wsdl:output wsaw:Action="http://Microsoft.ServiceModel.Samples/IWebService/DeleteSingleResponse" message="tns:IWebService_DeleteSingle_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Ping">
+      <wsdl:input wsaw:Action="http://Microsoft.ServiceModel.Samples/IWebService/Ping" message="tns:IWebService_Ping_InputMessage" />
+      <wsdl:output wsaw:Action="http://Microsoft.ServiceModel.Samples/IWebService/PingResponse" message="tns:IWebService_Ping_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

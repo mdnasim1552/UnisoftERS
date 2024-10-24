@@ -1,0 +1,235 @@
+﻿body { 
+	font-size: 10pt; 
+}
+
+.printFontBasic {
+    font: 10pt Calibri;
+}
+
+.printFontHeader {
+    font: bold 14pt Calibri;
+    color: #4888a2;
+    /*padding: 6px 18px 2px 18px;
+    display: block;
+    border-bottom: 1px solid #c2d2e2;*/ 
+    /*background-color:#c2d2e2;
+    margin-bottom:10px;
+    background-image: url('../Images/bgHeader.png');  
+    background-repeat: repeat-x;*/
+}
+
+hr.style-one {
+    border: 0;
+    height: 1px;
+    background: #333;
+}
+
+h1:after {
+    content:' ';
+    display:block;
+    border:1px solid #2E2E2E;
+    border-radius:4px;
+    -webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    box-shadow:inset 0 1px 1px rgba(0, 0, 0, .05);
+    -webkit-box-shadow:inset 0 1px 1px rgba(0, 0, 0, .05);
+    -moz-box-shadow:inset 0 1px 1px rgba(0, 0, 0, .05);
+}
+
+.mainTable {
+    width:100%;
+    /*border-collapse:collapse;*/
+    /*margin-top:100px;*/
+}
+
+.mainTable th {
+    font: 16pt;
+    color: #4888a2;
+    text-align: center;
+}
+
+.mainTable:after {
+    content:' ';
+    display:block;
+    border:1px solid #d0d0d0;
+    border-radius:4px;
+    -webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    box-shadow:inset 0 1px 1px rgba(0, 0, 0, .05);
+    -webkit-box-shadow:inset 0 1px 1px rgba(0, 0, 0, .05);
+    -moz-box-shadow:inset 0 1px 1px rgba(0, 0, 0, .05);
+}
+
+
+
+.DivDiagramReport {
+    /*overflow: hidden;*/ 
+    /*height:260px;
+    width:227px;*/
+}
+/*.mainTable hr {
+    color:black;
+    border: none;
+    height: 1px;
+}*/
+.ImgDiagramReport {
+    /*height:80%;
+    width:80%;*/
+    /*height:320px;
+    width:280px;*/
+    height:312px;
+    width:273px;
+}
+
+.area-marked {
+    stroke: red;
+    fill: #FF8B8B;
+}
+
+.tickbox {
+    width:10px;
+    height: 10px;
+    border: 1px solid;
+}
+
+.tickboxHidden {
+    visibility:hidden;
+}
+
+.tickboxLabRequestForm {
+    width:20px;
+    height:20px;
+    border:3px solid red;
+    display:inline;
+}
+
+.LabRequestFormTable {
+    width:100%;
+}
+
+/*.histologyTable table {
+    border:1px solid black;
+}
+
+.histologyTable tr {
+    border:1px solid blue;
+}
+
+.histologyTable td {
+    border:1px solid red;
+}*/
+
+.LabRequestTableBorder {
+    border:1px solid black;
+    margin:5px;
+}
+
+.LabRequestTableBorderNoBottom {
+    border-top:1px solid black;
+    border-right:1px solid black;
+    border-left:1px solid black;
+    /*padding-bottom:-5px;
+    margin-bottom:50px;*/
+    /*border-collapse: collapse;
+    border-spacing: 0;*/
+}
+
+.LabRequestTableBorderSides {
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+}
+
+.LabRequestTableBorderNoTop {
+    border-right:1px solid black;
+    border-bottom:1px solid black;
+    border-left:1px solid black;
+    padding-top:-5px;
+}
+
+.histologyTableLastRow {
+    margin-top:0px;
+}
+
+.LabRequestHeader {
+    font: bold 16pt Calibri;
+    color: #4888a2;
+}
+
+.LabRequestFormLabelHeader {
+    font: normal 10pt Calibri;
+    font-style:italic;
+}
+
+.LabRequestDataSeperator {
+    border-bottom: dashed 1px #d9d9d9;
+    vertical-align:top;
+}
+
+.LabRequestFormLabelData {
+    font: normal 10pt Calibri;
+    font-weight:bold;
+    border-bottom:dotted 1px #d9d9d9;
+}
+
+.LabRequestImgDiagramReport {
+    /*50% of 400 350*/
+    height:200px;
+    width:175px;
+    padding-bottom:5px;
+}
+
+.labRequestSpecimenTextActive {
+    font: bold 10pt Calibri;
+}
+
+.labRequestSpecimenTextInactive {
+    font: normal 10pt Calibri;
+    font-style:italic;
+}
+
+/*#menu { 
+	display: none; 
+}*/
+	
+/*#wrapper, 
+#content { 
+	width: auto; 
+	margin: 0 5%; 
+	padding: 0; 
+	border: 0; 
+	float: none !important; 
+	color: black; 
+	background: transparent none; 
+}
+	
+div#content { 
+	margin-left: 10%; 
+	padding-top: 1em; 
+	border-top: 1px solid #930; 
+}
+	
+div#mast { 
+	margin-bottom: -8px; 
+}
+	
+div#mast img { 
+	vertical-align: bottom; 
+}
+	
+a:link, 
+a:visited { 
+	color: #520; 
+	background: transparent; 
+	font-weight: bold; 
+	text-decoration: underline; 
+}
+	
+#content a:link:after, 
+#content a:visited:after { 
+	content: " (" attr(href) ") "; 
+	font-size: 90%; 
+}
+	
+#content a[href^="/"]:after { 
+	content: " (http://www.alistapart.com" attr(href) ") "; 
+}*/

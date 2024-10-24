@@ -1,0 +1,31 @@
+<!-- Workstation ID: HP endo clinic rm -->
+<hospital.SendBatchMessage xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://weblogik.co.uk/jets/Hospital.SendBatchMessage.xsd">
+<session uniqueId="13868801o" description="NED List" date="12/Oct/2016" time="AM" type="Service List" site="RVWAE">
+<procedures>
+<procedure localProcedureId="13868801o" previousLocalProcedureId="" procedureName="OGD" endoscopistDiscomfort="Comfortable" nurseDiscomfort="Comfortable" extent="D2 - 2nd part of duodenum" polypsDetected="0">
+<patient gender="Male" age="45" admissionType="Outpatient" urgencyType="Urgent"/>
+<drugs pethidine="0" midazolam="2" fentanyl="50"/>
+<staff.members>
+<Staff professionalBodyCode="7468076" endoscopistRole="Independent" procedureRole="Independent (no trainer)" extent="D2 - 2nd part of duodenum" jManoeuvre="Yes">
+<therapeutics>
+<therapeutic type="None" role="Independent (no trainer)" performed="1" successful="1" retrieved="0"/>
+</therapeutics>
+</Staff>
+</staff.members>
+<indications>
+<indication indication="Other" comment="reflux symptoms, an episode of hameatemesis Jul 2016. Diarrhoea. FH gastric Ca., Fluctuating weight."/>
+</indications>
+<limitations />
+<biopsies>
+<Biopsy biopsySite="None" numberPerformed= "0"/>
+</biopsies>
+<diagnoses>
+<Diagnose diagnosis="Oesophagitis - reflux"/>
+</diagnoses>
+<adverse.events>
+<adverse.event adverseEvent="None"/>
+</adverse.events>
+</procedure>
+</procedures>
+</session>
+</hospital.SendBatchMessage>

@@ -1,0 +1,31 @@
+<hospital.SendBatchMessage xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://weblogik.co.uk/jets/Hospital.SendBatchMessage.xsd">
+  <session uniqueId="00000201o" description="NED List" date="13/Nov/2017" time="AM" type="Adhoc Training List" site="99">
+    <procedures>
+      <procedure localProcedureId="00000201o" previousLocalProcedureId="00000102e" procedureName="OGD" endoscopistDiscomfort="Minimal" nurseDiscomfort="Severe" bowelPrep="Not Specified" extent="Duodenal bulb" entonox="No" generalAnaes="No" polypsDetected="0">
+        <patient gender="Male" age="81" admissionType="Outpatient" urgencyType="Urgent" />
+        <drugs pethidine="0.00" midazolam="0.00" fentanyl="0.00" buscopan="0" propofol="0" noDrugsAdministered="Yes" />
+        <staff.members>
+          <Staff professionalBodyCode="UNITrainer" endoscopistRole="Trainer" procedureRole="I observed" extent="Duodenal bulb" jManoeuvre="No" />
+          <Staff professionalBodyCode="UNITrainee" endoscopistRole="Trainee" procedureRole="Was observed" extent="Stomach" jManoeuvre="No" />
+        </staff.members>
+        <indications>
+          <indication indication="Diarrhoea" />
+          <indication indication="Other" comment="Balloon Insertion, Coffee grounds vomit" />
+        </indications>
+        <limitations>
+          <limitation limitation="Other" comment="" />
+        </limitations>
+        <biopsies>
+          <Biopsy />
+        </biopsies>
+        <diagnoses>
+          <Diagnose diagnosis="Gastric polyp(s)" comment="" />
+          <Diagnose diagnosis="Other" comment="" />
+        </diagnoses>
+        <adverse.events>
+          <adverse.event adverseEvent="Other" comment="Patient discomfort" />
+        </adverse.events>
+      </procedure>
+    </procedures>
+  </session>
+</hospital.SendBatchMessage>

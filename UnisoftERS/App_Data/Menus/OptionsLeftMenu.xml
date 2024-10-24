@@ -1,0 +1,30 @@
+﻿<Tree>
+  <Node Text="Options" Value="~/Products/Options/UserSettings.aspx" CustomId="Options" Expanded="True">
+    <Node Text="User Settings" Value="~/Products/Options/UserSettings.aspx" CustomId="UserSettings" />
+    <Node Text="System Settings" Value="~/Products/Options/SystemSettings.aspx" CustomId="SystemSettings" />
+    <Node Text="Startup Settings" Value="~/Products/Options/StartupSettings.aspx" CustomId="StartupSettings" />
+    <Node Text="License" Value="~/Products/Options/License.aspx" CustomId="License" />
+    <!--<Node Text="Export Settings" Value="~/Products/Options/ExportSettings.aspx" CustomId="ExportSettings" />-->
+    <!--<Node Text="Database Settings" Value="~/Products/Options/DatabaseSettings.aspx" CustomId="DatabaseSettings" />-->
+    <Node Text="Print Settings" Value="~/Products/Common/PrintOptions.aspx?MainMenu=1" CustomId="PrintSettings" />
+    <Node Text="Admin Utilities" Value="~/Products/Options/RegistrationDetails.aspx" CustomId="AdminUtilities" >
+      <Node Text="Registration Details" Value="~/Products/Options/RegistrationDetails.aspx" CustomId="RegistrationDetails" />
+      <Node Text="Password Rules" Value="~/Products/Options/PasswordRules.aspx" CustomId="PasswordRules" />
+      <!--<Node Text="NHS No Validation" Value="~/Products/Options/NHSNoValidation.aspx" CustomId="NHSNoValidation" />-->
+      <Node Text="Required Fields Setup" Value="~/Products/Options/RequiredFieldsSetup.aspx" CustomId="RequiredFieldsSetup" />
+      <Node Text="System Usage" Value="~/Products/Options/SystemUsage.aspx" CustomId="SystemUsage" />
+      <Node Text="Dropdowns List" Value="~/Products/Options/DropdownLists.aspx" CustomId="DropdownLists" />
+      <Node Text="Field Labels" Value="~/Products/Options/FieldLabels.aspx" CustomId="FieldLabels" />
+      <Node Text="Drugs List" Value="~/Products/Options/ModifyPremedicationDrugs.aspx" CustomId="DrugLists" />
+      <Node Text="Referring Consultants" Value="~/Products/Options/ReferingConsultant.aspx" CustomId="ReferingConsultant" />
+      <Node Text="Phrase Library" Value="~/Products/Common/WordLibrary.aspx" CustomId="PhraseLibrary" />
+      <Node Text="Diagnoses" Value="~/Products/Options/DiagnosesConfig.aspx" CustomId="DiagnosesConfig" />
+    </Node>
+    <Node Text="User Maintenance" Value="~/Products/Options/UserMaintenance.aspx" CustomId="UserMaintenance">
+      <Node Text="Users" Value="~/Products/Options/UserMaintenance.aspx" CustomId="RegistrationDetails" />
+      <Node Text="Roles" Value="~/Products/Options/Roles.aspx" CustomId="Roles" />
+      <Node Text="Assign Role" Value="~/Products/Options/RolesAssignment.aspx" CustomId="RolesAssignment" />
+    </Node>
+    <!--<Node Text="User Maintenance Old" Value="~/Products/Options/UserMaintenanceOld.aspx" CustomId="UserMaintenanceOld" />-->
+  </Node>
+</Tree>

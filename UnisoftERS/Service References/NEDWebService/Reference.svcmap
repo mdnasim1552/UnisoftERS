@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="204aded4-f5a9-4728-a42b-73574b6edd0b" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://jets.thejag.org.uk/webservice/Live/V2/2/Webservice.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="webservice1.disco" MetadataType="Disco" ID="d9eca04a-4475-47ff-8186-b8add8bdb5b6" SourceId="1" SourceUrl="https://jets.thejag.org.uk/webservice/Live/V2/2/webservice.svc?disco" />
+    <MetadataFile FileName="webservice4.xsd" MetadataType="Schema" ID="1cde7e23-0420-48cf-9704-2d1f45fbfa78" SourceId="1" SourceUrl="https://jets.thejag.org.uk/webservice/Live/V2/2/webservice.svc?xsd=xsd2" />
+    <MetadataFile FileName="Webservice2.wsdl" MetadataType="Wsdl" ID="e1444d4f-82db-47e2-9b5f-90024302e061" SourceId="1" SourceUrl="https://jets.thejag.org.uk/webservice/Live/V2/2/webservice.svc?wsdl" />
+    <MetadataFile FileName="webservice21.wsdl" MetadataType="Wsdl" ID="8f347b17-a75b-4656-82b5-8e96537f3511" SourceId="1" SourceUrl="https://jets.thejag.org.uk/webservice/Live/V2/2/webservice.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="webservice41.xsd" MetadataType="Schema" ID="8cc7b5f6-ad9c-46e1-b8d4-16d23986907a" SourceId="1" SourceUrl="https://jets.thejag.org.uk/webservice/Live/V2/2/webservice.svc?xsd=xsd1" />
+    <MetadataFile FileName="webservice42.xsd" MetadataType="Schema" ID="8c2b0779-6d93-43a9-aab1-a752836ac799" SourceId="1" SourceUrl="https://jets.thejag.org.uk/webservice/Live/V2/2/webservice.svc?xsd=xsd0" />
+    <MetadataFile FileName="webservice43.xsd" MetadataType="Schema" ID="6c26c923-e984-46a8-93b6-3f684feb7027" SourceId="1" SourceUrl="https://jets.thejag.org.uk/webservice/Live/V2/2/webservice.svc?xsd=xsd3" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -1,0 +1,125 @@
+﻿<%@ Master Language="VB" AutoEventWireup="false" CodeBehind="Scheduler.master.vb" Inherits="UnisoftERS.Scheduler" MasterPageFile="~/Templates/Unisoft.master" %>
+
+<%@ MasterType VirtualPath="~/Templates/Unisoft.master" %>
+
+
+<%@ Register TagPrefix="unisoft" TagName="Footer" Src="~/UserControls/Footer.ascx" %>
+
+<asp:Content ID="pHeadContent" ContentPlaceHolderID="HeadContentPlaceHolder" runat="Server">
+    
+   <style type="text/css">
+   #ctl00_ctl00_BodyContentPlaceHolder_BodyContentPlaceHolder_LetterQueueGrid_GridData{
+       height: calc(97vh - 120px) !important;
+   }
+    </style>
+   
+    <asp:ContentPlaceHolder ID="HeadContentPlaceHolder" runat="server" />
+    </asp:Content>
+    <asp:Content ID="pBodyContent" ContentPlaceHolderID="BodyContentPlaceHolder" runat="server">
+        <telerik:RadWindowManager ID="RadWindowManager1" runat="server" ShowContentDuringLoad="False" Style="z-index: 7001" Behaviors="Close, Move, Resize"
+            Skin="Metro" EnableShadow="true" Modal="true">
+            <Windows>
+                <telerik:RadWindow ID="PatientDetailsRadWindow" runat="server" Modal="true" ReloadOnShow="true" KeepInScreenBounds="true"
+                    Width="800px" Height="570px" VisibleStatusbar="false" />
+
+                <telerik:RadWindow ID="AddNewItemRadWindow" runat="server" ReloadOnShow="true" VisibleStatusbar="false" Title="Add new entry"
+                    KeepInScreenBounds="true" Width="400px" Height="150px" OnClientClose="AddNewItemWindowClientClose">
+                    <ContentTemplate>
+                        <table cellspacing="3" cellpadding="3" style="width: 100%">
+                            <tr>
+                                <td>
+                                    <br />
+                                    <div class="left">
+                                        <telerik:RadTextBox ID="AddNewItemRadTextBox" runat="Server" Width="250px" />
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div id="buttonsdiv" style="height: 10px; padding-top: 16px;">
+                                        <telerik:RadButton ID="AddNewItemSaveRadButton" runat="server" Text="OK" Skin="Office2010Blue" AutoPostBack="false" OnClientClicked="AddNewItem" Icon-PrimaryIconCssClass="telerikOkButton" />
+                                        &nbsp;&nbsp;
+                                        <telerik:RadButton ID="AddNewItemCancelRadButton" runat="server" Text="Cancel" Skin="Office2010Blue" AutoPostBack="false" OnClientClicked="CancelAddNewItem" Icon-PrimaryIconCssClass="telerikCancelButton" />
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </ContentTemplate>
+                </telerik:RadWindow>
+            </Windows>
+        </telerik:RadWindowManager>
+        <telerik:RadCodeBlock ID="sb1" runat="server">
+
+            <script type="text/javascript">
+
+                function TreeNodeClicked(sender, eventArgs) {
+                    var node = eventArgs.get_node();
+                }
+
+
+                function OpenPopUpWindow(window, param1) {
+                    var url = "";
+                    var oWnd = $find("<%= PatientDetailsRadWindow.ClientID %>");
+                switch (window) {
+                    case "PatientDetails":
+                        oWnd.set_height(570);
+                        oWnd.set_width(820);
+                        url = "<%= ResolveUrl("~/Products/Common/PatientDetails.aspx") %>";
+                        if (param1 == true) { //param1 : if new patient
+                            url = url + "?NewPatient=True"
+                        }
+                        break;
+                    case "PASDownload":
+                        oWnd.set_height(650);
+                        oWnd.set_width(1000);
+                        url = "<%= ResolveUrl("~/Products/PAS/PASDownload.aspx")%>";
+                        break;
+                    case "UpdateCRM":
+                        oWnd.set_height(360);
+                        oWnd.set_width(390);
+                        url = "<%= ResolveUrl("~/Security/UpdateCRM.aspx")%>";
+                        break;
+                    case "About":
+                        oWnd.set_height(500);
+                        oWnd.set_width(550);
+                        url = "<%= ResolveUrl("~/Security/About.aspx")%>";
+                        break;
+                    case "Feedback":
+                        oWnd.set_height(550);
+                        oWnd.set_width(550);
+                        url = "<%= ResolveUrl("mailto:support@hd-clinical.com?subject=Solus%20Endoscopy%20Feedback&body=Thank%20you%20for%20your%20feedback")%>";
+                        break;
+                    case "Support":
+                        oWnd.set_height(500);
+                        oWnd.set_width(580);
+                        url = "<%= ResolveUrl("~/Security/Support.aspx")%>";
+                        break;
+                    case "PASData":
+                        oWnd.set_height(650);
+                        oWnd.set_width(1000);
+                        url = "<%= ResolveUrl("~/Products/PAS/PASData.aspx")%>";
+                            break;
+                    }
+                    oWnd._navigateUrl = url
+                    //Add the name of the function to be executed when RadWindow is closed.
+                    oWnd.add_close(OnClientClose);
+                    oWnd.show();
+                }
+
+                function OnClientClose(oWnd, eventArgs) {
+                    //Remove the OnClientClose function to avoid
+                    //adding it for a second time when the window is shown again.
+                    oWnd.remove_close(OnClientClose);
+
+                }
+            </script>
+    </telerik:RadCodeBlock>
+
+    <div id="MainContentDiv" class="main" runat="server">
+        <asp:ContentPlaceHolder ID="BodyContentPlaceHolder" runat="server" />
+    </div>
+
+
+    <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server" Skin="Metro">
+    </telerik:RadAjaxLoadingPanel>
+</asp:Content>

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Menu>
+  <Group>
+    <Item Text="File" Key="F" >
+      <Group>
+        <Item Text="Return to Main" NavigateURL="~/Products/GIAK/GIAKMain.aspx" />
+        <Item IsSeparator="True" />
+        <Item Text="Log-off" />
+      </Group>
+    </Item>
+    <Item Text="Help" AccessKey="H" >
+      <Group>
+        <Item Text="About HD Clinical Auditors Kit" />
+      </Group>
+    </Item>
+  </Group>
+</Menu>

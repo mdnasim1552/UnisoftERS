@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fafebf24016a400fa5818f6983adcc78" Name="Diagram1" ZoomLevel="88" SnapToGrid="false">
+        <EntityTypeShape EntityType="Gastro_LiveModel.ERS_AppointmentProcedureTypes" Width="1.5" PointX="5.2500005000000005" PointY="142.01836344401025" />
+        <EntityTypeShape EntityType="Gastro_LiveModel.ERS_Appointments" Width="1.5000000000000004" PointX="3.0000005000000005" PointY="119.8275659179686" />
+        <EntityTypeShape EntityType="Gastro_LiveModel.ERS_AppointmentStatus" Width="1.5000000000000002" PointX="0.7500005000000004" PointY="135.82694580078112" />
+        <EntityTypeShape EntityType="Gastro_LiveModel.ERS_AppointmentTherapeutics" Width="1.5" PointX="5.250001" PointY="127.23117106119776" />
+        <EntityTypeShape EntityType="Gastro_LiveModel.ERS_AuditLog" Width="1.5" PointX="0.75" PointY="1.0105499674479168" />
+        <EntityTypeShape EntityType="Gastro_LiveModel.ERS_AuditLog_Details" Width="1.5" PointX="3" PointY="1.1067006835937525" />
+        <EntityTypeShape EntityType="Gastro_LiveModel.ERS_ColonAbnoLesions" Width="1.5" PointX="7.5" PointY="161.18943766276038" />
+        <EntityTypeShape EntityType="Gastro_LiveModel.ERS_ColonAbnoPolypDetails" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Gastro_LiveModel.ERS_ColonAbnoTumour" Width="1.5" PointX="7.5" PointY="180.457647298177" />
+        <EntityTypeShape EntityType="Gastro_LiveModel.ERS_ColonExtentOfIntubation" Width="1.5" PointX="5.25" PointY="102.53947021484373" />
+        <EntityTypeShape EntityType="Gastro_LiveModel.ERS_CommonAbnoLesions" Width="1.5" PointX="7.5" PointY="123.99912841796873" />
+        <EntityTypeShape EntityType="Gastro_LiveModel.ERS_CommonAbnoTumour" Width="1.5" PointX="7.5" PointY="238.6468790690102" />
+        <EntityTypeShape EntityType="Gastro_LiveModel.ERS_ConsultantProcedureTherapeutics" Width="1.5" PointX="5.2500015" PointY="170.3273217773436" />
+        <EntityTypeShape EntityType="Gastro_LiveModel.ERS_ConsultantProcedureTypes" Width="1.5" PointX="3.0000014999999998" PointY="176.23117106119776" />
+        <EntityTypeShape EntityType="Gastro_LiveModel.ERS_DrugList" Width="1.5" PointX="0.75" PointY="5.75" />
+        <EntityTypeShape EntityType="Gastro_LiveModel.ERS_ImagePort" Width="1.5" PointX="3.7500005000000005" PointY="40.482308756510278" />
+        <EntityTypeShape EntityType="Gastro_LiveModel.ERS_Lists" Width="1.5" PointX="2.75" PointY="5.75" />
+        <EntityTypeShape EntityType="Gastro_LiveModel.ERS_OperatingHospitals" Width="1.5" PointX="1.5000005000000005" PointY="93.943013509114451" />
+        <EntityTypeShape EntityType="Gastro_LiveModel.ERS_PagesByRole" Width="1.5" PointX="4.75" PointY="5.75" />
+        <EntityTypeShape EntityType="Gastro_LiveModel.ERS_PatientJourney" Width="1.5" PointX="5.25" PointY="98.270772298177064" />
+        <EntityTypeShape EntityType="Gastro_LiveModel.ERS_Photos" Width="1.5" PointX="10.500000499999999" PointY="167.60328043619776" />
+        <EntityTypeShape EntityType="Gastro_LiveModel.ERS_PhraseLibrary" Width="1.5" PointX="3.7500005000000005" PointY="189.44204833984367" />
+        <EntityTypeShape EntityType="Gastro_LiveModel.ERS_PrintOptionsLabRequestReport" Width="1.5" PointX="3.7500005000000005" PointY="46.867500813801954" />
+        <EntityTypeShape EntityType="Gastro_LiveModel.ERS_PrintOptionsPatientFriendlyReport" Width="1.5" PointX="3.7500005000000005" PointY="193.51844482421865" />
+        <EntityTypeShape EntityType="Gastro_LiveModel.ERS_PrintOptionsPatientFriendlyReportAdditional" Width="1.5" PointX="3.7500005000000005" PointY="53.368008626301972" />
+        <EntityTypeShape EntityType="Gastro_LiveModel.ERS_ProcedureTypes" Width="1.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Gastro_LiveModel.ERS_RecordCount" Width="1.5" PointX="10.500000499999999" PointY="162.79558186848942" />
+        <EntityTypeShape EntityType="Gastro_LiveModel.ERS_SCH_DiaryLockReasons" Width="1.5" PointX="8.75" PointY="6.75" />
+        <EntityTypeShape EntityType="Gastro_LiveModel.ERS_SCH_FreeSlotDefaults" Width="1.5" PointX="3.7500005000000005" PointY="199.51785563151026" />
+        <EntityTypeShape EntityType="Gastro_LiveModel.ERS_SCH_GenderList" Width="1.5" PointX="12.2500005" PointY="127.23117106119778" />
+        <EntityTypeShape EntityType="Gastro_LiveModel.ERS_SCH_ListGenders" Width="1.5" PointX="2.75" PointY="9.75" />
+        <EntityTypeShape EntityType="Gastro_LiveModel.ERS_SCH_ListRules" Width="1.5" PointX="1.5000005000000005" PointY="102.98209554036447" />
+        <EntityTypeShape EntityType="Gastro_LiveModel.ERS_SCH_ListSlots" Width="1.5000000000000002" PointX="0.7500005000000004" PointY="110.90481526692696" />
+        <EntityTypeShape EntityType="Gastro_LiveModel.ERS_SCH_LockedDiaries" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Gastro_LiveModel.ERS_SCH_PointMappings" Width="1.5" PointX="3.7500005000000005" PointY="25.9810489908853" />
+        <EntityTypeShape EntityType="Gastro_LiveModel.ERS_SCH_ProcedureCallInTimes" Width="1.5" PointX="10.75" PointY="6.75" />
+        <EntityTypeShape EntityType="Gastro_LiveModel.ERS_SCH_RoomProcedures" Width="1.5" PointX="8.75" PointY="10.75" />
+        <EntityTypeShape EntityType="Gastro_LiveModel.ERS_SCH_Rooms" Width="1.5" PointX="7.7500005000000005" PointY="118.94271891276026" />
+        <EntityTypeShape EntityType="Gastro_LiveModel.ERS_SCH_SlotStatus" Width="1.5000000000000002" PointX="0.7500005000000004" PointY="139.9033422851561" />
+        <EntityTypeShape EntityType="Gastro_LiveModel.ERS_Sites" Width="1.5" PointX="5.25" PointY="180.45764729817697" />
+        <EntityTypeShape EntityType="Gastro_LiveModel.ERS_SystemConfig" Width="1.5" PointX="10.75" PointY="10.75" />
+        <EntityTypeShape EntityType="Gastro_LiveModel.ERS_TherapeuticTypes" Width="1.5" PointX="3.000001" PointY="168.78891031901026" />
+        <EntityTypeShape EntityType="Gastro_LiveModel.ERS_UpperGIFollowUp" Width="1.5" PointX="5.25" PointY="72.810850423177072" />
+        <EntityTypeShape EntityType="Gastro_LiveModel.ERS_UpperGIIndications" Width="1.5" PointX="12.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Gastro_LiveModel.ERS_UpperGIPathologyResults" Width="1.5" PointX="5.25" PointY="57.73520589192708" />
+        <EntityTypeShape EntityType="Gastro_LiveModel.ERS_UpperGIQA" Width="1.5" PointX="5.25" PointY="245.80009847005181" />
+        <EntityTypeShape EntityType="Gastro_LiveModel.ERS_UpperGISpecimens" Width="1.5" PointX="7.5" PointY="226.87842529296859" />
+        <EntityTypeShape EntityType="Gastro_LiveModel.ERS_Users" Width="1.5" PointX="0.75" PointY="122.51978597005208" />
+        <EntityTypeShape EntityType="Gastro_LiveModel.ERS_Waiting_List" Width="1.5" PointX="12.250001000000001" PointY="115.48129313151026" />
+        <EntityTypeShape EntityType="Gastro_LiveModel.BRT_OCS_Process" Width="1.5" PointX="0.75" PointY="13.75" />
+        <AssociationConnector Association="Gastro_LiveModel.FK_ERS_AppointmentProcedureTypes_ERS_Appointments" />
+        <AssociationConnector Association="Gastro_LiveModel.FK_ERS_Appointment_SlotStatusID" />
+        <AssociationConnector Association="Gastro_LiveModel.FK_ERS_Appointments_ERS_Appointments" />
+        <AssociationConnector Association="Gastro_LiveModel.FK_ERS_Appointments_ERS_AppointmentStatus" />
+        <AssociationConnector Association="Gastro_LiveModel.FK_ERS_Appointments_ERS_SCH_ListSlots" />
+        <AssociationConnector Association="Gastro_LiveModel.FK_ERS_Appointments_ERS_Users" />
+        <AssociationConnector Association="Gastro_LiveModel.FK_ERS_Appointments_ERS_Users1" />
+        <AssociationConnector Association="Gastro_LiveModel.FK_ERS_Appointments_ERS_Users2" />
+        <AssociationConnector Association="Gastro_LiveModel.FK_ERS_Appointments_ERS_Users3" />
+        <AssociationConnector Association="Gastro_LiveModel.FK_ERS_Appointments_StaffAccessedId" />
+        <AssociationConnector Association="Gastro_LiveModel.FK_ERS_AppointmentTherapeutics_ERS_Appointments" />
+        <AssociationConnector Association="Gastro_LiveModel.FK_ERS_Waiting_List_ERS_Appointments" />
+        <AssociationConnector Association="Gastro_LiveModel.FK_ERS_Waiting_List_ERS_AppointmentStatus" />
+        <AssociationConnector Association="Gastro_LiveModel.FK_ERS_AppointmentTherapeutics_ERS_TherapeuticTypes" />
+        <AssociationConnector Association="Gastro_LiveModel.FK_ERS_AuditLog_Details_ERS_AuditLog" />
+        <AssociationConnector Association="Gastro_LiveModel.FK_ColonAbnoLesions_Sites" />
+        <AssociationConnector Association="Gastro_LiveModel.FK_ColonAbnoTumour_Sites" />
+        <AssociationConnector Association="Gastro_LiveModel.FK_CommonAbnoLesions_Sites" />
+        <AssociationConnector Association="Gastro_LiveModel.FK_CommonAbnoTumour_Sites" />
+        <AssociationConnector Association="Gastro_LiveModel.FK_ERS_ConsultantProcedureTherapeutics_ERS_ConsultantProcedures" />
+        <AssociationConnector Association="Gastro_LiveModel.FK_ERS_ConsultantProcedureTherapeutics_ERS_TherapeuticTypes" />
+        <AssociationConnector Association="Gastro_LiveModel.FK_ImagePort_OperatingHospitalId" />
+        <AssociationConnector Association="Gastro_LiveModel.FK_ERS_SCH_PointMappings_ERS_OperatingHospitals" />
+        <AssociationConnector Association="Gastro_LiveModel.FK_PhraseLibrary_OperatingHospitalId" />
+        <AssociationConnector Association="Gastro_LiveModel.FK_PrintOptionsLabRequestReport_OperatingHospitalId" />
+        <AssociationConnector Association="Gastro_LiveModel.FK_PrintOptionsPatientFriendlyReport_OperatingHospitalId" />
+        <AssociationConnector Association="Gastro_LiveModel.FK_PrintOptionsPatientFriendlyReportAdditional_OperatingHospitalId" />
+        <AssociationConnector Association="Gastro_LiveModel.FK_SCH_FreeSlotDefaults_OperatingHospitalId" />
+        <AssociationConnector Association="Gastro_LiveModel.FK_SCH_ListRules_OperatingHospitalId" />
+        <AssociationConnector Association="Gastro_LiveModel.FK_SCH_ListSolts_OperatingHospitalId" />
+        <AssociationConnector Association="Gastro_LiveModel.FK_Photos_Sites" />
+        <AssociationConnector Association="Gastro_LiveModel.FK_RecordCount_Sites" />
+        <AssociationConnector Association="Gastro_LiveModel.FK_ERS_SCH_ListSlots_ERS_SCH_ListRules" />
+        <AssociationConnector Association="Gastro_LiveModel.FK_UpperGISpecimens_Sites" />
+        <EntityTypeShape EntityType="Gastro_LiveModel.ERS_PostOperativeComplications" Width="1.5" PointX="5.25" PointY="151.0478515625" />
+        <EntityTypeShape EntityType="Gastro_LiveModel.ERS_SCH_DiaryPages" Width="1.5" PointX="10.0000005" PointY="110.36531575520834" />
+        <AssociationConnector Association="Gastro_LiveModel.FK_ERS_SCH_DiaryPages_ERS_OperatingHospitals" />
+        <AssociationConnector Association="Gastro_LiveModel.FK_ERS_SCH_DiaryPages_ERS_SCH_ListRules" />
+        <AssociationConnector Association="Gastro_LiveModel.FK_ERS_SCH_DiaryPages_ERS_SCH_Rooms" />
+        <AssociationConnector Association="Gastro_LiveModel.FK_ERS_SCH_DiaryPages_ERS_Users" />
+        <AssociationConnector Association="Gastro_LiveModel.FK_ERS_SCH_DiaryPages_ERS_Users1" />
+        <AssociationConnector Association="Gastro_LiveModel.FK_SCH_GenderList_DiaryId" />
+        <EntityTypeShape EntityType="Gastro_LiveModel.ERS_ERCPTherapeutics" Width="1.5" PointX="7.5" PointY="191.78877766927081" />
+        <AssociationConnector Association="Gastro_LiveModel.FK_ERCPTherapeutics_Sites" />
+        <EntityTypeShape EntityType="Gastro_LiveModel.ERS_ProceduresReporting" Width="1.5" PointX="5.375" PointY="9.75" />
+        <EntityTypeShape EntityType="Gastro_LiveModel.ERS_Visualisation" Width="1.5" PointX="3" PointY="151.00944010416666" />
+        <EntityTypeShape EntityType="Gastro_LiveModel.ERS_Procedures" Width="1.5" PointX="3" PointY="68.346354166666686" />
+        <AssociationConnector Association="Gastro_LiveModel.FK_ColonExtentOfIntubation_Procedures" />
+        <AssociationConnector Association="Gastro_LiveModel.FK_ERS_PatientJourney_ERS_Procedures" />
+        <AssociationConnector Association="Gastro_LiveModel.FK_Photos_Procedures" />
+        <AssociationConnector Association="Gastro_LiveModel.FK_ERS_PostOperativeComplications_ProcedureId" />
+        <AssociationConnector Association="Gastro_LiveModel.FK_ERS_Procedures_ERS_Users" />
+        <AssociationConnector Association="Gastro_LiveModel.FK_ERS_Procedures_ERS_Users1" />
+        <AssociationConnector Association="Gastro_LiveModel.FK_ERS_Procedures_ERS_Users2" />
+        <AssociationConnector Association="Gastro_LiveModel.FK_ERS_Procedures_ERS_Users3" />
+        <AssociationConnector Association="Gastro_LiveModel.FK_ERS_Procedures_ERS_Users4" />
+        <AssociationConnector Association="Gastro_LiveModel.FK_ERS_Procedures_ERS_Users5" />
+        <AssociationConnector Association="Gastro_LiveModel.FK_ERS_Procedures_ERS_Users6" />
+        <AssociationConnector Association="Gastro_LiveModel.FK_ERS_Visualisation" />
+        <AssociationConnector Association="Gastro_LiveModel.FK_RecordCount_Procedures" />
+        <AssociationConnector Association="Gastro_LiveModel.FK_Sites_Procedures" />
+        <AssociationConnector Association="Gastro_LiveModel.FK_UpperGIFollowUp_Procedures" />
+        <AssociationConnector Association="Gastro_LiveModel.FK_UpperGIPathologyResults_Procedures" />
+        <AssociationConnector Association="Gastro_LiveModel.FK_UpperGIQA_Procedures" />
+        <EntityTypeShape EntityType="Gastro_LiveModel.ERS_PrintOptionsGPReport" Width="1.5" PointX="3.75" PointY="30.807698567708336" />
+        <AssociationConnector Association="Gastro_LiveModel.FK_PrintOptionsGPReport_OperatingHospitalId" />
+        <EntityTypeShape EntityType="Gastro_LiveModel.ERS_UpperGITherapeutics" Width="1.5" PointX="7.5" PointY="246.55814615885413" />
+        <AssociationConnector Association="Gastro_LiveModel.FK_UpperGITherapeutics_Sites" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,26 @@
+﻿<Tree>
+  <Node Text="GRS A" Value="" CustomId="GRSA" Checkable="false" >
+    <Node Text="GRS A-1 Diagnostic biopsies for diarrhoea" ToolTip="Diagnostic biopsies for diarrhoea" Value="~/Products/Reports/Book01.aspx" GRS="0" CustomId="GRSA01"   />
+    <Node Text="GRS A-2 Haemostasis after endoscopy therapy" ToolTip="The validation is in progress" Value="~/Products/Reports/Book01.aspx" GRS="1" CustomId="GRSA02"  />
+    <Node Text="GRS A-3 Stent and PEG/PEJ placement" ToolTip="Stent and PEG/PEJ placement" Value="~/Products/Reports/Book01.aspx" GRS="2" CustomId="GRSA03"  Finished="true"  />
+    <Node Text="GRS A-4 Use of reversing agent" Value="~/Products/Reports/Book01.aspx" GRS="3" CustomId="GRSA04"   Finished="false" ToolTip="Use of reversing agent"  />
+  </Node>
+  <Node Text="GRS B" Value="" CustomId="GRSB" Checkable="false">
+    <Node Text="GRS B-1 Assessment of sedation/comfort" Value="~/Products/Reports/Book01.aspx" GRS="4" CustomId="GRSB01"   Finished="false" ToolTip="Assessment of sedation/comfort"  />
+    <Node Text="GRS B-2 Analysis of colonic polyps/polypectomies" Value="~/Products/Reports/Book01.aspx" GRS="5" CustomId="GRSB02"   Finished="false" ToolTip="Analysis of colonic polyps/polypectomies"  />
+    <Node Text="GRS B-3 Completion of intended therapeutic ERCP" Value="~/Products/Reports/Book01.aspx" GRS="6" CustomId="GRSB03"   Finished="false" ToolTip="This report is still pending" enabled="false" />
+    <Node Text="GRS B-4 Decompression of obstructed ducts" ToolTip="Decompression of obstructed ducts" Value="~/Products/Reports/Book01.aspx" GRS="7" CustomId="GRSB04" enabled="false" />
+    <Node Text="GRS B-5 Repeat OGD for Gastric Ulcers" ToolTip="Repeat OGD for Gastric Ulcers" Value="~/Products/Reports/Book01.aspx" GRS="8" CustomId="GRSB05"   />
+    <Node Text="GRS B-6 Tattoing of small tumors and suspected malignant polyps" Value="~/Products/Reports/Book01.aspx" GRS="9" CustomId="GRSB06" Finished="false" ToolTip="Tattoing of small tumors and suspected malignant polyps"   />
+  </Node>
+  <Node Text="GRS C" Value="" CustomId="GRSC" Checkable="false">
+    <Node Text="GRS C-1 Adenoma/polyp detection rate" Value="~/Products/Reports/Book01.aspx" GRS="10" CustomId="GRSC01"   Finished="false" ToolTip="Adenoma/polyp detection rate"  />
+    <Node Text="GRS C-2 Colonoscopy completion summary" Value="~/Products/Reports/Book01.aspx" GRS="11" CustomId="GRSC02"   Finished="true" ToolTip="Colonoscopy completion summary"  />
+    <Node Text="GRS C-3 Colonoscopy detailed failure report" Value="~/Products/Reports/Book01.aspx" GRS="12" CustomId="GRSC03"   Finished="false" ToolTip="Colonoscopy detailed failure report"  />
+    <Node Text="GRS C-4 Analysis of colonoscopy bowel prep. (Boston)" Value="~/Products/Reports/Book01.aspx" GRS="13" CustomId="GRSC04"   Finished="false" ToolTip="GRS C-4 Analysis of colonoscopy bowel prep. (Boston)"  />
+    <Node Text="GRS C-5 Analysis of colonoscopy bowel prep. (Standard)" ToolTip="Analysis of colonoscopy bowel prep. (Standard)" Value="~/Products/Reports/Book01.aspx" GRS="14" CustomId="GRSC05"   />
+    <Node Text="GRS C-6 Quality of bowel preparation with repeats" Value="~/Products/Reports/Book01.aspx" GRS="15" CustomId="GRSC06"   Finished="false" ToolTip="Quality of bowel preparation with repeats"  />
+    <Node Text="GRS C-7 Sedation and analgesia for all procedures" ToolTip="Sedation and analgesia for all procedures" Value="~/Products/Reports/Book01.aspx" GRS="16" CustomId="GRSC07"   />
+    <Node Text="GRS C-8 Successful Intubation and Completion of OGD" ToolTip="The option List patients where not completed should be verified" Value="~/Products/Reports/Book01.aspx" GRS="17" CustomId="GRSC08"   />
+  </Node>
+</Tree>

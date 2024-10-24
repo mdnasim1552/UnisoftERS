@@ -1,0 +1,21 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="My" GeneratedClassName="MySettings" UseMySettingsClassName="true">
+  <Profiles />
+  <Settings>
+    <Setting Name="UnisoftERS_NEDWeblogic_Webservice" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://ned2.weblogik.co.uk/Webservices/Webservice.svc</Value>
+    </Setting>
+    <Setting Name="UnisoftERS_ScotHospitalWebservice_SCIStoreServicesPort" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.8.135:8080/StoreWS/Store81/SCIStoreServices.asmx</Value>
+    </Setting>
+    <Setting Name="UnisoftERS_ScotHospitalWebservice_SCIStoreUserName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">hdclinical</Value>
+    </Setting>
+    <Setting Name="UnisoftERS_ScotHospitalWebservice_SCIStoreUserPassword" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Pass1admin*</Value>
+    </Setting>
+    <Setting Name="UnisoftERS_ScotHospitalWebservice_SCIStoreResultXmlOutputPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\ERS\XmlOutput</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

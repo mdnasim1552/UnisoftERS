@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Menu>
+  <Group>
+    <Item Text="File" AccessKey="F" >
+      <Group Flow="Vertical">
+        <Item Text="Return to GI System" NavigateURL="~/Products/Default.aspx" />
+        <Item IsSeparator="True" />
+        <Item Text="Log-off" NavigateURL="~/Security/Logout.aspx" />
+      </Group>
+    </Item>
+    <Item Text="Action" AccessKey="A" >
+      <Group Flow="Vertical">
+        <Item Text="Placeholder" />
+      </Group>
+    </Item>
+    <Item Text="Help" Key="H" >
+      <Group Flow="Vertical" OffsetX="-26">
+        <Item Text="About Solus Report Tool" />
+      </Group>
+    </Item>
+  </Group>
+</Menu>

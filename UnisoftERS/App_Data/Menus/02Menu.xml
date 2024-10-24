@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Menu>
+    <Group>
+      <Item Text="File" Key="F" >
+        <Group>
+          <Item Text="Add new patient" />
+          <!--<Item Text="Save record" />-->
+          <Item Text="Search for duplicates/merged records" />
+          <Item IsSeparator="True" />
+          <!--<Item Text="ToolTip Item" ToolTip="This is a tooltip" />-->
+          <Item Text="Return to main screen" NavigateUrl="~/Products/Default.aspx" />
+          <Item Text="Log-off" NavigateURL="~/Security/Logout.aspx" />
+        </Group>
+      </Item>
+      <Item Text="Patient Record" AccessKey="P" >
+        <Group Flow="Vertical" OffsetX="-26">
+          <Item Text="New Procedure" />
+          <Item IsSeparator="True" />
+          <Item Text="Edit Record" />
+          <Item Text="Delete Record" />
+        </Group>
+      </Item>
+      <Item Text="Supporting data" AccessKey="S" >
+        <Group Flow="Vertical">
+          <!--<Item Text="Additional notes" />-->
+          <Item Text="Add/Edit referral details" />
+          <Item Text="Add/Edit list of GP's" />
+        </Group>
+      </Item>    
+      <!--<Item Text="Configuration" AccessKey="C" >
+        <Group Flow="Vertical" OffsetX="-26">
+          <Item Text="Incomplete fields" />
+          <Item Text="Set patient status defaults" />
+        </Group>
+      </Item>-->
+    </Group>
+</Menu>

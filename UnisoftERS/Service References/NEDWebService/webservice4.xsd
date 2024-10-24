@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://www.weblogik.co.uk/types" elementFormDefault="qualified" targetNamespace="http://www.weblogik.co.uk/types" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="SendResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ExceptionMessage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Queued" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SendResponse" nillable="true" type="tns:SendResponse" />
+  <xs:complexType name="GetResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ExceptionMessage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MessageData" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetResponse" nillable="true" type="tns:GetResponse" />
+  <xs:complexType name="CheckResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ExceptionMessage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Registered" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CheckResponse" nillable="true" type="tns:CheckResponse" />
+  <xs:complexType name="SummaryResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ExceptionMessage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Processed" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SummaryResponse" nillable="true" type="tns:SummaryResponse" />
+</xs:schema>

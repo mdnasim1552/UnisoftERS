@@ -1,0 +1,109 @@
+<hospital.SendBatchMessage xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://weblogik.co.uk/jets/Hospital.SendBatchMessage.xsd">
+  <session uniqueId="00000101o" description="NED List" date="29/Nov/2017" time="PM" type="Dedicated Training List" site="">
+    <procedures>
+      <procedure localProcedureId="00000101o" procedureName="OGD" endoscopistDiscomfort="Mild" nurseDiscomfort="Moderate" bowelPrep="Not Specified" extent="Intubation failed" polypsDetected="13">
+        <patient gender="Male" age="86" admissionType="Outpatient" urgencyType="Urgent" />
+        <drugs pethidine="0.00" midazolam="0.00" fentanyl="0.00" buscopan="20.00" />
+        <staff.members>
+          <Staff professionalBodyCode="UNITrainer" endoscopistRole="Trainer" procedureRole="I observed" extent="Intubation failed" jManoeuvre="No">
+            <therapeutics>
+              <therapeutic type="Other" site="Stomach" role="I observed" performed="1" successful="1" comment="Bicap Electro, Diathermy" />
+              <therapeutic type="Argon beam photocoagulation" site="Stomach" role="I observed" performed="1" successful="1" />
+              <therapeutic type="Band ligation" site="Stomach" role="I observed" performed="2" successful="2" />
+              <therapeutic type="Botox injection" site="Stomach" role="I observed" performed="1" successful="1" />
+              <therapeutic type="Clip placement" site="Stomach" role="I observed" performed="3" successful="3" />
+              <therapeutic type="Endoloop placement" site="Stomach" role="I observed" performed="1" successful="1" />
+              <therapeutic type="ESD" site="Stomach" role="I observed" performed="1" successful="1" />
+              <therapeutic type="Foreign body removal" site="Stomach" role="I observed" performed="1" successful="1" />
+              <therapeutic type="Heater probe" site="Stomach" role="I observed" performed="1" successful="1" />
+              <therapeutic type="Hot biopsy" site="Stomach" role="I observed" performed="1" successful="1" />
+              <therapeutic type="Marking / tattooing" site="Stomach" role="I observed" performed="1" successful="1" />
+              <therapeutic type="PEG change" site="Stomach" role="I observed" performed="1" successful="1" />
+              <therapeutic type="Polypectomy" site="Stomach" role="I observed" polypSize="ItemLessThan10mm" tattooed="Yes" performed="13" successful="13" retrieved="12" />
+              <therapeutic type="Stent change" site="Stomach" role="I observed" performed="2" successful="2" />
+              <therapeutic type="YAG laser" site="Stomach" role="I observed" performed="1" successful="1" />
+              <therapeutic type="Brush cytology" site="Stomach" role="I observed" performed="1" successful="1" />
+              <therapeutic type="Brush cytology" site="D2 - 2nd part of duodenum" role="I observed" performed="1" successful="1" />
+              <therapeutic type="Other" site="Oesophagus" role="I observed" performed="1" successful="1" comment="Not discoer" />
+              <therapeutic type="Hot biopsy" site="Oesophagus" role="I observed" performed="1" successful="1" />
+              <therapeutic type="Brush cytology" site="Oesophagus" role="I observed" performed="1" successful="1" />
+            </therapeutics>
+          </Staff>
+          <Staff professionalBodyCode="UNITrainee" endoscopistRole="Trainee" procedureRole="Was observed" extent="Intubation failed" jManoeuvre="No">
+            <therapeutics>
+              <therapeutic type="Other" site="D2 - 2nd part of duodenum" role="Was observed" performed="1" successful="1" comment="Bicap Electro, Diathermy" />
+              <therapeutic type="Argon beam photocoagulation" site="D2 - 2nd part of duodenum" role="Was observed" performed="1" successful="1" />
+              <therapeutic type="Band ligation" site="D2 - 2nd part of duodenum" role="Was observed" performed="1" successful="1" />
+              <therapeutic type="Botox injection" site="D2 - 2nd part of duodenum" role="Was observed" performed="1" successful="1" />
+              <therapeutic type="Clip placement" site="D2 - 2nd part of duodenum" role="Was observed" performed="3" successful="3" />
+              <therapeutic type="Endoloop placement" site="D2 - 2nd part of duodenum" role="Was observed" performed="1" successful="1" />
+              <therapeutic type="ESD" site="D2 - 2nd part of duodenum" role="Was observed" performed="1" successful="1" />
+              <therapeutic type="Foreign body removal" site="D2 - 2nd part of duodenum" role="Was observed" performed="1" successful="1" />
+              <therapeutic type="Heater probe" site="D2 - 2nd part of duodenum" role="Was observed" performed="1" successful="1" />
+              <therapeutic type="Hot biopsy" site="D2 - 2nd part of duodenum" role="Was observed" performed="1" successful="1" />
+              <therapeutic type="Marking / tattooing" site="D2 - 2nd part of duodenum" role="Was observed" performed="1" successful="1" />
+              <therapeutic type="PEG change" site="D2 - 2nd part of duodenum" role="Was observed" performed="1" successful="1" />
+              <therapeutic type="Stent change" site="D2 - 2nd part of duodenum" role="Was observed" performed="4" successful="4" />
+              <therapeutic type="YAG laser" site="D2 - 2nd part of duodenum" role="Was observed" performed="1" successful="1" />
+              <therapeutic type="Brush cytology" site="D2 - 2nd part of duodenum" role="Was observed" performed="1" successful="1" />
+              <therapeutic type="Other" site="Oesophagus" role="Was observed" performed="1" successful="1" comment="Bicap Electro, Diathermy, pHProbe Insert" />
+              <therapeutic type="Argon beam photocoagulation" site="Oesophagus" role="Was observed" performed="1" successful="1" />
+              <therapeutic type="Band ligation" site="Oesophagus" role="Was observed" performed="2" successful="2" />
+              <therapeutic type="Botox injection" site="Oesophagus" role="Was observed" performed="1" successful="1" />
+              <therapeutic type="Bougie dilation" site="Oesophagus" role="Was observed" performed="1" successful="1" />
+              <therapeutic type="Clip placement" site="Oesophagus" role="Was observed" performed="4" successful="4" />
+              <therapeutic type="Endoloop placement" site="Oesophagus" role="Was observed" performed="1" successful="1" />
+              <therapeutic type="ESD" site="Oesophagus" role="Was observed" performed="1" successful="1" />
+              <therapeutic type="Foreign body removal" site="Oesophagus" role="Was observed" performed="1" successful="1" />
+              <therapeutic type="Heater probe" site="Oesophagus" role="Was observed" performed="1" successful="1" />
+              <therapeutic type="Hot biopsy" site="Oesophagus" role="Was observed" performed="1" successful="1" />
+              <therapeutic type="Marking / tattooing" site="Oesophagus" role="Was observed" performed="1" successful="1" />
+              <therapeutic type="Radio frequency ablation" site="Oesophagus" role="Was observed" performed="1" successful="1" />
+              <therapeutic type="Stent change" site="Oesophagus" role="Was observed" performed="5" successful="5" />
+              <therapeutic type="YAG laser" site="Oesophagus" role="Was observed" performed="1" successful="1" />
+              <therapeutic type="Brush cytology" site="Oesophagus" role="Was observed" performed="1" successful="1" />
+            </therapeutics>
+          </Staff>
+        </staff.members>
+        <indications>
+          <indication indication="Dyspepsia" />
+          <indication indication="PEG placement" />
+          <indication indication="Other" comment="(none selected), Balloon Removal, Chest Pain, Dyspepsia" />
+        </indications>
+        <limitations />
+        <biopsies>
+          <Biopsy biopsySite="D2 - 2nd part of duodenum" numberPerformed="0" />
+          <Biopsy biopsySite="Oesophagus" numberPerformed="0" />
+          <Biopsy biopsySite="Stomach" numberPerformed="0" />
+        </biopsies>
+        <diagnoses>
+          <Diagnose diagnosis="Normal" />
+          <Diagnose diagnosis="Angiodysplasia" />
+          <Diagnose diagnosis="Barrett's oesophagus" />
+          <Diagnose diagnosis="Duodenal diverticulum" />
+          <Diagnose diagnosis="Gastric polyp(s)" />
+          <Diagnose diagnosis="Gastric varices" />
+          <Diagnose diagnosis="Gastritis - erosive" />
+          <Diagnose diagnosis="Gastropathy-portal hypertensive" />
+          <Diagnose diagnosis="Hiatus hernia" />
+          <Diagnose diagnosis="Mallory-Weiss tear" />
+          <Diagnose diagnosis="Oesophageal candidiasis" />
+          <Diagnose diagnosis="Oesophageal diverticulum" />
+          <Diagnose diagnosis="Oesophageal foreign body" />
+          <Diagnose diagnosis="Oesophageal stricture - benign" />
+          <Diagnose diagnosis="Oesophageal ulcer" />
+          <Diagnose diagnosis="Oesophageal varices" />
+          <Diagnose diagnosis="Pyloric stenosis" />
+          <Diagnose diagnosis="Scar" />
+          <Diagnose diagnosis="Other" comment="Oesophagus Telangiectasia, Oesophagus Motility disorder, Oesophagus Varices with bleeding, Oesophagus Oesophagitis/other, Oesophagus Tumour, probably malignant, Oesophagus Web, Stomach Post-surgical, Stomach Post-surgical, Stomach Cancer, Stomach Gastritis, Stomach Hiatus hernia, Duodenum Duodenitis, Duodenum Multiple ulcers, Duodenum Telangiectasia/angioma" />
+        </diagnoses>
+        <adverse.events>
+          <adverse.event adverseEvent="Bleeding" />
+          <adverse.event adverseEvent="Unplanned admission" />
+          <adverse.event adverseEvent="Unsupervised trainee" />
+          <adverse.event adverseEvent="Other" comment="Gastric contents aspiration, Shock hypotensio" />
+        </adverse.events>
+      </procedure>
+    </procedures>
+  </session>
+</hospital.SendBatchMessage>

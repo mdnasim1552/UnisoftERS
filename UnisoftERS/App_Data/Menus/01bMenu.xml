@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Menu>
+    <Group>
+      <Item Text="File" Key="F">
+        <Group>
+          <Item Text="Change password" />
+          <Item IsSeparator="True" />
+          <!--<Item Text="ToolTip Item" ToolTip="This is a tooltip" />-->
+          <Item Text="Log-off" NavigateURL="~/Security/Logout.aspx" />
+        </Group>
+      </Item>
+      <Item Text="Configure" AccessKey="O" >
+        <Group Flow="Vertical">
+          <Item Text="Options" />
+        </Group>
+      </Item>
+      <Item Text="Reports" AccessKey="T" >
+        <Group Flow="Vertical">
+          <!--<Item Text="Open Auditors Kit" />
+          <Item IsSeparator="True" />-->
+          <Item Text="Open AuditLog" NavigateUrl="~/Products/AuditLog/AuditLog2.aspx" />
+        </Group>
+      </Item>
+      <!--<Item Text="Administrator utilities" AccessKey="U" >
+        <Group Flow="Vertical">
+          <Item Text="Toolbox" />
+        </Group>
+      </Item>-->     
+      <Item Text="Help" Key="H" >
+        <Group Flow="Vertical" OffsetX="-26">
+          <Item Text="About Solus Report Tool" />
+          <Item IsSeparator="True" />
+          <Item Text="HD Clinical Newsletter" NavigateUrl="~/Newsletter/Newsletter.aspx" />
+          <Item Text="Downloads" NavigateUrl="~/Downloads/Downloads.aspx" />
+          <Item Text="HD Clinical Home Page" Href="http://www.hd-clinical.com" />
+        </Group>
+      </Item>
+    </Group>
+  </Menu>

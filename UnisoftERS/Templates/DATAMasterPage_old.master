@@ -1,0 +1,399 @@
+﻿<%@ Master Language="VB" Inherits="UnisoftERS.DATAMasterPage_old" Codebehind="DATAMasterPage_old.master.vb" %>
+
+<%@ Register TagPrefix="unisoft" TagName="Footer" Src="~/UserControls/Footer.ascx" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <telerik:RadStyleSheetManager ID="RadStyleSheetManager1" runat="server" />
+    <link href="../Styles/Site.css" rel="stylesheet" />
+ <%--   <script type="text/javascript" src="../Scripts/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../Scripts/Global.js"></script>--%>
+    <script type="text/javascript">
+        function test() {
+            alert('test');
+        }
+    </script>
+    <style type="text/css">
+        .rcbSlide {
+            z-index: 999999 !important;
+        }
+    </style>
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server" />
+
+
+</head>
+<body style="background-color: #ffffff;">
+    <form id="masterForm" runat="server">
+        <telerik:RadCodeBlock ID="RadCodeBlock1" runat="server">
+            <script type="text/javascript">
+                function EditStaffClicked() {
+                    $("#<%= ListConsultantComboBox.ClientID%>").show();
+                    $("#<%= Endo1ComboBox.ClientID%>").show();
+                    $("#<%= Endo2ComboBox.ClientID%>").show();
+                    $("#<%= Nurse1ComboBox.ClientID%>").show();
+                    $("#<%= Nurse2ComboBox.ClientID%>").show();
+                    $("#<%= Nurse3ComboBox.ClientID%>").show();
+
+                    $("#<%= ListConsultantLabel.ClientID%>").hide();
+                    $("#<%= EndoscopistsLabel.ClientID%>").hide();
+                    $("#<%= NursesLabel.ClientID%>").hide();
+                }
+
+                function openStaffWindow() {
+                    var oWnd = $find("<%= EditStaffWindow.ClientID%>");
+                    oWnd.show();
+                    return false;
+                }
+
+                function closeStaffWindow() {
+                    var oWnd = $find("<%= EditStaffWindow.ClientID %>");
+                    if (oWnd != null)
+                        oWnd.close();
+                    return false;
+                }
+
+                //session time out code start
+                var timeLeftCounter = null;
+                var seconds = 60;
+
+                function pageLoad() {
+                    var xmlPanel = $find("<%= SessionTimeoutNotification.ClientID %>")._xmlPanel;
+                    xmlPanel.set_enableClientScriptEvaluation(true);
+                };
+
+
+                function stopTimer(timer) {
+                    clearInterval(this[timer]);
+                    this[timer] = null;
+                };
+
+                function resetTimer(timer, func, interval) {
+                    this.stopTimer(timer);
+                    this[timer] = setInterval(Function.createDelegate(this, func), interval);
+                };
+
+                function OnClientShowing(sender, args) {
+                    resetTimer("timeLeftCounter", UpdateTimeLabel, 1000);
+                }
+
+                function UpdateTimeLabel(toReset) {
+                    var sessionExpired = (seconds == 0);
+                    if (sessionExpired) {
+                        stopTimer("timeLeftCounter");
+                        window.location.href = $find("<%= SessionTimeoutNotification.ClientID%>").get_value();
+                    } else {
+                        var timeLbl = $get("timeLbl");
+                        timeLbl.innerHTML = seconds--;
+                    }
+                }
+
+                function ContinueSession() {
+                    var notification = $find("<%= SessionTimeoutNotification.ClientID%>");
+                    notification.update();
+                    notification.hide();
+                    var showIntervalStorage = notification.get_showInterval();
+                    notification.set_showInterval(0);
+                    notification.set_showInterval(showIntervalStorage);
+                    stopTimer("timeLeftCounter");
+                    seconds = 60;
+                }
+                //session time out code end
+
+                function OpenPrintWindow() {
+                    var oWnd = $find("<%= PrintWindow.ClientID %>");
+                    var procId = <%= Session(UnisoftERS.Constants.SESSION_PROCEDURE_ID)%>;
+                    //oWnd.SetSize(950, 600);
+
+                    url = "<%= ResolveUrl("~/Products/Common/PrintReport.aspx") %>";
+                    url = url + "?ProcedureId={0}";
+                    url = url.replace("{0}", procId);
+
+                    oWnd._navigateUrl = url;
+
+                    //Add the name of the function to be executed when RadWindow is closed.
+                    //oWnd.add_close(OnClientClose);
+
+                    oWnd.show();
+
+                    //window.radopen(null, "AddNewTitleRadWindow");
+
+                    return false;
+                }
+            </script>
+        </telerik:RadCodeBlock>
+
+        <telerik:RadScriptManager ID="RadScriptManager1" runat="server" EnableEmbeddedjQuery="true"  >
+            <Scripts>
+                <telerik:RadScriptReference Path="../Scripts/jquery-1.11.0.min.js" />
+                <telerik:RadScriptReference Path="../Scripts/Global.js" />
+            </Scripts>
+        </telerik:RadScriptManager>
+        <telerik:RadFormDecorator ID="RadFormDecorator1" runat="server" DecoratedControls="All" DecorationZoneID="cmdOtherData" Skin="Windows7" />
+        <telerik:RadNotification ID="RadNotification1" runat="server" VisibleOnPageLoad="false" />
+
+        <telerik:RadNotification ID="SessionTimeoutNotification" runat="server" 
+            Position="Center" Width="500" Height="170" 
+            Skin="Silk" EnableRoundedCorners="true" ShowCloseButton="false" KeepOnMouseOver="false"
+            OnClientShowing="OnClientShowing" LoadContentOn="PageLoad" AutoCloseDelay="60000"
+            Title="<div class='sessionTimeOutNotificationHeader'>Session Expiring!</div>" TitleIcon = "none">
+            <ContentTemplate>
+                <table cellspacing="3" cellpadding="3" style="font-size:13px;padding-top:20px; ">
+                    <tr>
+                        <td>
+                            <asp:Image ID="ClockImage" runat="server" ImageUrl="~/Images/clock2.png" Width="25px" Height="25px" />
+                        </td>
+                        <td>
+                            Your session expires in <span id="timeLbl" style="font-weight:bold;color:saddlebrown;">60</span> seconds. Click the button below to stay on.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"  style="padding-top: 30px; text-align:center;">
+                            <telerik:RadButton Skin="Silk" ID="ContinueSessionButton" runat="server" Text="Continue my session"
+                                AutoPostBack="false" OnClientClicked="ContinueSession">
+                            </telerik:RadButton>
+                        </td>
+                    </tr>
+                </table>
+            </ContentTemplate>
+        </telerik:RadNotification>
+
+        <telerik:RadWindowManager ID="EditStaffWindowManager" runat="server" ShowContentDuringLoad="false"
+            Style="z-index: 12345" Behaviors="Close, Move" Skin="Office2007" EnableShadow="true" Modal="true" VisibleStatusbar="false" >
+            <Windows>
+                <telerik:RadWindow ID="PrintWindow" runat="server" Title="Print report"
+                    Width="800px" Height="900px" Left="150px" ReloadOnShow="true" ShowContentDuringLoad="true"
+                    Modal="true" VisibleStatusbar="false" Skin="Office2010Blue">
+                </telerik:RadWindow>
+
+                <telerik:RadWindow ID="EditStaffWindow" runat="server" ReloadOnShow="true" VisibleOnPageLoad="false"
+                    KeepInScreenBounds="true" Width="700px" Height="200px" Title="Edit Staff" VisibleStatusbar="false">
+                    <ContentTemplate>
+                        <div class="rptSummaryText10" style="margin-left: 5px; margin-top: 10px; padding-bottom: 10px;">
+                            <table cellspacing="2" cellpadding="2">
+                                <tr>
+                                    <td style="font-weight: bold;">List Consultant:</td>
+                                    <td>
+                                        <telerik:RadComboBox ID="ListConsultantComboBox" runat="server" Skin="Office2007" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: bold;">Endoscopists:</td>
+                                    <td>
+                                        <telerik:RadComboBox ID="Endo1ComboBox" runat="server" Skin="Office2007" />
+                                    </td>
+                                    <td>
+                                        <telerik:RadComboBox ID="Endo2ComboBox" runat="server" Skin="Office2007" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: bold;">Nurses:</td>
+                                    <td>
+                                        <telerik:RadComboBox ID="Nurse1ComboBox" runat="server" Skin="Office2007" />
+                                    </td>
+                                    <td>
+                                        <telerik:RadComboBox ID="Nurse2ComboBox" runat="server" Skin="Office2007" />
+                                    </td>
+                                    <td>
+                                        <telerik:RadComboBox ID="Nurse3ComboBox" runat="server" Skin="Office2007" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="height: 5px;"></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div id="buttonsdiv" style="height: 10px; padding-top: 6px; vertical-align: central;">
+                                            <telerik:RadButton ID="SaveStaffButton" runat="server" Text="Save" Skin="WebBlue" />
+                                            <telerik:RadButton ID="CancelStaffButton" runat="server" Text="Close" Skin="WebBlue"
+                                                AutoPostBack="false" OnClientClicked="closeStaffWindow" />
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </ContentTemplate>
+                </telerik:RadWindow>
+            </Windows>
+        </telerik:RadWindowManager>
+
+        <telerik:RadAjaxManager ID="MasterPageAjaxManager" runat="server">
+            <AjaxSettings>
+                <telerik:AjaxSetting AjaxControlID="SaveStaffButton">
+                    <UpdatedControls>
+                        <telerik:AjaxUpdatedControl ControlID="StaffTable" />
+                    </UpdatedControls>
+                </telerik:AjaxSetting>
+                <telerik:AjaxSetting AjaxControlID="SaveStaffButton">
+                    <UpdatedControls>
+                        <telerik:AjaxUpdatedControl ControlID="RadNotification1" />
+                    </UpdatedControls>
+                </telerik:AjaxSetting>
+            </AjaxSettings>
+        </telerik:RadAjaxManager>
+
+        <asp:ObjectDataSource ID="SummaryObjectDataSource" runat="server" SelectMethod="GetReportSummary" TypeName="UnisoftERS.DataAccess"></asp:ObjectDataSource>
+        <div>
+            <telerik:RadSplitter ID="radMainPage" runat="server" Width="100%" BorderWidth="1" Height="700px" Orientation="Horizontal" Skin="Windows7">
+
+                <telerik:RadPane ID="paneTop" runat="server" Height="100px" Scrolling="None">
+                    <telerik:RadSplitter ID="RadSplitter4" runat="server" BorderWidth="1" Skin="Windows7" BorderSize="0" PanesBorderSize="0">
+                        <telerik:RadPane ID="RadPane1" runat="server" Width="360">
+                            <table cellspacing="0" cellpadding="0">
+                                <tr style="vertical-align: top; color: black;">
+                                    <td>
+                                        <a href="<%= ResolveUrl("~/Products/Default.aspx")%>"><asp:Image ID="imgLogo" runat="server" ImageUrl="~/Images/NewLogo_138_58.png" BorderWidth="0" /></a>
+                                        <div class="uniProductTitle"><%If (New UnisoftERS.License(ConfigurationManager.AppSettings("Unisoft.LicenseKey")).IsERSViewer) Then%>ERS Viewer<%Else%>Endoscopy Reporting System<%End If%></div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </telerik:RadPane>
+                        <telerik:RadSplitBar ID="RadSplitBar1" runat="server" CollapseMode="None" />
+                        <telerik:RadPane ID="RadPane2" runat="server" CssClass="radPane">
+                            <table id="PatientDetailsTable" runat="server" cellspacing="0" cellpadding="0" style="margin-left: 10px; height:100%;">
+                                <tr style="vertical-align: top; color: black;">
+                                    <td style="width: 340px; border-right: 1px solid #c2d2e2;">
+                                        <table cellpadding="1" cellspacing="1">
+                                            <tr>
+                                                <td style="font-weight: bold;">Name:</td>
+                                                <td>
+                                                    <asp:Label ID="PatientName" runat="server" Text="Not available" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: bold;">Case note no:</td>
+                                                <td>
+                                                    <asp:Label ID="CNN" runat="server" Text="Not available" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: bold;">NHS No:</td>
+                                                <td>
+                                                    <asp:Label ID="NHSNo" runat="server" Text="Not available" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: bold;">Date of birth:</td>
+                                                <td>
+                                                    <asp:Label ID="DOB" runat="server" Text="Not available" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: bold;">Record created:</td>
+                                                <td>
+                                                    <asp:Label ID="RecCreated" runat="server" Text="Not available" /></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td style="padding-left: 10px; vertical-align: central;">
+                                        <table id="StaffTable" runat="server" cellpadding="2" cellspacing="2">
+                                            <tr>
+                                                <td style="font-weight: bold;">List consultant:</td>
+                                                <td>
+                                                    <asp:Label ID="ListConsultantLabel" runat="server" Text="Not available" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: bold;">Endoscopists:</td>
+                                                <td>
+                                                    <asp:Label ID="EndoscopistsLabel" runat="server" Text="Not available" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: bold;">Nurses:</td>
+                                                <td>
+                                                    <asp:Label ID="NursesLabel" runat="server" Text="Not available" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">
+                                                    <telerik:RadButton ID="EditStaffButton" runat="server" Text="Edit Staff" Skin="Office2007"
+                                                        AutoPostBack="false" OnClientClicked="openStaffWindow" Icon-PrimaryIconUrl="~/Images/icons/edit_staff.png"/>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </telerik:RadPane>
+                    </telerik:RadSplitter>
+                </telerik:RadPane>
+
+                <telerik:RadPane ID="paneMainBody" runat="server" Scrolling="None">
+                    <telerik:RadSplitter ID="RadSplitter1" runat="server" BorderWidth="1" Skin="Windows7" BorderSize="0" PanesBorderSize="0">
+                        <telerik:RadPane ID="paneReportSummary" runat="server" Width="360">
+                            <div id="SummaryPreviewDiv" class="main" runat="server">
+                                <div class="leftHeaderText" style="margin-left: -8px;padding-bottom:6px;">
+                                    <asp:Label ID="lblProcDate" runat="server" Text="" />
+                                </div>
+                                <asp:ListView ID="SummaryListView" runat="server" DataSourceID="SummaryObjectDataSource">
+                                    <ItemTemplate>
+                                        <asp:Panel runat="server" ID="myPanel">
+                                            <tr>
+                                                <th align="left">
+                                                    <asp:Label ID="NodeNameLabel" runat="server" Text='<%#Eval("NodeName") %>' ForeColor="#0072c6"     />
+                                                </th>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding-left: 5px;">
+                                                    <asp:Label ID="NodeSummaryLabel" runat="server" Text='<%#Eval("NodeSummary") %>'/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="height: 5px"></td>
+                                            </tr>
+                                        </asp:Panel>
+                                    </ItemTemplate>
+                                    <LayoutTemplate>
+                                        <table id="itemPlaceholderContainer" runat="server" border="0" class="rptSummaryText10" style="margin-left: 15px;">
+                                            <tr id="itemPlaceholder" runat="server">
+                                            </tr>
+                                        </table>
+                                    </LayoutTemplate>
+                                </asp:ListView>
+                            </div>
+
+                            <div id="LeftPaneContentPlaceHolderDiv" class="main" runat="server" visible="false">
+                                <asp:ContentPlaceHolder ID="LeftPaneContentPlaceHolder" runat="server" />
+                            </div>
+                        </telerik:RadPane>
+                        <telerik:RadSplitBar ID="SBReport" runat="server" CollapseMode="Forward" />
+                        <telerik:RadPane ID="paneRight" runat="server" Scrolling="None">
+                            <telerik:RadSplitter ID="RadSplitter2" runat="server" Orientation="Horizontal" Skin="Windows7">
+                                <telerik:RadPane ID="paneForm" runat="server" Scrolling="None">
+                                    <div>
+                                        <asp:ContentPlaceHolder ID="BodyContent" runat="server" />
+                                    </div>
+                                </telerik:RadPane>
+                                <telerik:RadPane ID="paneButtons" runat="server" Scrolling="None" Height="33">
+                                    <div id="cmdOtherData" style="height: 10px; margin-left: 10px; padding-top: 6px;">
+                                        <telerik:RadButton ID="cmdMainScreen" runat="server" Text="Return to main screen" Skin="Office2007" />
+                                        <span id="tabspace" runat="server" style="margin-left: 50px;"></span>
+                                        <telerik:RadButton ID="cmdIndications" runat="server" Text="Indications" Skin="Office2007" />
+                                        <telerik:RadButton ID="cmdPremed" runat="server" Text="Premed" Skin="Office2007" />
+                                        <telerik:RadButton ID="cmdVisualisation" runat="server" Text="Visualisation" Skin="Office2007" Visible="false" />
+                                        <telerik:RadButton ID="cmdExtLim" runat="server" Text="Extent of Intubation" Skin="Office2007" />
+                                        <telerik:RadButton ID="cmdDiagnoses" runat="server" Text="Diagnoses" Skin="Office2007"   />
+                                        <telerik:RadButton ID="cmdQA" runat="server" Text="QA" Skin="Office2007" />
+                                        <telerik:RadButton ID="cmdRx" runat="server" Text="Rx" Skin="Office2007" />
+                                        <telerik:RadButton ID="cmdFollowUp" runat="server" Text="Follow up" Skin="Office2007" />
+                                        <telerik:RadButton ID="cmd18w" runat="server" Text="18w" Skin="Office2007" Visible="false" />
+                                        <telerik:RadButton ID="PathologyButton" runat="server" Text="Pathology" Skin="Office2007" Visible="false" />
+                                        <telerik:RadButton ID="DrugsButton" runat="server" Text="Drugs" Skin="Office2007" Visible="false" />
+                                        <telerik:RadButton ID="cmdPrint" runat="server" Text="Print" Skin="Office2007" />
+                                        <telerik:RadButton ID="cmdCreateTab" runat="server" Text="Create tab" Skin="Office2007" Visible="false" />
+                                    </div>
+                                </telerik:RadPane>
+                            </telerik:RadSplitter>
+                        </telerik:RadPane>
+                    </telerik:RadSplitter>
+                </telerik:RadPane>
+            </telerik:RadSplitter>
+            <div>
+                <unisoft:Footer ID="SchFooter" runat="server" />
+            </div>
+        </div>
+    </form>
+</body>
+</html>
+
